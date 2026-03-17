@@ -39,21 +39,19 @@ La IA propuso una página con:
 
 ## Qué incorporé
 Se decidió incorporar:
-- encabezado con identidad del proyecto;
-- navegación principal;
-- sección introductoria e informativa;
-- lista de casos de uso;
-- formulario de tareas;
-- tabla representando un ejemplo de planificación;
-- sección de enlaces útiles;
-- pie de página.
+- un encabezado con nombre del proyecto;
+- una navegación superior simple;
+- un panel lateral con datos de tareas;
+- un área principal para representar el cronograma y sus barras;
+- un espacio para filtros;
+- un pie de página con información general.
 
 ## Qué descarté y por qué
 Se descartaron en esta etapa:
-- detalles visuales avanzados;
-- definición fina de colores, espaciados y estilos;
-- comportamientos interactivos complejos;
-- una interfaz demasiado parecida a una aplicación profesional completa.
+- exceso de texto explicativo;
+- múltiples pantallas o vistas;
+- detalle visual avanzado;
+- interacciones complejas.
 
 ## Criterios de aceptación
 - [ ] El archivo `spec-ux.md` fue creado antes del `README.md` y antes del mockup.
