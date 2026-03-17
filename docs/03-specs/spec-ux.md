@@ -28,32 +28,32 @@ Se utilizará GitHub Copilot para:
 "Tomando como base el archivo `plan.md` de este proyecto, proponé una estructura visual inicial para una página web básica sobre un planificador de tareas estilo diagrama de Gantt. Necesito sugerencias de layout general, secciones principales, navegación y jerarquía visual para luego diseñar un mockup simple en Figma."
 
 ## Qué sugirió la IA
-La IA sugirió una página con:
-- un encabezado con título del proyecto;
-- una navegación principal;
+La IA propuso una página con:
+- un `header` con título del proyecto y navegación principal;
 - una sección introductoria que explique qué es un diagrama de Gantt;
-- una sección con contenido informativo sobre planificación de tareas;
-- una zona donde se represente visualmente el cronograma o una maqueta del planificador;
-- una sección con formulario, lista y tabla;
-- un pie de página con información adicional.
+- una sección con casos de uso;
+- una sección con formulario para carga de tareas;
+- una sección con una tabla simulando un diagrama de Gantt;
+- una sección de recursos y enlaces;
+- un `footer` con información general.
 
 ## Qué incorporé
-Se decidió incorporar en el mockup:
-- `header` con nombre del proyecto;
-- un bloque superiro con datos del proyecto;
-- un bloque superiro con funcionalidades futuras;  
-- el cuerpo principal dividido en dos secciones;
-- el bloque principal izquierdo con listado de tareas y datos;
-- el bloque principal derecho con la visualización grafica del cronograma, barra de tiempo;
-- `footer`.
+Se decidió incorporar:
+- encabezado con identidad del proyecto;
+- navegación principal;
+- sección introductoria e informativa;
+- lista de casos de uso;
+- formulario de tareas;
+- tabla representando un ejemplo de planificación;
+- sección de enlaces útiles;
+- pie de página.
 
 ## Qué descarté y por qué
 Se descartaron en esta etapa:
-- bloques de contenido explicativo;
-- vistas complejas o múltiples pantallas;
-- herramientas avanzadas de edición;
-- exceso de botones o indicadores técnicos;
-- detalles visuales propios de una aplicación ya terminada.
+- detalles visuales avanzados;
+- definición fina de colores, espaciados y estilos;
+- comportamientos interactivos complejos;
+- una interfaz demasiado parecida a una aplicación profesional completa.
 
 ## Criterios de aceptación
 - [ ] El archivo `spec-ux.md` fue creado antes del `README.md` y antes del mockup.
