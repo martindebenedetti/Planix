@@ -1,5 +1,18 @@
 # Planificador de Tareas - Diagrama de Gantt
 
+## Datos Academicos 
+- **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
+- **Materia:** Programación Web I - 1º Cuat. 2026
+- **Docente:** Matias Velasquez
+
+## Integrantes del equipo
+
+| Nombre y Apellido | Matricula | Usuario Git |
+|:---|:---:|:---:|
+| Martín Debenedetti | 151579 | martindebenedetti |
+| Leandro Berro | 155667 | leanlex |
+| Gian Franco Pasquali | 148159 | giann98 |
+
 ## Descripción del proyecto
 Este proyecto consiste en el desarrollo de una página web base orientada a la visualización y planificación de tareas mediante un esquema tipo diagrama de Gantt. La propuesta busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones y nivel de avance, estableciendo una primera estructura lista para evolucionar en futuras etapas con estilos CSS e interactividad en JavaScript.
 
@@ -49,26 +62,6 @@ En esta etapa se trabaja sobre:
 - definición visual base mediante mockup;
 - estructura técnica del proyecto;
 - preparación para posterior desarrollo frontend.
-
-## Carátula del equipo
-
-### Integrante 1
-- **Nombre y apellido:** Martín Debenedetti
-- **Usuario de GitHub:** martindebenedetti
-- **Matrícula:** 151579
-- **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
-
-### Integrante 2
-- **Nombre y apellido:** Leandro Berro
-- **Usuario de GitHub:** leanlex
-- **Matrícula:** 155667
-- **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
-
-### Integrante 3
-- **Nombre y apellido:** Gian Franco Pasquali
-- **Usuario de GitHub:** giann98
-- **Matrícula:** 148159
-- **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
 
 ## Organización del repositorio
 - `index.html`: Página principal con estructura HTML5 base.
