@@ -35,7 +35,7 @@ Un Pull Request sin su spec técnica no será aprobado.
 
 # Template de especificación técnica para los roles
 
-El rol de IA define el siguiente [template](./)  estándar que deberán utilizar todos los roles para sus especificaciones técnicas
+El rol de IA define el siguiente [template](./spec-[rol].md)  estándar que deberán utilizar todos los roles para sus especificaciones técnicas
 Este template permitirá mantener una **estructura consistente en todas las especificaciones del proyecto**.
 
 ---
