@@ -20,7 +20,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Changed
 
 - [feature/ia-prompt-documentación] Agregar información en archivo sdd-decisions, spec-ia y spec-rol
-  PR: [#6](https://github.com/martindebenedetti/Planix/pull/7) - @giann98 (Especialista en IA) - Issue: #7
+  PR: [#7](https://github.com/martindebenedetti/Planix/pull/7) - @giann98 (Especialista en IA) - Issue: #7
 
 - [feature/coordinador-setup-repo-and-pages] Correccion del changelog.md.  
   PR: [#4](https://github.com/martindebenedetti/Planix/pull/4) - @martindebenedetti (Coordinador / DevOps)
