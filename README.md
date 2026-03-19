@@ -1,6 +1,6 @@
 # Planificador de Tareas - Diagrama de Gantt
 
-## Datos Academicos 
+## Datos Académicos 
 - **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
 - **Materia:** Programación Web I - 1º Cuat. 2026
 - **Docente:** Matias Velasquez
@@ -14,14 +14,14 @@
 | Gian Franco Pasquali | 148159 | giann98 | Especialista en IA y Prompt Engineering |
 
 ## Descripción del proyecto
-Este proyecto consiste en el desarrollo de una página web base orientada a la visualización y planificación de tareas mediante un esquema tipo diagrama de Gantt. La propuesta busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones y nivel de avance, estableciendo una primera estructura lista para evolucionar en futuras etapas con estilos CSS e interactividad en JavaScript.
+Este proyecto propone el desarrollo de una página web base orientada a la visualización y planificación de tareas mediante un esquema tipo diagrama de Gantt. La idea es representar de forma clara la organización de tareas, sus fechas, duración, relaciones y nivel de avance, estableciendo una referencia inicial que podrá evolucionar en futuras etapas con HTML, CSS e interactividad en JavaScript.
 
 ## Objetivos
-- Crear una estructura web inicial en HTML5 semántico.
-- Presentar una interfaz clara para un planificador de tareas tipo diagrama de Gantt.
-- Incluir contenido y componentes base relacionados con planificación de tareas.
-- Dejar preparada la base del proyecto para futuras mejoras de diseño visual e interactividad.
-- Documentar el proceso de trabajo mediante archivos spec y recursos de apoyo.
+- Definir una base conceptual y visual para un planificador de tareas tipo diagrama de Gantt.
+- Organizar la información principal de manera clara y comprensible para el usuario.
+- Documentar el proyecto y su estructura inicial mediante archivos de apoyo.
+- Establecer una referencia de diseño que sirva de guía para futuras etapas de desarrollo frontend.
+- Dejar planteadas funcionalidades que podrán implementarse posteriormente con HTML, CSS y JavaScript.
 
 ## Tecnologías utilizadas
 - HTML5
@@ -36,10 +36,10 @@ Este proyecto consiste en el desarrollo de una página web base orientada a la v
 - Visualización de duración, fechas de inicio y fin.
 - Visualización de relaciones entre tareas.
 - Visualización del porcentaje de avance.
-- Incorporación futura de filtros y funcionalidades interactivas.
-- Posibilidad futura de cambiar fechas moviendo las barras.
-- Posibilidad futura de ampliar una tarea mediante una ventana emergente, haciendo un "zoom" sobre esa tarea.
-- Posibilidad de ampliar el sistema con CSS y JavaScript en próximas etapas.
+- Incorporación de filtros y funcionalidades interactivas en futuras etapas.
+- Posibilidad de cambiar fechas moviendo las barras en versiones posteriores.
+- Posibilidad de ampliar el detalle de cada tarea mediante una ventana emergente o vista ampliada.
+- Evolución del sistema con CSS y JavaScript en próximas iteraciones.
 
 ## Estructura general prevista de la página
 La página contempla una organización visual compuesta por:
@@ -56,17 +56,26 @@ La página contempla una organización visual compuesta por:
 ![Imagen exportada del mockup](docs/01-mockup/actividad-obligatoria-1/diseño-inicial.png)
 
 ## Estado del proyecto
-Primera entrega en desarrollo.  
-En esta etapa se trabaja sobre:
-- documentación inicial;
-- definición visual base mediante mockup;
-- estructura técnica del proyecto;
-- preparación para posterior desarrollo frontend.
+Esta entrega corresponde a una primera etapa de definición y documentación del proyecto.
+
+### Completado en esta entrega
+- elaboración del archivo `README.md`;
+- redacción del archivo `spec-ux.md`;
+- diseño del mockup inicial en Figma;
+- exportación y guardado de la imagen del mockup en el repositorio;
+- registro de decisiones de diseño a partir de una propuesta asistida por IA.
+
+### Pendiente para próximas iteraciones
+- construcción de la estructura HTML inicial;
+- incorporación de estilos CSS;
+- desarrollo de funcionalidades interactivas con JavaScript;
+- ampliación del sistema con mayor nivel de detalle funcional y visual.
 
 ## Organización del repositorio
-- `index.html`: Página principal con estructura HTML5 base.
-- `plan.md`: Requerimientos funcionales.
-- `README.md`: Descripción general del proyecto y enlaces.
-- `docs/01-mockup/`: Diseños del producto por entrega.
-- `docs/02-prompts/`: Documentación de IA y Prompt Engineering.
-- `docs/03-specs/`: Especificaciones técnicas por entrega.
+- `plan.md`: archivo base con los requerimientos funcionales y el contexto general del proyecto.
+- `README.md`: presentación general del proyecto, sus objetivos, tecnologías y referencias visuales.
+- `docs/01-mockup/`: imágenes y recursos visuales del mockup organizados por actividad o entrega.
+- `docs/02-prompts/`: documentación vinculada al uso de IA y Prompt Engineering.
+- `docs/03-specs/`: especificaciones técnicas y documentales organizadas por actividad obligatoria.
+  - En esta carpeta se incluye `spec-ux.md`, que documenta el proceso de definición visual y las decisiones tomadas para esta entrega.
+- `index.html`: archivo previsto para la estructura base del frontend en futuras iteraciones del proyecto.

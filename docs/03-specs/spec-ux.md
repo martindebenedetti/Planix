@@ -13,11 +13,16 @@
 
 ## Contexto
 Según el archivo `plan.md`, el proyecto consiste en desarrollar una página web básica que funcione como base para un planificador de tareas estilo diagrama de Gantt.  
-La primera entrega se enfoca en:
-- establecer la estructura HTML inicial,
-- documentar el proyecto,
-- preparar la base para futuras mejoras de CSS y JavaScript,
-- incluir contenido informativo sobre diagramas de Gantt y su uso en la planificación de tareas.
+
+Dentro de la primera entrega, este spec se enfoca particularmente en la parte de documentación y definición visual inicial, dejando como referencia para etapas posteriores:
+- la construcción de la estructura HTML,
+- la incorporación de estilos CSS y comportamiento con JavaScript,
+- y la ampliación funcional de la interfaz.
+
+En esta actividad, mi aporte principal es:
+- documentar el proyecto mediante el `README.md`,
+- definir una propuesta visual inicial mediante un mockup,
+- dejar una base clara para que el rol Frontend pueda implementar la interfaz.
 
 ## Uso de IA
 Se utilizará GitHub Copilot para:
@@ -47,16 +52,20 @@ Se decidió incorporar:
 - un pie de página con información general.
 
 ## Qué descarté y por qué
-Se descartaron en esta etapa:
-- exceso de texto explicativo;
-- múltiples pantallas o vistas;
-- detalle visual avanzado;
-- interacciones complejas.
+Al comparar la propuesta inicial de la IA con el mockup final, algunas ideas se incorporaron de forma directa y otras se simplificaron o descartaron.
+
+Se descartaron o transformaron los siguientes elementos:
+- la **sección introductoria extensa** fue reducida, para evitar exceso de texto en esta primera versión;
+- la **sección de casos de uso** no se incorporó en el mockup final, porque se priorizó una interfaz más simple y centrada en la visualización del planificador;
+- la **sección de recursos y enlaces** se dejó fuera en esta etapa inicial, ya que no era prioritaria para el objetivo principal de la maqueta;
+- el **formulario de carga de tareas** no se desarrolló como bloque independiente, sino que se reinterpretó de forma más simple mediante panel lateral y espacio para filtros;
+- no se incluyeron **múltiples pantallas, interacciones complejas ni detalle visual avanzado**, porque el objetivo de esta entrega era definir una base visual clara y no una versión final navegable.
 
 ## Criterios de aceptación
-- [ ] El archivo `spec-ux.md` fue creado antes del `README.md` y antes del mockup.
-- [ ] El spec describe el que y porque, criterios de aceptación y promt utilizados
-- [ ] El spec documenta qué sugirió la IA, que se incorporó y que se descartó.
-- [ ] El `README.md` incluye título, descripción, objetivos, tecnologías, funcionalidades previstas, enlace al mockup y carátula del equipo.
-- [ ] El mockup fue diseñado en Figma.
-- [ ] La imagen exportada fue guardada en `docs/01-mockup/actividad-obligatoria-1/diseño-inicial.png`.
+- [x] El archivo `spec-ux.md` fue elaborado como base previa para ordenar el trabajo antes de generar los entregables.
+- [x] El spec describe qué se va a hacer, por qué se realiza y cuál es el contexto de la actividad.
+- [x] El spec incluye el prompt utilizado para explorar el diseño con IA.
+- [x] El spec documenta qué sugirió la IA, qué se incorporó y qué se descartó o transformó.
+- [x] El `README.md` incluye título, descripción, objetivos, tecnologías, funcionalidades previstas, enlace al mockup y carátula del equipo.
+- [x] El mockup fue diseñado en Figma.
+- [x] La imagen exportada fue guardada en `docs/01-mockup/actividad-obligatoria-1/diseño-inicial.png`.
