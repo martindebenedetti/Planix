@@ -7,11 +7,11 @@
 
 ## Integrantes del equipo
 
-| Nombre y Apellido | Matricula | Usuario Git |
-|:---|:---:|:---:|
-| Martín Debenedetti | 151579 | martindebenedetti |
-| Leandro Berro | 155667 | leanlex |
-| Gian Franco Pasquali | 148159 | giann98 |
+| Nombre y Apellido | Matricula | Usuario Git | Rol | 
+|:---|:---:|:---:|:---:|
+| Martín Debenedetti | 151579 | martindebenedetti | Coordinador / DevOps | 
+| Leandro Berro | 155667 | leanlex | Documentador / Diseñador UX - Desarrollador Frontend  |
+| Gian Franco Pasquali | 148159 | giann98 | Especialista en IA y Prompt Engineering |
 
 ## Descripción del proyecto
 Este proyecto consiste en el desarrollo de una página web base orientada a la visualización y planificación de tareas mediante un esquema tipo diagrama de Gantt. La propuesta busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones y nivel de avance, estableciendo una primera estructura lista para evolucionar en futuras etapas con estilos CSS e interactividad en JavaScript.
