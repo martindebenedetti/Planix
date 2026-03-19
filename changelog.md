@@ -8,6 +8,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/doc-ux-add-readme-and-mockup] Agrega `README.md` y `spec-ux.md`.  
+  PR: [#6](https://github.com/martindebenedetti/Planix/pull/6) - @leanlex (Documentador / Diseñador UX) - Issue: #5
 
 - [feature/ia-prompts-engineering] Crear archivo template pull_request_template.md.  
   PR: [#2](https://github.com/martindebenedetti/Planix/pull/2) - @giann98 (Especialista en IA)
