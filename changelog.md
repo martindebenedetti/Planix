@@ -8,6 +8,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+
 - [feature/ia-prompts-engineering] Crear archivo template pull_request_template.md.  
   PR: [#2](https://github.com/martindebenedetti/Planix/pull/2) - @giann98 (Especialista en IA)
 
@@ -15,6 +16,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#1](https://github.com/martindebenedetti/Planix/pull/1) - @giann98 (Especialista en IA)
 
 ### Changed
+
+- [feature/ia-prompt-documentación] Agregar información en archivo sdd-decisions, spec-ia y spec-rol
+  PR: [#6](https://github.com/martindebenedetti/Planix/pull/7) - @giann98 (Especialista en IA) - Issue: #7
 
 - [feature/coordinador-setup-repo-and-pages] Correccion del changelog.md.  
   PR: [#4](https://github.com/martindebenedetti/Planix/pull/4) - @martindebenedetti (Coordinador / DevOps)
