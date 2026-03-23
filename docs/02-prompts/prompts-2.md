@@ -22,6 +22,7 @@ Necesito sugerencias de layout general, secciones principales, navegación y jer
 ```
 
 ![alt text](prompt2-sol.png)
+
 ---
 
 ## Resultado esperado
