@@ -14,7 +14,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/ia-prompts-engineering] Crear archivo template pull_request_template.md.  
   PR: [#2](https://github.com/martindebenedetti/Planix/pull/2) - @giann98 (Especialista en IA)
 
-- [feature/ia-prompts-engineering] IA prompt engineering documentación.  
+- [feature/ia-prompts-engineering] IA prompt engineering estructuración carpetas.  
   PR: [#1](https://github.com/martindebenedetti/Planix/pull/1) - @giann98 (Especialista en IA)
 
 ### Changed

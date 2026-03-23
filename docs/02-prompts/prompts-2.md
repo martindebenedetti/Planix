@@ -16,11 +16,12 @@ Se utilizó zero-shot prompting porque se solicitó directamente una propuesta d
 
 ## Prompt exacto utilizado
 
+```
 Tomando como base el archivo plan.md de este proyecto, proponé una estructura visual inicial para una página web básica sobre un planificador de tareas estilo diagrama de Gantt.
-
 Necesito sugerencias de layout general, secciones principales, navegación y jerarquía visual para luego diseñar un mockup simple en Figma.
+```
 
-
+![alt text](prompt2-sol.png)
 ---
 
 ## Resultado esperado
@@ -48,6 +49,10 @@ La IA propuso una estructura compuesta por:
 
 La propuesta sirvió como base conceptual para el desarrollo del mockup inicial.
 
+![alt text](prompt2-res1.png)
+![alt text](prompt2-res2.png)
+![alt text](prompt2-res3.png)
+![alt text](prompt2-res4.png)
 
 ---
 
