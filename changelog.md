@@ -8,6 +8,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/frontend-add-html-structure] Estructura HTML5 inicial del planificador de Gantt.  
+  PR: [#11](https://github.com/martindebenedetti/Planix/pull/11) - @leanlex (Desarrollador Frontend) - Issue: #10
+
 - [feature/doc-ux-add-readme-and-mockup] Agrega `README.md` y `spec-ux.md`.  
   PR: [#6](https://github.com/martindebenedetti/Planix/pull/6) - @leanlex (Documentador / Diseñador UX) - Issue: #5
 

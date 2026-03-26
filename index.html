@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Planificador de Tareas - Diagrama de Gantt para gestión de proyectos">
+    <meta name="author" content="Leandro Berro - Programación Web I - UCES 2026">
+    <title>Planificador de Tareas - Diagrama de Gantt</title>
+
+    <!-- TODO: CSS - Variables de color: primario #0f49bd, fondo #f6f6f8 -->
+    <!-- TODO: CSS - Tipografía: Public Sans o Inter -->
+    <!-- TODO: CSS - Layout general: flex-col, h-screen, overflow-hidden -->
+    <!-- TODO: CSS - Columnas de la tabla gantt con ancho fijo (ej. 80px por semana) -->
+    <!-- TODO: CSS - Filas de grupo con fondo gris y negrita -->
+    <!-- TODO: CSS - Barras de Gantt: position relative, barra interna position absolute -->
+    <!-- TODO: CSS - Scrollbar personalizado en el contenedor de la tabla -->
+    <!-- TODO: CSS - Soporte dark mode -->
+</head>
+<body>
+
+    <!-- ============================================================
+         HEADER: Nombre del proyecto, estado y progreso general
+         TODO: CSS - Fondo blanco, borde inferior, flex justify-between, shrink-0
+    ============================================================ -->
+    <header role="banner" aria-label="Encabezado del planificador">
+
+        <div aria-label="Información del proyecto">
+            <img src="docs/01-mockup/actividad-obligatoria-1/diseño-inicial.png"
+                 alt="Ícono del planificador de tareas tipo diagrama de Gantt"
+                 aria-label="Logo del proyecto"
+                 width="32" height="32">
+            <div>
+                <h1>Planificador de Tareas - Diagrama de Gantt</h1>
+                <div>
+                    <!-- TODO: CSS - Badge verde con punto de color -->
+                    <span aria-label="Estado: En Ejecución">● En Ejecución</span>
+                    <span aria-label="ID del proyecto">ID: PRJ-2026-001</span>
+                </div>
+            </div>
+        </div>
+
+        <div aria-label="Progreso y acciones">
+            <!-- TODO: CSS - Barra de progreso: fondo slate-200, relleno primary -->
+            <!-- TODO: JS - Calcular % general desde tareas -->
+            <div aria-label="Progreso general">
+                <span>Progreso General</span>
+                <strong>65%</strong>
+                <div role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"
+                     aria-label="65% completado">
+                    <div style="width:65%;" aria-hidden="true"></div>
+                </div>
+            </div>
+            <!-- TODO: CSS - Botón primary -->
+            <button type="button" aria-label="Ver baseline del proyecto">Baseline</button>
+            <button type="button" aria-label="Compartir proyecto">Compartir</button>
+        </div>
+
+    </header>
+
+    <!-- ============================================================
+         TOOLBAR: Herramientas de edición y controles de vista
+         TODO: CSS - Fondo slate-50, borde inferior, flex justify-between, shrink-0
+    ============================================================ -->
+    <nav role="navigation" aria-label="Barra de herramientas">
+
+        <div aria-label="Acciones de edición">
+            <!-- TODO: JS - Guardar, deshacer, rehacer -->
+            <button type="button" aria-label="Guardar cambios">Guardar</button>
+            <button type="button" aria-label="Deshacer">Deshacer</button>
+            <button type="button" aria-label="Rehacer">Rehacer</button>
+            <span role="separator" aria-hidden="true"> | </span>
+            <!-- TODO: JS - Activar ruta crítica -->
+            <button type="button" aria-label="Ver ruta crítica">Ruta Crítica</button>
+            <!-- TODO: CSS - Botón activo: fondo primary/10, texto primary -->
+            <button type="button" aria-label="Vista Gantt activa" aria-pressed="true">Vista Gantt</button>
+        </div>
+
+        <div aria-label="Controles de escala y zoom">
+            <!-- TODO: JS - Cambiar escala del diagrama -->
+            <div role="group" aria-label="Escala de tiempo">
+                <button type="button" aria-label="Ver por días">Días</button>
+                <!-- TODO: CSS - Activo: fondo primary, texto blanco -->
+                <button type="button" aria-label="Ver por semanas (activo)" aria-pressed="true">Semanas</button>
+                <button type="button" aria-label="Ver por meses">Meses</button>
+            </div>
+            <!-- TODO: JS - Zoom del diagrama -->
+            <button type="button" aria-label="Ampliar zoom">Zoom +</button>
+            <button type="button" aria-label="Reducir zoom">Zoom -</button>
+            <!-- TODO: JS - Panel de filtros -->
+            <button type="button" aria-label="Filtros">Filtros</button>
+        </div>
+
+    </nav>
+
+    <!-- ============================================================
+         MAIN
+         TODO: CSS - flex-col, flex-1, overflow-hidden
+    ============================================================ -->
+    <main role="main" aria-label="Contenido principal del planificador">
+
+        <!-- ========================================================
+             FORMULARIO NUEVA TAREA — ancho completo, parte superior
+             TODO: CSS - Fondo blanco, borde inferior, padding, shrink-0
+             TODO: CSS - Campos en fila horizontal con flex y gap
+        ======================================================== -->
+        <section id="nueva-tarea" aria-labelledby="titulo-nueva-tarea">
+            <h2 id="titulo-nueva-tarea">Nueva tarea</h2>
+
+            <!-- TODO: JS - Agregar fila a la tabla dinámicamente al enviar -->
+            <!-- TODO: JS - Calcular duración desde fechas automáticamente -->
+            <!-- TODO: JS - Agregar barra al diagrama de Gantt -->
+            <form id="form-nueva-tarea" aria-labelledby="titulo-nueva-tarea">
+                <div>
+                    <label for="nombre-tarea">Nombre:</label>
+                    <input type="text" id="nombre-tarea" name="nombre-tarea"
+                           placeholder="Ej: Revisión de código"
+                           aria-required="true" required>
+                </div>
+                <div>
+                    <label for="responsable">Responsable:</label>
+                    <input type="text" id="responsable" name="responsable"
+                           placeholder="Ej: Leandro B."
+                           aria-required="true" required>
+                </div>
+                <div>
+                    <label for="fecha-inicio">f_inicio:</label>
+                    <input type="date" id="fecha-inicio" name="fecha-inicio"
+                           aria-required="true" required>
+                </div>
+                <div>
+                    <label for="fecha-fin">f_fin:</label>
+                    <input type="date" id="fecha-fin" name="fecha-fin"
+                           aria-required="true" required>
+                </div>
+                <div>
+                    <label for="predecesora">Predecesora:</label>
+                    <input type="text" id="predecesora" name="predecesora"
+                           placeholder="Ej: 2.2"
+                           aria-label="ID de tarea predecesora (opcional)">
+                </div>
+                <div>
+                    <label for="avance">% Avance:</label>
+                    <input type="number" id="avance" name="avance"
+                           min="0" max="100" value="0"
+                           aria-label="Porcentaje de avance entre 0 y 100">
+                </div>
+                <!-- TODO: CSS - Botón primary -->
+                <button type="submit" aria-label="Agregar nueva tarea">+ Agregar tarea</button>
+            </form>
+        </section>
+
+        <!-- ========================================================
+             TABLA GANTT UNIFICADA
+             Cada fila tiene: datos de tarea (izquierda) + barra (derecha)
+             El encabezado tiene: títulos de columnas + escala de tiempo
+             TODO: CSS - overflow-auto en el contenedor, tabla con layout fixed
+             TODO: CSS - Columnas de datos: ancho fijo; columnas de semanas: 80px c/u
+             TODO: CSS - Sincronizar scroll horizontal y vertical
+        ======================================================== -->
+        <div role="region" aria-label="Tabla unificada de tareas y diagrama de Gantt" tabindex="0">
+            <table id="tabla-gantt" aria-label="Tabla de tareas con diagrama de Gantt integrado">
+                <caption class="sr-only">
+                    Planificador de tareas con columnas de datos (ID, nombre, duración, fechas,
+                    predecesora, responsable) y diagrama de Gantt con escala de tiempo por semanas
+                </caption>
+
+                <!-- ENCABEZADO: títulos de columnas + escala de meses y semanas -->
+                <thead>
+
+                    <!-- Fila 1: títulos de datos + meses del Gantt -->
+                    <tr>
+                        <!-- Columnas de datos de tarea -->
+                        <!-- TODO: CSS - fondo slate-100, texto bold, sticky top-0 -->
+                        <th scope="col" rowspan="2" aria-label="Identificador">ID</th>
+                        <th scope="col" rowspan="2" aria-label="Nombre de la tarea">Nombre Tarea</th>
+                        <th scope="col" rowspan="2" aria-label="Duración">Duración</th>
+                        <th scope="col" rowspan="2" aria-label="Fecha de inicio">f_inicio</th>
+                        <th scope="col" rowspan="2" aria-label="Fecha de fin">f_fin</th>
+                        <th scope="col" rowspan="2" aria-label="Predecesora">Predecesora</th>
+                        <th scope="col" rowspan="2" aria-label="Responsable">Responsable</th>
+
+                        <!-- Escala de meses — cada mes abarca sus semanas con colspan -->
+                        <!-- TODO: CSS - Borde izquierdo para separar datos de Gantt -->
+                        <th scope="colgroup" colspan="4" aria-label="Mes Marzo 2026">MARZO 2026</th>
+                        <th scope="colgroup" colspan="4" aria-label="Mes Abril 2026">ABRIL 2026</th>
+                        <th scope="colgroup" colspan="2" aria-label="Mes Mayo 2026">MAYO 2026</th>
+                    </tr>
+
+                    <!-- Fila 2: escala de semanas del Gantt -->
+                    <tr>
+                        <!-- TODO: CSS - Ancho fijo por semana (ej. 80px), texto centrado pequeño -->
+                        <th scope="col" aria-label="Semana 9">S9</th>
+                        <th scope="col" aria-label="Semana 10">S10</th>
+                        <th scope="col" aria-label="Semana 11">S11</th>
+                        <th scope="col" aria-label="Semana 12">S12</th>
+                        <th scope="col" aria-label="Semana 13">S13</th>
+                        <th scope="col" aria-label="Semana 14">S14</th>
+                        <th scope="col" aria-label="Semana 15">S15</th>
+                        <th scope="col" aria-label="Semana 16">S16</th>
+                        <th scope="col" aria-label="Semana 17">S17</th>
+                        <th scope="col" aria-label="Semana 18">S18</th>
+                    </tr>
+
+                </thead>
+
+                <!-- CUERPO: filas de grupos y tareas con barras de Gantt -->
+                <!-- TODO: JS - Calcular en qué columna/semana empieza y termina cada tarea -->
+                <!-- TODO: JS - Rellenar celdas de barra con color según avance -->
+                <!-- TODO: JS - Mostrar % avance dentro de la barra -->
+                <!-- TODO: JS - Dibujar líneas de dependencias con SVG overlay -->
+                <!-- TODO: JS - Marcador vertical HOY sobre las columnas de semana -->
+                <tbody id="cuerpo-tabla">
+
+                    <!-- ── GRUPO 1: PLANIFICACIÓN ── -->
+                    <!-- TODO: CSS - Fila de grupo: fondo gris oscuro, texto bold, sin hover -->
+                    <tr aria-label="Grupo 1: Planificación del proyecto">
+                        <td>1</td>
+                        <td colspan="6"><strong>1. PLANIFICACIÓN</strong></td>
+                        <!-- Barra de grupo: abarca semanas S9 a S11 (10+5 días ≈ 3 semanas) -->
+                        <!-- TODO: CSS - Fondo gris semitransparente, altura mayor que tareas -->
+                        <td colspan="3" aria-label="Duración del grupo Planificación: semanas 9 a 11">
+                            <!-- barra de grupo -->
+                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="Planificación 100% completada">████████████ 100%</div>
+                        </td>
+                        <td colspan="7" aria-hidden="true"></td>
+                    </tr>
+
+                    <!-- Tarea 1.1 -->
+                    <tr aria-label="Tarea 1.1: Relevamiento de requisitos, 10 días, 100% completado">
+                        <td>1.1</td>
+                        <td>Relevamiento de requisitos</td>
+                        <td>10d</td>
+                        <td>01/03/2026</td>
+                        <td>10/03/2026</td>
+                        <td>—</td>
+                        <td>Leandro B.</td>
+                        <!-- Barra: S9 + S10 (10 días ≈ 2 semanas) -->
+                        <!-- TODO: CSS - Fondo primary/30, barra interna primary al 100% -->
+                        <td colspan="2" aria-label="Barra tarea 1.1: semanas 9 y 10, 100% completado">
+                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="100% completado">████████ 100%</div>
+                        </td>
+                        <td colspan="8" aria-hidden="true"></td>
+                    </tr>
+
+                    <!-- Tarea 1.2 -->
+                    <tr aria-label="Tarea 1.2: Definición de alcance, 5 días, 100% completado">
+                        <td>1.2</td>
+                        <td>Definición de alcance</td>
+                        <td>5d</td>
+                        <td>11/03/2026</td>
+                        <td>15/03/2026</td>
+                        <td>1.1</td>
+                        <td>Leandro B.</td>
+                        <!-- Barra: S11 (5 días ≈ 1 semana) -->
+                        <td aria-hidden="true"></td>
+                        <td aria-hidden="true"></td>
+                        <td aria-label="Barra tarea 1.2: semana 11, 100% completado">
+                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="100% completado">████ 100%</div>
+                        </td>
+                        <td colspan="7" aria-hidden="true"></td>
+                    </tr>
+
+                    <!-- ── GRUPO 2: DISEÑO ── -->
+                    <tr aria-label="Grupo 2: Diseño del proyecto">
+                        <td>2</td>
+                        <td colspan="6"><strong>2. DISEÑO</strong></td>
+                        <!-- Barra grupo: S12 a S14 (7+8 días ≈ 3 semanas) -->
+                        <td colspan="3" aria-hidden="true"></td>
+                        <td colspan="3" aria-label="Duración del grupo Diseño: semanas 12 a 14">
+                            <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="Diseño 80% completado">██████░░ 80%</div>
+                        </td>
+                        <td colspan="4" aria-hidden="true"></td>
+                    </tr>
+
+                    <!-- Tarea 2.1 -->
+                    <tr aria-label="Tarea 2.1: Diseño UX y mockup, 7 días, 100% completado">
+                        <td>2.1</td>
+                        <td>Diseño UX y mockup</td>
+                        <td>7d</td>
+                        <td>16/03/2026</td>
+                        <td>22/03/2026</td>
+                        <td>1.2</td>
+                        <td>Martin Debenedetti</td>
+                        <!-- Barra: S12 + parte S13 (7 días ≈ 1-2 semanas) -->
+                        <td colspan="3" aria-hidden="true"></td>
+                        <td colspan="2" aria-label="Barra tarea 2.1: semanas 12 y 13, 100% completado">
+                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="100% completado">████████ 100%</div>
+                        </td>
+                        <td colspan="5" aria-hidden="true"></td>
+                    </tr>
+
+                    <!-- Tarea 2.2 -->
+                    <tr aria-label="Tarea 2.2: Estructura HTML, 8 días, 60% completado">
+                        <td>2.2</td>
+                        <td>Definición de estructura HTML</td>
+                        <td>8d</td>
+                        <td>23/03/2026</td>
+                        <td>30/03/2026</td>
+                        <td>2.1</td>
+                        <td>Gian Pasquali</td>
+                        <!-- Barra: S13 + S14 (8 días ≈ 2 semanas) -->
+                        <td colspan="3" aria-hidden="true"></td>
+                        <td aria-hidden="true"></td>
+                        <td colspan="2" aria-label="Barra tarea 2.2: semanas 13 y 14, 60% completado">
+                            <!-- TODO: CSS - Barra parcial con relleno al 60% -->
+                            <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="60% completado">████░░░░ 60%</div>
+                        </td>
+                        <td colspan="4" aria-hidden="true"></td>
+                    </tr>
+
+                    <!-- ── GRUPO 3: DESARROLLO FRONTEND ── -->
+                    <tr aria-label="Grupo 3: Desarrollo Frontend">
+                        <td>3</td>
+                        <td colspan="6"><strong>3. DESARROLLO FRONTEND</strong></td>
+                        <!-- Barra grupo: S15 a S18+ (14+21 días ≈ 7 semanas) -->
+                        <td colspan="6" aria-hidden="true"></td>
+                        <td colspan="4" aria-label="Duración del grupo Desarrollo Frontend: semanas 15 a 18">
+                            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="Desarrollo Frontend 0% completado">░░░░░░░░ 0%</div>
+                        </td>
+                    </tr>
+
+                    <!-- Tarea 3.1 -->
+                    <tr aria-label="Tarea 3.1: Maquetación CSS, 14 días, no iniciada">
+                        <td>3.1</td>
+                        <td>Maquetación CSS</td>
+                        <td>14d</td>
+                        <td>01/04/2026</td>
+                        <td>14/04/2026</td>
+                        <td>2.2</td>
+                        <td>Gian Pasquali</td>
+                        <!-- Barra: S14 a S16 (14 días ≈ 2-3 semanas) -->
+                        <td colspan="6" aria-hidden="true"></td>
+                        <td colspan="2" aria-label="Barra tarea 3.1: semanas 14 a 16, no iniciada">
+                            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="0% - no iniciada">░░░░░░░░ 0%</div>
+                        </td>
+                        <td colspan="2" aria-hidden="true"></td>
+                    </tr>
+
+                    <!-- Tarea 3.2 -->
+                    <tr aria-label="Tarea 3.2: Interactividad JavaScript, 21 días, no iniciada">
+                        <td>3.2</td>
+                        <td>Interactividad JavaScript</td>
+                        <td>21d</td>
+                        <td>15/04/2026</td>
+                        <td>05/05/2026</td>
+                        <td>3.1</td>
+                        <td>Martin Debenedetti</td>
+                        <!-- Barra: S16 a S18+ (21 días ≈ 3-4 semanas) -->
+                        <td colspan="8" aria-hidden="true"></td>
+                        <td colspan="2" aria-label="Barra tarea 3.2: semanas 16 a 18, no iniciada">
+                            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                 aria-label="0% - no iniciada">░░░░░░░░░░░░ 0%</div>
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        <!-- fin tabla gantt unificada -->
+
+    </main>
+
+    <!-- ============================================================
+         FOOTER / STATUS BAR
+         TODO: CSS - Fondo slate-50, borde superior, flex justify-between, shrink-0
+    ============================================================ -->
+    <footer role="contentinfo" aria-label="Barra de estado del proyecto">
+
+        <div aria-label="Estadísticas del proyecto">
+            <span><strong>Duración Total:</strong> 65 días</span>
+            <span><strong>Tareas:</strong> 6 total, 2 críticas</span>
+            <span>
+                <strong>Ruta Crítica:</strong>
+                <!-- TODO: CSS - Texto rojo con ícono advertencia -->
+                <span aria-label="Ruta crítica activa">⚠ Activa</span>
+            </span>
+        </div>
+
+        <div aria-label="Leyenda y versión">
+            <ul aria-label="Leyenda del diagrama">
+                <li>
+                    <!-- TODO: CSS - Círculo color primary -->
+                    <span aria-hidden="true">●</span> Progreso
+                </li>
+                <li>
+                    <!-- TODO: CSS - Rombo para hitos -->
+                    <span aria-hidden="true">◆</span> Hito
+                </li>
+            </ul>
+            <address>
+                <a href="mailto:leanlex@gmail.com" aria-label="Contacto">Equipo Planix</a>
+                — Prog. Web I · UCES 2026
+            </address>
+            <span aria-label="Versión">v.1.0.0</span>
+        </div>
+
+    </footer>
+
+    <!-- TODO: JS - Inicializar planificador al cargar DOM -->
+    <!-- TODO: JS - Calcular qué celdas de semana ocupar por tarea según fechas -->
+    <!-- TODO: JS - Rellenar celdas con color según % avance -->
+    <!-- TODO: JS - Calcular % progreso general desde tareas -->
+    <!-- TODO: JS - Dibujar líneas de dependencias con SVG overlay -->
+    <!-- TODO: JS - Posicionar marcador HOY dinámicamente -->
+    <!-- TODO: JS - Manejar envío formulario nueva tarea -->
+    <!-- TODO: JS - Implementar zoom cambiando ancho de columnas de semana -->
+    <!-- TODO: JS - Implementar filtros de tareas -->
+
+</body>
+</html>
