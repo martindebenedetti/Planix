@@ -17,13 +17,17 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/ia-prompts-engineering] Crear archivo template pull_request_template.md.  
   PR: [#2](https://github.com/martindebenedetti/Planix/pull/2) - @giann98 (Especialista en IA)
 
-- [feature/ia-prompts-engineering] IA prompt engineering documentación.  
+- [feature/ia-prompts-engineering] IA prompt engineering estructuración carpetas.  
   PR: [#1](https://github.com/martindebenedetti/Planix/pull/1) - @giann98 (Especialista en IA)
 
 ### Changed
 
+- [feature/ia-prompts-descripciones] Documentación de prompts utilizados y comparativa de modelos de IA.
+  PR: [#12](https://github.com/martindebenedetti/Planix/pull/12) - @giann98 (Especialista en IA) - Issue: #7
+
+
 - [feature/ia-prompt-documentación] Agregar información en archivo sdd-decisions, spec-ia y spec-rol
-  PR: [#7](https://github.com/martindebenedetti/Planix/pull/7) - @giann98 (Especialista en IA) - Issue: #7
+  PR: [#7](https://github.com/martindebenedetti/Planix/pull/7) - @giann98 (Especialista en IA) - Issue: #8
 
 - [feature/coordinador-setup-repo-and-pages] Correccion del changelog.md.  
   PR: [#4](https://github.com/martindebenedetti/Planix/pull/4) - @martindebenedetti (Coordinador / DevOps)
