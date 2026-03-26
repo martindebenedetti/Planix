@@ -39,7 +39,7 @@ código y se incluye en el PR correspondiente.
 por rol se encuentra en la sección 3, genera un archivo plan.md que extraiga los requerimientos funcionales, objetivos del proyecto y criterios de aceptación. Estructúralo como el spec maestro.
 ```
 
-![alt text](prompt1-sol.png)
+![alt text](imagenes-prompts/prompt1-sol.png)
 
 ---
 
@@ -61,7 +61,7 @@ La IA generó un documento `plan.md` que incluye:
 
 Este documento permitió establecer una base clara para las especificaciones técnicas de los distintos roles del equipo.
 
-![alt text](prompt1-res.png)
+![alt text](imagenes-prompts/prompt1-res.png)
 
 ---
 

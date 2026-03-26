@@ -21,7 +21,7 @@ Tomando como base el archivo plan.md de este proyecto, proponé una estructura v
 Necesito sugerencias de layout general, secciones principales, navegación y jerarquía visual para luego diseñar un mockup simple en Figma.
 ```
 
-![alt text](prompt2-sol.png)
+![alt text](imagenes-prompts/prompt2-sol.png)
 
 ---
 
@@ -50,10 +50,10 @@ La IA propuso una estructura compuesta por:
 
 La propuesta sirvió como base conceptual para el desarrollo del mockup inicial.
 
-![alt text](prompt2-res1.png)
-![alt text](prompt2-res2.png)
-![alt text](prompt2-res3.png)
-![alt text](prompt2-res4.png)
+![alt text](imagenes-prompts/prompt2-res1.png)
+![alt text](imagenes-prompts/prompt2-res2.png)
+![alt text](imagenes-prompts/prompt2-res3.png)
+![alt text](imagenes-prompts/prompt2-res4.png)
 
 ---
 
