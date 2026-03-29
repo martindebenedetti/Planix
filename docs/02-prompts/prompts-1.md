@@ -2,7 +2,7 @@
 
 ## Modelo de IA
 
-Raptor mini (versión de GPT-5-mini)
+Git Hub Copilot - Raptor mini (versión de GPT-5-mini)
 
 ---
 
