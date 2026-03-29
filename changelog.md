@@ -48,6 +48,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [fix/corregir-html] Correcciones post-revisión: spec movido a ruta correcta, párrafos y enlaces en index.html, config MCP de Figma.  
   PR: [#18](https://github.com/martindebenedetti/Planix/pull/18) - @leanlex (Desarrollador Frontend) y @giann98 (Coordinador / DevOps)
 
+- [fix/actualizacion-plan] Actualización del archivo `plan.md` con requerimientos funcionales reales del sistema.
+  PR: [#20](https://github.com/martindebenedetti/Planix/pull/20) - @giann98 (Coordinador / DevOps)
+
 ---
 
 ## Cómo usar este archivo
