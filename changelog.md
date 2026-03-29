@@ -27,6 +27,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Changed
 
+- [feature/frontend-add-html-structure] Correcciones post-revisión: spec movido a ruta correcta, párrafos y enlaces en index.html, config MCP de Figma.  
+  PR: [#14](https://github.com/martindebenedetti/Planix/pull/11) - @leanlex (Desarrollador Frontend)
+
 - [feature/ia-prompts-descripciones] Documentación de prompts utilizados y comparativa de modelos de IA.
   PR: [#12](https://github.com/martindebenedetti/Planix/pull/12) - @giann98 (Especialista en IA) - Issue: #7
 
