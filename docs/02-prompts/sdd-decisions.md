@@ -21,6 +21,44 @@ El objetivo es que las decisiones de diseño y desarrollo estén documentadas an
 
 ---
 
+## Instalación de herramientas de IA utilizadas en el proyecto
+
+Para asegurar que todo el equipo utilice el mismo entorno de trabajo durante el desarrollo del proyecto, se definieron las siguientes herramientas de apoyo basadas en IA.
+
+### Visual Studio Code
+
+Editor principal utilizado para el desarrollo del proyecto.
+
+### GitHub Copilot
+
+Se utiliza para asistencia en:
+
+- generación de código
+- generación de documentación
+- asistencia en revisión de código
+- sugerencias de implementación
+
+Instalación:
+
+1. Abrir Visual Studio Code
+2. Ir a Extensions
+3. Buscar **GitHub Copilot**
+4. Instalar la extensión oficial
+
+### GitHub Pull Requests and Issues
+
+Permite administrar Pull Requests directamente desde VS Code.
+
+Instalación:
+
+1. Abrir Extensions
+2. Buscar **GitHub Pull Requests and Issues**
+3. Instalar la extensión oficial
+
+Estas herramientas permiten mejorar la productividad del equipo y facilitar el proceso de revisión de código durante el desarrollo del proyecto.
+
+---
+
 ## Relación con el archivo plan.md
 
 El archivo `plan.md` actúa como documento de referencia principal del proyecto.
@@ -71,3 +109,5 @@ La aplicación de Spec-Driven Development permite:
 - evitar ambigüedades en las tareas a desarrollar
 - facilitar las revisiones de código
 - documentar las decisiones técnicas del equipo
+
+
