@@ -6,6 +6,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ## [Unreleased]
 
+
+---
+
+## [Release Actividad Obligatoria N°1] - 2026-03-26
+
 ### Added
 
 - [feature/frontend-add-html-structure] Estructura HTML5 inicial del planificador de Gantt.  
@@ -27,19 +32,15 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 
 - [feature/ia-prompt-documentación] Agregar información en archivo sdd-decisions, spec-ia y spec-rol
-  PR: [#7](https://github.com/martindebenedetti/Planix/pull/7) - @giann98 (Especialista en IA) - Issue: #8
+  PR: [#9](https://github.com/martindebenedetti/Planix/pull/9) - @giann98 (Especialista en IA) - Issue: #8
 
 - [feature/coordinador-setup-repo-and-pages] Correccion del changelog.md.  
   PR: [#4](https://github.com/martindebenedetti/Planix/pull/4) - @martindebenedetti (Coordinador / DevOps)
 
 ### Fixed
 
----
-
-## [Release Actividad Obligatoria N°1] - 2025-08-10
-
-Aquí se listarán todas las Pull Requests que entraron en esta release.  
-Actualmente están en la sección [Unreleased] porque sólo están en la rama `develop`.
+- [fix/include-prompts-in-release] Se incorporan los archivos de prompts y comparativa de modelos de IA en la rama release/actividad-obligatoria-1.
+  PR: [#15](https://github.com/martindebenedetti/Planix/pull/15)  - @giann98 (Coordinar / DevOps)
 
 ---
 
