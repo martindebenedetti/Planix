@@ -55,7 +55,7 @@ Actuá como desarrollador frontend. Tu tarea es crear el archivo index.html
     y la estructura visual del mockup.
 
 ```
-![alt text](imagenes-prompts\prompt3-sol.png)
+![alt text](imagenes-prompts/prompt3-sol.png)
 
 ---
 
