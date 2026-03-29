@@ -40,7 +40,10 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Fixed
 
 - [fix/include-prompts-in-release] Se incorporan los archivos de prompts y comparativa de modelos de IA en la rama release/actividad-obligatoria-1.
-  PR: [#15](https://github.com/martindebenedetti/Planix/pull/15)  - @giann98 (Coordinar / DevOps)
+  PR: [#15](https://github.com/martindebenedetti/Planix/pull/15)  - @giann98 (Coordinador / DevOps)
+
+- [fix/sdd-instalacion-copilot] Se agregan instrucciones de instalación de herramientas IA (GitHub Copilot y GitHub Pull Requests) en `sdd-decisions.md`.
+  PR: [#17](https://github.com/martindebenedetti/Planix/pull/17) - @giann98 (Coordinador / DevOps)
 
 ---
 
