@@ -35,7 +35,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#9](https://github.com/martindebenedetti/Planix/pull/9) - @giann98 (Especialista en IA) - Issue: #8
 
 - [feature/coordinador-setup-repo-and-pages] Correccion del changelog.md.  
-  PR: [#4](https://github.com/martindebenedetti/Planix/pull/4) - @martindebenedetti (Coordinador / DevOps)
+  PR: [#4](https://github.com/martindebenedetti/Planix/pull/4) - @martindebenedetti (Coordinador / DevOps) - Issue: #3
 
 ### Fixed
 
