@@ -6,6 +6,15 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ## [Unreleased]
 
+### Added
+
+- [feature/mockup-actividad-2] Mockup actualizado con estilos visuales para la Actividad      Obligatoria 2.
+  PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps)
+
+### Changed
+
+- [feature/mockup-actividad-2] Actualización del README.md y plan.md 
+  PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps)
 
 ---
 
