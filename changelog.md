@@ -70,5 +70,5 @@ Commit: [d48f9d4](https://github.com/martindebenedetti/Planix/commit/d48f9d4) - 
 PR: [#22](https://github.com/martindebenedetti/Planix/pull/22) - @martindebenedetti (Coordinador / DevOps)
     
 - [fix/formato-changelog-correcciones] Corrección de formato en entradas [Fixed] del changelog.
-PR: [#23](https://github.com/martindebenedetti/Planix/pull/23) - @martindebenedetti (Coordinador / DevOps)
+PR: [#24](https://github.com/martindebenedetti/Planix/pull/24) - @martindebenedetti (Coordinador / DevOps)
 ---
