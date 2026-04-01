@@ -52,20 +52,18 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#20](https://github.com/martindebenedetti/Planix/pull/20) - @giann98 (Coordinador / DevOps)
 
 
-Correcciones solicitadas durante el review de la PR #13 aplicadas sobre la rama release/actividad-obligatoria-1 directamente sin PR.
-- Corrección de modelo de IA en prompts-1.md  
-  Commit: 1de6c27
-- Corrección de modelo de IA en prompts-4.md  
-  Commit: ed00ffa
-- Eliminación de sección "Cómo usar este archivo" en changelog.md  
-  Commit: f09ff0a
-- Agregado de autor en prompts-2.md  
-  Commit: 75eed4d
-- Agregado de autor en prompts-3.md  
-  Commit: 430c39b
-- Eliminación de docs/02-prompts/index-correcciones.md y ajustes relacionados  
-  Commit: d48f9d4
-
-  
-
+- [fix/documentar-correcciones-realease] Correcciones solicitadas durante el review de la PR #13 aplicadas sobre la rama release/actividad-obligatoria-1
+     PR: [#22](https://github.com/martindebenedetti/Planix/pull/22) - @giann98 (Coordinador / DevOps)
+    - Corrección de modelo de IA en prompts-1.md  
+      Commit: 1de6c27
+    - Corrección de modelo de IA en prompts-4.md  
+      Commit: ed00ffa
+    - Eliminación de sección "Cómo usar este archivo" en changelog.md  
+      Commit: f09ff0a
+    - Agregado de autor en prompts-2.md  
+      Commit: 75eed4d
+    - Agregado de autor en prompts-3.md  
+      Commit: 430c39b
+    - Eliminación de docs/02-prompts/index-correcciones.md y ajustes relacionados  
+      Commit: d48f9d4
 ---
