@@ -10,6 +10,8 @@ Se desarrollará una página web básica que sirva de base para un planificador 
 - Incluir contenido informativo sobre el tema elegido y los diagramas de Gantt.
 - Preparar el código para futuras mejoras de CSS y JavaScript mediante comentarios/markadores.
 - Cumplir con los requerimientos de entrega establecidos (documentación, specs y organización).
+- Antes de realizar la implementación, redactar la especificación técnica (spec) y agregarla al PR correspondiente.
+- Cada rol debe tener su archivo `docs/specs/spec-<rol>.md` con el detalle del trabajo a realizar.
 
 ## Requerimientos Funcionales (Extraídos de la consigna)
 
@@ -52,21 +54,37 @@ RNF3 – Estructura del código
 El código HTML, CSS y JavaScript debe mantenerse organizado y documentado para facilitar futuras mejoras.
 
 ---
-   - Antes de realizar la implementación, redactar la especificación técnica (spec) y agregarla al PR correspondiente.
-   - Cada rol debe tener su archivo `docs/specs/spec-<rol>.md` con el detalle del trabajo a realizar.
+
+## Evolución del diseño – Actividad Obligatoria 2
+
+En esta etapa del proyecto se incorpora una actualización del mockup inicial
+para definir los lineamientos visuales del sistema.
+
+El diseño actualizado incluye:
+
+- definición de una **paleta de colores** para la interfaz (colores primarios,
+  secundarios y neutros);
+- definición de **tipografías** y jerarquías visuales (títulos, texto, etiquetas);
+- especificación de **espaciados y dimensiones de componentes** (padding,
+  margin, border-radius);
+- definición de **estados de interacción** para los elementos de la interfaz
+  (hover, focus y disabled).
+
+El mockup actualizado se encuentra en:
+
+`docs/01-mockup/actividad-obligatoria-2/diseño-con-estilos.png`
+
+Este diseño servirá como referencia para la próxima etapa de desarrollo
+frontend, donde se implementará la estructura HTML, los estilos CSS y la interactividad con JavaScript.
 
 ## Criterios de Aceptación
 
 - ✅ El repositorio contiene `plan.md` con los requerimientos funcionales, objetivos y criterios de aceptación.
 - ✅ Existe un `README.md` con descripción y estructura del proyecto.
-- ✅ `docs/specs/` incluye los 4 archivos de spec (`spec-devops.md`, `spec-frontend.md`, `spec-ux.md`, `spec-ia.md`).
+- ✅ `docs/03-specs/` incluye los 4 archivos de spec (`spec-devops.md`, `spec-frontend.md`, `spec-ux.md`, `spec-ia.md`).
 - ✅ `docs/02-prompts/` contiene al menos 5 archivos `prompts-*.md` con prompts reales y su aporte.
 - ✅ La página principal (`index.html`) incluye:
   - Header, main y footer semánticos.
   - Formulario básico, lista y tabla relacionados con la planificación.
   - Comentarios indicando futuras implementaciones de CSS y JS.
 - ✅ El contenido técnico está redactado en español y sigue el formato Markdown.
-
----
-
-> Nota: Esta spec maestra orienta la primera entrega y sirve como referencia para construir las specs de cada rol y la implementación inicial de la página web.
