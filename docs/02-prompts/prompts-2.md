@@ -1,5 +1,7 @@
 # Prompt 2 – Exploración de diseño inicial para mockup
 
+Autor: Martin Debenedetti
+
 ## Modelo de IA
 
 GitHub Copilot

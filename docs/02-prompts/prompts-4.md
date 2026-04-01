@@ -1,8 +1,10 @@
 # Prompt 4 — Corrección y documentación de `index.html`
 
+Autor: Gian Franco Pasquali
+
 ## Modelo de IA
 
-Asistente automatizado (integración con VS Code) — GPT 5 mini
+Agente en GitHub Copilot — GPT-4o 
 
 ---
 

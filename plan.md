@@ -13,23 +13,45 @@ Se desarrollará una página web básica que sirva de base para un planificador 
 
 ## Requerimientos Funcionales (Extraídos de la consigna)
 
-1. **Estructura HTML**
-   - Incorporar título, párrafos, imágenes, enlaces, listas, formularios y tablas relacionados con el tema.
-   - Utilizar etiquetas semánticas pertinentes (`header`, `main`, `section`, `footer`, etc.) para accesibilidad y SEO.
-   - Incluir contenidos que expliquen qué es un diagrama de Gantt y cómo se usa para planificar tareas.
+RF1 – Visualización de tareas  
+El sistema debe permitir visualizar una lista de tareas dentro de la página principal.
 
-2. **Maquetación CSS (Preparación)**
-   - No se requiere implementar estilos, pero se deben dejar marcadores o comentarios indicando dónde se aplicarán estilos en el futuro.
+RF2 – Información de cada tarea  
+Cada tarea debe mostrar al menos la siguiente información:
+- ID
+- nombre de la tarea
+- responsable
+- fecha de inicio
+- fecha de finalización
+- tarea previa
+- tarea siguiente
 
-3. **Interactividad JavaScript (Preparación)**
-   - No se requiere implementar funcionalidad, pero se deben dejar marcadores o comentarios indicando dónde se integrarán scripts interactivos.
+RF3 – Representación temporal  
+El sistema debe representar visualmente la duración de las tareas en una línea de tiempo similar a un diagrama de Gantt.
 
-4. **Documentación y organización**
-   - Crear o actualizar `README.md` con descripción del proyecto y cómo avanzar en el mismo.
-   - Crear carpeta `docs/specs/` y archivos de especificación técnica para cada rol (devops, frontend, ux, ia).
-   - Documentar al menos 5 prompts de IA utilizados en `docs/02-prompts/`.
+RF4 – Organización de tareas  
+Las tareas deben mostrarse organizadas dentro de la interfaz de forma clara para facilitar la comprensión del flujo del proyecto.
 
-5. **Spec-Driven Development**
+RF5 – Navegación dentro del sitio  
+El usuario debe poder navegar entre las diferentes secciones del sitio mediante enlaces o menú de navegación.
+
+RF6 – Visualización de información explicativa  
+El sistema debe mostrar contenido descriptivo sobre qué es un diagrama de Gantt y su utilidad en la planificación de proyectos.
+
+---
+
+## Requerimientos No Funcionales
+
+RNF1 – Usabilidad  
+La interfaz debe ser simple, clara y fácil de navegar.
+
+RNF2 – Compatibilidad  
+La página web debe funcionar correctamente en navegadores modernos.
+
+RNF3 – Estructura del código  
+El código HTML, CSS y JavaScript debe mantenerse organizado y documentado para facilitar futuras mejoras.
+
+---
    - Antes de realizar la implementación, redactar la especificación técnica (spec) y agregarla al PR correspondiente.
    - Cada rol debe tener su archivo `docs/specs/spec-<rol>.md` con el detalle del trabajo a realizar.
 

@@ -56,7 +56,7 @@ _(Opcional – Aclaraciones, dificultades encontradas, sugerencias, etc.)_
 
 ## 🧾 Enlace a la consigna
 
-[📄 Consigna Actividad Obligatoria N.º 1 - GitHub](https://github.com/TuUsuario/TuRepositorio/blob/main/README.md)
+[📄 Consigna Actividad Obligatoria N.º 1 - GitHub](https://github.com/martindebenedetti/Planix)
 
 ---
 
