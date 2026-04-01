@@ -71,4 +71,7 @@ PR: [#22](https://github.com/martindebenedetti/Planix/pull/22) - @martindebenede
     
 - [fix/formato-changelog-correcciones] Corrección de formato en entradas [Fixed] del changelog.
 PR: [#24](https://github.com/martindebenedetti/Planix/pull/24) - @martindebenedetti (Coordinador / DevOps)
+
+- [backport/release-actividad-obligatoria-1] Backport: release actividad obligatoria 1 hacia develop.
+PR: [#25](https://github.com/martindebenedetti/Planix/pull/25) - @giann98 (Coordinador / DevOps)
 ---
