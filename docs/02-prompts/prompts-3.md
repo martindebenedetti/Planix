@@ -1,5 +1,7 @@
 # Prompt 3 — Generación de estructura HTML desde mockup de Figma
 
+Autor: Leandro Berro
+
 ## Modelo de IA
 
 GitHub Copilot (modo Agente) integrado a Visual Studio Code (Claude Haiku 4.5)
