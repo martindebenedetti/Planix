@@ -8,7 +8,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
-- [feature/mockup-actividad-2] Mockup actualizado con estilos visuales para la Actividad      Obligatoria 2.
+- [feature/mockup-actividad-2] Mockup actualizado con estilos visuales para la Actividad Obligatoria 2.
   PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps)
 
 ### Changed

@@ -11,7 +11,7 @@ Se desarrollará una página web básica que sirva de base para un planificador 
 - Preparar el código para futuras mejoras de CSS y JavaScript mediante comentarios/markadores.
 - Cumplir con los requerimientos de entrega establecidos (documentación, specs y organización).
 - Antes de realizar la implementación, redactar la especificación técnica (spec) y agregarla al PR correspondiente.
-- Cada rol debe tener su archivo `docs/03-specs/actividad-obligatoria-1/spec-<rol>.md` con el detalle del trabajo a realizar.
+- Cada rol debe tener su archivo `spec-<rol>.md` eb `docs/03-specs/` con el detalle del trabajo a realizar.
 
 ## Requerimientos Funcionales (Extraídos de la consigna)
 
