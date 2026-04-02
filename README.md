@@ -50,10 +50,22 @@ La página contempla una organización visual compuesta por:
 - pie de página con información general.
 
 ## Mockup del proyecto
-- **Enlace al archivo de Figma:** [Ver mockup en Figma](https://www.figma.com/proto/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=0-1&t=LtQOM5CwyAqViL1D-1)
+- **Enlace al archivo de Figma:** [Ver mockup en Figma](https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=54-283&t=Ww4homzl6jfJxrQm-0)
 
-### Imagen exportada del mockup
+### Mockup inicial (Actividad Obligatoria 1)
+
 ![Imagen exportada del mockup](docs/01-mockup/actividad-obligatoria-1/diseño-inicial.png)
+
+### Mockup con estilos (Actividad Obligatoria 2)
+
+En esta segunda etapa se incorporan al diseño:
+
+- paleta de colores definitiva (colores primarios, secundarios y neutros);
+- tipografías del sistema (jerarquía de títulos y texto);
+- espaciados y dimensiones de componentes;
+- estados de interacción de los elementos de interfaz.
+
+![Mockup con estilos](docs/01-mockup/actividad-obligatoria-2/diseño-con-estilos.png)
 
 ## Estado del proyecto
 Esta entrega corresponde a una primera etapa de definición y documentación del proyecto.
