@@ -15,6 +15,8 @@
     <!-- TODO: CSS - Barras de Gantt: position relative, barra interna position absolute -->
     <!-- TODO: CSS - Scrollbar personalizado en el contenedor de la tabla -->
     <!-- TODO: CSS - Soporte dark mode -->
+<link rel="stylesheet" href="css/styles.css">
+<link rel="stylesheet" href="css/components.css">
 </head>
 <body>
 
@@ -52,7 +54,7 @@
             </div>
             <!-- TODO: CSS - Botón primary -->
             <button type="button" aria-label="Ver baseline del proyecto">Baseline</button>
-            <button type="button" aria-label="Compartir proyecto">Compartir</button>
+            <button type="button" class="btn btn-primary btn-sm" aria-label="Compartir proyecto">Compartir</button>
         </div>
 
     </header>
@@ -65,29 +67,29 @@
 
         <div aria-label="Acciones de edición">
             <!-- TODO: JS - Guardar, deshacer, rehacer -->
-            <button type="button" aria-label="Guardar cambios">Guardar</button>
-            <button type="button" aria-label="Deshacer">Deshacer</button>
-            <button type="button" aria-label="Rehacer">Rehacer</button>
+            <button type="button" class="btn btn-primary btn-sm" aria-label="Guardar cambios">Guardar</button>
+            <button type="button" class="btn btn-primary btn-sm" aria-label="Deshacer">Deshacer</button>
+            <button type="button" class="btn btn-primary btn-sm" aria-label="Rehacer">Rehacer</button>
             <span role="separator" aria-hidden="true"> | </span>
             <!-- TODO: JS - Activar ruta crítica -->
-            <button type="button" aria-label="Ver ruta crítica">Ruta Crítica</button>
+            <button type="button" class="btn btn-secondary btn-sm" aria-label="Ver ruta crítica">Ruta Crítica</button>
             <!-- TODO: CSS - Botón activo: fondo primary/10, texto primary -->
-            <button type="button" aria-label="Vista Gantt activa" aria-pressed="true">Vista Gantt</button>
+            <button type="button" class="btn btn-primary btn-sm" aria-label="Vista Gantt activa" aria-pressed="true">Vista Gantt</button>
         </div>
 
         <div aria-label="Controles de escala y zoom">
             <!-- TODO: JS - Cambiar escala del diagrama -->
             <div role="group" aria-label="Escala de tiempo">
-                <button type="button" aria-label="Ver por días">Días</button>
+                <button type="button" class="seg-btn" aria-label="Ver por días">Días</button>
                 <!-- TODO: CSS - Activo: fondo primary, texto blanco -->
-                <button type="button" aria-label="Ver por semanas (activo)" aria-pressed="true">Semanas</button>
-                <button type="button" aria-label="Ver por meses">Meses</button>
+                <button type="button" class="seg-btn active" aria-label="Ver por semanas (activo)" aria-pressed="true">Semanas</button>
+                <button type="button" class="seg-btn" aria-label="Ver por meses">Meses</button>
             </div>
             <!-- TODO: JS - Zoom del diagrama -->
-            <button type="button" aria-label="Ampliar zoom">Zoom +</button>
-            <button type="button" aria-label="Reducir zoom">Zoom -</button>
+            <button type="button" class="btn btn-primary btn-sm" aria-label="Ampliar zoom">Zoom +</button>
+            <button type="button"class="btn btn-primary btn-sm" aria-label="Reducir zoom">Zoom -</button>
             <!-- TODO: JS - Panel de filtros -->
-            <button type="button" aria-label="Filtros">Filtros</button>
+            <button type="button" class="btn btn-secondary btn-sm" aria-label="Filtros">Filtros</button>
         </div>
 
     </nav>
@@ -102,53 +104,41 @@
              FORMULARIO NUEVA TAREA — ancho completo, parte superior
              TODO: CSS - Fondo blanco, borde inferior, padding, shrink-0
              TODO: CSS - Campos en fila horizontal con flex y gap
-        ======================================================== -->
+        ======================================================== --> 
+       
         <section id="nueva-tarea" aria-labelledby="titulo-nueva-tarea">
             <h2 id="titulo-nueva-tarea">Nueva tarea</h2>
 
-            <!-- TODO: JS - Agregar fila a la tabla dinámicamente al enviar -->
-            <!-- TODO: JS - Calcular duración desde fechas automáticamente -->
-            <!-- TODO: JS - Agregar barra al diagrama de Gantt -->
             <form id="form-nueva-tarea" aria-labelledby="titulo-nueva-tarea">
-                <div>
-                    <label for="nombre-tarea">Nombre:</label>
-                    <input type="text" id="nombre-tarea" name="nombre-tarea"
-                           placeholder="Ej: Revisión de código"
-                           aria-required="true" required>
+                <div class="form-group">
+                    <label for="nombre-tarea" class="form-label">Nombre:</label>
+                    <input type="text" id="nombre-tarea" name="nombre-tarea" class="form-input" placeholder="Ej: Revisión de código" required>
                 </div>
-                <div>
-                    <label for="responsable">Responsable:</label>
-                    <input type="text" id="responsable" name="responsable"
-                           placeholder="Ej: Leandro B."
-                           aria-required="true" required>
+                <div class="form-group">
+                    <label for="responsable" class="form-label">Responsable:</label>
+                    <input type="text" id="responsable" name="responsable" class="form-input" placeholder="Ej: Leandro B." required>
                 </div>
-                <div>
-                    <label for="fecha-inicio">f_inicio:</label>
-                    <input type="date" id="fecha-inicio" name="fecha-inicio"
-                           aria-required="true" required>
+                <div class="form-group">
+                    <label for="fecha-inicio" class="form-label">f_inicio:</label>
+                    <input type="date" id="fecha-inicio" name="fecha-inicio" class="form-input" required>
                 </div>
-                <div>
-                    <label for="fecha-fin">f_fin:</label>
-                    <input type="date" id="fecha-fin" name="fecha-fin"
-                           aria-required="true" required>
+                <div class="form-group">
+                    <label for="fecha-fin" class="form-label">f_fin:</label>
+                    <input type="date" id="fecha-fin" name="fecha-fin" class="form-input" required>
                 </div>
-                <div>
-                    <label for="predecesora">Predecesora:</label>
-                    <input type="text" id="predecesora" name="predecesora"
-                           placeholder="Ej: 2.2"
-                           aria-label="ID de tarea predecesora (opcional)">
+                <div class="form-group">
+                    <label for="predecesora" class="form-label">Predecesora:</label>
+                    <input type="text" id="predecesora" name="predecesora" class="form-input" placeholder="Ej: 2.2">
                 </div>
-                <div>
-                    <label for="avance">% Avance:</label>
-                    <input type="number" id="avance" name="avance"
-                           min="0" max="100" value="0"
-                           aria-label="Porcentaje de avance entre 0 y 100">
+                <div class="form-group">
+                    <label for="avance" class="form-label">% Avance:</label>
+                    <input type="number" id="avance" name="avance" class="form-input" min="0" max="100" value="0">
                 </div>
-                <!-- TODO: CSS - Botón primary -->
-                <button type="submit" aria-label="Agregar nueva tarea">+ Agregar tarea</button>
+                
+                <button type="submit" class="btn btn-primary" aria-label="Agregar nueva tarea">+ Agregar tarea</button>
             </form>
         </section>
-
+        
         <!-- ========================================================
              TABLA GANTT UNIFICADA
              Cada fila tiene: datos de tarea (izquierda) + barra (derecha)
@@ -173,6 +163,7 @@
                         <!-- TODO: CSS - fondo slate-100, texto bold, sticky top-0 -->
                         <th scope="col" rowspan="2" aria-label="Identificador">ID</th>
                         <th scope="col" rowspan="2" aria-label="Nombre de la tarea">Nombre Tarea</th>
+                        
                         <th scope="col" rowspan="2" aria-label="Duración">Duración</th>
                         <th scope="col" rowspan="2" aria-label="Fecha de inicio">f_inicio</th>
                         <th scope="col" rowspan="2" aria-label="Fecha de fin">f_fin</th>
@@ -220,8 +211,11 @@
                         <!-- TODO: CSS - Fondo gris semitransparente, altura mayor que tareas -->
                         <td colspan="3" aria-label="Duración del grupo Planificación: semanas 9 a 11">
                             <!-- barra de grupo -->
-                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="Planificación 100% completada">████████████ 100%</div>
+                        <div class="gantt-bar gantt-bar--group" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                            aria-label="Planificación 100% completada">
+                            <div class="gantt-bar__fill" style="width: 100%;" aria-hidden="true"></div>
+                                <span class="gantt-bar__label">100%</span>
+                        </div>
                         </td>
                         <td colspan="7" aria-hidden="true"></td>
                     </tr>
@@ -238,8 +232,11 @@
                         <!-- Barra: S9 + S10 (10 días ≈ 2 semanas) -->
                         <!-- TODO: CSS - Fondo primary/30, barra interna primary al 100% -->
                         <td colspan="2" aria-label="Barra tarea 1.1: semanas 9 y 10, 100% completado">
-                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="100% completado">████████ 100%</div>
+                            <div class="gantt-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                aria-label="100% completado">
+                                <div class="gantt-bar__fill" style="width: 100%;" aria-hidden="true"></div>
+                                    <span class="gantt-bar__label">100%</span>
+                            </div>
                         </td>
                         <td colspan="8" aria-hidden="true"></td>
                     </tr>
@@ -257,8 +254,11 @@
                         <td aria-hidden="true"></td>
                         <td aria-hidden="true"></td>
                         <td aria-label="Barra tarea 1.2: semana 11, 100% completado">
-                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="100% completado">████ 100%</div>
+                            <div class="gantt-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                aria-label="100% completado">
+                                <div class="gantt-bar__fill" style="width: 100%;" aria-hidden="true"></div>
+                                    <span class="gantt-bar__label">100%</span>
+                            </div>
                         </td>
                         <td colspan="7" aria-hidden="true"></td>
                     </tr>
@@ -270,8 +270,11 @@
                         <!-- Barra grupo: S12 a S14 (7+8 días ≈ 3 semanas) -->
                         <td colspan="3" aria-hidden="true"></td>
                         <td colspan="3" aria-label="Duración del grupo Diseño: semanas 12 a 14">
-                            <div role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="Diseño 80% completado">██████░░ 80%</div>
+                        <div class="gantt-bar gantt-bar--group" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"
+                            aria-label="Diseño 80% completado">
+                            <div class="gantt-bar__fill" style="width: 80%;" aria-hidden="true"></div>
+                            <span class="gantt-bar__label">80%</span>
+                        </div>
                         </td>
                         <td colspan="4" aria-hidden="true"></td>
                     </tr>
@@ -288,8 +291,11 @@
                         <!-- Barra: S12 + parte S13 (7 días ≈ 1-2 semanas) -->
                         <td colspan="3" aria-hidden="true"></td>
                         <td colspan="2" aria-label="Barra tarea 2.1: semanas 12 y 13, 100% completado">
-                            <div role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="100% completado">████████ 100%</div>
+                            <div class="gantt-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+                                aria-label="100% completado">
+                                <div class="gantt-bar__fill" style="width: 100%;" aria-hidden="true"></div>
+                                <span class="gantt-bar__label">100%</span>
+                            </div>
                         </td>
                         <td colspan="5" aria-hidden="true"></td>
                     </tr>
@@ -308,8 +314,11 @@
                         <td aria-hidden="true"></td>
                         <td colspan="2" aria-label="Barra tarea 2.2: semanas 13 y 14, 60% completado">
                             <!-- TODO: CSS - Barra parcial con relleno al 60% -->
-                            <div role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="60% completado">████░░░░ 60%</div>
+                            <div class="gantt-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"
+                                aria-label="60% completado">
+                                <div class="gantt-bar__fill" style="width: 60%;" aria-hidden="true"></div>
+                                <span class="gantt-bar__label">60%</span>
+                            </div>
                         </td>
                         <td colspan="4" aria-hidden="true"></td>
                     </tr>
@@ -321,8 +330,11 @@
                         <!-- Barra grupo: S15 a S18+ (14+21 días ≈ 7 semanas) -->
                         <td colspan="6" aria-hidden="true"></td>
                         <td colspan="4" aria-label="Duración del grupo Desarrollo Frontend: semanas 15 a 18">
-                            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="Desarrollo Frontend 0% completado">░░░░░░░░ 0%</div>
+                            <div class="gantt-bar gantt-bar--group" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                            aria-label="Desarrollo Frontend 0% completado">
+                            <div class="gantt-bar__fill" style="width: 0%;" aria-hidden="true"></div>
+                            <span class="gantt-bar__label">0%</span>
+                        </div>
                         </td>
                     </tr>
 
@@ -338,8 +350,11 @@
                         <!-- Barra: S14 a S16 (14 días ≈ 2-3 semanas) -->
                         <td colspan="6" aria-hidden="true"></td>
                         <td colspan="2" aria-label="Barra tarea 3.1: semanas 14 a 16, no iniciada">
-                            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="0% - no iniciada">░░░░░░░░ 0%</div>
+                            <div class="gantt-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                aria-label="0% - no iniciada">
+                                <div class="gantt-bar__fill" style="width: 0%;" aria-hidden="true"></div>
+                                <span class="gantt-bar__label">0%</span>
+                            </div>
                         </td>
                         <td colspan="2" aria-hidden="true"></td>
                     </tr>
@@ -356,8 +371,11 @@
                         <!-- Barra: S16 a S18+ (21 días ≈ 3-4 semanas) -->
                         <td colspan="8" aria-hidden="true"></td>
                         <td colspan="2" aria-label="Barra tarea 3.2: semanas 16 a 18, no iniciada">
-                            <div role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
-                                 aria-label="0% - no iniciada">░░░░░░░░░░░░ 0%</div>
+                            <div class="gantt-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"
+                                aria-label="0% - no iniciada">
+                                <div class="gantt-bar__fill" style="width: 0%;" aria-hidden="true"></div>
+                                <span class="gantt-bar__label">0%</span>
+                            </div>
                         </td>
                     </tr>
 
