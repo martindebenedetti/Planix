@@ -48,3 +48,16 @@ y en: https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/
 
 ## Uso de IA
 Se utilizó GitHub Copilot en modo Agente con el servidor MCP de Figma conectado para generar la estructura HTML inicial a partir del mockup. El resultado fue revisado y ajustado manualmente para alinear la estructura con el layout real del mockup y los requisitos de la consigna.
+
+## Nota sobre el orden de commits
+El spec y el `index.html` fueron commiteados juntos en el commit `46839ce`
+(2026-03-25). Para futuras entregas, el spec se commiteará en un commit
+separado y anterior al código que describe, siguiendo correctamente el
+enfoque Spec-Driven Development.
+
+## Nota sobre el MCP de Figma
+Se conectó el servidor MCP de Figma (`https://mcp.figma.com/mcp`) mediante
+Personal Access Token con scopes `file_content:read` y `file_metadata:read`.
+La conexión fue exitosa (16 tools disponibles) y se utilizó junto con
+GitHub Copilot en modo Agente para generar la estructura HTML inicial
+a partir del mockup de Figma.

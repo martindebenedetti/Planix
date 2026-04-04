@@ -1,8 +1,10 @@
 # Prompt 1 – Generación estructura del proyecto
 
+Autor: Leandro Berro
+
 ## Modelo de IA
 
-Raptor mini (versión de GPT-5-mini)
+Git Hub Copilot - Claude Opus 4.6
 
 ---
 

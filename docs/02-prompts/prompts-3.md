@@ -1,5 +1,7 @@
 # Prompt 3 — Generación de estructura HTML desde mockup de Figma
 
+Autor: Leandro Berro
+
 ## Modelo de IA
 
 GitHub Copilot (modo Agente) integrado a Visual Studio Code (Claude Haiku 4.5)
@@ -55,7 +57,7 @@ Actuá como desarrollador frontend. Tu tarea es crear el archivo index.html
     y la estructura visual del mockup.
 
 ```
-![alt text](imagenes-prompts\prompt3-sol.png)
+![alt text](imagenes-prompts/prompt3-sol.png)
 
 ---
 
