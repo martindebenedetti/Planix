@@ -107,7 +107,7 @@ GitHub MCP permite registrar formalmente los hallazgos como issues de tipo bug, 
 - [ ] Se creó al menos un issue bug por cada hallazgo relevante
 - [ ] Todos los test cases incluyen capturas de pantalla
 - [ ] Se completó `testing-doc.md` con índice y resumen de issues
-- [ ] Se notificó a los responsables de los bugs encontrados
+- [ ] Se notificó al Desarrollador Frontend y al Especialista en Responsive sobre los bugs encontrados
 - [ ] Se documentó en cada test case el momento de ejecución y los issues generados
 
 ## Estrategia de registro de hallazgos
