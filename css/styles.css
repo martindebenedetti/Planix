@@ -12,7 +12,10 @@
    Ningún valor de color, tipografía o espaciado
    debe escribirse hardcodeado fuera de esta sección.
    ============================================ */
-
+/* Importación de fuentes (Google Fonts).
+   Inter tiene excelente legibilidad para interfaces
+   de datos densas como el diagrama de Gantt. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 :root {
 
   /* ── Colores primarios ── */
@@ -233,18 +236,9 @@ table {
    los tamaños siguen la escala modular declarada.
    ============================================ */
 
-/* Importación de fuentes (Google Fonts).
-   Inter tiene excelente legibilidad para interfaces
-   de datos densas como el diagrama de Gantt. */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
-body {
-  font-family:   var(--font-family-base);
-  font-size:     var(--font-size-base);
-  font-weight:   var(--font-weight-normal);
-  line-height:   var(--line-height-base);
-  color:         var(--color-text);
-}
+
+
 
 /* Encabezados: pesos y tamaños decrecientes.
    Los h1-h6 usan line-height ajustado para titulares. */
@@ -336,10 +330,7 @@ address {
    de variables definido en :root.
    ============================================ */
 
-body {
-  background-color: var(--color-bg);
-  color:            var(--color-text);
-}
+
 
 /* ── Utilidades de color de texto ── */
 /* Permiten aplicar el sistema de colores sin inline styles */
@@ -395,11 +386,15 @@ body {
    overflow:hidden en html+body evita doble scrollbar. */
 html,
 body {
+  font-family:   var(--font-family-base);
+  font-size:     var(--font-size-base);
+  font-weight:   var(--font-weight-normal);
+  line-height:   var(--line-height-base);
+  color:         var(--color-text);
+  background-color: var(--color-bg);
+  color:            var(--color-text);
   height:     100%;
   overflow:   hidden;
-}
-
-body {
   display:        flex;
   flex-direction: column;
   min-height:     100vh;
@@ -665,13 +660,47 @@ main[role="main"] > [role="region"] {
 #tabla-gantt th:nth-child(7),
 #tabla-gantt td:nth-child(7) { width: var(--col-responsable); }
 
-/* Columnas de semanas del Gantt: ancho fijo configurable via variable */
-#tabla-gantt th:nth-child(n+8),
+/* Columnas de semanas del Gantt: ancho fijo configurable via variable.
+   Se aplica a td del cuerpo (posición 8+ = zona Gantt) y a la fila
+   de semanas del thead (tr:nth-child(2)), que tiene exactamente 10 th
+   de una sola columna cada uno. Los th de meses (scope="colgroup")
+   NO se tocan aquí: su ancho lo determinan las columnas subyacentes. */
 #tabla-gantt td:nth-child(n+8) {
   width:     var(--gantt-col-width);
   min-width: var(--gantt-col-width);
   max-width: var(--gantt-col-width);
 }
+
+/* Fila de semanas (S9–S18): todos sus th son de una sola columna.
+   Definir el ancho aquí fija cada columna del Gantt con table-layout:fixed. */
+#tabla-gantt thead tr:nth-child(2) th {
+  width:     var(--gantt-col-width);
+  min-width: var(--gantt-col-width);
+  max-width: var(--gantt-col-width);
+}
+
+/* ── Encabezados de mes (MARZO / ABRIL / MAYO) ──
+   th[scope="colgroup"] abarca N semanas con colspan.
+   max-width:none es explícito para evitar que reglas de th generales
+   limiten la celda cuando span > 1 columna (como MAYO con colspan=2). */
+#tabla-gantt thead th[scope="colgroup"] {
+  max-width:        none;
+  width:            auto;
+  background-color: var(--color-primary-light);
+  color:            var(--color-primary);
+  font-size:        var(--font-size-xs);
+  font-weight:      var(--font-weight-bold);
+  letter-spacing:   0.08em;
+  text-transform:   uppercase;
+  text-align:       center;
+  border-bottom:    2px solid var(--color-primary);
+}
+
+/* Borde izquierdo fuerte en el primer mes: línea divisoria datos / Gantt */
+#tabla-gantt thead th[scope="colgroup"]:first-of-type {
+  border-left: 2px solid var(--color-primary);
+}
+
 
 /* Celdas del cuerpo */
 #tabla-gantt td {
@@ -704,42 +733,7 @@ main[role="main"] > [role="region"] {
   background-color: var(--color-primary-light);
 }
 
-/* Barra de grupo un poco más alta */
-#tabla-gantt tr[aria-label*="Grupo"] td[aria-label*="Duración del grupo"] div[role="progressbar"] {
-  height: 26px;
-}
-
-#tabla-gantt tr[aria-label*="Grupo"] td[aria-label*="Duración del grupo"] div[role="progressbar"] > div {
-  background-color: #1e40af;
-}
-
-/* Barras de Gantt modernas (sólidas y redondeadas) */
-#tabla-gantt td[aria-label*="Barra"] div[role="progressbar"] {
-  position: relative;
-  width: 100%;
-  height: 22px;
-  background-color: var(--color-slate-200);
-  border-radius: 6px;
-  overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0,0,0,0.05);
-}
-
-#tabla-gantt td[aria-label*="Barra"] div[role="progressbar"] > div {
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  background-color: var(--color-primary);
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  padding-left: 8px;
-  font-size: 10px;
-  font-weight: 600;
-  color: #ffffff;
-  white-space: nowrap;
-  text-shadow: 0 1px 1px rgba(0,0,0,0.2);
-}
+/* Barras del diagrama de Gantt: ver .gantt-bar / .gantt-bar__fill en components.css */
 
 
 /* ── FOOTER / STATUS BAR ──

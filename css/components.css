@@ -787,40 +787,54 @@ a.btn--disabled {
   background: var(--color-success);
 }
 
-/* ── Barra de progreso de Gantt (dentro de celdas td) ──
-   Más compacta; sin texto porcentual externo (el texto va inline). */
+/* ── Barras del diagrama de Gantt ──
+   Implementación canónica. Los selectores de atributo que existían
+   en styles.css fueron eliminados; este bloque es la única fuente
+   de verdad para el aspecto visual de las barras del Gantt. */
 .gantt-bar {
   position:      relative;
   display:       block;
   width:         100%;
-  height:        10px;                   /* era 20px */
-  background:    transparent;            /* era var(--color-slate-200) */
-  border-radius: var(--radius-full);     /* era var(--radius-sm) */
-  overflow:      visible;               /* era hidden */
+  height:        22px;
+  background:    var(--color-slate-200);
+  border-radius: var(--radius-md);
+  overflow:      hidden;
+  box-shadow:    inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+/* Relleno de la barra: posición absoluta para control preciso del %.
+   El texto del porcentaje vive dentro de este elemento. */
 .gantt-bar__fill {
   position:      absolute;
   top:           0;
   left:          0;
   height:        100%;
   background:    var(--color-primary);
-  border-radius: var(--radius-full);     /* era var(--radius-sm) */
+  border-radius: var(--radius-md);
+  display:       flex;
+  align-items:   center;
+  padding-left:  var(--space-2);
+  font-size:     var(--font-size-xs);
+  font-weight:   var(--font-weight-semibold);
+  color:         var(--color-bg-white);
+  white-space:   nowrap;
+  text-shadow:   0 1px 1px rgba(0, 0, 0, 0.2);
   transition:    width var(--transition-slow);
-  min-width:     0;                      /* NUEVO */
+  min-width:     0;
 }
 
-/* Barra de grupo de Gantt: más alta, fondo slate semitransparente */
+/* Barra de grupo: más alta, fondo oscuro semitransparente */
 .gantt-bar--group {
-  height:     24px;
-  background: rgba(51, 65, 85, 0.15);  /* slate-700 al 15% */
+  height:     26px;
+  background: rgba(51, 65, 85, 0.15);
 }
 
 .gantt-bar--group .gantt-bar__fill {
-  background: var(--color-slate-600);
+  background: var(--color-primary-dark);
 }
 
-/* Texto de porcentaje dentro de la barra (posición absoluta) */
+/* Etiqueta de porcentaje posicionada absolutamente
+   (alternativa al texto inline dentro de .gantt-bar__fill) */
 .gantt-bar__label {
   position:    absolute;
   top:         50%;
@@ -831,8 +845,7 @@ a.btn--disabled {
   color:       var(--color-bg-white);
   line-height: 1;
   white-space: nowrap;
-  /* Asegura visibilidad sobre el relleno de la barra */
-  mix-blend-mode: normal;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
 }
 
 /* ============================================
