@@ -1,11 +1,11 @@
 # Testing Doc — Actividad Obligatoria N°2
 
 ## Índice de test cases
-- [Test Case 1 — Compatibilidad en navegadores desktop](../test-case-1.md)
-- [Test Case 2 — Responsive en dispositivos móviles y tablet](../test-case-2.md)
-- [Test Case 3 — Performance y carga](../test-case-3.md)
-- [Test Case 4 — Accesibilidad web](../test-case-4.md)
-- [Test Case 5 — Validación de estructura HTML semántica y CSS](../test-case-5.md)
+- [Test Case 1 — Compatibilidad en navegadores desktop](./test-case-1.md)
+- [Test Case 2 — Responsive en dispositivos móviles y tablet](./test-case-2.md)
+- [Test Case 3 — Performance y carga](./test-case-3.md)
+- [Test Case 4 — Accesibilidad web](./test-case-4.md)
+- [Test Case 5 — Validación de estructura HTML semántica y CSS](./test-case-5.md)
 
 ## Resumen general
 Este documento centraliza los resultados de testing ejecutados en dos momentos:
