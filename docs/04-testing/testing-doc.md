@@ -15,7 +15,7 @@ Este documento centraliza los resultados de testing ejecutados en dos momentos:
 ## Resumen de issues — Momento 1
 | Issue | Título | Tipo de hallazgo | Responsable | Estado |
 |---|---|---|---|---|
-| Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
+| [#28](https://github.com/martindebenedetti/Planix/issues/28) | Desborde horizontal de la tabla Gantt en viewports desktop | Compatibilidad visual desktop | Frontend | Abierto |
 
 ## Resumen de issues — Momento 2
 | Issue | Título | Tipo de hallazgo | Responsable | Estado |
@@ -23,4 +23,7 @@ Este documento centraliza los resultados de testing ejecutados en dos momentos:
 | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 
 ## Observaciones
-Este archivo se actualizará a medida que se ejecuten los test cases y se creen issues de tipo bug.
+Se ejecutó el **Test Case 1** del **Momento 1** sobre la rama `feature/dev-frontend-css-add-styles`.  
+El principal hallazgo detectado fue el desborde horizontal de la tabla Gantt en todos los viewports desktop evaluados, registrado como issue [#28](https://github.com/martindebenedetti/Planix/issues/28).
+
+Este archivo seguirá actualizándose a medida que se ejecuten los demás test cases y se registren nuevos hallazgos.
