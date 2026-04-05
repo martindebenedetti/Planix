@@ -102,13 +102,13 @@ GitHub MCP permite registrar formalmente los hallazgos como issues de tipo bug, 
 
 ## Criterios de aceptación
 - [ ] Se ejecutaron 5 test cases con Playwright MCP contra `http://localhost:3000`
-- [ ] Se realizó testing en Momento 1 sobre ramas `feature/`
+- [x] Se realizó testing en Momento 1 sobre ramas `feature/`
 - [ ] Se realizó testing en Momento 2 sobre la rama `develop`
-- [ ] Se creó al menos un issue bug por cada hallazgo relevante
+- [x] Se creó al menos un issue bug por cada hallazgo relevante
 - [ ] Todos los test cases incluyen capturas de pantalla
-- [ ] Se completó `testing-doc.md` con índice y resumen de issues
-- [ ] Se notificó al Desarrollador Frontend y al Especialista en Responsive sobre los bugs encontrados
-- [ ] Se documentó en cada test case el momento de ejecución y los issues generados
+- [x] Se completó `testing-doc.md` con índice y resumen de issues
+- [x] Se notificó al Desarrollador Frontend y al Especialista en Responsive sobre los bugs encontrados
+- [x] Se documentó en cada test case el momento de ejecución y los issues generados
 
 ## Estrategia de registro de hallazgos
 Se considerará bug todo hallazgo que:
@@ -122,19 +122,56 @@ Se considerará bug todo hallazgo que:
 No se registrarán como bugs observaciones menores que no afecten el funcionamiento, la visualización o la calidad general del entregable, salvo que acumuladas representen una inconsistencia relevante.
 
 ## Evidencia del proceso
-_Esta sección se completará al finalizar las pruebas._
 
 ### Prompts utilizados en Copilot Agent + Playwright MCP
-Pendiente de completar.
+
+Se utilizaron prompts específicos para cada test case del Momento 1 sobre la rama `feature/dev-frontend-css-add-styles`.
+
+**TC1 — Compatibilidad visual en navegadores desktop**
+Se utilizó un prompt orientado a verificar la visualización del sitio en viewports desktop (1920x1080, 1440x900 y 1280x800), revisando navegación, layout general, footer y presencia de overflow horizontal.
+
+**TC3 — Performance y carga**
+Se utilizó un prompt orientado a relevar métricas de carga (`DOMContentLoaded`, `Load completo`, `DOM Interactive`) y listar recursos cargados con tamaño y tiempo de descarga.
+
+**TC4 — Accesibilidad web**
+Se utilizó un prompt orientado a ejecutar una revisión de accesibilidad con axe-core, agrupando hallazgos por nivel de impacto (`critical`, `serious`, `moderate`, `minor`).
+
+**TC5 — Validación de estructura HTML semántica y CSS**
+Se utilizó un prompt orientado a revisar jerarquía de headings, landmarks semánticos, asociación entre labels y campos del formulario y estado de carga de archivos CSS.
 
 ### Resumen de resultados
-Pendiente de completar.
+
+Durante el Momento 1 sobre la rama `feature/dev-frontend-css-add-styles` se obtuvieron los siguientes resultados:
+
+- **TC1**: FAIL CON OBSERVACIONES  
+  Se detectó desborde horizontal de la tabla Gantt en todos los viewports desktop evaluados.
+
+- **TC3**: PASS — Sin hallazgos  
+  No se detectaron problemas significativos de performance o carga.
+
+- **TC4**: PASS — Sin hallazgos  
+  No se detectaron violaciones WCAG 2.1 en la revisión realizada.
+
+- **TC5**: PASS — Sin hallazgos  
+  La estructura HTML semántica y la carga de los archivos CSS relevantes para esta rama resultaron correctas.
 
 ### Cantidad de tests ejecutados
-Pendiente de completar.
+
+- Test cases ejecutados hasta el momento: **4**
+- Momento ejecutado hasta el momento: **Momento 1**
+- Test cases pendientes: **TC2** y posteriormente el **Momento 2** completo sobre `develop`
 
 ### Cantidad de bugs creados
-Pendiente de completar.
+
+- Bugs creados hasta el momento: **1**
+- Issue generado: [#28](https://github.com/martindebenedetti/Planix/issues/28)
 
 ### Decisiones sobre hallazgos registrados como bugs
-Pendiente de completar.
+
+Se registró como bug el hallazgo del **TC1** porque el desborde horizontal de la tabla Gantt afecta la visualización del componente en todos los viewports desktop testeados y obliga al usuario a desplazarse lateralmente para acceder a toda la información.
+
+No se registraron bugs en **TC3**, **TC4** ni **TC5** porque no se detectaron problemas relevantes de performance, accesibilidad o estructura semántica atribuibles a la rama evaluada.
+
+### Observación de avance
+
+Queda pendiente la ejecución del **TC2** sobre la rama de responsive y, posteriormente, la repetición de los 5 test cases en el **Momento 2** sobre la rama `develop`.

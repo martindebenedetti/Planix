@@ -3,135 +3,143 @@
 ## Metadata
 | Campo | Valor |
 |-------|-------|
-| Responsable | |
-| Fecha Momento 1 | |
-| Fecha Momento 2 | |
-| Rama Momento 1 | `feature/` |
+| Responsable | Leandro Berro |
+| Fecha Momento 1 | 05/04/2026 |
+| Fecha Momento 2 | Pendiente |
+| Rama Momento 1 | `feature/dev-frontend-css-add-styles` |
 | Rama Momento 2 | `develop` |
-| URL testeada | `http://localhost:3000` |
+| URL testeada | `http://127.0.0.1:3000/index.html` |
 
 ## Objetivo
-Detectar violaciones de accesibilidad WCAG 2.1 mediante análisis automatizado
-con axe-core, identificando elementos que impidan el acceso a usuarios con discapacidades.
+Detectar violaciones de accesibilidad WCAG 2.1 mediante análisis automatizado con axe-core, identificando elementos que impidan el acceso a usuarios con discapacidades.
 
 ## Herramientas utilizadas
-- Playwright MCP (`@playwright/mcp`) con inyección de axe-core
+- Playwright MCP (`@playwright/mcp`) con revisión de accesibilidad basada en axe-core
 - GitHub Copilot Agent Mode
 
 ---
 
 ## Prompt para Copilot Agent Mode
 
-Copiá este prompt en Copilot Agent Mode con Playwright MCP activo:
+```text
+Usá exclusivamente Playwright MCP ya configurado en este workspace.
 
-```
-Usando Playwright MCP, necesito hacer un análisis de accesibilidad de
-http://localhost:3000 usando axe-core.
+No instales librerías.
+No modifiques archivos del repositorio.
 
-Ejecutá estos pasos en orden:
+Necesito testear accesibilidad web de:
+http://127.0.0.1:3000/index.html
 
-1. Navegá a la URL y esperá que cargue completamente
-2. Inyectá axe-core desde CDN:
-   await page.addScriptTag({
-     url: 'https://cdnjs.cloudflare.com/ajax/libs/axe-core/4.7.2/axe.min.js'
-   })
-3. Ejecutá el análisis completo:
-   const results = await page.evaluate(() => axe.run())
-4. Tomá una captura de pantalla de la página
-5. Reportá TODAS las violaciones encontradas con:
-   - ID de la regla violada
-   - Descripción del problema
-   - Impacto (critical / serious / moderate / minor)
-   - Selector del elemento HTML afectado
-   - Sugerencia de corrección
-6. Reportá también los incomplete (necesitan revisión manual)
-7. Generá un resumen: total de violaciones agrupadas por nivel de impacto
-
-Guardá las capturas en docs/04-testing/capturas/tc-4/momento-X/
-(reemplazá X por 1 o 2 según el momento de ejecución)
+Hacé esto:
+1. Abrí la URL y esperá la carga completa.
+2. Ejecutá una revisión de accesibilidad con axe-core.
+3. Reportá violaciones WCAG 2.1 agrupadas por impacto:
+   - critical
+   - serious
+   - moderate
+   - minor
+4. Para cada hallazgo indicá:
+   - regla axe
+   - elemento afectado
+   - descripción breve del problema
+5. Si no hay hallazgos, decímelo explícitamente.
+6. Generá un resumen final claro.
+7. No uses rutas alternativas ni modifiques archivos.
 ```
 
 ---
 
-## MOMENTO 1 — Pre-merge (rama `feature/`)
+## MOMENTO 1 — Pre-merge (rama `feature/dev-frontend-css-add-styles`)
 
-### Violaciones encontradas
-| # | Regla axe | Impacto | Elemento afectado | Descripción |
-|---|-----------|---------|-------------------|-------------|
-| | | | | |
-| | | | | |
-| | | | | |
+### Resultado del análisis
+| Campo | Valor |
+|---|---|
+| URL analizada | `http://127.0.0.1:3000/index.html` |
+| Título de la página | `Planificador de Tareas - Diagrama de Gantt` |
+| Violaciones encontradas | Ninguna |
 
-### Needs Review (incomplete)
-| # | Regla axe | Elemento | Descripción |
-|---|-----------|----------|-------------|
-| | | | |
+### Impacto por nivel
+| Nivel | Resultado |
+|---|---|
+| critical | Ninguna |
+| serious | Ninguna |
+| moderate | Ninguna |
+| minor | Ninguna |
+
+### Elementos afectados
+No aplica.
+
+### Reglas axe afectadas
+No aplica.
 
 ### Capturas de pantalla
-| Descripción | Captura |
-|-------------|---------|
-| Estado general de la página | ![](capturas/tc-4/momento-1/accessibility-overview.png) |
+| Evidencia | Captura | Estado |
+|---|---|---|
+| Resultado del análisis de accesibilidad | ![](capturas/tc-4/momento-1/tc4-momento1-resultado-extra.png) | ok |
+| Vista general de la página durante la prueba | ![](capturas/tc-4/momento-1/tc4-momento1-pagina.png) | ok |
 
-### Resumen por nivel de impacto
-| Nivel | Cantidad | Reglas |
-|-------|----------|--------|
-| 🔴 critical | | |
-| 🟠 serious | | |
-| 🟡 moderate | | |
-| 🔵 minor | | |
-| **Total** | | |
+
+### Hallazgos
+| # | Regla axe | Elemento afectado | Descripción | Impacto |
+|---|---|---|---|---|
+| - | - | - | No se detectaron violaciones de accesibilidad WCAG 2.1. | - |
 
 ### Resultado Momento 1
-- [ ] ✅ PASS — Sin violaciones
-- [ ] ⚠️ FAIL CON OBSERVACIONES — Solo violaciones moderate/minor
-- [ ] ❌ FAIL — Violaciones critical o serious presentes
+- [x] ✅ PASS — Sin hallazgos
+- [ ] ⚠️ FAIL CON OBSERVACIONES
+- [ ] ❌ FAIL
+
+### Resumen Momento 1
+La revisión de accesibilidad realizada sobre la rama `feature/dev-frontend-css-add-styles` no detectó violaciones WCAG 2.1 en la página analizada. En consecuencia, no corresponde crear issue para este test case en el Momento 1.
 
 ---
 
 ## MOMENTO 2 — Post-merge (`develop`)
 
-### Violaciones encontradas
-| # | Regla axe | Impacto | Elemento afectado | Descripción |
-|---|-----------|---------|-------------------|-------------|
-| | | | | |
-| | | | | |
-| | | | | |
+### Resultado del análisis
+| Campo | Valor |
+|---|---|
+| URL analizada | Pendiente |
+| Título de la página | Pendiente |
+| Violaciones encontradas | Pendiente |
 
-### Needs Review (incomplete)
-| # | Regla axe | Elemento | Descripción |
-|---|-----------|----------|-------------|
-| | | | |
+### Impacto por nivel
+| Nivel | Resultado |
+|---|---|
+| critical | Pendiente |
+| serious | Pendiente |
+| moderate | Pendiente |
+| minor | Pendiente |
+
+### Elementos afectados
+Pendiente.
+
+### Reglas axe afectadas
+Pendiente.
 
 ### Capturas de pantalla
-| Descripción | Captura |
-|-------------|---------|
-| Estado general de la página | ![](capturas/tc-4/momento-2/accessibility-overview.png) |
+| Evidencia | Captura | Estado |
+|---|---|---|
+| Resultado del análisis de accesibilidad | `capturas/tc-4/momento-2/` | Pendiente |
+| Vista general de la página durante la prueba | `capturas/tc-4/momento-2/` | Pendiente |
 
-### Resumen por nivel de impacto
-| Nivel | Cantidad | Reglas |
-|-------|----------|--------|
-| 🔴 critical | | |
-| 🟠 serious | | |
-| 🟡 moderate | | |
-| 🔵 minor | | |
-| **Total** | | |
+### Hallazgos
+| # | Regla axe | Elemento afectado | Descripción | Impacto |
+|---|---|---|---|---|
+| - | - | - | Pendiente de ejecución en `develop`. | - |
 
 ### Resultado Momento 2
-- [ ] ✅ PASS — Sin violaciones
-- [ ] ⚠️ FAIL CON OBSERVACIONES — Solo violaciones moderate/minor
-- [ ] ❌ FAIL — Violaciones critical o serious presentes
+- [ ] ✅ PASS — Sin hallazgos
+- [ ] ⚠️ FAIL CON OBSERVACIONES
+- [ ] ❌ FAIL
 
----
-
-## Issues creados
-| Issue | Momento | Regla axe | Elemento | Impacto | Estado |
-|-------|---------|-----------|----------|---------|--------|
-| | | | | | |
-
-## Decisiones tomadas
-<!-- Explicá qué hallazgos registraste como bugs y cuáles descartaste, con justificación -->
+### Issues creados
+| Issue | Momento | Elemento | Severidad | Estado |
+|---|---|---|---|---|
+| No se generaron issues | Momento 1 | Accesibilidad | - | Sin hallazgos relevantes |
 
 ## Conclusión general
-**Resultado final:** <!-- PASS / FAIL CON OBSERVACIONES / FAIL -->
 
-<!-- Escribí un resumen de los hallazgos más importantes y las acciones requeridas -->
+**Resultado final:** PASS — Sin hallazgos
+
+Durante el Momento 1 sobre la rama `feature/dev-frontend-css-add-styles`, no se detectaron violaciones de accesibilidad WCAG 2.1 mediante la revisión realizada con Playwright MCP y axe-core. El caso deberá repetirse en el Momento 2 sobre `develop` para confirmar el comportamiento tras la integración completa.

@@ -66,7 +66,6 @@ Hacé esto:
 | Evidencia | Captura | Estado |
 |---|---|---|
 | Resultado del análisis de performance | ![](capturas/tc-3/momento-1/tc3-momento1-resultado-performance.png) | OK |
-| Vista general de la página durante la prueba | Pendiente / No agregada | No agregada |
 
 ### Hallazgos
 | # | Elemento | Descripción | Severidad |
