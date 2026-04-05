@@ -127,15 +127,15 @@
   --footer-height:  40px;
 
   /* Ancho de columnas del Gantt (ancho fijo por semana, ajustable con JS) */
-  --gantt-col-width: 150px;
+  --gantt-col-width: 80px;
 
   /* Anchos fijos de columnas de datos en la tabla */
-  --col-id:           20px;
+  --col-id:           40px;
   --col-nombre:       300px;
-  --col-duracion:     50px;
-  --col-fecha:        60px;
-  --col-predecesora:  60px;
-  --col-responsable:  80px;
+  --col-duracion:     90px;
+  --col-fecha:        100px;
+  --col-predecesora:  120px;
+  --col-responsable:  150px;
 
   /* Transiciones */
   --transition-fast:   150ms ease;
@@ -162,14 +162,8 @@
 
 /* Previene overflow horizontal no deseado */
 html {
-  overflow-x: hidden;
-  /* Suaviza el scroll ante anclas o focus programático */
-  scroll-behavior: smooth;
-  /* Tamaño base coherente con la escala de rem definida */
-  font-size: 16px;
-  /* Mejora el renderizado de texto en WebKit */
-  -webkit-text-size-adjust: 100%;
-}
+  height:     100%;
+  overflow-x: hidden;}
 
 /* Reset de listas: elimina bullets y sangría por defecto.
    Las listas semánticas recuperarán estilos a nivel de componente. */
@@ -384,21 +378,20 @@ address {
 
 /* Raíz del layout: columna flex que llena la pantalla.
    overflow:hidden en html+body evita doble scrollbar. */
-html,
+
+
 body {
-  font-family:   var(--font-family-base);
-  font-size:     var(--font-size-base);
-  font-weight:   var(--font-weight-normal);
-  line-height:   var(--line-height-base);
-  color:         var(--color-text);
-  background-color: var(--color-bg);
+  font-family:      var(--font-family-base);
+  font-size:        var(--font-size-base);
+  font-weight:      var(--font-weight-normal);
+  line-height:      var(--line-height-base);
   color:            var(--color-text);
-  height:     100%;
-  overflow:   hidden;
-  display:        flex;
-  flex-direction: column;
-  min-height:     100vh;
-  overflow:       hidden;
+  background-color: var(--color-bg);
+  height:           100%;
+  overflow:         hidden;
+  display:          flex;
+  flex-direction:   column;
+  min-height:       100vh;
 }
 
 /* ── HEADER ──
@@ -600,7 +593,7 @@ main[role="main"] {
 /* ── CONTENEDOR DE LA TABLA GANTT ──
    Región con scroll completo (horizontal + vertical).
    flex-1 absorbe el espacio restante del main. */
-main[role="main"] > [role="region"] {
+#contenedor-gantt {
   flex:       1;
   overflow:   auto;           /* habilita ambos ejes de scroll */
   min-height: 0;
