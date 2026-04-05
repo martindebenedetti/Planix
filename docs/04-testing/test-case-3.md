@@ -1,22 +1,22 @@
-# Test Case 3 — Performance y Carga
+# Test Case 3 — Performance y carga
 
 ## Metadata
 | Campo | Valor |
 |-------|-------|
-| Responsable | |
-| Fecha Momento 1 | |
-| Fecha Momento 2 | |
-| Rama Momento 1 | `feature/` |
+| Responsable | Leandro Berro |
+| Fecha Momento 1 | 05/04/2026 |
+| Fecha Momento 2 | Pendiente |
+| Rama Momento 1 | `feature/dev-frontend-css-add-styles` |
 | Rama Momento 2 | `develop` |
-| URL testeada | `http://localhost:3000` |
+| URL testeada | `http://127.0.0.1:3000/index.html` |
 
 ## Objetivo
-Medir los tiempos de carga y el tamaño de los recursos principales de la página
-para detectar problemas de performance antes del merge a develop.
+Medir el comportamiento de carga de la página, relevando métricas básicas de performance y analizando los recursos descargados para detectar posibles problemas de peso o tiempos excesivos.
 
 ## Herramientas utilizadas
-- Playwright MCP (`@playwright/mcp`) con evaluación de la Performance API del navegador
+- Playwright MCP (`@playwright/mcp`)
 - GitHub Copilot Agent Mode
+- Live Preview / internal server
 
 ---
 
@@ -24,110 +24,107 @@ para detectar problemas de performance antes del merge a develop.
 
 Copiá este prompt en Copilot Agent Mode con Playwright MCP activo:
 
-```
-Usando Playwright MCP, necesito analizar la performance de http://localhost:3000
+```text
+Usá exclusivamente Playwright MCP ya configurado en este workspace.
 
-Ejecutá estos pasos en orden:
+No instales librerías ni modifiques archivos del repositorio.
 
-1. Navegá a la URL esperando Network idle
-2. Usá evaluate() para ejecutar:
-   window.performance.getEntriesByType("navigation")[0]
-   y extraé: domContentLoadedEventEnd, loadEventEnd, domInteractive
-3. Usá evaluate() para obtener window.performance.getEntriesByType("resource")
-   y listá cada recurso con su name, transferSize y duration
-4. Tomá una captura de pantalla del estado final cargado
-5. Reportá:
-   - Tiempo hasta DOMContentLoaded (ms)
-   - Tiempo hasta Load completo (ms)
-   - Tiempo hasta DOM Interactive (ms)
-   - Listado de recursos: nombre, tipo, tamaño (KB) y tiempo de descarga (ms)
-   - Total de recursos y tamaño total acumulado
-   - ¿Hay recursos que superen 500KB?
-   - ¿Hay recursos que tarden más de 500ms en descargar?
-6. Generá un resumen con estado OK o con problemas por cada métrica
+Necesito testear performance y carga de:
+http://127.0.0.1:3000/index.html
 
-Guardá las capturas en docs/04-testing/capturas/tc-3/momento-X/
-(reemplazá X por 1 o 2 según el momento de ejecución)
+Hacé esto:
+1. Abrí la URL y esperá la carga completa.
+2. Relevá estas métricas:
+   - DOMContentLoaded
+   - Load completo
+   - DOM Interactive
+3. Listá los recursos cargados con tamaño y tiempo de descarga.
+4. Indicá si detectás recursos pesados o tiempos llamativos.
+5. Devolveme un resumen claro con resultados y hallazgos.
 ```
 
----
+## MOMENTO 1 — Pre-merge (rama `feature/dev-frontend-css-add-styles`)
 
-## MOMENTO 1 — Pre-merge (rama `feature/`)
+### Métricas relevadas
+| Métrica | Valor |
+|---|---|
+| DOMContentLoaded | 24 ms |
+| Load completo | 39 ms |
+| DOM Interactive | 24 ms |
 
-### Métricas de performance
-| Métrica | Valor medido | Umbral recomendado | Estado |
-|---------|-------------|-------------------|--------|
-| DOMContentLoaded | ms | < 800 ms | |
-| DOM Interactive | ms | < 600 ms | |
-| Load completo | ms | < 2000 ms | |
-| Total de recursos | | — | |
-| Tamaño total | KB | < 1 MB | |
-
-### Recursos analizados
-| Recurso | Tipo | Tamaño (KB) | Tiempo descarga (ms) | Estado |
-|---------|------|-------------|----------------------|--------|
-| | | | | |
-| | | | | |
-| | | | | |
+### Recursos cargados
+| Recurso | Tamaño | Tiempo de descarga |
+|---|---:|---:|
+| `http://127.0.0.1:3000/___vscode_livepreview_injected_script` | 9.27 KB | 4.5 ms |
+| `http://127.0.0.1:3000/css/styles.css` | 25.67 KB | 8.8 ms |
+| `http://127.0.0.1:3000/css/components.css` | 28.54 KB | 9.1 ms |
+| `http://127.0.0.1:3000/docs/01-mockup/actividad-obligatoria-1/diseño-inicial.png` | 67.42 KB | 13.3 ms |
+| `https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap` | 0.74 KB | 0 ms |
+| `https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2` | 48.26 KB | 0 ms |
 
 ### Capturas de pantalla
-| Descripción | Captura |
-|-------------|---------|
-| Estado final cargado | ![](capturas/tc-3/momento-1/performance-estado-final.png) |
+| Evidencia | Captura | Estado |
+|---|---|---|
+| Resultado del análisis de performance | ![](capturas/tc-3/momento-1/tc3-momento1-resultado-performance.png) | OK |
+| Vista general de la página durante la prueba | Pendiente / No agregada | No agregada |
 
 ### Hallazgos
-| # | Métrica / Recurso | Valor | Descripción | Severidad |
-|---|-------------------|-------|-------------|-----------|
-| | | | | |
+| # | Elemento | Descripción | Severidad |
+|---|---|---|---|
+| - | - | No se detectaron problemas significativos de performance o carga. | - |
 
 ### Resultado Momento 1
-- [ ] ✅ PASS — Sin hallazgos
+- [x] ✅ PASS — Sin hallazgos
 - [ ] ⚠️ FAIL CON OBSERVACIONES
 - [ ] ❌ FAIL
+
+### Resumen Momento 1
+La página cargó rápidamente y presentó métricas de carga muy bajas. No se detectaron problemas significativos en DOMContentLoaded, Load completo ni DOM Interactive. Los recursos cargados muestran tamaños y tiempos de descarga razonables. El recurso más pesado fue `diseño-inicial.png`, pero su tiempo de descarga se mantuvo dentro de valores aceptables.
+
+### Issues creados
+| Issue | Momento | Elemento | Severidad | Estado |
+|---|---|---|---|---|
+| No se generaron issues | Momento 1 | Performance y carga | - | Sin hallazgos relevantes |
 
 ---
 
 ## MOMENTO 2 — Post-merge (`develop`)
 
-### Métricas de performance
-| Métrica | Valor medido | Umbral recomendado | Estado |
-|---------|-------------|-------------------|--------|
-| DOMContentLoaded | ms | < 800 ms | |
-| DOM Interactive | ms | < 600 ms | |
-| Load completo | ms | < 2000 ms | |
-| Total de recursos | | — | |
-| Tamaño total | KB | < 1 MB | |
+### Métricas relevadas
+| Métrica | Valor |
+|---|---|
+| DOMContentLoaded | Pendiente |
+| Load completo | Pendiente |
+| DOM Interactive | Pendiente |
 
-### Recursos analizados
-| Recurso | Tipo | Tamaño (KB) | Tiempo descarga (ms) | Estado |
-|---------|------|-------------|----------------------|--------|
-| | | | | |
-| | | | | |
-| | | | | |
+### Recursos cargados
+| Recurso | Tamaño | Tiempo de descarga |
+|---|---:|---:|
+| Pendiente | Pendiente | Pendiente |
 
 ### Capturas de pantalla
-| Descripción | Captura |
-|-------------|---------|
-| Estado final cargado | ![](capturas/tc-3/momento-2/performance-estado-final.png) |
+| Evidencia | Captura | Estado |
+|---|---|---|
+| Resultado del análisis de performance | `capturas/tc-3/momento-2/` | Pendiente |
+| Vista general de la página durante la prueba | `capturas/tc-3/momento-2/` | Pendiente |
 
 ### Hallazgos
-| # | Métrica / Recurso | Valor | Descripción | Severidad |
-|---|-------------------|-------|-------------|-----------|
-| | | | | |
+| # | Elemento | Descripción | Severidad |
+|---|---|---|---|
+| - | - | Pendiente de ejecución en `develop`. | - |
 
 ### Resultado Momento 2
 - [ ] ✅ PASS — Sin hallazgos
 - [ ] ⚠️ FAIL CON OBSERVACIONES
 - [ ] ❌ FAIL
 
----
-
-## Issues creados
-| Issue | Momento | Métrica / Recurso | Severidad | Estado |
-|-------|---------|-------------------|-----------|--------|
-| | | | | |
+### Issues creados
+| Issue | Momento | Elemento | Severidad | Estado |
+|---|---|---|---|---|
+| No se generaron issues | Momento 1 | Performance y carga | - | Sin hallazgos relevantes |
 
 ## Conclusión general
-**Resultado final:** <!-- PASS / FAIL CON OBSERVACIONES / FAIL -->
 
-<!-- Escribí un resumen de los hallazgos más importantes y las acciones requeridas -->
+**Resultado final:** PASS — Sin hallazgos
+
+Durante el Momento 1 sobre la rama `feature/dev-frontend-css-add-styles`, la página presentó un comportamiento de carga rápido y estable. No se detectaron problemas significativos de performance ni recursos con tiempos de descarga preocupantes. El caso deberá repetirse en el Momento 2 sobre `develop` para validar la integración final.
