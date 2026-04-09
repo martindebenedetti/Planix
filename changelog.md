@@ -10,16 +10,12 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 - [feature/dev-frontend-css-add-styles] Creación del archivo spec.frontend.md y en base a este archivo se crearon los archivos css/styles.css y css/components.css. PR: [#27](https://github.com/martindebenedetti/Planix/pull/27) - @martindebenedetti (Desarrollador Frontend) - Issue: #21
 
-=======
-
 - [feature/mockup-actividad-2] Mockup actualizado con estilos visuales para la Actividad Obligatoria 2.  
   PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps)
 
 ### Changed
 
-- # [feature/mockup-actividad-2] Actualización del README.md y plan.md
-- [feature/mockup-actividad-2] Actualización del README.md y plan.md
-
+- [feature/mockup-actividad-2] Actualización del README.md y plan.md  
   PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps)
 
 ---
@@ -54,9 +50,6 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Fixed
 
 - [fix/include-prompts-in-release] Se incorporan los archivos de prompts y comparativa de modelos de IA en la rama release/actividad-obligatoria-1.
-
-  # PR: [#15](https://github.com/martindebenedetti/Planix/pull/15) - @giann98 (Coordinador / DevOps)
-
   PR: [#15](https://github.com/martindebenedetti/Planix/pull/15) - @giann98 (Coordinador / DevOps)
 
 - [fix/sdd-instalacion-copilot] Se agregan instrucciones de instalación de herramientas IA (GitHub Copilot y GitHub Pull Requests) en `sdd-decisions.md`.
@@ -68,9 +61,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [fix/actualizacion-plan] Actualización del archivo `plan.md` con requerimientos funcionales reales del sistema.
   PR: [#20](https://github.com/martindebenedetti/Planix/pull/20) - @giann98 (Coordinador / DevOps)
 
-- [fix/documentar-correcciones-release] Corrección de modelo de IA en prompts-1.md.
-
-  Commit: [1de6c27](https://github.com/martindebenedetti/Planix/commit/1de6c27) - @giann98 (Especialista en IA)
+- [fix/documentar-correcciones-release] Corrección de modelo de IA en prompts-1.md. Commit: [1de6c27](https://github.com/martindebenedetti/Planix/commit/1de6c27) - @giann98 (Especialista en IA)
 
 - [fix/documentar-correcciones-release] Corrección de modelo de IA en prompts-4.md.
   Commit: [ed00ffa](https://github.com/martindebenedetti/Planix/commit/ed00ffa) - @giann98 (Especialista en IA)
@@ -90,10 +81,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#24](https://github.com/martindebenedetti/Planix/pull/24) - @martindebenedetti (Coordinador / DevOps)
 
 - [backport/release-actividad-obligatoria-1] Backport: release actividad obligatoria 1 hacia develop.
-  PR: [#25](https://github.com/martindebenedetti/Planix/pull/25) - @giann98 (Coordinador / DevOps)
-
-=======
-Commit: [1de6c27](https://github.com/martindebenedetti/Planix/commit/1de6c27) - @giann98 (Especialista en IA)
+  PR: [#25](https://github.com/martindebenedetti/Planix/pull/25) - @giann98 (Coordinador / DevOps). Commit: [1de6c27](https://github.com/martindebenedetti/Planix/commit/1de6c27) - @giann98 (Especialista en IA)
 
 - [fix/documentar-correcciones-release] Corrección de modelo de IA en prompts-4.md.
   Commit: [ed00ffa](https://github.com/martindebenedetti/Planix/commit/ed00ffa) - @giann98 (Especialista en IA)
