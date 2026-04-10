@@ -1,0 +1,933 @@
+/* ============================================
+   css/components.css — Planificador de Tareas (Gantt)
+   Componentes reutilizables del proyecto.
+   Autor: Martin Debenedetti
+   Rama: feature/dev-frontend-css-add-styles
+
+   IMPORTANTE: Este archivo depende de las variables
+   CSS definidas en css/styles.css. Siempre debe
+   cargarse después de styles.css en el HTML.
+
+   Tokens Figma: node-id=54-518
+   https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/
+   ============================================ */
+
+/* ============================================
+   1. NAVEGACIÓN
+   Estilos de los botones de la barra de herramientas
+   (nav[role="navigation"]). La estructura del nav ya
+   está definida en styles.css; aquí se definen los
+   componentes reutilizables de botones de toolbar,
+   grupos segmentados y estados activos.
+   ============================================ */
+
+/* ── Botón de toolbar (botón genérico del nav) ──
+   Elemento en línea-bloque dentro de un contenedor flex.
+   Fondo transparente por defecto; adquiere fondo en hover/active. */
+.toolbar-btn {
+  display:         inline-flex;
+  align-items:     center;
+  gap:             var(--space-1);
+  padding:         var(--space-1) var(--space-3);
+  height:          32px;
+  font-size:       var(--font-size-sm);
+  font-weight:     var(--font-weight-medium);
+  color:           var(--color-slate-600);
+  background:      transparent;
+  border:          1px solid transparent;
+  border-radius:   var(--radius-md);
+  cursor:          pointer;
+  white-space:     nowrap;
+  transition:      background-color var(--transition-fast),
+                   color            var(--transition-fast),
+                   border-color     var(--transition-fast);
+}
+
+.toolbar-btn:hover {
+  background:   var(--color-slate-100);
+  color:        var(--color-slate-800);
+}
+
+.toolbar-btn:focus-visible {
+  outline:      2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.toolbar-btn:active {
+  background:   var(--color-slate-200);
+}
+
+/* Estado activo del botón de toolbar (Vista Gantt activo, aria-pressed="true").
+   Fondo primary/10, texto primary: refleja el mockup donde el botón
+   "Vista Gantt" aparece destacado con azul suave. */
+.toolbar-btn[aria-pressed="true"],
+.seg-btn[aria-pressed="true"] {
+  background: var(--color-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar-btn[aria-pressed="true"]:hover,
+.seg-btn[aria-pressed="true"]:hover {
+  background: var(--color-primary-dark);
+}
+
+/* ── Grupo segmentado (Días / Semanas / Meses) ──
+   Botones contiguos sin separación; el grupo ya tiene
+   border y overflow:hidden definidos en styles.css.
+   Aquí se estilizan los botones individuales dentro del grupo. */
+.seg-btn {
+  display:       inline-flex;
+  align-items:   center;
+  justify-content: center;
+  padding:       0 var(--space-3);
+  height:        30px;
+  font-size:     var(--font-size-sm);
+  font-weight:   var(--font-weight-medium);
+  color:         var(--color-slate-600);
+  background:    transparent;
+  border:        none;
+  border-right:  1px solid var(--color-border);
+  cursor:        pointer;
+  transition:    background-color var(--transition-fast),
+                 color            var(--transition-fast);
+}
+
+/* Último botón del segmento no necesita borde derecho */
+.seg-btn:last-child {
+  border-right: none;
+}
+
+.seg-btn:hover {
+  background: var(--color-slate-100);
+  color:      var(--color-slate-800);
+}
+
+.seg-btn:focus-visible {
+  outline:        2px solid var(--color-primary);
+  outline-offset: -2px; /* inset para no romper el borde del grupo */
+}
+
+/* Estado activo de la escala de tiempo (Semanas activo en el mockup).
+   Fondo primary, texto blanco: contraste fuerte para el estado seleccionado. */
+.seg-btn[aria-pressed="true"],
+.seg-btn.active {
+  background:  var(--color-primary);
+  color:       var(--color-bg-white);
+  font-weight: var(--font-weight-semibold);
+}
+
+.seg-btn[aria-pressed="true"]:hover,
+.seg-btn.active:hover {
+  background: var(--color-primary-dark);
+}
+
+/* ── Link de navegación (si se usa nav con anchors) ──
+   Elemento en línea; recupera el underline en hover para indicar interactividad. */
+.nav-link {
+  display:       inline-flex;
+  align-items:   center;
+  gap:           var(--space-1);
+  padding:       var(--space-1) var(--space-2);
+  font-size:     var(--font-size-sm);
+  font-weight:   var(--font-weight-medium);
+  color:         var(--color-slate-600);
+  border-radius: var(--radius-md);
+  transition:    color            var(--transition-fast),
+                 background-color var(--transition-fast);
+}
+
+.nav-link:hover {
+  color:      var(--color-slate-900);
+  background: var(--color-slate-100);
+}
+
+.nav-link:focus-visible {
+  outline:        2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.nav-link.active {
+  color:      var(--color-primary);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ============================================
+   2. BOTONES
+   Sistema de botones con clase base .btn y modificadores.
+   Todos los valores usan variables de :root.
+   El reset de <button> ya se aplicó en styles.css;
+   aquí se construye encima de ese reset.
+
+   Variantes: .btn-primary, .btn-secondary, .btn-ghost, .btn-danger
+   Tamaños:   .btn-sm, .btn-md (default), .btn-lg
+   Estados:   :hover, :focus-visible, :active, :disabled / .btn--disabled
+   ============================================ */
+
+/* ── Base .btn ──
+   display inline-flex permite alinear íconos junto al texto
+   sin necesidad de wrapper adicional (elemento en línea-bloque). */
+.btn {
+  display:        inline-flex;
+  align-items:    center;
+  justify-content: center;
+  gap:            var(--space-2);
+  padding:        var(--space-2) var(--space-4);
+  height:         36px;
+  font-size:      var(--font-size-sm);
+  font-weight:    var(--font-weight-medium);
+  line-height:    1;
+  white-space:    nowrap;
+  border:         1px solid transparent;
+  border-radius:  var(--radius-md);
+  cursor:         pointer;
+  text-decoration: none;          /* por si se usa <a class="btn"> */
+  transition:     background-color var(--transition-fast),
+                  border-color     var(--transition-fast),
+                  color            var(--transition-fast),
+                  box-shadow       var(--transition-fast);
+  /* Asegura que el box model cuente border dentro del height declarado */
+  box-sizing:     border-box;
+}
+
+/* Focus accesible: anillo visible en todos los botones */
+.btn:focus-visible {
+  outline:        2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* ── Tamaño pequeño ── */
+.btn-sm {
+  height:        28px;
+  padding:       var(--space-1) var(--space-3);
+  font-size:     var(--font-size-xs);
+  border-radius: var(--radius-sm);
+}
+
+/* ── Tamaño grande ── */
+.btn-lg {
+  height:        44px;
+  padding:       var(--space-3) var(--space-6);
+  font-size:     var(--font-size-base);
+  border-radius: var(--radius-lg);
+}
+
+/* ── Botón primario ──
+   Relleno sólido con color primary del mockup (#0f49bd).
+   Se usa para acciones principales: "Agregar tarea", "Guardar". */
+.btn-primary{
+  background: var(--color-primary);
+  color: var(--color-bg-white);
+  border: 1px solid var(--color-primary);
+}
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+}
+
+.btn-primary:active {
+  /* Ligero escalado para retroalimentación táctil */
+  background:   var(--color-primary-dark);
+  box-shadow:   inset 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.btn-primary:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* ── Botón secundario ──
+   Borde con color primary, fondo transparente.
+   Se usa para acciones secundarias: "Baseline", "Compartir". */
+.btn-secondary {
+  background: transparent;
+  color: var(--color-primary);
+  border: 1px solid var(--color-primary);
+}
+.btn-secondary:hover {
+  background: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.btn-secondary:active {
+  background:   var(--color-primary-light);
+  box-shadow:   inset 0 1px 3px rgba(15, 73, 189, 0.15);
+}
+
+.btn-secondary:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* ── Botón ghost ──
+   Sin borde ni fondo; aparece solo en hover.
+   Útil para acciones de icono dentro de tablas o barras. */
+.btn-ghost {
+  background:   transparent;
+  color:        var(--color-slate-600);
+  border-color: transparent;
+}
+
+.btn-ghost:hover {
+  background:   var(--color-slate-100);
+  color:        var(--color-slate-800);
+}
+
+.btn-ghost:active {
+  background:   var(--color-slate-200);
+}
+
+/* ── Botón de peligro ──
+   Para acciones destructivas (eliminar tarea, etc.) */
+.btn-danger {
+  background:   var(--color-danger);
+  color:        var(--color-bg-white);
+  border-color: var(--color-danger);
+}
+
+.btn-danger:hover {
+  background:   #b91c1c; /* danger-dark — no existe variable, se define aquí */
+  border-color: #b91c1c;
+}
+
+.btn-danger:focus-visible {
+  box-shadow: 0 0 0 3px var(--color-danger-bg);
+}
+
+/* ── Estado deshabilitado (todas las variantes) ──
+   :disabled aplica a <button>; .btn--disabled aplica a <a> o <span>.
+   Se reduce la opacidad y se bloquea la interacción. */
+.btn:disabled,
+.btn[aria-disabled="true"],
+.btn--disabled {
+  opacity:        0.45;
+  cursor:         not-allowed;
+  pointer-events: none;   /* evita hover/focus en el elemento visual */
+}
+
+/* Para <a> y <span> con .btn--disabled, pointer-events bloquea el click */
+a.btn--disabled {
+  pointer-events: none;
+}
+
+/* ============================================
+   3. CARDS
+   Contenedor de tarjeta con header, body y footer.
+   Se usa para paneles flotantes, modales o secciones
+   de información agrupada dentro del planificador.
+   ============================================ */
+
+/* ── Contenedor base ──
+   Elemento de bloque; fondo blanco, borde sutil y sombra sm
+   según el sistema de sombras del mockup. */
+.card {
+  display:          flex;
+  flex-direction:   column;
+  background:       var(--color-bg-white);
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-xl);
+  box-shadow:       var(--shadow-sm);
+  overflow:         hidden;   /* recorta contenido que sobresalga del radius */
+  transition:       box-shadow var(--transition-base);
+}
+
+/* Estado hover: sombra elevada para indicar interactividad
+   (aplica cuando la card es clickable, con tabindex o role="button") */
+.card:hover,
+.card[tabindex]:hover {
+  box-shadow: var(--shadow-md);
+}
+
+/* ── Card header ──
+   Franja superior de la card: título y acciones secundarias.
+   border-bottom separa del body; padding simétrico horizontal. */
+.card-header {
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  gap:              var(--space-3);
+  padding:          var(--space-4) var(--space-5);
+  border-bottom:    1px solid var(--color-border);
+  background:       var(--color-slate-50);
+  flex-shrink:      0;
+}
+
+/* Título dentro del card-header: hereda h-level del markup;
+   se limita el tamaño para no competir con el contenido del body. */
+.card-header__title {
+  font-size:    var(--font-size-base);
+  font-weight:  var(--font-weight-semibold);
+  color:        var(--color-slate-800);
+  line-height:  var(--line-height-tight);
+}
+
+/* Acciones del header (botones icon o links secundarios) */
+.card-header__actions {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-2);
+  flex-shrink: 0;
+}
+
+/* ── Card body ──
+   Zona principal de contenido; flex-1 absorbe el espacio libre
+   cuando la card tiene altura fija o está en un contenedor flex. */
+.card-body {
+  flex:       1;
+  padding:    var(--space-5);
+  overflow-y: auto;   /* scroll interno si el contenido supera la altura */
+}
+
+/* ── Card footer ──
+   Franja inferior para acciones o resumen.
+   Simétrico al header pero sin fondo slate-50. */
+.card-footer {
+  display:         flex;
+  align-items:     center;
+  justify-content: flex-end;
+  gap:             var(--space-3);
+  padding:         var(--space-3) var(--space-5);
+  border-top:      1px solid var(--color-border);
+  flex-shrink:     0;
+  background:      var(--color-slate-50);
+}
+
+/* Modificador: card sin padding (para tablas o imágenes que ocupan el body) */
+.card--flush .card-body {
+  padding: 0;
+}
+
+/* Modificador: card compacta */
+.card--compact .card-header,
+.card--compact .card-body,
+.card--compact .card-footer {
+  padding: var(--space-3) var(--space-4);
+}
+
+/* Modificador: card con sombra elevada por defecto (paneles flotantes) */
+.card--elevated {
+  box-shadow: var(--shadow-md);
+}
+
+.card--elevated:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+/* ============================================
+   4. FORMULARIOS
+   Sistema de componentes de formulario reutilizables.
+   Los inputs del #form-nueva-tarea tienen estilos contextuales
+   en styles.css; aquí se definen clases portables que pueden
+   usarse en cualquier formulario del proyecto.
+   ============================================ */
+
+/* ── Grupo de formulario ──
+   Envuelve label + input (+ mensaje de error).
+   Elemento de bloque; establece columna flex para
+   apilar label sobre el campo. */
+.form-group {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-1);
+}
+
+/* ── Label ──
+   Redefine la clase portable sobre el elemento <label>.
+   (styles.css ya estiliza el selector label global;
+   esta clase permite sobreescribir en contextos específicos.) */
+.form-label {
+  display:      block;           /* bloque para ocupar su propia línea */
+  font-size:    var(--font-size-sm);
+  font-weight:  var(--font-weight-medium);
+  color:        var(--color-slate-700);
+  line-height:  var(--line-height-snug);
+}
+
+/* Indicador de campo requerido (asterisco decorativo, oculto para AT) */
+.form-label__required::after {
+  content:     ' *';
+  color:       var(--color-danger);
+  font-weight: var(--font-weight-bold);
+  aria-hidden: true;
+}
+
+/* ── Input base ──
+   Elemento de bloque: ocupa el 100% del .form-group.
+   Box model explícito: padding interno + border + border-radius. */
+.form-input {
+  display:          block;
+  width:            100%;
+  height:           30px;
+  padding:          0 var(--space-3);
+  font-size:        var(--font-size-sm);
+  font-weight:      var(--font-weight-normal);
+  color:            var(--color-text);
+  background:       var(--color-bg-white);
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-md);
+  outline:          none;
+  box-sizing:       border-box;
+  transition:       border-color var(--transition-fast),
+                    box-shadow   var(--transition-fast);
+}
+
+.form-input::placeholder {
+  color: var(--color-slate-400);
+}
+
+/* Estado focus: anillo azul del color primary */
+.form-input:focus {
+  border-color: var(--color-primary);
+  box-shadow:   0 0 0 3px var(--color-primary-light);
+}
+
+/* Estado hover (antes de focus): borde ligeramente más oscuro */
+.form-input:hover:not(:focus):not(:disabled) {
+  border-color: var(--color-slate-400);
+}
+
+/* Estado deshabilitado */
+.form-input:disabled {
+  background:  var(--color-slate-100);
+  color:       var(--color-text-muted);
+  cursor:      not-allowed;
+  border-color: var(--color-slate-200);
+}
+
+/* ── Input de error ──
+   Modificador BEM: .form-input--error. Borde rojo,
+   anillo de error en focus para retroalimentación visual. */
+.form-input--error {
+  border-color: var(--color-danger);
+}
+
+.form-input--error:focus {
+  border-color: var(--color-danger);
+  box-shadow:   0 0 0 3px var(--color-danger-bg);
+}
+
+/* ── Input de éxito ──
+   Confirmación visual tras validación correcta. */
+.form-input--success {
+  border-color: var(--color-success);
+}
+
+.form-input--success:focus {
+  border-color: var(--color-success);
+  box-shadow:   0 0 0 3px var(--color-success-bg);
+}
+
+/* ── Textarea ──
+   Elemento de bloque; min-height permite edición cómoda.
+   resize:vertical evita que el usuario rompa el layout horizontal. */
+.form-textarea {
+  display:        block;
+  width:          100%;
+  min-height:     96px;
+  padding:        var(--space-2) var(--space-3);
+  font-size:      var(--font-size-sm);
+  font-weight:    var(--font-weight-normal);
+  color:          var(--color-text);
+  background:     var(--color-bg-white);
+  border:         1px solid var(--color-border);
+  border-radius:  var(--radius-md);
+  outline:        none;
+  resize:         vertical;
+  line-height:    var(--line-height-relaxed);
+  transition:     border-color var(--transition-fast),
+                  box-shadow   var(--transition-fast);
+}
+
+.form-textarea::placeholder {
+  color: var(--color-slate-400);
+}
+
+.form-textarea:focus {
+  border-color: var(--color-primary);
+  box-shadow:   0 0 0 3px var(--color-primary-light);
+}
+
+.form-textarea:disabled {
+  background:   var(--color-slate-100);
+  color:        var(--color-text-muted);
+  cursor:       not-allowed;
+  resize:       none;
+}
+
+/* ── Select ──
+   Apariencia nativa desactivada para aplicar estilos custom.
+   Flecha personalizada mediante background SVG inline. */
+.form-select {
+  display:            block;
+  width:              100%;
+  height:             40px;
+  padding:            0 var(--space-8) 0 var(--space-3);
+  font-size:          var(--font-size-sm);
+  color:              var(--color-text);
+  background-color:   var(--color-bg-white);
+  /* Flecha SVG como fondo: chevron-down en slate-500 */
+  background-image:   url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat:  no-repeat;
+  background-position: right var(--space-3) center;
+  background-size:    16px;
+  border:             1px solid var(--color-border);
+  border-radius:      var(--radius-md);
+  outline:            none;
+  appearance:         none;       /* elimina la flecha nativa del UA */
+  -webkit-appearance: none;
+  cursor:             pointer;
+  transition:         border-color var(--transition-fast),
+                      box-shadow   var(--transition-fast);
+}
+
+.form-select:focus {
+  border-color: var(--color-primary);
+  box-shadow:   0 0 0 3px var(--color-primary-light);
+}
+
+.form-select:hover:not(:focus):not(:disabled) {
+  border-color: var(--color-slate-400);
+}
+
+.form-select:disabled {
+  background-color: var(--color-slate-100);
+  color:            var(--color-text-muted);
+  cursor:           not-allowed;
+}
+
+/* ── Mensajes de validación ──
+   Texto de ayuda o error debajo del campo.
+   Elemento de bloque en línea (inline-flex) con ícono opcional. */
+.form-message {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-1);
+  font-size:   var(--font-size-xs);
+  line-height: var(--line-height-base);
+  margin-top:  var(--space-1);
+}
+
+.form-message--hint {
+  color: var(--color-text-muted);
+}
+
+.form-message--error {
+  color: var(--color-danger);
+  font-weight: var(--font-weight-medium);
+}
+
+.form-message--success {
+  color: var(--color-success);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ── Checkbox y radio ──
+   Tamaño explícito y alineación con el label usando flex. */
+.form-check {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-2);
+  cursor:      pointer;
+}
+
+.form-check input[type="checkbox"],
+.form-check input[type="radio"] {
+  width:          16px;
+  height:         16px;
+  flex-shrink:    0;
+  accent-color:   var(--color-primary);  /* colorea el check nativo */
+  cursor:         pointer;
+}
+
+.form-check input:disabled {
+  cursor: not-allowed;
+}
+
+.form-check input:disabled + .form-check__label {
+  color:  var(--color-text-muted);
+  cursor: not-allowed;
+}
+
+.form-check__label {
+  font-size:   var(--font-size-sm);
+  font-weight: var(--font-weight-normal);
+  line-height: var(--line-height-base);
+}
+
+/* ============================================
+   5. HEADER
+   Estilos de componentes internos del header que
+   complementan el layout estructural ya definido
+   en styles.css. No se redefine header[role="banner"].
+   ============================================ */
+
+/* ── Bloque logo+título ──
+   Unidad visual reutilizable: icono + texto apilado.
+   Ya aparece en el header pero se define como componente
+   portable (podría usarse en otros contextos). */
+.brand {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+  text-decoration: none;
+  color:       inherit;
+  overflow:    hidden;
+}
+
+.brand__icon {
+  flex-shrink:   0;
+  width:         32px;
+  height:        32px;
+  border-radius: var(--radius-sm);
+  object-fit:    cover;
+}
+
+.brand__text {
+  display:        flex;
+  flex-direction: column;
+  overflow:       hidden;
+}
+
+.brand__title {
+  font-size:     var(--font-size-base);
+  font-weight:   var(--font-weight-semibold);
+  color:         var(--color-slate-800);
+  white-space:   nowrap;
+  overflow:      hidden;
+  text-overflow: ellipsis;
+  line-height:   var(--line-height-tight);
+}
+
+.brand__meta {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-2);
+  font-size:   var(--font-size-xs);
+  color:       var(--color-text-muted);
+  margin-top:  var(--space-1);
+}
+
+/* ── Badge de estado de proyecto ──
+   Componente en línea (inline-flex) con color configurable.
+   El .badge-status global del body está en styles.css;
+   aquí se amplía con modificadores de color. */
+.badge {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            var(--space-1);
+  padding:        2px var(--space-2);
+  font-size:      var(--font-size-xs);
+  font-weight:    var(--font-weight-medium);
+  line-height:    var(--line-height-base);
+  border-radius:  var(--radius-full);
+  white-space:    nowrap;
+}
+
+.badge--success {
+  background: var(--color-success-bg);
+  color:      var(--color-success);
+}
+
+.badge--warning {
+  background: #fef3c7;   /* amber-100 sin variable, se aproxima al token warning */
+  color:      var(--color-warning);
+}
+
+.badge--danger {
+  background: var(--color-danger-bg);
+  color:      var(--color-danger);
+}
+
+.badge--primary {
+  background: var(--color-primary-light);
+  color:      var(--color-primary);
+}
+
+.badge--neutral {
+  background: var(--color-slate-100);
+  color:      var(--color-slate-600);
+}
+
+/* ── Barra de progreso componente ──
+   Versión portable de la barra de progreso del header.
+   Contenedor de bloque + relleno interno absoluto. */
+.progress-bar {
+  display:       flex;
+  align-items:   center;
+  gap:           var(--space-2);
+  font-size:     var(--font-size-sm);
+  color:         var(--color-slate-600);
+}
+
+.progress-bar__track {
+  display:       block;
+  width:         120px;
+  height:        8px;
+  background:    var(--color-slate-200);
+  border-radius: var(--radius-full);
+  overflow:      hidden;
+  flex-shrink:   0;
+}
+
+.progress-bar__fill {
+  display:       block;
+  height:        100%;
+  background:    var(--color-primary);
+  border-radius: var(--radius-full);
+  transition:    width var(--transition-slow);
+  /* min-width: 0 — permite el 0% sin artefactos de borde */
+  min-width:     0;
+}
+
+/* Modificador de tamaño: barra gruesa para dashboards */
+.progress-bar--lg .progress-bar__track {
+  height: 12px;
+  width:  180px;
+}
+
+/* Modificador: estado de éxito (100% completado) */
+.progress-bar__fill--success {
+  background: var(--color-success);
+}
+
+/* ── Barras del diagrama de Gantt ──
+   Implementación canónica. Los selectores de atributo que existían
+   en styles.css fueron eliminados; este bloque es la única fuente
+   de verdad para el aspecto visual de las barras del Gantt. */
+.gantt-bar {
+  position:      relative;
+  display:       block;
+  width:         100%;
+  height:        22px;
+  background:    var(--color-slate-200);
+  border-radius: var(--radius-md);
+  overflow:      hidden;
+  box-shadow:    inset 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+/* Relleno de la barra: posición absoluta para control preciso del %.
+   El texto del porcentaje vive dentro de este elemento. */
+.gantt-bar__fill {
+  position:      absolute;
+  top:           0;
+  left:          0;
+  height:        100%;
+  background:    var(--color-primary);
+  border-radius: var(--radius-md);
+  display:       flex;
+  align-items:   center;
+  padding-left:  var(--space-2);
+  font-size:     var(--font-size-xs);
+  font-weight:   var(--font-weight-semibold);
+  color:         var(--color-bg-white);
+  white-space:   nowrap;
+  text-shadow:   0 1px 1px rgba(0, 0, 0, 0.2);
+  transition:    width var(--transition-slow);
+  min-width:     0;
+}
+
+/* Barra de grupo: más alta, fondo oscuro semitransparente */
+.gantt-bar--group {
+  height:     26px;
+  background: rgba(51, 65, 85, 0.15);
+}
+
+.gantt-bar--group .gantt-bar__fill {
+  background: var(--color-primary-dark);
+}
+
+/* Etiqueta de porcentaje posicionada absolutamente
+   (alternativa al texto inline dentro de .gantt-bar__fill) */
+.gantt-bar__label {
+  position:    absolute;
+  top:         50%;
+  left:        var(--space-2);
+  transform:   translateY(-50%);
+  font-size:   var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  color:       var(--color-bg-white);
+  line-height: 1;
+  white-space: nowrap;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* ============================================
+   6. FOOTER
+   Componentes internos del footer que complementan
+   los estilos estructurales de styles.css.
+   No se redefine footer[role="contentinfo"].
+   ============================================ */
+
+/* ── Ítem de leyenda ──
+   Cada ítem de la leyenda del footer tiene un
+   indicador visual (círculo, rombo) + texto. */
+.legend-item {
+  display:     inline-flex;
+  align-items: center;
+  gap:         var(--space-1);
+  font-size:   var(--font-size-xs);
+  color:       var(--color-text-muted);
+}
+
+/* Indicador circular (Progreso) */
+.legend-item__dot {
+  display:       inline-block;
+  width:         8px;
+  height:        8px;
+  border-radius: var(--radius-full);
+  background:    var(--color-primary);
+  flex-shrink:   0;
+}
+
+/* Indicador de hito (rombo ◆) */
+.legend-item__diamond {
+  display:       inline-block;
+  width:         8px;
+  height:        8px;
+  background:    var(--color-slate-500);
+  transform:     rotate(45deg);
+  flex-shrink:   0;
+}
+
+/* ── Chip de versión ──
+   Badge discreto para mostrar la versión del proyecto. */
+.version-chip {
+  display:       inline-flex;
+  align-items:   center;
+  padding:       1px var(--space-2);
+  font-size:     var(--font-size-xs);
+  font-weight:   var(--font-weight-medium);
+  color:         var(--color-slate-500);
+  background:    var(--color-slate-100);
+  border:        1px solid var(--color-border);
+  border-radius: var(--radius-full);
+}
+
+/* ── Link del footer ──
+   Elemento en línea; hover con underline para distinguir del texto plano. */
+.footer-link {
+  display:         inline;
+  color:           var(--color-slate-500);
+  font-size:       var(--font-size-xs);
+  text-decoration: none;
+  transition:      color var(--transition-fast);
+}
+
+.footer-link:hover {
+  color:           var(--color-primary);
+  text-decoration: underline;
+}
+
+.footer-link:focus-visible {
+  outline:        2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius:  var(--radius-sm);
+}
+
+/* ── Separador del footer ──
+   Línea vertical entre grupos de información. */
+.footer-divider {
+  display:       inline-block;
+  width:         1px;
+  height:        12px;
+  background:    var(--color-border);
+  vertical-align: middle;
+  flex-shrink:   0;
+}
