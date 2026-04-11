@@ -68,22 +68,197 @@ Se definen tres breakpoints basados en los dispositivos objetivo del proyecto y 
 
 ## 6. Evidencia del proceso (completar al cierre)
 
-> _Esta sección se completa una vez finalizada la implementación._
-
 ### 6.1 Prompt utilizado en Copilot Agent
 
 ```
-(pendiente — pegar aquí el prompt exacto usado, incluyendo qué archivos se adjuntaron como contexto)
+Eres un desarrollador Frontend especializado en Responsive Design experto.
+Voy a usar el servidor MCP de Figma conectado a mi archivo de diseño para
+generar el archivo css/responsive.css de mi proyecto web.
+
+## Contexto
+- Tenés acceso al servidor MCP de Figma con el siguiente enlace al archivo:
+https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=43-2&p=f
+- El spec de planificación está en:
+  docs/03-specs/actividad-obligatoria-2/spec-responsive.md
+- Los estilos base ya están definidos en: css/styles.css
+- Los componentes ya están definidos en: css/components.css
+- La imagen del mockup actualizado está en:
+  docs/01-mockup/actividad-obligatoria-2/diseño-con-estilos.png
+
+## Enfoque obligatorio
+- Mobile-First: escribir primero los estilos para mobile y luego
+  sobreescribir con media queries para tablet y desktop.
+- Nunca usar max-width en las media queries, siempre min-width.
+- No redefinir variables ni estilos base que ya existen en
+  styles.css o components.css.
+
+## Breakpoints a implementar
+Usá exactamente estos breakpoints documentados:
+
+/* Mobile: base (sin media query) → hasta 767px */
+/* Tablet: min-width: 768px → hasta 1279px      */
+/* Desktop: min-width: 1280px → en adelante     */
+
+## Tarea
+Analizá el mockup de Figma y los archivos CSS existentes, luego generá
+el archivo css/responsive.css con la siguiente estructura y contenido:
+
+### 1. Estilos Mobile (base, sin media query)
+- Layout general en una sola columna
+- Navegación adaptada a mobile (menú apilado o hamburguesa si el
+  mockup lo define)
+- Cards apiladas verticalmente
+- Formularios a ancho completo
+- Tipografías reducidas coherentes con el mockup
+- Imágenes responsive (max-width: 100%)
+- Sin overflow horizontal
+
+### 2. Media Query Tablet (min-width: 768px)
+- Layout de dos columnas donde el mockup lo indique
+- Navegación adaptada a tablet
+- Cards en grilla de 2 columnas con CSS Grid o Flexbox
+- Formularios con layout de dos columnas si el mockup lo define
+- Tipografías intermedias
+- Ajustes de padding y margin para tablet
+
+### 3. Media Query Desktop (min-width: 1280px)
+- Layout completo según el mockup de Figma
+- Navegación horizontal completa
+- Cards en grilla de 3 o más columnas según el diseño
+- Formularios con layout completo
+- Tipografías en tamaño desktop
+- Espaciados y márgenes completos según el mockup
+
+## Requisitos técnicos obligatorios
+- Usar SIEMPRE las variables CSS definidas en :root de styles.css,
+  nunca valores hardcodeados
+- Implementar layouts con Flexbox y/o CSS Grid según la sección:
+  * Flexbox para navegación, headers y elementos en fila
+  * CSS Grid para grillas de cards y layouts de dos o más columnas
+- Garantizar que no haya overflow horizontal en ningún breakpoint
+- Agregar comentarios explicativos en cada sección indicando
+  las decisiones de layout tomadas
+- Cada media query debe estar claramente separada y comentada
+
+## Formato del archivo
+El archivo debe seguir esta estructura de secciones comentadas:
+
+/* ============================================
+   RESPONSIVE.CSS — Mobile First Approach
+   Breakpoints:
+   - Mobile:  base (hasta 767px)
+   - Tablet:  min-width: 768px
+   - Desktop: min-width: 1280px
+   ============================================ */
+
+/* ============================================
+   1. ESTILOS BASE — MOBILE
+   ============================================ */
+
+/* ============================================
+   2. TABLET — min-width: 768px
+   ============================================ */
+
+@media (min-width: 768px) {
+
+  /* 2.1 Navegación tablet */
+
+  /* 2.2 Layout general tablet */
+
+  /* 2.3 Cards tablet */
+
+  /* 2.4 Formularios tablet */
+
+  /* 2.5 Tipografías tablet */
+
+}
+
+/* ============================================
+   3. DESKTOP — min-width: 1280px
+   ============================================ */
+
+@media (min-width: 1280px) {
+
+  /* 3.1 Navegación desktop */
+
+  /* 3.2 Layout general desktop */
+
+  /* 3.3 Cards desktop */
+
+  /* 3.4 Formularios desktop */
+
+  /* 3.5 Tipografías desktop */
+
+}
+
+## Restricciones importantes
+- No redefinir variables que ya están en styles.css
+- No duplicar estilos que ya existen en styles.css o components.css
+- Respetar el enfoque mobile-first en todo momento
+- Usar siempre min-width en las media queries, nunca max-width
+- Todos los elementos deben adaptarse sin generar scroll horizontal
+
+## Output esperado
+Crea el archivo css/responsive.css en la carpeta css/ del proyecto
+con todo el contenido descripto arriba, extrayendo los valores
+reales del mockup de Figma mediante el MCP y respetando los
+estilos ya definidos en styles.css y components.css.
 ```
 
 ### 6.2 Resultado obtenido
 
-(pendiente — describir qué generó Copilot y qué tan fiel fue al mockup)
+Copilot Agent generó un archivo `responsive.css` con la estructura mobile-first solicitada, incluyendo los tres breakpoints (mobile base, tablet 768px, desktop 1280px) y las secciones comentadas según el formato del prompt.
+
+**Lo que generó correctamente:**
+
+- Estructura general mobile-first con estilos base para mobile y media queries con `min-width`.
+- Header y footer apilados en columna para mobile, restaurados a fila en tablet/desktop.
+- Toolbar con `flex-wrap` para mobile y fila completa en desktop.
+- Formulario nueva tarea en columna (mobile), grid 2 columnas (tablet) y flex row (desktop).
+- Uso consistente de variables CSS de `:root` sin valores hardcodeados.
+- Comentarios explicativos en cada sección.
+
+**Discrepancias detectadas respecto al mockup:**
+
+- El contenedor Gantt no mostraba scroll horizontal en ningún viewport. La tabla se comprimía o desbordaba la página sin scrollbar visible.
+- La sección `#descripcion` fue generada con estilos para un elemento que no existe en el HTML actual (navegación interna con links tipo chip).
+- Las tipografías mobile no se redujeron lo suficiente en el header, causando desbordamiento del título del proyecto en viewports de 390px.
 
 ### 6.3 Ajustes manuales realizados
 
-(pendiente — qué tuvo que corregirse manualmente y por qué)
+- Archivo styles.css
+
+linea 609 se cambio
+
+```
+width:        100%;
+```
+
+por
+
+```
+width:        max-content;
+```
+
+- Archivo responsive.css
+  se agrego linea 59-61
+
+```
+header[role="banner"] h1 {
+  font-size: var(--font-size-sm);
+}
+```
+
+se agrego linea 262-264
+
+```
+header[role="banner"] h1 {
+    font-size: var(--font-size-base);
+}
+```
 
 ### 6.4 Decisiones finales de breakpoints
 
-(pendiente — confirmar o ajustar los breakpoints definidos en la sección 2, con justificación de cualquier cambio)
+Se confirman los breakpoints definidos en la sección 2 (Mobile ≤767px, Tablet 768px-1023px, Desktop ≥1024px) como efectivos para reorganizar el layout del planificador según el espacio disponible, pasando de apilado vertical (mobile) a dashboard completo (desktop).
+
+Adicionalmente, durante la implementación se detectó un desbordamiento del título principal de la aplicación (`h1` en el header) en viewports de 390px (como iPhone 14 Pro). Para solucionarlo, se agregó una regla que reduce el tamaño de la fuente a `var(--font-size-sm)` en el breakpoint mobile (mobile-first), restaurándolo a `var(--font-size-base)` a partir de tablet.
