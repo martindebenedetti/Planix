@@ -138,7 +138,7 @@ La página se visualiza correctamente en términos generales en los cuatro viewp
 
 | Issue | Momento | Elemento | Severidad | Estado |
 |:---:|:---:|:---:|:---:|:---:|
-| [#28](https://github.com/martindebenedetti/Planix/issues/28) | Momento 1 | Tabla Gantt | Media | Abierto |
+| [#28](https://github.com/martindebenedetti/Planix/issues/28) | Momento 1 | Tabla Gantt | Media | Cerrado |
 
 ### Conclusión general
 

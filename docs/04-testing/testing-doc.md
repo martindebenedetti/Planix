@@ -15,7 +15,7 @@ Este documento centraliza los resultados de testing ejecutados en dos momentos:
 ## Resumen de issues — Momento 1
 | Issue | Título | Tipo de hallazgo | Responsable | Estado |
 |---|---|---|---|---|
-| [#28](https://github.com/martindebenedetti/Planix/issues/28) | Desborde horizontal de la tabla Gantt en viewports desktop | Compatibilidad visual desktop | Frontend | Abierto |
+| [#28](https://github.com/martindebenedetti/Planix/issues/28) | Desborde horizontal de la tabla Gantt en viewports desktop | Compatibilidad visual desktop | Frontend | Cerrado |
 
 ## Resumen de issues — Momento 2
 | Issue | Título | Tipo de hallazgo | Responsable | Estado |
@@ -28,7 +28,10 @@ En el **Momento 1** se ejecutaron los siguientes test cases sobre la rama `featu
 - **TC1** — Compatibilidad visual en navegadores desktop  
   Resultado: **FAIL CON OBSERVACIONES**  
   Hallazgo principal: desborde horizontal de la tabla Gantt en todos los viewports desktop evaluados.  
-  Issue asociado: [#28](https://github.com/martindebenedetti/Planix/issues/28)
+  Issue asociado: [#28](https://github.com/martindebenedetti/Planix/issues/28)- **TC1** — Compatibilidad visual en navegadores desktop  
+  Resultado: **FAIL CON OBSERVACIONES**  
+  Hallazgo principal: desborde horizontal de la tabla Gantt en todos los viewports desktop evaluados.  
+  Issue asociado: [#28](https://github.com/martindebenedetti/Planix/issues/28) (**cerrado**)
 
 - **TC3** — Performance y carga  
   Resultado: **PASS — Sin hallazgos**  
