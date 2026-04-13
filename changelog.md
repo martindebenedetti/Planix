@@ -9,7 +9,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Added
 
 - [feature/coord-devops-update-spec] Se agrega la especificación técnica del rol DevOps para la Actividad Obligatoria 2.  
-  PR: [#32](https://github.com/martindebenedetti/Planix/pull/34) - @giann98 (Coordinador / DevOps) - Issue: #31
+  PR: [#32](https://github.com/martindebenedetti/Planix/pull/32) - @giann98 (Coordinador / DevOps) - Issue: #31
 
 - [feature/dev-frontend-css-add-styles] Creación del archivo spec.frontend.md y en base a este archivo se crearon los archivos css/styles.css y css/components.css. PR: [#27](https://github.com/martindebenedetti/Planix/pull/27) - @martindebenedetti (Desarrollador Frontend) - Issue: #21
 
