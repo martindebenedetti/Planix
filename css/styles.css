@@ -606,7 +606,7 @@ main[role="main"] {
 #tabla-gantt {
   table-layout: fixed;
   min-width:    max-content;  /* la tabla no se comprime debajo de su contenido */
-  width:        100%;
+  width:         max-content;  /* la tabla no se comprime debajo de su contenido / width: max-content; / dimensión exacta del contenido (sin compresión ni expansión) */
   border-collapse: collapse;
   font-size:    var(--font-size-sm);
 

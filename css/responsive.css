@@ -1,0 +1,456 @@
+/* ============================================
+   RESPONSIVE.CSS — Mobile First Approach
+   Proyecto: Planificador de Tareas (Planix)
+   Autor: Martin Debenedetti
+   Rama: feature/responsive-design-add-responsive-styles
+
+   Breakpoints:
+   - Mobile:  base (hasta 767px)
+   - Tablet:  min-width: 768px
+   - Desktop: min-width: 1280px
+
+   IMPORTANTE: Este archivo debe cargarse después
+   de styles.css y components.css en el HTML.
+   Sobreescribe los estilos de layout desktop-first
+   de styles.css para adaptarlos a mobile, y luego
+   los restaura mediante media queries min-width.
+   ============================================ */
+
+
+/* ============================================
+   1. ESTILOS BASE — MOBILE
+   Overrides para pantallas de hasta 767px.
+   styles.css define un layout de dashboard fijo
+   al viewport (overflow:hidden, alturas fijas);
+   aquí se transforma en una página con scroll
+   vertical y columna única para mobile.
+   ============================================ */
+
+/* ── 1.1 Body ──
+   styles.css usa overflow:hidden para contener
+   el scroll dentro del contenedor Gantt. En mobile
+   necesitamos scroll vertical de página para que
+   el usuario pueda ver todas las secciones. */
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* ── 1.2 Header ──
+   El header desktop tiene dos grupos (logo/título
+   a la izquierda y progreso/botones a la derecha)
+   dispuestos en fila con altura fija de 64px.
+   En mobile: columna apilada con altura automática
+   para que el contenido no se recorte. */
+header[role="banner"] {
+  flex-direction:  column;
+  align-items:     flex-start;
+  height:          auto;
+  padding:         var(--space-3) var(--space-4);
+  gap:             var(--space-2);
+}
+
+/* Grupo izquierdo (logo + título): ocupa todo el ancho */
+header[role="banner"] > div:first-child {
+  width: 100%;
+}
+
+/* Título de la app: menor tamaño en mobile para evitar desbordamiento en 390px */
+header[role="banner"] h1 {
+  font-size: var(--font-size-sm);
+}
+
+/* Grupo derecho (progreso + botones): fila con wrap
+   para que los botones se ajusten sin overflow */
+header[role="banner"] > div:last-child {
+  width:     100%;
+  flex-wrap: wrap;
+  gap:       var(--space-2);
+}
+
+/* Barra de progreso: más compacta en mobile */
+header[role="banner"] [role="progressbar"] {
+  width: 80px;
+}
+
+/* ── 1.3 Toolbar / Navegación ──
+   En desktop: fila única con dos grupos a los extremos.
+   En mobile: columna apilada con altura automática;
+   cada grupo de botones puede hacer wrap si es necesario. */
+nav[role="navigation"] {
+  flex-direction:  column;
+  align-items:     flex-start;
+  height:          auto;
+  padding:         var(--space-2) var(--space-4);
+  gap:             var(--space-2);
+}
+
+/* Cada grupo de botones permite wrap en mobile */
+nav[role="navigation"] > div {
+  flex-wrap: wrap;
+}
+
+/* ── 1.4 Main ──
+   En desktop: main usa flex:1 + overflow:hidden para
+   que el Gantt ocupe el espacio restante del viewport.
+   En mobile: flex:none + overflow:visible permiten
+   que el contenido crezca y la página haga scroll. */
+main[role="main"] {
+  flex:       none;
+  overflow:   visible;
+  min-height: 0;
+}
+
+/* ── 1.5 Sección descripción ──
+   No tiene estilos en styles.css ni components.css.
+   Se definen aquí porque son específicos del contexto
+   responsive: visible y relevante en mobile, compacto
+   en desktop donde el Gantt es el elemento principal. */
+#descripcion {
+  padding:          var(--space-4);
+  background-color: var(--color-bg-white);
+  border-bottom:    1px solid var(--color-border);
+}
+
+#descripcion h2 {
+  font-size:     var(--font-size-lg);
+  margin-bottom: var(--space-2);
+}
+
+#descripcion p {
+  font-size:     var(--font-size-sm);
+  margin-bottom: var(--space-3);
+}
+
+/* Links de navegación interna: columna en mobile */
+#descripcion nav ul {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-2);
+  margin-top:     var(--space-2);
+}
+
+/* Cada link interno estilizado como chip */
+#descripcion nav a {
+  display:       inline-block;
+  padding:       var(--space-2) var(--space-3);
+  background:    var(--color-primary-light);
+  color:         var(--color-primary);
+  border-radius: var(--radius-md);
+  font-size:     var(--font-size-sm);
+  font-weight:   var(--font-weight-medium);
+  transition:    background-color var(--transition-fast),
+                 color            var(--transition-fast);
+}
+
+#descripcion nav a:hover {
+  background: var(--color-primary);
+  color:      var(--color-bg-white);
+}
+
+/* ── 1.6 Formulario Nueva Tarea ──
+   En desktop: flex row con flex-wrap (styles.css).
+   En mobile: columna única con campos a ancho completo
+   para facilitar la interacción táctil. */
+#nueva-tarea {
+  padding: var(--space-3) var(--space-4);
+}
+
+#form-nueva-tarea {
+  flex-direction: column;
+  align-items:    stretch;
+}
+
+/* Cada grupo label + input: ancho completo */
+#form-nueva-tarea > div {
+  width: 100%;
+}
+
+/* Inputs: ancho completo + mayor altura para touch targets */
+#form-nueva-tarea input {
+  width:  100%;
+  height: 36px;
+}
+
+/* Botón "Agregar tarea": ancho completo en mobile */
+#form-nueva-tarea > button {
+  width:           100%;
+  justify-content: center;
+}
+
+/* ── 1.7 Contenedor Gantt ──
+   La tabla Gantt mantiene su estructura de columnas fijas
+   (definidas en styles.css). En mobile el contenedor tiene
+   altura fija con scroll en ambos ejes, evitando que la
+   tabla cause overflow horizontal en la página. */
+#contenedor-gantt {
+  flex:       none;
+  height:     420px;
+  min-height: 300px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* ── 1.8 Footer ──
+   En desktop: fila horizontal con altura fija de 40px.
+   En mobile: columna apilada con altura automática. */
+footer[role="contentinfo"] {
+  flex-direction: column;
+  align-items:    flex-start;
+  height:         auto;
+  padding:        var(--space-3) var(--space-4);
+  gap:            var(--space-2);
+}
+
+/* Grupos del footer: wrap para estadísticas largas */
+footer[role="contentinfo"] > div {
+  flex-wrap: wrap;
+  gap:       var(--space-2);
+}
+
+
+/* ============================================
+   2. TABLET — min-width: 768px
+   A partir de 768px (iPad Air, 820px) se restaura
+   el modelo de dashboard (viewport-fill). El header
+   y footer vuelven a ser filas horizontales; el
+   formulario pasa a un grid de 2 columnas.
+   ============================================ */
+
+@media (min-width: 768px) {
+
+  /* 2.1 Navegación tablet ──
+     Fila horizontal con flex-wrap para que ambos
+     grupos de botones estén en la misma línea cuando
+     el ancho lo permite, y bajen si no alcanza. */
+  nav[role="navigation"] {
+    flex-direction: row;
+    flex-wrap:      wrap;
+    height:         auto;
+    min-height:     var(--toolbar-height);
+    padding:        var(--space-1) var(--space-5);
+    align-items:    center;
+    gap:            var(--space-3);
+  }
+
+  nav[role="navigation"] > div {
+    flex-wrap: wrap;
+  }
+
+  /* 2.2 Layout general tablet ──
+     Se restaura el modelo de dashboard: body vuelve
+     a overflow:hidden y main a flex:1 para que el
+     Gantt ocupe el espacio restante del viewport. */
+  body {
+    overflow: hidden;
+  }
+
+  header[role="banner"] {
+    flex-direction: row;
+    height:         var(--header-height);
+    padding:        0 var(--space-5);
+    align-items:    center;
+    gap:            var(--space-3);
+  }
+
+  header[role="banner"] > div:first-child {
+    width:    auto;
+    flex:     1;
+    min-width: 0; /* permite ellipsis en títulos largos */
+  }
+
+  header[role="banner"] h1 {
+    font-size: var(--font-size-base);
+  }
+
+  header[role="banner"] > div:last-child {
+    width:       auto;
+    flex-shrink: 0;
+    flex-wrap:   nowrap;
+  }
+
+  /* Barra de progreso: ancho intermedio en tablet */
+  header[role="banner"] [role="progressbar"] {
+    width: 100px;
+  }
+
+  main[role="main"] {
+    flex:       1;
+    overflow:   hidden;
+    min-height: 0;
+  }
+
+  /* 2.3 Contenedor Gantt tablet ──
+     Vuelve a usar flex:1 para absorber el espacio libre
+     del main. Scroll en ambos ejes habilitado. */
+  #contenedor-gantt {
+    flex:       1;
+    height:     auto;
+    min-height: 0;
+    overflow-x: auto;
+    overflow-y: auto;
+  }
+
+  /* 2.4 Formularios tablet ──
+     Grid de 2 columnas iguales: más campos en pantalla
+     sin saturar como en una fila completa de desktop.
+     El botón Agregar ocupa todo el ancho (span 2). */
+  #nueva-tarea {
+    padding: var(--space-3) var(--space-5);
+  }
+
+  #form-nueva-tarea {
+    display:               grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items:           end;
+  }
+
+  #form-nueva-tarea > div {
+    width: auto;
+  }
+
+  /* Inputs: altura estándar del mockup (styles.css: 30px) */
+  #form-nueva-tarea input {
+    height: 30px;
+    width:  100%;
+  }
+
+  /* Botón Agregar: ocupa las 2 columnas, alineado a la izquierda */
+  #form-nueva-tarea > button {
+    width:           auto;
+    grid-column:     1 / -1;
+    justify-self:    start;
+    justify-content: center;
+  }
+
+  /* 2.5 Tipografías tablet ──
+     Tamaños intermedios entre mobile y desktop. */
+  #descripcion h2 {
+    font-size: var(--font-size-xl);
+  }
+
+  #descripcion p {
+    font-size: var(--font-size-base);
+  }
+
+  /* Links de navegación interna: fila con wrap en tablet */
+  #descripcion nav ul {
+    flex-direction: row;
+    flex-wrap:      wrap;
+  }
+
+  /* Footer tablet: fila horizontal restaurada */
+  footer[role="contentinfo"] {
+    flex-direction: row;
+    height:         var(--footer-height);
+    padding:        0 var(--space-5);
+    align-items:    center;
+    gap:            var(--space-4);
+  }
+
+  footer[role="contentinfo"] > div {
+    flex-wrap: nowrap;
+    gap:       var(--space-4);
+  }
+
+}
+
+
+/* ============================================
+   3. DESKTOP — min-width: 1280px
+   Layout completo según el mockup de Figma.
+   Se restauran los paddings completos (space-6),
+   la navegación sin wrap y el formulario en fila.
+   ============================================ */
+
+@media (min-width: 1280px) {
+
+  /* 3.1 Navegación desktop ──
+     Fila única sin wrap, con padding completo space-6.
+     Los dos grupos (acciones + escala) se alinean
+     a los extremos mediante justify-content:space-between
+     heredado de styles.css. */
+  nav[role="navigation"] {
+    flex-wrap:  nowrap;
+    height:     var(--toolbar-height);
+    min-height: var(--toolbar-height);
+    padding:    0 var(--space-6);
+    gap:        var(--space-4);
+  }
+
+  nav[role="navigation"] > div {
+    flex-wrap: nowrap;
+  }
+
+  /* 3.2 Layout general desktop ──
+     Padding completo del mockup Figma (space-6 = 24px).
+     El gap entre grupos vuelve al valor de styles.css. */
+  header[role="banner"] {
+    padding: 0 var(--space-6);
+    gap:     var(--space-4);
+  }
+
+  /* Barra de progreso: 120px del mockup Figma */
+  header[role="banner"] [role="progressbar"] {
+    width: 120px;
+  }
+
+  /* 3.3 Contenedor Gantt desktop ──
+     Scroll en ambos ejes; el ancho de la tabla Gantt
+     (min-width:max-content en styles.css) garantiza que
+     las columnas de semana mantengan sus 80px. */
+  #contenedor-gantt {
+    overflow: auto;
+  }
+
+  /* 3.4 Formularios desktop ──
+     Fila horizontal completa con flex-wrap:wrap, tal
+     como muestra el mockup Figma. Se reemplaza el
+     grid de tablet por flex row. */
+  #nueva-tarea {
+    padding: var(--space-3) var(--space-6);
+  }
+
+  #form-nueva-tarea {
+    display:        flex;
+    flex-direction: row;
+    align-items:    flex-end;
+    flex-wrap:      wrap;
+  }
+
+  /* Grupos label + input: ancho natural según contenido */
+  #form-nueva-tarea > div {
+    width: auto;
+    flex:  none;
+  }
+
+  /* Botón Agregar: ancho automático al final de la fila */
+  #form-nueva-tarea > button {
+    width:           auto;
+    grid-column:     unset;
+    justify-self:    unset;
+    justify-content: center;
+  }
+
+  /* 3.5 Tipografías desktop ──
+     Títulos en tamaño completo del mockup. */
+  #descripcion h2 {
+    font-size:     var(--font-size-2xl);
+    margin-bottom: var(--space-3);
+  }
+
+  #descripcion p {
+    font-size: var(--font-size-base);
+  }
+
+  /* Footer desktop: padding completo y gap estándar */
+  footer[role="contentinfo"] {
+    padding: 0 var(--space-6);
+    gap:     var(--space-4);
+  }
+
+  footer[role="contentinfo"] > div {
+    gap: var(--space-4);
+  }
+
+}
