@@ -8,14 +8,12 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/coord-devops-update-spec] Se agrega la especificación técnica del rol DevOps para la Actividad Obligatoria 2.  
+  PR: [#32](https://github.com/martindebenedetti/Planix/pull/32) - @giann98 (Coordinador / DevOps) - Issue: #31
+
 - [feature/dev-frontend-css-add-styles] Creación del archivo spec.frontend.md y en base a este archivo se crearon los archivos css/styles.css y css/components.css. PR: [#27](https://github.com/martindebenedetti/Planix/pull/27) - @martindebenedetti (Desarrollador Frontend) - Issue: #21
 
-- [feature/mockup-actividad-2] Mockup actualizado con estilos visuales para la Actividad Obligatoria 2.  
-  PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps)
-
-### Changed
-
-- [feature/mockup-actividad-2] Actualización del README.md y plan.md  
+- [feature/mockup-actividad-2] Mockup actualizado con estilos visuales y actualización de README y plan.md  
   PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps)
 
 ---
@@ -77,30 +75,12 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 - [fix/documentar-correcciones-release] Documentación retroactiva de correcciones aplicadas directamente sobre release.
   PR: [#22](https://github.com/martindebenedetti/Planix/pull/22) - @martindebenedetti (Coordinador / DevOps)
+
 - [fix/formato-changelog-correcciones] Corrección de formato en entradas [Fixed] del changelog.
   PR: [#24](https://github.com/martindebenedetti/Planix/pull/24) - @martindebenedetti (Coordinador / DevOps)
 
 - [backport/release-actividad-obligatoria-1] Backport: release actividad obligatoria 1 hacia develop.
-  PR: [#25](https://github.com/martindebenedetti/Planix/pull/25) - @giann98 (Coordinador / DevOps). Commit: [1de6c27](https://github.com/martindebenedetti/Planix/commit/1de6c27) - @giann98 (Especialista en IA)
-
-- [fix/documentar-correcciones-release] Corrección de modelo de IA en prompts-4.md.
-  Commit: [ed00ffa](https://github.com/martindebenedetti/Planix/commit/ed00ffa) - @giann98 (Especialista en IA)
-
-- [fix/documentar-correcciones-release] Eliminación de sección "Cómo usar este archivo" en changelog.md.
-  Commit: [f09ff0a](https://github.com/martindebenedetti/Planix/commit/f09ff0a) - @giann98 (Especialista en IA)
-
-- [fix/documentar-correcciones-release] Autor en prompts-2.md y prompts-3.md.
-  Commits: [75eed4d](https://github.com/martindebenedetti/Planix/commit/75eed4d) / [430c39b](https://github.com/martindebenedetti/Planix/commit/430c39b) - @giann98 (Especialista en IA)
-
-- [fix/documentar-correcciones-release] Correcciones de templates, imágenes y eliminación de index-correcciones.md.
-  Commit: [d48f9d4](https://github.com/martindebenedetti/Planix/commit/d48f9d4) - @giann98 (Especialista en IA)
-
-- [fix/documentar-correcciones-release] Documentación retroactiva de correcciones aplicadas directamente sobre release.
-  PR: [#22](https://github.com/martindebenedetti/Planix/pull/22) - @martindebenedetti (Coordinador / DevOps)
-- [fix/formato-changelog-correcciones] Corrección de formato en entradas [Fixed] del changelog.
-  PR: [#24](https://github.com/martindebenedetti/Planix/pull/24) - @martindebenedetti (Coordinador / DevOps)
-
-- [backport/release-actividad-obligatoria-1] Backport: release actividad obligatoria 1 hacia develop.
-  PR: [#25](https://github.com/martindebenedetti/Planix/pull/25) - @giann98 (Coordinador / DevOps)
+  PR: [#25](https://github.com/martindebenedetti/Planix/pull/25) - @giann98 (Coordinador / DevOps). 
+  
 
 ---
