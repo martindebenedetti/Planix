@@ -27,6 +27,8 @@ Se definen tres breakpoints basados en los dispositivos objetivo del proyecto y 
 
 **Enfoque:** Mobile-first. Los estilos base en `styles.css` y `components.css` aplican al mobile, y `responsive.css` usa `min-width` en las media queries para escalar hacia tablet y desktop.
 
+**Nota mobile:** El contenedor Gantt (`#contenedor-gantt`) usa altura fija de `420px` para garantizar visibilidad de 5-6 filas de tareas sin scroll excesivo en viewport de 390px. Este valor fue calibrado manualmente durante la implementación (ver sección 6.3) y está definido en `css/responsive.css` línea 188.
+
 ---
 
 ## 3. Enfoque de layout
