@@ -90,7 +90,7 @@ Se validará:
 ## Herramientas a utilizar
 
 ### Playwright MCP
-Se utilizará para automatizar la navegación del sitio en `http://localhost:3000`, ejecutar pruebas visuales y funcionales, emular distintos viewports y relevar métricas de performance y accesibilidad.
+Se utilizará para automatizar la navegación del sitio en `http://127.0.0.1:3000/index.html`, ejecutar pruebas visuales y funcionales, emular distintos viewports y relevar métricas de performance y accesibilidad.
 
 ### GitHub MCP
 Se utilizará para crear issues de tipo bug directamente desde el flujo de testing, dejando trazabilidad de cada hallazgo relevante encontrado durante las pruebas.
@@ -101,11 +101,11 @@ Playwright MCP permite ejecutar pruebas reales sobre el sitio en entorno local y
 GitHub MCP permite registrar formalmente los hallazgos como issues de tipo bug, asociarlos al trabajo del equipo y facilitar su seguimiento y resolución antes de la release.
 
 ## Criterios de aceptación
-- [x] Se ejecutaron 5 test cases con Playwright MCP contra `http://localhost:3000`
+- [x] Se ejecutaron 5 test cases con Playwright MCP contra `http://127.0.0.1:3000/index.html`
 - [x] Se realizó testing en Momento 1 sobre ramas `feature/`
 - [ ] Se realizó testing en Momento 2 sobre la rama `develop`
 - [x] Se creó al menos un issue bug por cada hallazgo relevante
-- [ ] Todos los test cases incluyen capturas de pantalla
+- [x] Todos los test cases incluyen capturas de pantalla
 - [x] Se completó `testing-doc.md` con índice y resumen de issues
 - [x] Se notificó al Desarrollador Frontend y al Especialista en Responsive sobre los bugs encontrados
 - [x] Se documentó en cada test case el momento de ejecución y los issues generados
