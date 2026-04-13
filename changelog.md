@@ -8,7 +8,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
-- [feature/responsive-design-add-responsive-styles] Creación del archivo spec.responsive.md y en base a este archivo se creo el archivo css/responsive.css. PR: [#30](https://github.com/martindebenedetti/Planix/pull/30) - @martindebenedetti (Especialista en Responsive Design) - Issue: #29
+- [feature/responsive-design-add-responsive-styles] Creación del archivo spec.responsive.md y en base a este archivo se creo el archivo css/responsive.css. PR: [#33](https://github.com/martindebenedetti/Planix/pull/33) - Issue: #29
 
 - [feature/dev-frontend-css-add-styles] Creación del archivo spec.frontend.md y en base a este archivo se crearon los archivos css/styles.css y css/components.css. PR: [#27](https://github.com/martindebenedetti/Planix/pull/27) - @martindebenedetti (Desarrollador Frontend) - Issue: #21
 
