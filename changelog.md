@@ -8,6 +8,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/responsive-design-add-responsive-styles] Creación del archivo spec.responsive.md y en base a este archivo se creo el archivo css/responsive.css. PR: [#33](https://github.com/martindebenedetti/Planix/pull/33) - Issue: #29
+
 - [feature/coord-devops-update-spec] Se agrega la especificación técnica del rol DevOps para la Actividad Obligatoria 2.  
   PR: [#32](https://github.com/martindebenedetti/Planix/pull/32) - @giann98 (Coordinador / DevOps) - Issue: #31
 
@@ -80,7 +82,6 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#24](https://github.com/martindebenedetti/Planix/pull/24) - @martindebenedetti (Coordinador / DevOps)
 
 - [backport/release-actividad-obligatoria-1] Backport: release actividad obligatoria 1 hacia develop.
-  PR: [#25](https://github.com/martindebenedetti/Planix/pull/25) - @giann98 (Coordinador / DevOps). 
-  
+  PR: [#25](https://github.com/martindebenedetti/Planix/pull/25) - @giann98 (Coordinador / DevOps).
 
 ---
