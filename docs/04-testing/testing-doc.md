@@ -23,26 +23,27 @@ Este documento centraliza los resultados de testing ejecutados en dos momentos:
 | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
 
 ## Observaciones
-En el **Momento 1** se ejecutaron los siguientes test cases sobre la rama `feature/dev-frontend-css-add-styles`:
+En el **Momento 1** se ejecutaron los siguientes test cases:
 
-- **TC1** — Compatibilidad visual en navegadores desktop  
-  Resultado: **FAIL CON OBSERVACIONES**  
-  Hallazgo principal: desborde horizontal de la tabla Gantt en todos los viewports desktop evaluados.  
-  Issue asociado: [#28](https://github.com/martindebenedetti/Planix/issues/28)- **TC1** — Compatibilidad visual en navegadores desktop  
+- **TC1** — Compatibilidad visual en navegadores desktop sobre la rama `feature/dev-frontend-css-add-styles`  
   Resultado: **FAIL CON OBSERVACIONES**  
   Hallazgo principal: desborde horizontal de la tabla Gantt en todos los viewports desktop evaluados.  
   Issue asociado: [#28](https://github.com/martindebenedetti/Planix/issues/28) (**cerrado**)
 
-- **TC3** — Performance y carga  
+- **TC2** — Responsive en dispositivos móviles y tablet sobre la rama `feature/responsive-design-add-responsive-styles`  
+  Resultado: **PASS — Sin hallazgos**  
+  No se detectaron problemas de overflow horizontal, texto cortado, superposición de elementos ni fallas de adaptación en menú, botones o formulario.
+
+- **TC3** — Performance y carga sobre la rama `feature/dev-frontend-css-add-styles`  
   Resultado: **PASS — Sin hallazgos**  
   No se detectaron problemas significativos de performance o carga.
 
-- **TC4** — Accesibilidad web  
+- **TC4** — Accesibilidad web sobre la rama `feature/dev-frontend-css-add-styles`  
   Resultado: **PASS — Sin hallazgos**  
   No se detectaron violaciones WCAG 2.1 en la revisión realizada.
 
-- **TC5** — Validación de estructura HTML semántica y CSS  
+- **TC5** — Validación de estructura HTML semántica y CSS sobre la rama `feature/dev-frontend-css-add-styles`  
   Resultado: **PASS — Sin hallazgos**  
-  La estructura HTML semántica y la carga de los archivos CSS relevantes para esta rama fueron correctas.
+  La estructura HTML semántica y la carga de los archivos CSS relevantes para la rama evaluada fueron correctas.
 
-Queda pendiente la ejecución del **TC2** sobre la rama de responsive y, posteriormente, el **Momento 2** completo sobre `develop`.
+Queda pendiente la ejecución completa del **Momento 2** sobre `develop`.

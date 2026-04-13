@@ -101,7 +101,7 @@ Playwright MCP permite ejecutar pruebas reales sobre el sitio en entorno local y
 GitHub MCP permite registrar formalmente los hallazgos como issues de tipo bug, asociarlos al trabajo del equipo y facilitar su seguimiento y resolución antes de la release.
 
 ## Criterios de aceptación
-- [ ] Se ejecutaron 5 test cases con Playwright MCP contra `http://localhost:3000`
+- [x] Se ejecutaron 5 test cases con Playwright MCP contra `http://localhost:3000`
 - [x] Se realizó testing en Momento 1 sobre ramas `feature/`
 - [ ] Se realizó testing en Momento 2 sobre la rama `develop`
 - [x] Se creó al menos un issue bug por cada hallazgo relevante
@@ -125,41 +125,46 @@ No se registrarán como bugs observaciones menores que no afecten el funcionamie
 
 ### Prompts utilizados en Copilot Agent + Playwright MCP
 
-Se utilizaron prompts específicos para cada test case del Momento 1 sobre la rama `feature/dev-frontend-css-add-styles`.
+Se utilizaron prompts específicos para cada test case del Momento 1.
 
-**TC1 — Compatibilidad visual en navegadores desktop**
+**TC1 — Compatibilidad visual en navegadores desktop**  
 Se utilizó un prompt orientado a verificar la visualización del sitio en viewports desktop (1920x1080, 1440x900 y 1280x800), revisando navegación, layout general, footer y presencia de overflow horizontal.
 
-**TC3 — Performance y carga**
+**TC2 — Responsive en dispositivos móviles y tablet**  
+Se utilizó un prompt orientado a revisar el comportamiento responsive del sitio en los viewports 390x844, 412x915 y 820x1180, verificando overflow horizontal, texto cortado, superposición de elementos, adaptación de menú/botones y comportamiento del formulario.
+
+**TC3 — Performance y carga**  
 Se utilizó un prompt orientado a relevar métricas de carga (`DOMContentLoaded`, `Load completo`, `DOM Interactive`) y listar recursos cargados con tamaño y tiempo de descarga.
 
-**TC4 — Accesibilidad web**
+**TC4 — Accesibilidad web**  
 Se utilizó un prompt orientado a ejecutar una revisión de accesibilidad con axe-core, agrupando hallazgos por nivel de impacto (`critical`, `serious`, `moderate`, `minor`).
 
-**TC5 — Validación de estructura HTML semántica y CSS**
+**TC5 — Validación de estructura HTML semántica y CSS**  
 Se utilizó un prompt orientado a revisar jerarquía de headings, landmarks semánticos, asociación entre labels y campos del formulario y estado de carga de archivos CSS.
 
 ### Resumen de resultados
 
-Durante el Momento 1 sobre la rama `feature/dev-frontend-css-add-styles` se obtuvieron los siguientes resultados:
+Durante el Momento 1 se obtuvieron los siguientes resultados:
 
+#### Rama `feature/dev-frontend-css-add-styles`
 - **TC1**: FAIL CON OBSERVACIONES  
   Se detectó desborde horizontal de la tabla Gantt en todos los viewports desktop evaluados.
-
 - **TC3**: PASS — Sin hallazgos  
   No se detectaron problemas significativos de performance o carga.
-
 - **TC4**: PASS — Sin hallazgos  
   No se detectaron violaciones WCAG 2.1 en la revisión realizada.
-
 - **TC5**: PASS — Sin hallazgos  
   La estructura HTML semántica y la carga de los archivos CSS relevantes para esta rama resultaron correctas.
 
+#### Rama `feature/responsive-design-add-responsive-styles`
+- **TC2**: PASS — Sin hallazgos  
+  No se detectaron problemas de overflow horizontal, texto cortado, superposición de elementos ni fallas de adaptación en menú, botones o formulario.
+
 ### Cantidad de tests ejecutados
 
-- Test cases ejecutados hasta el momento: **4**
-- Momento ejecutado hasta el momento: **Momento 1**
-- Test cases pendientes: **TC2** y posteriormente el **Momento 2** completo sobre `develop`
+- Test cases ejecutados hasta el momento: **5**
+- Momento ejecutado hasta el momento: **Momento 1 completo**
+- Test cases pendientes: **Momento 2** completo sobre `develop`
 
 ### Cantidad de bugs creados
 
@@ -170,8 +175,10 @@ Durante el Momento 1 sobre la rama `feature/dev-frontend-css-add-styles` se obtu
 
 Se registró como bug el hallazgo del **TC1** porque el desborde horizontal de la tabla Gantt afecta la visualización del componente en todos los viewports desktop testeados y obliga al usuario a desplazarse lateralmente para acceder a toda la información.
 
+No se registró bug en **TC2** porque no se detectaron hallazgos relevantes de responsive en la rama evaluada.
+
 No se registraron bugs en **TC3**, **TC4** ni **TC5** porque no se detectaron problemas relevantes de performance, accesibilidad o estructura semántica atribuibles a la rama evaluada.
 
 ### Observación de avance
 
-Queda pendiente la ejecución del **TC2** sobre la rama de responsive y, posteriormente, la repetición de los 5 test cases en el **Momento 2** sobre la rama `develop`.
+El **Momento 1** quedó completo. Queda pendiente la repetición de los 5 test cases en el **Momento 2** sobre la rama `develop`, una vez integradas todas las features.
