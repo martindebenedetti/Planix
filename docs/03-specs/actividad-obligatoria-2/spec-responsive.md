@@ -228,19 +228,7 @@ Copilot Agent generó un archivo `responsive.css` con la estructura mobile-first
 
 ### 6.3 Ajustes manuales realizados
 
-- Archivo styles.css
-
-linea 609 se cambio
-
-```
-width:        100%;
-```
-
-por
-
-```
-width:        max-content;
-```
+- Archivo styles.css: Cambio de width a max-content en la tabla Gantt para evitar compresión de columnas de 80px en viewports pequeños
 
 - Archivo responsive.css
   se agrego linea 59-61
