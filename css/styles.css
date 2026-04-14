@@ -1,0 +1,774 @@
+/* ============================================
+   css/styles.css — Planificador de Tareas (Gantt)
+   Autora: Martin Debenedetti
+   Rama: feature/dev-frontend-css-add-styles
+   Tokens extraídos del mockup de Figma:
+   https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/
+   ============================================ */
+
+/* ============================================
+   1. VARIABLES CSS
+   Todos los tokens de diseño centralizados aquí.
+   Ningún valor de color, tipografía o espaciado
+   debe escribirse hardcodeado fuera de esta sección.
+   ============================================ */
+/* Importación de fuentes (Google Fonts).
+   Inter tiene excelente legibilidad para interfaces
+   de datos densas como el diagrama de Gantt. */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+:root {
+
+  /* ── Colores primarios ── */
+  /* Azul principal extraído del mockup (#0f49bd) */
+  --color-primary:         #0f49bd;
+  --color-primary-dark:    #0b3a96;   /* hover / pressed */
+  --color-primary-light:   #e0f0ff;   /* fondo sutil de elementos activos */
+  --color-primary-10:      rgba(15, 73, 189, 0.10); /* badge activo toolbar */
+
+  /* ── Colores de estado ── */
+  --color-success:         #16a34a;   /* badge "En Ejecución" */
+  --color-success-bg:      #dcfce7;
+  --color-warning:         #d97706;
+  --color-danger:          #dc2626;   /* ruta crítica */
+  --color-danger-bg:       #fee2e2;
+
+  /* ── Neutros (escala slate del mockup) ── */
+  /* slate-50 → fondo toolbar y footer */
+  --color-slate-50:        #f8fafc;
+  /* slate-100 → fondo cabecera de tabla */
+  --color-slate-100:       #f1f5f9;
+  /* slate-200 → fondo barra de progreso vacía */
+  --color-slate-200:       #e2e8f0;
+  --color-slate-300:       #cbd5e1;
+  --color-slate-400:       #94a3b8;
+  --color-slate-500:       #64748b;   /* texto secundario */
+  --color-slate-600:       #475569;
+  --color-slate-700:       #334155;   /* filas de grupo Gantt */
+  --color-slate-800:       #1e293b;
+  --color-slate-900:       #0f172a;
+
+  /* ── Colores base ── */
+  /* Fondo general de la app extraído del mockup */
+  --color-bg:              #f6f6f8;
+  --color-bg-white:        #ffffff;
+  --color-text:            var(--color-slate-800);
+  --color-text-muted:      var(--color-slate-500);
+  --color-border:          var(--color-slate-200);
+
+  /* ── Tipografía ── */
+  /* Familia principal: Inter / Public Sans (diseño Figma usa ambas).
+     Se importa Inter como primer opción; Public Sans como alternativa.
+     Ambas son sans-serif de alta legibilidad para interfaces de datos. */
+  --font-family-base:      'Inter', 'Public Sans', system-ui, -apple-system, sans-serif;
+  --font-family-mono:      'JetBrains Mono', 'Fira Code', monospace;
+
+  /* Escala tipográfica (rem, base = 16px) */
+  --font-size-xs:          0.75rem;   /* 12px — labels, badges */
+  --font-size-sm:          0.875rem;  /* 14px — texto secundario, tabla */
+  --font-size-base:        1rem;      /* 16px — body */
+  --font-size-lg:          1.125rem;  /* 18px — h6 */
+  --font-size-xl:          1.25rem;   /* 20px — h5 */
+  --font-size-2xl:         1.5rem;    /* 24px — h4 */
+  --font-size-3xl:         1.875rem;  /* 30px — h3 */
+  --font-size-4xl:         2.25rem;   /* 36px — h2 */
+  --font-size-5xl:         3rem;      /* 48px — h1 */
+
+  /* Pesos tipográficos */
+  --font-weight-normal:    400;
+  --font-weight-medium:    500;
+  --font-weight-semibold:  600;
+  --font-weight-bold:      700;
+
+  /* Alturas de línea */
+  --line-height-tight:     1.25;
+  --line-height-snug:      1.375;
+  --line-height-base:      1.5;
+  --line-height-relaxed:   1.625;
+
+  /* ── Espaciados ── */
+  /* Sistema de 4 px multiplicado: permite alineación consistente */
+  --space-1:    0.25rem;  /* 4px */
+  --space-2:    0.5rem;   /* 8px */
+  --space-3:    0.75rem;  /* 12px */
+  --space-4:    1rem;     /* 16px — base */
+  --space-5:    1.25rem;  /* 20px */
+  --space-6:    1.5rem;   /* 24px */
+  --space-8:    2rem;     /* 32px */
+  --space-10:   2.5rem;   /* 40px */
+  --space-12:   3rem;     /* 48px */
+  --space-16:   4rem;     /* 64px */
+
+  /* Aliases semánticos */
+  --space-sm:   var(--space-2);
+  --space-md:   var(--space-4);
+  --space-lg:   var(--space-6);
+  --space-xl:   var(--space-8);
+
+  /* ── Border-radius ── */
+  /* El mockup usa bordes sutiles redondeados en botones y cards */
+  --radius-sm:    0.25rem;  /* 4px — badges, inputs */
+  --radius-md:    0.375rem; /* 6px — botones, tarjetas */
+  --radius-lg:    0.5rem;   /* 8px — paneles, modales */
+  --radius-xl:    0.75rem;  /* 12px — cards grandes */
+  --radius-full:  9999px;   /* pill — chips, indicadores circulares */
+
+  /* ── Sombras ── */
+  /* El mockup define sombras suaves para elementos flotantes */
+  --shadow-sm:  0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md:  0 4px 6px -1px rgba(0, 0, 0, 0.10),
+                0 2px 4px -2px rgba(0, 0, 0, 0.10);
+  --shadow-lg:  0 10px 15px -3px rgba(0, 0, 0, 0.10),
+                0 4px 6px -4px rgba(0, 0, 0, 0.10);
+
+  /* ── Dimensiones de layout ── */
+  /* Alturas fijas de las barras estructurales (shrink-0 en flex-col) */
+  --header-height:  64px;
+  --toolbar-height: 48px;
+  --footer-height:  40px;
+
+  /* Ancho de columnas del Gantt (ancho fijo por semana, ajustable con JS) */
+  --gantt-col-width: 80px;
+
+  /* Anchos fijos de columnas de datos en la tabla */
+  --col-id:           40px;
+  --col-nombre:       300px;
+  --col-duracion:     90px;
+  --col-fecha:        100px;
+  --col-predecesora:  120px;
+  --col-responsable:  150px;
+
+  /* Transiciones */
+  --transition-fast:   150ms ease;
+  --transition-base:   200ms ease;
+  --transition-slow:   300ms ease;
+}
+
+/* ============================================
+   2. RESET
+   Reset moderno que asegura un punto de partida
+   homogéneo en todos los navegadores, con
+   control explícito del box model.
+   ============================================ */
+
+/* Box-sizing universal: border-box garantiza que padding
+   y border no amplíen el tamaño declarado del elemento */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Previene overflow horizontal no deseado */
+html {
+  height:     100%;
+  overflow-x: hidden;}
+
+/* Reset de listas: elimina bullets y sangría por defecto.
+   Las listas semánticas recuperarán estilos a nivel de componente. */
+ul,
+ol {
+  list-style: none;
+}
+
+/* Reset de links: hereda color y elimina subrayado por defecto.
+   Cada componente declarará sus propios estilos de enlace. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Imágenes responsive: evita overflow y preserva aspect ratio */
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Botones: heredan tipografía del padre y se comportan
+   como elemento de bloque en línea para facilitar el layout */
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Tabla: elimina el espacio entre celdas */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Texto de ayuda invisible solo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ============================================
+   3. TIPOGRAFÍAS
+   Jerarquía tipográfica coherente con el mockup.
+   Se aplica la familia definida en :root;
+   los tamaños siguen la escala modular declarada.
+   ============================================ */
+
+
+
+
+
+/* Encabezados: pesos y tamaños decrecientes.
+   Los h1-h6 usan line-height ajustado para titulares. */
+h1 {
+  font-size:    var(--font-size-5xl);
+  font-weight:  var(--font-weight-bold);
+  line-height:  var(--line-height-tight);
+}
+
+h2 {
+  font-size:    var(--font-size-4xl);
+  font-weight:  var(--font-weight-bold);
+  line-height:  var(--line-height-tight);
+}
+
+h3 {
+  font-size:    var(--font-size-3xl);
+  font-weight:  var(--font-weight-semibold);
+  line-height:  var(--line-height-snug);
+}
+
+h4 {
+  font-size:    var(--font-size-2xl);
+  font-weight:  var(--font-weight-semibold);
+  line-height:  var(--line-height-snug);
+}
+
+h5 {
+  font-size:    var(--font-size-xl);
+  font-weight:  var(--font-weight-medium);
+  line-height:  var(--line-height-base);
+}
+
+h6 {
+  font-size:    var(--font-size-lg);
+  font-weight:  var(--font-weight-medium);
+  line-height:  var(--line-height-base);
+}
+
+/* Párrafo: hereda tamaño del body; margen inferior para
+   separación visual entre bloques de texto consecutivos */
+p {
+  line-height:  var(--line-height-relaxed);
+}
+
+/* Labels: elemento en línea, tamaño levemente reducido
+   para no competir visualmente con el input asociado */
+label {
+  display:       inline-block;
+  font-size:     var(--font-size-sm);
+  font-weight:   var(--font-weight-medium);
+  color:         var(--color-slate-700);
+  line-height:   var(--line-height-snug);
+}
+
+/* Texto pequeño y captions: auxiliares, badges, metadatos */
+small,
+caption {
+  font-size:    var(--font-size-xs);
+  line-height:  var(--line-height-base);
+  color:        var(--color-text-muted);
+}
+
+/* Texto en negrita semántico */
+strong {
+  font-weight:  var(--font-weight-semibold);
+}
+
+/* Código en línea */
+code {
+  font-family:  var(--font-family-mono);
+  font-size:    var(--font-size-sm);
+  background:   var(--color-slate-100);
+  padding:      var(--space-1) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+/* address: hereda tipografía normal (no italic por defecto del UA) */
+address {
+  font-style: normal;
+  font-size:  var(--font-size-sm);
+  color:      var(--color-text-muted);
+}
+
+/* ============================================
+   4. COLORES BASE
+   Fondo y color de texto base aplicados al body.
+   Clases utilitarias de color mapeadas al sistema
+   de variables definido en :root.
+   ============================================ */
+
+
+
+/* ── Utilidades de color de texto ── */
+/* Permiten aplicar el sistema de colores sin inline styles */
+.text-primary   { color: var(--color-primary); }
+.text-muted     { color: var(--color-text-muted); }
+.text-success   { color: var(--color-success); }
+.text-danger    { color: var(--color-danger); }
+.text-warning   { color: var(--color-warning); }
+
+/* ── Utilidades de color de fondo ── */
+.bg-primary     { background-color: var(--color-primary); color: var(--color-bg-white); }
+.bg-white       { background-color: var(--color-bg-white); }
+.bg-slate-50    { background-color: var(--color-slate-50); }
+.bg-slate-100   { background-color: var(--color-slate-100); }
+.bg-success     { background-color: var(--color-success-bg); color: var(--color-success); }
+.bg-danger      { background-color: var(--color-danger-bg); color: var(--color-danger); }
+
+/* ── Badge de estado "En Ejecución" ── */
+/* Elemento en línea con fondo verde y punto indicador */
+.badge-status {
+  display:        inline-flex;
+  align-items:    center;
+  gap:            var(--space-1);
+  font-size:      var(--font-size-xs);
+  font-weight:    var(--font-weight-medium);
+  padding:        var(--space-1) var(--space-2);
+  border-radius:  var(--radius-full);
+  background:     var(--color-success-bg);
+  color:          var(--color-success);
+}
+
+/* ── Separador visual ── */
+.separator {
+  color:        var(--color-slate-300);
+  user-select:  none;
+}
+
+/* ── Indicador de ruta crítica ── */
+.ruta-critica {
+  color:       var(--color-danger);
+  font-weight: var(--font-weight-medium);
+}
+
+/* ============================================
+   5. LAYOUT BASE
+   El planificador ocupa 100% del viewport en
+   altura (h-screen) y organiza sus secciones
+   en una columna flex sin overflow externo.
+   Estructura: header → nav → main → footer
+   ============================================ */
+
+/* Raíz del layout: columna flex que llena la pantalla.
+   overflow:hidden en html+body evita doble scrollbar. */
+
+
+body {
+  font-family:      var(--font-family-base);
+  font-size:        var(--font-size-base);
+  font-weight:      var(--font-weight-normal);
+  line-height:      var(--line-height-base);
+  color:            var(--color-text);
+  background-color: var(--color-bg);
+  height:           100%;
+  overflow:         hidden;
+  display:          flex;
+  flex-direction:   column;
+  min-height:       100vh;
+}
+
+/* ── HEADER ──
+   Barra superior con información del proyecto y progreso.
+   shrink-0 impide que se comprima al flexionar el main. */
+header[role="banner"] {
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  gap:              var(--space-4);
+  padding:          0 var(--space-6);
+  height:           var(--header-height);
+  min-height:       var(--header-height);
+  flex-shrink:      0;                      /* no se reduce con flex */
+  background-color: var(--color-bg-white);
+  border-bottom:    1px solid var(--color-border);
+  box-shadow:       var(--shadow-sm);
+}
+
+/* Grupo izquierdo del header: logo + nombre + estado */
+header[role="banner"] > div:first-child {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+  overflow:    hidden; /* recorta texto si el viewport es angosto */
+}
+
+/* Logo del proyecto: elemento de bloque (reset de img ya lo hace block) */
+header[role="banner"] img {
+  flex-shrink: 0;
+  border-radius: var(--radius-sm);
+}
+
+/* Título h1 dentro del header: tamaño reducido acorde al mockup.
+   El h1 tiene tamaño page-level; en el header actúa como título de app. */
+header[role="banner"] h1 {
+  font-size:   var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  white-space: nowrap;
+  overflow:    hidden;
+  text-overflow: ellipsis;
+  color:       var(--color-slate-800);
+}
+
+/* Fila de estado del proyecto: badge + ID */
+header[role="banner"] h1 + div {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+  margin-top:  var(--space-1);
+  font-size:   var(--font-size-xs);
+  color:       var(--color-text-muted);
+}
+
+/* Grupo derecho del header: progreso + botones de acción */
+header[role="banner"] > div:last-child {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+  flex-shrink: 0;
+}
+
+/* Contenedor del bloque de progreso general */
+header[role="banner"] [aria-label="Progreso general"] {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-2);
+  font-size:   var(--font-size-sm);
+}
+
+/* Barra de progreso general en el header.
+   Bloque display para ocupar ancho completo de su contenedor. */
+header[role="banner"] [role="progressbar"] {
+  display:          block;
+  width:            120px;
+  height:           8px;
+  background:       var(--color-slate-200);
+  border-radius:    var(--radius-full);
+  overflow:         hidden;
+}
+
+/* Relleno interno de la barra de progreso.
+   Su ancho se controla mediante style="width: X%" en el HTML. */
+header[role="banner"] [role="progressbar"] > div {
+  height:           100%;
+  background:       var(--color-primary);
+  border-radius:    var(--radius-full);
+  transition:       width var(--transition-slow);
+}
+
+/* ── TOOLBAR / NAV ──
+   Barra de herramientas con acciones y controles de vista.
+   Fondo slate-50 del mockup, borde inferior, shrink-0. */
+nav[role="navigation"] {
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  gap:              var(--space-4);
+  padding:          0 var(--space-6);
+  height:           var(--toolbar-height);
+  min-height:       var(--toolbar-height);
+  flex-shrink:      0;
+  background-color: var(--color-slate-50);
+  border-bottom:    1px solid var(--color-border);
+}
+
+/* Grupos de botones dentro del toolbar: flex inline */
+nav[role="navigation"] > div {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-2);
+}
+
+/* Separador visual de pipe en el toolbar: elemento en línea */
+nav[role="navigation"] [role="separator"] {
+  display:      inline;
+  color:        var(--color-slate-300);
+  user-select:  none;
+  padding:      0 var(--space-1);
+}
+
+/* Grupo de escala de tiempo (Días/Semanas/Meses): botones contiguos */
+nav[role="navigation"] [role="group"] {
+  display:        flex;
+  border:         1px solid var(--color-border);
+  border-radius:  var(--radius-md);
+  overflow:       hidden;
+}
+
+/* ── MAIN ──
+   Área principal: ocupa todo el espacio restante del flex-col.
+   Se establece como columna flex interna para apilar
+   el formulario arriba y la tabla abajo. */
+main[role="main"] {
+  display:        flex;
+  flex-direction: column;
+  flex:           1;
+  overflow:       hidden; /* el scroll interno lo maneja el contenedor de la tabla */
+  min-height:     0;      /* necesario en Firefox para que flex-1 funcione correctamente */
+}
+
+/* ── SECCIÓN NUEVA TAREA ──
+   Formulario en la parte superior del main.
+   shrink-0 garantiza altura fija; overflow no deseado se recorta. */
+#nueva-tarea {
+  flex-shrink:      0;
+  background-color: var(--color-bg-white);
+  border-bottom:    1px solid var(--color-border);
+  padding:          var(--space-3) var(--space-6);
+}
+
+/* Título de la sección: tamaño moderado, no h2 full-page */
+#nueva-tarea h2 {
+  font-size:   var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color:       var(--color-slate-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: var(--space-2);
+}
+
+/* Formulario: fila horizontal con gap.
+   Los campos se disponen en línea (flex), contenidos en su sección. */
+#form-nueva-tarea {
+  display:     flex;
+  align-items: flex-end;
+  flex-wrap:   wrap;        /* colapsa en pantallas pequeñas */
+  gap:         var(--space-3);
+}
+
+/* Cada grupo label+input en el formulario */
+#form-nueva-tarea > div {
+  display:        flex;
+  flex-direction: column;
+  gap:            var(--space-1);
+}
+
+/* Inputs del formulario nueva tarea */
+#form-nueva-tarea input {
+  display:          block;       /* elemento de bloque para control total */
+  height:           20px;
+  padding:          0 var(--space-3);
+  font-size:        var(--font-size-sm);
+  color:            var(--color-text);
+  background:       var(--color-bg-white);
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-md);
+  outline:          none;
+  transition:       border-color var(--transition-fast),
+                    box-shadow var(--transition-fast);
+}
+
+#form-nueva-tarea input:focus {
+  border-color: var(--color-primary);
+  box-shadow:   0 0 0 3px var(--color-primary-light);
+}
+
+/* ── CONTENEDOR DE LA TABLA GANTT ──
+   Región con scroll completo (horizontal + vertical).
+   flex-1 absorbe el espacio restante del main. */
+#contenedor-gantt {
+  flex:       1;
+  overflow:   auto;           /* habilita ambos ejes de scroll */
+  min-height: 0;
+  position:   relative;       /* contexto para el marcador HOY (SVG overlay) */
+}
+
+/* ── TABLA GANTT ──
+   table-layout: fixed permite anchos explícitos por columna.
+   min-width fuerza el scroll horizontal cuando el viewport es angosto. */
+#tabla-gantt {
+  table-layout: fixed;
+  min-width:    max-content;  /* la tabla no se comprime debajo de su contenido */
+  width:         max-content;  /* la tabla no se comprime debajo de su contenido / width: max-content; / dimensión exacta del contenido (sin compresión ni expansión) */
+  border-collapse: collapse;
+  font-size:    var(--font-size-sm);
+
+}
+
+
+/* Cabecera de la tabla: sticky en el top para que permanezca visible al scrollar */
+#tabla-gantt thead {
+  position:         sticky;
+  top:              0;
+  z-index:          10;
+  background-color: var(--color-bg-white);
+}
+
+/* Celdas de encabezado: fondo slate-100, texto negrita, alineación central */
+#tabla-gantt th {
+  background-color: var(--color-slate-100);
+  font-weight:      var(--font-weight-semibold);
+  text-align:       center;
+  padding:          var(--space-2) var(--space-3);
+  border:           1px solid var(--color-border);
+  white-space:      nowrap;
+  color:            var(--color-slate-700);
+}
+
+/* Anchos fijos de columnas de datos (columns de izquierda) */
+#tabla-gantt th:nth-child(1),
+#tabla-gantt td:nth-child(1) { width: var(--col-id); }
+
+#tabla-gantt th:nth-child(2),
+#tabla-gantt td:nth-child(2) { width: var(--col-nombre); }
+
+#tabla-gantt th:nth-child(3),
+#tabla-gantt td:nth-child(3) { width: var(--col-duracion); }
+
+#tabla-gantt th:nth-child(4),
+#tabla-gantt td:nth-child(4),
+#tabla-gantt th:nth-child(5),
+#tabla-gantt td:nth-child(5) { width: var(--col-fecha); }
+
+#tabla-gantt th:nth-child(6),
+#tabla-gantt td:nth-child(6) { width: var(--col-predecesora); }
+
+#tabla-gantt th:nth-child(7),
+#tabla-gantt td:nth-child(7) { width: var(--col-responsable); }
+
+/* Columnas de semanas del Gantt: ancho fijo configurable via variable.
+   Se aplica a td del cuerpo (posición 8+ = zona Gantt) y a la fila
+   de semanas del thead (tr:nth-child(2)), que tiene exactamente 10 th
+   de una sola columna cada uno. Los th de meses (scope="colgroup")
+   NO se tocan aquí: su ancho lo determinan las columnas subyacentes. */
+#tabla-gantt td:nth-child(n+8) {
+  width:     var(--gantt-col-width);
+  min-width: var(--gantt-col-width);
+  max-width: var(--gantt-col-width);
+}
+
+/* Fila de semanas (S9–S18): todos sus th son de una sola columna.
+   Definir el ancho aquí fija cada columna del Gantt con table-layout:fixed. */
+#tabla-gantt thead tr:nth-child(2) th {
+  width:     var(--gantt-col-width);
+  min-width: var(--gantt-col-width);
+  max-width: var(--gantt-col-width);
+}
+
+/* ── Encabezados de mes (MARZO / ABRIL / MAYO) ──
+   th[scope="colgroup"] abarca N semanas con colspan.
+   max-width:none es explícito para evitar que reglas de th generales
+   limiten la celda cuando span > 1 columna (como MAYO con colspan=2). */
+#tabla-gantt thead th[scope="colgroup"] {
+  max-width:        none;
+  width:            auto;
+  background-color: var(--color-primary-light);
+  color:            var(--color-primary);
+  font-size:        var(--font-size-xs);
+  font-weight:      var(--font-weight-bold);
+  letter-spacing:   0.08em;
+  text-transform:   uppercase;
+  text-align:       center;
+  border-bottom:    2px solid var(--color-primary);
+}
+
+/* Borde izquierdo fuerte en el primer mes: línea divisoria datos / Gantt */
+#tabla-gantt thead th[scope="colgroup"]:first-of-type {
+  border-left: 2px solid var(--color-primary);
+}
+
+
+/* Celdas del cuerpo */
+#tabla-gantt td {
+  padding:          var(--space-2) var(--space-3);
+  border:           1px solid var(--color-border);
+  vertical-align:   middle;
+  white-space:      nowrap;
+}
+
+/* Filas normales de tarea: hover sutil para orientación visual */
+#tabla-gantt tbody tr:hover td {
+  background-color: var(--color-primary-light);
+  transition:       background-color var(--transition-fast);
+}
+
+/* Filas de grupo (PLANIFICACIÓN, DISEÑO, etc.):
+   fondo oscuro, texto bold, sin efecto hover para distinguirlas */
+#tabla-gantt tbody tr[aria-label*="Grupo"] td {
+  background-color: var(--color-primary-light);
+  color: var(--color-slate-800);
+  font-weight: var(--font-weight-semibold);
+}
+
+#tabla-gantt tbody tr[aria-label*="Grupo"]:hover td {
+  background-color: #d6e9ff; /* anula el hover de filas normales */
+}
+
+/* Hover en filas normales */
+#tabla-gantt tbody tr:hover td {
+  background-color: var(--color-primary-light);
+}
+
+/* Barras del diagrama de Gantt: ver .gantt-bar / .gantt-bar__fill en components.css */
+
+
+/* ── FOOTER / STATUS BAR ──
+   Barra de estado en la parte inferior.
+   Fondo slate-50 del mockup, borde superior, shrink-0. */
+footer[role="contentinfo"] {
+  display:          flex;
+  align-items:      center;
+  justify-content:  space-between;
+  gap:              var(--space-4);
+  padding:          0 var(--space-6);
+  height:           var(--footer-height);
+  min-height:       var(--footer-height);
+  flex-shrink:      0;
+  background-color: var(--color-slate-50);
+  border-top:       1px solid var(--color-border);
+  font-size:        var(--font-size-xs);
+  color:            var(--color-text-muted);
+}
+
+/* Grupos dentro del footer: flex inline */
+footer[role="contentinfo"] > div {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-4);
+}
+
+/* Leyenda del footer: lista horizontal */
+footer[role="contentinfo"] ul {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-3);
+}
+
+footer[role="contentinfo"] li {
+  display:     flex;
+  align-items: center;
+  gap:         var(--space-1);
+}
+
+/* Indicador de ruta crítica en el footer */
+footer[role="contentinfo"] [aria-label="Ruta crítica activa"] {
+  color:       var(--color-danger);
+  font-weight: var(--font-weight-medium);
+}
