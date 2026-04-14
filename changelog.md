@@ -38,7 +38,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Changed
 
-- [feature/doc-qa-tester-add-test-case-1] Documentación completa del proceso QA de la Actividad Obligatoria 2: ejecución de Momento 1 y Momento 2.
+- [feature/doc-qa-tester-add-test-case-1] Documentación completa del proceso QA de la Actividad Obligatoria 2: ejecución de Momento 1 y Momento 2.  
   PR: [#35](https://github.com/martindebenedetti/Planix/pull/35) - @leanlex (QA Tester / Documentador) - Issue: #34
 
 - [feature/ia-prompts-descripciones] Documentación de prompts utilizados y comparativa de modelos de IA.
