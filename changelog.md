@@ -8,6 +8,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/doc-qa-tester-add-test-case-1] Documentación completa del proceso QA de la Actividad Obligatoria 2: ejecución de Momento 1 y Momento 2.  
+  PR: [#35](https://github.com/martindebenedetti/Planix/pull/35) - @leanlex (QA Tester / Documentador) - Issue: #34
+
 - [feature/responsive-design-add-responsive-styles] Creación del archivo spec.responsive.md y en base a este archivo se creo el archivo css/responsive.css. PR: [#33](https://github.com/martindebenedetti/Planix/pull/33) - @martindebenedetti (Especialista en Responsive Design) -Issue: #29
 
 - [feature/coord-devops-update-spec] Se agrega la especificación técnica del rol DevOps para la Actividad Obligatoria 2.  
@@ -37,9 +40,6 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#1](https://github.com/martindebenedetti/Planix/pull/1) - @giann98 (Especialista en IA)
 
 ### Changed
-
-- [feature/doc-qa-tester-add-test-case-1] Documentación completa del proceso QA de la Actividad Obligatoria 2: ejecución de Momento 1 y Momento 2.  
-  PR: [#35](https://github.com/martindebenedetti/Planix/pull/35) - @leanlex (QA Tester / Documentador) - Issue: #34
 
 - [feature/ia-prompts-descripciones] Documentación de prompts utilizados y comparativa de modelos de IA.
   PR: [#12](https://github.com/martindebenedetti/Planix/pull/12) - @giann98 (Especialista en IA) - Issue: #7
