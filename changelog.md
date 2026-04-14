@@ -6,6 +6,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ## [Unreleased]
 
+---
+## [Release Actividad Obligatoria N°2] - 2026-04-13
+
 ### Added
 
 - [feature/doc-qa-tester-add-test-case-1] Documentación completa del proceso QA de la Actividad Obligatoria 2: ejecución de Momento 1 y Momento 2.  
