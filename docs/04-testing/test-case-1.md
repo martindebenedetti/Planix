@@ -5,7 +5,7 @@
 |-------|-------|
 | Responsable | Leandro Berro |
 | Fecha Momento 1 | 05/04/2026 |
-| Fecha Momento 2 | Pendiente |
+| Fecha Momento 2 | 13/04/2026 |
 | Rama Momento 1 | `feature/dev-frontend-css-add-styles` |
 | Rama Momento 2 | `develop` |
 | URL testeada | `http://127.0.0.1:3000/index.html` |
@@ -106,42 +106,44 @@ La página se visualiza correctamente en términos generales en los cuatro viewp
 
 ### Viewports testeados
 
-| Viewport | Navegador simulado | Navegación | Layout general |  Tabla / Gantt | Footer | Estado | 
+| Viewport | Navegador simulado | Navegación | Layout general | Tabla / Gantt | Footer | Estado | 
 |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| 1920×1080 | Chrome | Pendiente | Pendiente | Pendiente |	Pendiente | Pendiente |
-| 1440×900 | Firefox | Pendiente | Pendiente | Pendiente	| Pendiente| Pendiente |
-| 1280×800 | Safari/macOS | Pendiente | Pendiente | 	Pendiente | Pendiente | Pendiente |
-| 1280×800 | Edge | Pendiente | Pendiente | Pendiente | 	Pendiente | Pendiente |
+| 1920×1080 | OK | OK | OK | OK | OK |
+| 1440×900 | OK | OK | OK | OK | OK |
+| 1280×800 | OK | OK | OK | OK | OK |
 
 ### Capturas de pantalla
 
 | Viewport | Captura | Estado |
 |:---:|:---:|:---:|
-| 1920×1080 | ![](capturas/tc-1/momento-2/Chrome_1920x1080.png) | Pendiente |
-| 1440×900 | ![](capturas/tc-1/momento-2/Firefox_1440x900.png) | Pendiente |
-| 1280×800 Safari/macOS | ![](capturas/tc-1/momento-2/Safari_1280x800.png) | Pendiente |
-| 1280×800 Edge | ![](capturas/tc-1/momento-2/Edge_1280x800.png) | Pendiente |
+| 1920×1080 | ![](capturas/tc-1/momento-2/tc1-momento2-1920x1080.png) | OK |
+| 1440×900 | ![](capturas/tc-1/momento-2/tc1-momento2-1440x900.png) | OK |
+| 1280×800 | ![](capturas/tc-1/momento-2/tc1-momento2-1280x800.png) | OK |
 
 ### Hallazgos
 | # | Elemento | Viewport afectado | Descripción | Severidad |
 |:---:|:---:|:---:|:---:|:---:|
-| - | - | - | Pendiente de ejecución en develop. | - |
+| - | - | - | No se detectaron hallazgos relevantes. El issue #28 quedó resuelto en la integración final. | - |
 
 ### Resultado Momento 2
 
-- [ ] ✅ PASS — Sin hallazgos
+- [x] ✅ PASS — Sin hallazgos
 - [ ] ⚠️ FAIL CON OBSERVACIONES
 - [ ] ❌ FAIL
+
+### Resumen Momento 2
+
+En los tres viewports desktop evaluados no se detectaron desbordes horizontales, textos cortados, problemas de navegación, layout ni footer. Se verificó que el issue #28 quedó resuelto y que la tabla Gantt se adapta correctamente en la integración final.
 
 
 ### Issues creados
 
 | Issue | Momento | Elemento | Severidad | Estado |
 |:---:|:---:|:---:|:---:|:---:|
-| [#28](https://github.com/martindebenedetti/Planix/issues/28) | Momento 1 | Tabla Gantt | Media | Cerrado |
+| [#28](https://github.com/martindebenedetti/Planix/issues/28) | Momento 1 | Tabla Gantt | Media | Cerrado y verificado como resuelto en Momento 2 |
 
 ### Conclusión general
 
-**Resultado final:** FAIL CON OBSERVACIONES
+**Resultado final:** PASS — Sin hallazgos
 
-Durante el Momento 1 sobre la rama feature/dev-frontend-css-add-styles, la compatibilidad visual desktop fue satisfactoria en términos generales. El único hallazgo relevante detectado fue el desborde horizontal de la tabla Gantt en todos los viewports evaluados. Por el momento se documenta como observación en análisis, ya que puede estar asociado a la naturaleza ancha del componente Gantt y deberá confirmarse nuevamente en el Momento 2 sobre develop.
+Durante el Momento 1 se detectó un desborde horizontal de la tabla Gantt, documentado en el issue [#28](https://github.com/martindebenedetti/Planix/issues/28). En el Momento 2, ya con todas las features integradas en `develop`, se verificó que dicho hallazgo quedó resuelto y que la compatibilidad visual desktop es correcta en los viewports evaluados.

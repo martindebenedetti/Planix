@@ -5,7 +5,7 @@
 |-------|-------|
 | Responsable | Leandro Berro |
 | Fecha Momento 1 | 05/04/2026 |
-| Fecha Momento 2 | Pendiente |
+| Fecha Momento 2 | 13/04/2026 |
 | Rama Momento 1 | `feature/dev-frontend-css-add-styles` |
 | Rama Momento 2 | `develop` |
 | URL testeada | `http://127.0.0.1:3000/index.html` |
@@ -99,47 +99,52 @@ La revisión de accesibilidad realizada sobre la rama `feature/dev-frontend-css-
 ### Resultado del análisis
 | Campo | Valor |
 |---|---|
-| URL analizada | Pendiente |
-| Título de la página | Pendiente |
-| Violaciones encontradas | Pendiente |
+| URL analizada | `http://127.0.0.1:3000/index.html` |
+| Título de la página | `Planificador de Tareas - Diagrama de Gantt` |
+| Violaciones encontradas | 0 |
 
 ### Impacto por nivel
 | Nivel | Resultado |
 |---|---|
-| critical | Pendiente |
-| serious | Pendiente |
-| moderate | Pendiente |
-| minor | Pendiente |
+| critical | 0 |
+| serious | 0 |
+| moderate | 0 |
+| minor | 0 |
 
 ### Elementos afectados
-Pendiente.
+No aplica.
 
 ### Reglas axe afectadas
-Pendiente.
+No aplica.
 
 ### Capturas de pantalla
 | Evidencia | Captura | Estado |
 |---|---|---|
-| Resultado del análisis de accesibilidad | `capturas/tc-4/momento-2/` | Pendiente |
-| Vista general de la página durante la prueba | `capturas/tc-4/momento-2/` | Pendiente |
+| Resultado del análisis de accesibilidad | ![](capturas/tc-4/momento-2/tc4-momento2-resultado-performance.png) | OK |
 
 ### Hallazgos
 | # | Regla axe | Elemento afectado | Descripción | Impacto |
 |---|---|---|---|---|
-| - | - | - | Pendiente de ejecución en `develop`. | - |
+| - | - | - | No se detectaron violaciones WCAG 2.1. | - |
 
 ### Resultado Momento 2
-- [ ] ✅ PASS — Sin hallazgos
+- [x] ✅ PASS — Sin hallazgos
 - [ ] ⚠️ FAIL CON OBSERVACIONES
 - [ ] ❌ FAIL
+
+### Resumen Momento 2
+La auditoría de accesibilidad sobre la integración final no detectó violaciones WCAG 2.1.
+
+---
 
 ### Issues creados
 | Issue | Momento | Elemento | Severidad | Estado |
 |---|---|---|---|---|
 | No se generaron issues | Momento 1 | Accesibilidad | - | Sin hallazgos relevantes |
+| No se generaron issues | Momento 2 | Accesibilidad | - | Sin hallazgos relevantes |
 
 ## Conclusión general
 
 **Resultado final:** PASS — Sin hallazgos
 
-Durante el Momento 1 sobre la rama `feature/dev-frontend-css-add-styles`, no se detectaron violaciones de accesibilidad WCAG 2.1 mediante la revisión realizada con Playwright MCP y axe-core. El caso deberá repetirse en el Momento 2 sobre `develop` para confirmar el comportamiento tras la integración completa.
+Durante el Momento 1 y el Momento 2 no se detectaron violaciones de accesibilidad WCAG 2.1 mediante la revisión realizada con Playwright MCP y axe-core.

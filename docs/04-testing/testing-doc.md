@@ -20,7 +20,7 @@ Este documento centraliza los resultados de testing ejecutados en dos momentos:
 ## Resumen de issues — Momento 2
 | Issue | Título | Tipo de hallazgo | Responsable | Estado |
 |---|---|---|---|---|
-| Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
+| No se generaron issues | Sin hallazgos relevantes en integración final | QA post-merge | QA | Cerrado |
 
 ## Observaciones
 En el **Momento 1** se ejecutaron los siguientes test cases:
@@ -46,4 +46,26 @@ En el **Momento 1** se ejecutaron los siguientes test cases:
   Resultado: **PASS — Sin hallazgos**  
   La estructura HTML semántica y la carga de los archivos CSS relevantes para la rama evaluada fueron correctas.
 
-Queda pendiente la ejecución completa del **Momento 2** sobre `develop`.
+En el **Momento 2**, ya con todas las features integradas en `develop`, se obtuvieron los siguientes resultados:
+
+- **TC1** — Compatibilidad visual en navegadores desktop  
+  Resultado: **PASS — Sin hallazgos**  
+  Se verificó que el issue [#28](https://github.com/martindebenedetti/Planix/issues/28) quedó resuelto en la integración final.
+
+- **TC2** — Responsive en dispositivos móviles y tablet  
+  Resultado: **PASS — Sin hallazgos**  
+  El diseño responsive se comportó correctamente en iPhone 14 Pro, Samsung Galaxy S23 e iPad Air.
+
+- **TC3** — Performance y carga  
+  Resultado: **PASS — Sin hallazgos**  
+  No se detectaron problemas significativos de carga; `responsive.css` se cargó correctamente.
+
+- **TC4** — Accesibilidad web  
+  Resultado: **PASS — Sin hallazgos**  
+  No se detectaron violaciones WCAG 2.1 en la integración final.
+
+- **TC5** — Validación de estructura HTML semántica y CSS  
+  Resultado: **PASS — Sin hallazgos**  
+  La jerarquía de headings, los landmarks semánticos, los labels y la carga de estilos fueron correctos.
+
+No se detectaron nuevos bugs en Momento 2.

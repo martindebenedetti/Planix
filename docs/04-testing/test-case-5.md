@@ -5,7 +5,7 @@
 |-------|-------|
 | Responsable | Leandro Berro |
 | Fecha Momento 1 | 05/04/2026 |
-| Fecha Momento 2 | Pendiente |
+| Fecha Momento 2 | 13/04/2026 |
 | Rama Momento 1 | `feature/dev-frontend-css-add-styles` |
 | Rama Momento 2 | `develop` |
 | URL testeada | `http://127.0.0.1:3000/index.html` |
@@ -94,7 +94,7 @@ Todas las etiquetas están correctamente asociadas a sus campos:
 ### Capturas de pantalla
 | Evidencia | Captura | Estado |
 |---|---|---|
-| Resultado del análisis estructural | ![](capturas/tc-5/momento-1/tc5-momento1-estructura-1.png) ![](capturas/tc-5/momento-1/tc5-momento1-estructura-1.png)  | ok |
+| Resultado del análisis estructural | ![](capturas/tc-5/momento-1/tc5-momento1-estructura-1.png) | OK |
 
 ### Hallazgos
 | # | Elemento | Descripción | Severidad |
@@ -116,47 +116,68 @@ La estructura HTML semántica de la página es correcta y consistente con buenas
 
 ---
 
+
 ## MOMENTO 2 — Post-merge (`develop`)
 
 ### Estructura semántica
-Pendiente de ejecución en `develop`.
+
+#### Jerarquía de headings
+- H1: `Planificador de Tareas - Diagrama de Gantt`
+- H2: `¿Qué es este planificador?`
+- H2: `Nueva tarea`
+
+#### Landmarks semánticos detectados
+- `banner`: correcto
+- `main`: correcto
+- `navigation`: correcto
+- `region`: correcto
+- `contentinfo`: correcto
+- `progressbar` / `group`: sin problemas aparentes
 
 ### Labels de formulario
-Pendiente.
+Todas las etiquetas están correctamente asociadas a sus campos:
+- `Nombre` → `nombre-tarea`
+- `Responsable` → `responsable`
+- `Fecha inicio` → `fecha-inicio`
+- `Fecha fin` → `fecha-fin`
+- `Predecesora` → `predecesora`
+- `% Avance` → `avance`
 
 ### Estado de archivos CSS
 | Archivo | Estado |
 |---|---|
-| `css/styles.css` | Pendiente |
-| `css/components.css` | Pendiente |
-| `css/responsive.css` | Pendiente |
+| `css/styles.css` | Cargado correctamente |
+| `css/components.css` | Cargado correctamente |
+| `css/responsive.css` | Cargado correctamente |
 
 ### Observaciones
-Pendiente.
+No se detectaron problemas estructurales ni semánticos en la integración final.
 
 ### Capturas de pantalla
 | Evidencia | Captura | Estado |
 |---|---|---|
-| Resultado del análisis estructural | `capturas/tc-5/momento-2/` | Pendiente |
-| Vista general de la página y formulario | `capturas/tc-5/momento-2/` | Pendiente |
+| Resultado del análisis estructural | ![](capturas/tc-5/momento-2/tc5-momento2-resultado-performance.png) | OK |
 
 ### Hallazgos
 | # | Elemento | Descripción | Severidad |
 |---|---|---|---|
-| - | - | Pendiente de ejecución en `develop`. | - |
+| - | - | No se detectaron problemas estructurales o semánticos relevantes. | - |
 
 ### Resultado Momento 2
-- [ ] ✅ PASS — Sin hallazgos
+- [x] ✅ PASS — Sin hallazgos
 - [ ] ⚠️ FAIL CON OBSERVACIONES
 - [ ] ❌ FAIL
+
+---
 
 ### Issues creados
 | Issue | Momento | Elemento | Severidad | Estado |
 |---|---|---|---|---|
 | No se generaron issues | Momento 1 | Estructura HTML semántica y CSS | - | Sin hallazgos relevantes |
+| No se generaron issues | Momento 2 | Estructura HTML semántica y CSS | - | Sin hallazgos relevantes |
 
 ## Conclusión general
 
 **Resultado final:** PASS — Sin hallazgos
 
-Durante el Momento 1 sobre la rama `feature/dev-frontend-css-add-styles`, la estructura HTML semántica y la carga de los archivos CSS relevantes para esta rama fueron correctas. No se detectaron problemas estructurales relevantes ni asociaciones incorrectas en el formulario. El caso deberá repetirse en el Momento 2 sobre `develop` para validar la integración final.
+Durante el Momento 1 y el Momento 2, la estructura HTML semántica y la carga de los archivos CSS relevantes fueron correctas. No se detectaron problemas estructurales relevantes ni asociaciones incorrectas en el formulario en la integración final.

@@ -103,7 +103,7 @@ GitHub MCP permite registrar formalmente los hallazgos como issues de tipo bug, 
 ## Criterios de aceptación
 - [x] Se ejecutaron 5 test cases con Playwright MCP contra `http://127.0.0.1:3000/index.html`
 - [x] Se realizó testing en Momento 1 sobre ramas `feature/`
-- [ ] Se realizó testing en Momento 2 sobre la rama `develop`
+- [x] Se realizó testing en Momento 2 sobre la rama `develop`
 - [x] Se creó al menos un issue bug por cada hallazgo relevante
 - [x] Todos los test cases incluyen capturas de pantalla
 - [x] Se completó `testing-doc.md` con índice y resumen de issues
@@ -160,16 +160,32 @@ Durante el Momento 1 se obtuvieron los siguientes resultados:
 - **TC2**: PASS — Sin hallazgos  
   No se detectaron problemas de overflow horizontal, texto cortado, superposición de elementos ni fallas de adaptación en menú, botones o formulario.
 
+### Resultados de Momento 2
+
+Durante el Momento 2 sobre la rama `develop` se obtuvieron los siguientes resultados:
+
+- **TC1**: PASS — Sin hallazgos  
+  Se verificó que el issue [#28](https://github.com/martindebenedetti/Planix/issues/28) quedó resuelto en la integración final.
+- **TC2**: PASS — Sin hallazgos  
+  El diseño responsive se comportó correctamente en los dispositivos evaluados.
+- **TC3**: PASS — Sin hallazgos  
+  No se detectaron problemas significativos de performance o carga en la integración final.
+- **TC4**: PASS — Sin hallazgos  
+  No se detectaron violaciones WCAG 2.1 en la integración final.
+- **TC5**: PASS — Sin hallazgos  
+  La estructura HTML semántica, los landmarks, los labels y la carga de estilos fueron correctos en la integración final.
+
 ### Cantidad de tests ejecutados
 
-- Test cases ejecutados hasta el momento: **5**
-- Momento ejecutado hasta el momento: **Momento 1 completo**
-- Test cases pendientes: **Momento 2** completo sobre `develop`
+- Test cases ejecutados en total: **10**
+- Momento 1 ejecutado: **completo**
+- Momento 2 ejecutado: **completo**
+- Test cases pendientes: **ninguno**
 
 ### Cantidad de bugs creados
 
-- Bugs creados hasta el momento: **1**
-- Issue generado: [#28](https://github.com/martindebenedetti/Planix/issues/28)
+- Bugs creados en total: **1**
+- Issue registrado: [#28](https://github.com/martindebenedetti/Planix/issues/28) — Cerrado y verificado como resuelto en Momento 2
 
 ### Decisiones sobre hallazgos registrados como bugs
 
@@ -179,6 +195,8 @@ No se registró bug en **TC2** porque no se detectaron hallazgos relevantes de r
 
 No se registraron bugs en **TC3**, **TC4** ni **TC5** porque no se detectaron problemas relevantes de performance, accesibilidad o estructura semántica atribuibles a la rama evaluada.
 
+En el Momento 2 no se registraron nuevos bugs, ya que no se detectaron hallazgos relevantes en la integración final y se verificó la resolución del issue #28.
+
 ### Observación de avance
 
-El **Momento 1** quedó completo. Queda pendiente la repetición de los 5 test cases en el **Momento 2** sobre la rama `develop`, una vez integradas todas las features.
+El **Momento 1** y el **Momento 2** quedaron completos. En la integración final sobre `develop` no se detectaron nuevos bugs y se verificó que el issue [#28](https://github.com/martindebenedetti/Planix/issues/28) quedó resuelto.
