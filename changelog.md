@@ -55,6 +55,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/qa-add-mcp-config] Se agregaron Playwright MCP y GitHub MCP en `.vscode/mcp.json`.  
+  PR: [#39](https://github.com/martindebenedetti/Planix/pull/39) - @leanlex - Issue: #37
+
 - [fix/include-prompts-in-release] Se incorporan los archivos de prompts y comparativa de modelos de IA en la rama release/actividad-obligatoria-1.
   PR: [#15](https://github.com/martindebenedetti/Planix/pull/15) - @giann98 (Coordinador / DevOps)
 
