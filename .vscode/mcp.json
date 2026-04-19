@@ -3,6 +3,14 @@
     "Figma Dev Mode MCP": {
       "url": "https://mcp.figma.com/mcp",
       "type": "http"
+    },
+    "playwright": {
+      "command": "npx",
+      "args": ["-y", "@microsoft/mcp-server-playwright"]
+    },
+    "github": {
+      "url": "https://api.githubcopilot.com/mcp/",
+      "type": "http"
     }
   },
   "inputs": []
