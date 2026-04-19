@@ -55,6 +55,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/devops-complete-spec-evidence] Se completó `spec-devops.md` con evidencia, decisiones sobre el mockup y checklist final.  
+  PR: [#41](https://github.com/martindebenedetti/Planix/pull/41) - @leanlex- Issue: #38
+
 - [fix/qa-add-mcp-config] Se agregaron Playwright MCP y GitHub MCP en `.vscode/mcp.json`.  
   PR: [#39](https://github.com/martindebenedetti/Planix/pull/39) - @leanlex - Issue: #37
 
