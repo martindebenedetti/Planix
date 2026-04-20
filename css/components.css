@@ -748,6 +748,26 @@ a.btn--disabled {
   color:      var(--color-slate-600);
 }
 
+.gantt-week-header {
+  display:         flex;
+  flex-direction:  column;
+  align-items:     center;
+  justify-content: center;
+  gap:             var(--space-1);
+}
+
+.gantt-week-label {
+  line-height: 1;
+}
+
+.badge--today {
+  padding:        1px var(--space-2);
+  font-size:      var(--font-size-xs);
+  font-weight:    var(--font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
 /* ── Barra de progreso componente ──
    Versión portable de la barra de progreso del header.
    Contenedor de bloque + relleno interno absoluto. */
