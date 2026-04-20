@@ -56,7 +56,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Fixed
 
 - [fix/rc6-group-row-color-duplicate-rule] Se diferenció el color de las filas de grupo respecto del hover y se eliminó una regla duplicada en `css/styles.css`.  
-  PR: pendiente - @leanlex
+  PR: [#47](https://github.com/martindebenedetti/Planix/pull/47) - @leanlex
 
 - [fix/rc5-toolbar-btn-inactive-border] Se agregó borde visible al estado inactivo de `.toolbar-btn` para mejorar la consistencia con el mockup.  
   PR: [#46](https://github.com/martindebenedetti/Planix/pull/46) - @leanlex
