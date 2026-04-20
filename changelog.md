@@ -55,6 +55,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/rc4-gantt-padding-mockup] Se ajustó el padding del área Gantt para alinearlo con el mockup de la Actividad Obligatoria N°2.  
+  PR: [#XX](LINK) - @leanlex
+
 - [fix/devops-complete-spec-evidence] Se completó `spec-devops.md` con evidencia, decisiones sobre el mockup y checklist final.  
   PR: [#41](https://github.com/martindebenedetti/Planix/pull/41) - @leanlex- Issue: #38
 
