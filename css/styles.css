@@ -532,6 +532,65 @@ main[role="main"] {
   flex:           1;
   overflow:       hidden; /* el scroll interno lo maneja el contenedor de la tabla */
   min-height:     0;      /* necesario en Firefox para que flex-1 funcione correctamente */
+  position:       relative;
+}
+
+main[role="main"] > :not(.main-sidebar) {
+  margin-left: 56px;
+}
+
+.main-sidebar {
+  position:         absolute;
+  top:              0;
+  left:             0;
+  bottom:           0;
+  width:            56px;
+  display:          flex;
+  flex-direction:   column;
+  align-items:      center;
+  gap:              var(--space-2);
+  padding:          var(--space-4) var(--space-2);
+  background-color: var(--color-bg-white);
+  border-right:     1px solid var(--color-border);
+  z-index:          5;
+}
+
+.sidebar-icon-btn {
+  display:          inline-flex;
+  align-items:      center;
+  justify-content:  center;
+  width:            36px;
+  height:           36px;
+  border:           1px solid var(--color-border);
+  border-radius:    var(--radius-md);
+  background-color: var(--color-bg-white);
+  color:            var(--color-slate-600);
+  transition:       background-color var(--transition-fast),
+                    color var(--transition-fast),
+                    border-color var(--transition-fast),
+                    box-shadow var(--transition-fast);
+}
+
+.sidebar-icon-btn:hover {
+  background-color: var(--color-slate-100);
+  color:            var(--color-slate-800);
+  border-color:     var(--color-slate-300);
+}
+
+.sidebar-icon-btn:focus-visible {
+  outline:        2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.sidebar-icon-btn--active {
+  background-color: var(--color-primary);
+  border-color:     var(--color-primary);
+  color:            var(--color-bg-white);
+}
+
+.sidebar-icon-btn--active:hover {
+  background-color: var(--color-primary-dark);
+  border-color:     var(--color-primary-dark);
 }
 
 /* ── SECCIÓN NUEVA TAREA ──
