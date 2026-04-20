@@ -22,7 +22,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/dev-frontend-css-add-styles] Creación del archivo spec.frontend.md y en base a este archivo se crearon los archivos css/styles.css y css/components.css. PR: [#27](https://github.com/martindebenedetti/Planix/pull/27) - @martindebenedetti (Desarrollador Frontend) - Issue: #21
 
 - [feature/mockup-actividad-2] Mockup actualizado con estilos visuales y actualización de README y plan.md  
-  PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps)
+  PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps) - Issue: #42
 
 ---
 
