@@ -55,8 +55,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/rc7-changelog-pr-number] Se corrigió la referencia de la PR en `changelog.md` para el fix RC7.  
+  PR: [#49](https://github.com/martindebenedetti/Planix/pull/49) - @leanlex
+
 - [fix/rc7-badge-hoy-s16] Se agregó el badge "HOY" en la columna S16 del encabezado del Gantt.  
-  PR: pendiente - @leanlex
+  PR: [#48](https://github.com/martindebenedetti/Planix/pull/48) - @leanlex
 
 - [fix/rc6-group-row-color-duplicate-rule] Se diferenció el color de las filas de grupo respecto del hover y se eliminó una regla duplicada en `css/styles.css`.  
   PR: [#47](https://github.com/martindebenedetti/Planix/pull/47) - @leanlex
