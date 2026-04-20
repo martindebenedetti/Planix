@@ -713,20 +713,15 @@ main[role="main"] {
 }
 
 /* Filas de grupo (PLANIFICACIÓN, DISEÑO, etc.):
-   fondo oscuro, texto bold, sin efecto hover para distinguirlas */
+   fondo diferenciado, texto bold y hover neutro para distinguirlas */
 #tabla-gantt tbody tr[aria-label*="Grupo"] td {
-  background-color: var(--color-primary-light);
-  color: var(--color-slate-800);
-  font-weight: var(--font-weight-semibold);
+  background-color: var(--color-slate-100);
+  color:            var(--color-slate-800);
+  font-weight:      var(--font-weight-semibold);
 }
 
 #tabla-gantt tbody tr[aria-label*="Grupo"]:hover td {
-  background-color: #d6e9ff; /* anula el hover de filas normales */
-}
-
-/* Hover en filas normales */
-#tabla-gantt tbody tr:hover td {
-  background-color: var(--color-primary-light);
+  background-color: var(--color-slate-100);
 }
 
 /* Barras del diagrama de Gantt: ver .gantt-bar / .gantt-bar__fill en components.css */
