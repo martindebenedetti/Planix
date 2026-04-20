@@ -55,6 +55,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/remove-unused-gitkeep-files] Se eliminaron archivos `.gitkeep` innecesarios en carpetas de capturas que ya contienen archivos reales.  
+  PR: pendiente - @leanlex
+
 - [fix/rc8-sidebar-icons] Se agregó una sidebar iconográfica en la estructura principal del planificador y sus estilos asociados en `css/styles.css`.  
   PR: [#50](https://github.com/martindebenedetti/Planix/pull/50) - @leanlex
 
