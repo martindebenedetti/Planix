@@ -56,7 +56,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Fixed
 
 - [fix/rc5-toolbar-btn-inactive-border] Se agregó borde visible al estado inactivo de `.toolbar-btn` para mejorar la consistencia con el mockup.  
-  PR: [#45](https://github.com/martindebenedetti/Planix/pull/45) - @leanlex
+  PR: [#46](https://github.com/martindebenedetti/Planix/pull/46) - @leanlex
 
 - [fix/rc4-gantt-padding-mockup] Se ajustó el padding del área Gantt para alinearlo con el mockup de la Actividad Obligatoria N°2.  
   PR: [#44](https://github.com/martindebenedetti/Planix/pull/44) - @leanlex
