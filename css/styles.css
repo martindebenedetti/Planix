@@ -659,17 +659,19 @@ main[role="main"] {
    de una sola columna cada uno. Los th de meses (scope="colgroup")
    NO se tocan aquí: su ancho lo determinan las columnas subyacentes. */
 #tabla-gantt td:nth-child(n+8) {
-  width:     var(--gantt-col-width);
-  min-width: var(--gantt-col-width);
-  max-width: var(--gantt-col-width);
+  width:      var(--gantt-col-width);
+  min-width:  var(--gantt-col-width);
+  max-width:  var(--gantt-col-width);
+  padding:    var(--space-3) var(--space-4);
 }
 
 /* Fila de semanas (S9–S18): todos sus th son de una sola columna.
    Definir el ancho aquí fija cada columna del Gantt con table-layout:fixed. */
 #tabla-gantt thead tr:nth-child(2) th {
-  width:     var(--gantt-col-width);
-  min-width: var(--gantt-col-width);
-  max-width: var(--gantt-col-width);
+  width:      var(--gantt-col-width);
+  min-width:  var(--gantt-col-width);
+  max-width:  var(--gantt-col-width);
+  padding:    var(--space-3) var(--space-4);
 }
 
 /* ── Encabezados de mes (MARZO / ABRIL / MAYO) ──
@@ -686,6 +688,7 @@ main[role="main"] {
   letter-spacing:   0.08em;
   text-transform:   uppercase;
   text-align:       center;
+  padding:          var(--space-3) var(--space-4);
   border-bottom:    2px solid var(--color-primary);
 }
 
