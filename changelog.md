@@ -10,7 +10,12 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 - [feature/dev-frontend-bootstrap-migration] Documentación completa y creación de archivos correspondientes al rol de Desarrollador Frontend/Bootstrap
 PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #56  
+
+- [fix/sidebar-responsive] Corrección del sidebar en mobile.  
+  PR: [#59](https://github.com/martindebenedetti/Planix/pull/59) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #55
+  
 ---
+
 ## [Release Actividad Obligatoria N°2] - 2026-04-13
 
 ### Added
@@ -27,35 +32,6 @@ PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desar
 
 - [feature/mockup-actividad-2] Mockup actualizado con estilos visuales y actualización de README y plan.md  
   PR: [#26](https://github.com/martindebenedetti/Planix/pull/26) - @giann98 (Coordinador / DevOps) - Issue: #42
-
----
-
-## [Release Actividad Obligatoria N°1] - 2026-03-26
-
-### Added
-
-- [feature/frontend-add-html-structure] Estructura HTML5 inicial del planificador de Gantt.  
-  PR: [#11](https://github.com/martindebenedetti/Planix/pull/11) - @leanlex (Desarrollador Frontend) - Issue: #10
-
-- [feature/doc-ux-add-readme-and-mockup] Agrega `README.md` y `spec-ux.md`.  
-  PR: [#6](https://github.com/martindebenedetti/Planix/pull/6) - @leanlex (Documentador / Diseñador UX) - Issue: #5
-
-- [feature/ia-prompts-engineering] Crear archivo template pull_request_template.md.  
-  PR: [#2](https://github.com/martindebenedetti/Planix/pull/2) - @giann98 (Especialista en IA)
-
-- [feature/ia-prompts-engineering] IA prompt engineering estructuración carpetas.  
-  PR: [#1](https://github.com/martindebenedetti/Planix/pull/1) - @giann98 (Especialista en IA)
-
-### Changed
-
-- [feature/ia-prompts-descripciones] Documentación de prompts utilizados y comparativa de modelos de IA.
-  PR: [#12](https://github.com/martindebenedetti/Planix/pull/12) - @giann98 (Especialista en IA) - Issue: #7
-
-- [feature/ia-prompt-documentación] Agregar información en archivo sdd-decisions, spec-ia y spec-rol
-  PR: [#9](https://github.com/martindebenedetti/Planix/pull/9) - @giann98 (Especialista en IA) - Issue: #8
-
-- [feature/coordinador-setup-repo-and-pages] Correccion del changelog.md.  
-  PR: [#4](https://github.com/martindebenedetti/Planix/pull/4) - @martindebenedetti (Coordinador / DevOps) - Issue: #3
 
 ### Fixed
 
@@ -88,6 +64,37 @@ PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desar
 
 - [fix/qa-add-mcp-config] Se agregaron Playwright MCP y GitHub MCP en `.vscode/mcp.json`.  
   PR: [#39](https://github.com/martindebenedetti/Planix/pull/39) - @leanlex - Issue: #37  (Coordinador / DevOps).
+
+---
+
+## [Release Actividad Obligatoria N°1] - 2026-03-26
+
+### Added
+
+- [feature/frontend-add-html-structure] Estructura HTML5 inicial del planificador de Gantt.  
+  PR: [#11](https://github.com/martindebenedetti/Planix/pull/11) - @leanlex (Desarrollador Frontend) - Issue: #10
+
+- [feature/doc-ux-add-readme-and-mockup] Agrega `README.md` y `spec-ux.md`.  
+  PR: [#6](https://github.com/martindebenedetti/Planix/pull/6) - @leanlex (Documentador / Diseñador UX) - Issue: #5
+
+- [feature/ia-prompts-engineering] Crear archivo template pull_request_template.md.  
+  PR: [#2](https://github.com/martindebenedetti/Planix/pull/2) - @giann98 (Especialista en IA)
+
+- [feature/ia-prompts-engineering] IA prompt engineering estructuración carpetas.  
+  PR: [#1](https://github.com/martindebenedetti/Planix/pull/1) - @giann98 (Especialista en IA)
+
+### Changed
+
+- [feature/ia-prompts-descripciones] Documentación de prompts utilizados y comparativa de modelos de IA.
+  PR: [#12](https://github.com/martindebenedetti/Planix/pull/12) - @giann98 (Especialista en IA) - Issue: #7
+
+- [feature/ia-prompt-documentación] Agregar información en archivo sdd-decisions, spec-ia y spec-rol
+  PR: [#9](https://github.com/martindebenedetti/Planix/pull/9) - @giann98 (Especialista en IA) - Issue: #8
+
+- [feature/coordinador-setup-repo-and-pages] Correccion del changelog.md.  
+  PR: [#4](https://github.com/martindebenedetti/Planix/pull/4) - @martindebenedetti (Coordinador / DevOps) - Issue: #3
+
+### Fixed
 
 - [fix/include-prompts-in-release] Se incorporan los archivos de prompts y comparativa de modelos de IA en la rama release/actividad-obligatoria-1.
   PR: [#15](https://github.com/martindebenedetti/Planix/pull/15) - @giann98 (Coordinador / DevOps)
