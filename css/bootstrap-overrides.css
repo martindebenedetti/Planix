@@ -67,6 +67,11 @@ nav {
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
 
+    aside {
+        width: 100% !important;
+        height: auto;
+    }
+
     .main-sidebar {
         display: none;
     }
