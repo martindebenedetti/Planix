@@ -1,22 +1,44 @@
-# Spec - Frontend Bootstrap
+# SPEC – FRONTEND BOOTSTRAP MIGRATION
 
-## Planificación
+## Planificación previa
 
-### Instalación
-Bootstrap se integrará mediante CDN jsDelivr.
+### Instalación de Bootstrap
 
-### Secciones a migrar
-- header
-- sección tareas
-- sección información gantt
-- footer
+Se utilizará Bootstrap v5.3 mediante CDN jsDelivr.
 
-### Sistema de columnas
-Se utilizará grid de Bootstrap:
-container → row → col-md / col-lg
+Bootstrap se integrará sin eliminar los estilos existentes en:
+
+- css/styles.css
+- css/components.css
+- css/responsive.css
+
+Las personalizaciones se centralizarán en:
+
+css/bootstrap-overrides.css
+
+### Secciones a migrar al sistema de columnas
+
+Las siguientes secciones se migrarán al grid de Bootstrap:
+
+- Layout principal
+- Sidebar
+- Sección descripción
+- Formulario nueva tarea
+- Sección multimedia
+
+Se utilizarán clases:
+
+- container
+- container-fluid
+- row
+- col-md
+- col-lg
 
 ### Criterios de aceptación
-- [ ] Bootstrap cargado correctamente
-- [ ] Layout responsive
-- [ ] Estilos existentes no rotos
-- [ ] Archivo bootstrap-overrides.css creado
+
+
+- [] Bootstrap instalado correctamente
+- [] Sitio responsive en mobile
+- [] Sistema de columnas implementado
+- [] Estilos existentes preservados
+- [] Overrides centralizados en bootstrap-overrides.css
