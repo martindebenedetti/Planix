@@ -8,9 +8,14 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/dev-comp-html-avanzados-add-components] Documentación completa y creación de archivos correspondientes al rol de Desarrollador de Componentes HTML Avanzados
+  PR: [#61](https://github.com/martindebenedetti/Planix/pull/61) - @martindebenedetti (Desarrollador de Componentes HTML Avanzado) - Issue: #60
+
 - [feature/dev-frontend-bootstrap-migration] Documentación completa y creación de archivos correspondientes al rol de Desarrollador Frontend/Bootstrap
-PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #56  
+  PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #56
+
 ---
+
 ## [Release Actividad Obligatoria N°2] - 2026-04-13
 
 ### Added
@@ -87,7 +92,7 @@ PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desar
   PR: [#41](https://github.com/martindebenedetti/Planix/pull/41) - @leanlex- Issue: #38 (Coordinador / DevOps).
 
 - [fix/qa-add-mcp-config] Se agregaron Playwright MCP y GitHub MCP en `.vscode/mcp.json`.  
-  PR: [#39](https://github.com/martindebenedetti/Planix/pull/39) - @leanlex - Issue: #37  (Coordinador / DevOps).
+  PR: [#39](https://github.com/martindebenedetti/Planix/pull/39) - @leanlex - Issue: #37 (Coordinador / DevOps).
 
 - [fix/include-prompts-in-release] Se incorporan los archivos de prompts y comparativa de modelos de IA en la rama release/actividad-obligatoria-1.
   PR: [#15](https://github.com/martindebenedetti/Planix/pull/15) - @giann98 (Coordinador / DevOps)
