@@ -6,6 +6,10 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ## [Unreleased]
 
+### Added
+
+- [feature/dev-frontend-bootstrap-migration] Documentación completa y creación de archivos correspondientes al rol de Desarrollador Frontend/Bootstrap
+PR: [#]() - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #56  
 ---
 ## [Release Actividad Obligatoria N°2] - 2026-04-13
 
