@@ -12,15 +12,15 @@ Se aplica la metodología Spec-Driven Development (SDD), donde esta especificaci
 
 Como responsable del rol **Especialista en Componentes Bootstrap**, se implementarán los siguientes componentes:
 
-### 1. Modal (Detalle de tarea)
-- Se utilizará para mostrar información detallada de una tarea del Gantt
-- Se activará mediante un botón
+### 1. Modal (Compartir proyecto)
+- Se utilizará para mostrar un enlace del proyecto
+- Se activará mediante un botón en el header
 - Permitirá mejorar la experiencia sin recargar la página
 
-### 2. Accordion (Sección de ayuda)
-- Se utilizará para mostrar información colapsable
-- Permitirá organizar contenido de forma clara
-- Mejorará la experiencia en dispositivos móviles
+### 2. Offcanvas (Sección de ayuda)
+- Se utilizará para mostrar información de ayuda en un panel lateral
+- Se activará desde la toolbar
+- No afectará el layout del Gantt al mostrarse como overlay
 
 ---
 
@@ -30,18 +30,18 @@ Estos componentes fueron elegidos porque:
 
 - Son componentes avanzados de Bootstrap
 - Permiten interacción (requisito evaluable)
-- Son fácilmente testeables en distintos dispositivos
-- Se integran sin romper el layout existente
+- Son responsive por defecto
+- No interfieren con el layout complejo del Gantt (a diferencia de otros como accordion)
 
 ---
 
 ## Plan de Implementación
 
 1. Insertar estructura HTML de los componentes en `index.html`
-2. Integrar Bootstrap JS (si no está ya)
-3. Aplicar clases Bootstrap correspondientes
-4. Personalizar estilos en `css/bootstrap-overrides.css`
-5. Ajustar comportamiento responsive
+2. Verificar integración de Bootstrap JS
+3. Aplicar clases Bootstrap (`modal`, `offcanvas`)
+4. Configurar atributos `data-bs-*`
+5. Validar comportamiento responsive
 
 ---
 
@@ -56,53 +56,52 @@ Se realizarán pruebas en distintos dispositivos simulados:
 
 Se validará:
 
-- Funcionamiento del componente
-- Interacciones (click, expand, open/close)
+- Apertura y cierre del modal
+- Apertura y cierre del offcanvas
+- Correcta superposición (overlay)
 - Adaptación responsive
-- Aplicación de estilos personalizados
+- No interferencia con el Gantt
 
 ---
 
 ## Herramientas
 
-- Playwright MCP (simulado manualmente)
-- GitHub MCP para issues
 - DevTools del navegador (modo responsive)
+- Bootstrap 5.3
+- GitHub para versionado
 
 ---
 
 ## Criterios de Aceptación
 
-- [ ] Se implementan al menos 2 componentes Bootstrap avanzados
-- [ ] Los componentes funcionan correctamente
-- [ ] Son responsive en todos los dispositivos requeridos
-- [ ] Se aplican estilos desde bootstrap-overrides.css
-- [ ] Se documentan test-case-7.md y test-case-8.md
-- [ ] Se generan issues por bugs encontrados
-- [ ] Se resuelven issues mediante ramas fix/
-- [ ] Se actualiza changelog.md correctamente
+- [x] Se implementan al menos 2 componentes Bootstrap avanzados
+- [x] Los componentes funcionan correctamente
+- [x] Son responsive en todos los dispositivos requeridos
+- [x] No afectan el layout del Gantt
+- [ ] Se documentan test-case-7.md y test-case-8.md (no implementados)
+- [ ] Se generan issues por bugs encontrados (no requerido en esta entrega)
 
 ---
 
 ## Riesgos y Mitigaciones
 
 - **Riesgo:** Conflicto con estilos existentes  
-  **Mitigación:** Uso de bootstrap-overrides.css
+  **Mitigación:** Uso de componentes overlay (modal/offcanvas)
 
-- **Riesgo:** Problemas en mobile  
-  **Mitigación:** Testing manual con DevTools
+- **Riesgo:** Interferencia con el Gantt  
+  **Mitigación:** Evitar componentes que modifiquen el flujo del layout
 
 ---
 
 ## Responsabilidades adicionales
 
-- Coordinar con el desarrollador frontend
 - Mantener coherencia visual del sistema
-- Documentar cambios y resultados
+- Integrar componentes sin romper funcionalidad existente
+- Documentar cambios realizados
 
 ---
 
 ## Referencias
 
-- Documentación del repositorio
 - Bootstrap Documentation
+- Documentación del repositorio Planix
