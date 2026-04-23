@@ -71,10 +71,48 @@ nav {
     color: #fff;
 }
 
-/* ===== TABLA GANTT ===== */
-#contenedor-gantt {
-    overflow: auto;
+.offcanvas {
+    background-color: #ffffff;
 }
+
+.offcanvas-title {
+    color: #0f49bd;
+    font-weight: 600;
+}
+/* ===== TABLA GANTT ===== */
+/* FIX GANTT + BOOTSTRAP */
+
+.main-content {
+    min-width: 0; /* importante para flexbox */
+}
+
+.gantt-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+.gantt-wrapper,
+#contenedor-gantt {
+    display: block;
+}
+
+#contenedor-gantt {
+    width: 100%;
+    overflow-x: auto;
+}
+
+#tabla-gantt {
+    min-width: 1400px;
+    width: max-content; 
+}
+
+
+/* MODAL */
+.modal-content {
+    border-radius: 12px;
+}
+
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
