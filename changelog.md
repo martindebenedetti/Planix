@@ -13,8 +13,8 @@ PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desar
 
 ### Fixed
 
-- [fix/sidebar-responsive1] Corrección del sidebar en mobile.  
-  PR: [#62]() - @giann98 (Frontend/Bootstrap) - Issue: #55
+- [fix/sidebar-responsive1] Corrección del sidebar en mobile.
+  PR: [#62](https://github.com/martindebenedetti/Planix/pull/62) - @giann98 (Frontend/Bootstrap) - Issue: #55
 
 ---
 ## [Release Actividad Obligatoria N°2] - 2026-04-13
