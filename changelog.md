@@ -8,6 +8,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/coord-devops-update-doc-project] Actualización de `spec-devops.md`, `README.md` y del mockup del Primer Parcial (`docs/01-mockup/disenio-bootstrap.png`), además de coordinación de code reviews asistidas por IA sobre las PRs del equipo y seguimiento de issues en GitHub Projects.  
+  PR: [#54](https://github.com/martindebenedetti/Planix/pull/54) - @leanlex (Coordinador / DevOps) - Issue: #53
+
 - [feature/esp-com-bootstrap-add-component] Documentación y creación de archivos correspondientes al rol de Especialista en Bootstrap
 PR: [#64](https://github.com/martindebenedetti/Planix/pull/64) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #57
 
