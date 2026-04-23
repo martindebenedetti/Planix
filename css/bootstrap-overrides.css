@@ -55,6 +55,7 @@ nav {
     padding-top: 1rem;
 }
 
+
 /* ===== GANTT ===== */
 .gantt-bar__fill {
     background-color: var(--primary-color) !important;
@@ -77,6 +78,10 @@ nav {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+
+    .sidebar-planix {
+        display: none;
+    }
 
     .main-sidebar {
         display: none;
