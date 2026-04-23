@@ -1,0 +1,99 @@
+/* ======================================================
+   BOOTSTRAP OVERRIDES - PLANIX
+   Mantiene identidad visual sin romper estilos existentes
+====================================================== */
+
+/* ===== VARIABLES BASE ===== */
+:root {
+    --primary-color: #0f49bd;
+    --background-color: #f6f6f8;
+}
+
+/* ===== BASE ===== */
+body {
+    background-color: var(--background-color);
+    font-family: 'Inter', 'Public Sans', sans-serif;
+}
+
+/* ===== HEADER & NAV ===== */
+header {
+    background-color: #ffffff;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+nav {
+    background-color: #f9fafb;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+/* ===== BOTONES (override Bootstrap) ===== */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: #0c3aa0;
+    border-color: #0c3aa0;
+}
+
+/* ===== SIDEBAR ===== */
+.main-sidebar {
+    min-height: 100vh;
+    border-right: 1px solid #e5e7eb;
+    background-color: #ffffff;
+}
+
+.sidebar-planix {
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    min-height: 100vh;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+/* ===== GANTT ===== */
+.gantt-bar__fill {
+    background-color: var(--primary-color) !important;
+}
+
+.gantt-bar--group .gantt-bar__fill {
+    background-color: #198754 !important; /* verde */
+}
+
+/* ===== BADGES ===== */
+.badge--today {
+    background-color: #dc3545 !important; /* rojo */
+    color: #fff;
+}
+
+/* ===== TABLA GANTT ===== */
+#contenedor-gantt {
+    overflow: auto;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+
+    .main-sidebar {
+        display: none;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    #contenedor-gantt {
+        overflow-x: scroll;
+    }
+}
