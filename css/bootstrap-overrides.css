@@ -140,3 +140,39 @@ nav {
         overflow-x: scroll;
     }
 }
+
+/* ===== DETAILS & SUMMARY ===== */
+.custom-summary {
+    cursor: pointer;
+    list-style: none; /* Oculta el triángulo nativo en Firefox/Chrome */
+    position: relative;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.custom-summary::-webkit-details-marker {
+    display: none; /* Oculta el triángulo nativo en WebKit */
+}
+
+.custom-summary::after {
+    content: "\25BC"; /* Triángulo hacia abajo (chevron fallback) */
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.8rem;
+    color: #6c757d;
+    transition: transform 0.3s ease;
+}
+
+details[open] .custom-summary::after {
+    transform: translateY(-50%) rotate(180deg);
+}
+
+details .card-body {
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
