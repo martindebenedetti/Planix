@@ -9,7 +9,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Added
 
 - [feature/esp-com-bootstrap-add-component] Documentación y creación de archivos correspondientes al rol de Especialista en Bootstrap
-PR: [#63](https://github.com/martindebenedetti/Planix/pull/63) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #57
+PR: [#64](https://github.com/martindebenedetti/Planix/pull/64) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #57
 
 
 - [feature/dev-comp-html-avanzados-add-components] Documentación completa y creación de archivos correspondientes al rol de Desarrollador de Componentes HTML Avanzados
