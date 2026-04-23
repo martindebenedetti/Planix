@@ -37,8 +37,23 @@ nav {
     border-color: #0c3aa0;
 }
 
+/* ===== MAIN LAYOUT & SCROLL ===== */
+main[role="main"] > .row {
+    flex: 1;
+    min-height: 0;
+    margin-left: 0 !important;
+    flex-wrap: nowrap;
+}
+
+.main-content {
+    min-width: 0; /* importante para flexbox */
+    overflow-y: auto;
+    height: 100%;
+    padding-bottom: 2rem;
+}
 /* ===== SIDEBAR ===== */
 .main-sidebar {
+    position: static !important;
     min-height: 100vh;
     border-right: 1px solid #e5e7eb;
     background-color: #ffffff;
@@ -82,10 +97,6 @@ nav {
 /* ===== TABLA GANTT ===== */
 /* FIX GANTT + BOOTSTRAP */
 
-.main-content {
-    min-width: 0; /* importante para flexbox */
-}
-
 .gantt-wrapper {
     width: 100%;
     overflow-x: auto;
@@ -98,7 +109,6 @@ nav {
 }
 
 #contenedor-gantt {
-    width: 100%;
     overflow-x: auto;
 }
 
@@ -106,7 +116,6 @@ nav {
     min-width: 1400px;
     width: max-content; 
 }
-
 
 /* MODAL */
 .modal-content {

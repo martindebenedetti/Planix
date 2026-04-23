@@ -276,8 +276,9 @@
              TODO: CSS - Columnas de datos: ancho fijo; columnas de semanas: 80px c/u
              TODO: CSS - Sincronizar scroll horizontal y vertical
         ======================================================== -->
-       <div class="gantt-wrapper">
-        <div id="contenedor-gantt"  role="region" aria-label="Tabla unificada de tareas y diagrama de Gantt" tabindex="0">
+       <div class="col-12">
+        <div class="gantt-wrapper">
+        <div id="contenedor-gantt" class="table-responsive"  role="region" aria-label="Tabla unificada de tareas y diagrama de Gantt" tabindex="0">
             <table id="tabla-gantt" class="table table-bordered"  aria-label="Tabla de tareas con diagrama de Gantt integrado">
                 <caption class="sr-only">
                     Planificador de tareas con columnas de datos (ID, nombre, duración, fechas,
@@ -563,7 +564,7 @@
 
       <div class="modal-body">
         <p>Copiá el enlace para compartir el proyecto:</p>
-        <input type="text" class="form-control" value="https://planix.app/proyecto/PRJ-2026-001" readonly>
+        <input type="text" class="form-control" value="https://planix.test" readonly>
       </div>
 
       <div class="modal-footer">
@@ -596,6 +597,19 @@
 
   </div>
 </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+document.querySelector("#modalCompartir .btn-primary")
+.addEventListener("click", function() {
+    const input = document.querySelector("#modalCompartir input");
+    input.select();
+    input.setSelectionRange(0, 99999);
+
+    navigator.clipboard.writeText(input.value);
+
+    this.innerText = "Copiado!";
+    setTimeout(() => this.innerText = "Copiar enlace", 2000);
+});
+</script> 
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
