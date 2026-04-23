@@ -44,6 +44,18 @@ nav {
     background-color: #ffffff;
 }
 
+.sidebar-planix {
+    background-color: #ffffff;
+    border-right: 1px solid #e5e7eb;
+    min-height: 100vh;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 1rem;
+}
+
+
 /* ===== GANTT ===== */
 .gantt-bar__fill {
     background-color: var(--primary-color) !important;
@@ -66,6 +78,10 @@ nav {
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
+
+    .sidebar-planix {
+        display: none;
+    }
 
     .main-sidebar {
         display: none;

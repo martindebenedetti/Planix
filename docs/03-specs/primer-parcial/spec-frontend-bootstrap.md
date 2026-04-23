@@ -204,7 +204,5 @@ La migración a Bootstrap se implementó correctamente, mejorando la responsivid
 ---
 
 ## Referencias
-
-* `plan.md`
 * Documentación del repositorio
 * Documentación oficial de Bootstrap

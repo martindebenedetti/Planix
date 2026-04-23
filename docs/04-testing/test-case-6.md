@@ -1,3 +1,4 @@
+# Test Case 6 — Migración Bootstrap responsive
 ## Metadata
 | Campo | Valor |
 |-------|-------|
