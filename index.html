@@ -173,6 +173,57 @@
         </section>
 
         <!-- ========================================================
+             INFORMACIÓN DEL PROYECTO (Acordeón nativo)
+        ======================================================== -->
+        <section id="info-proyecto" class="container-fluid py-2 px-4 border-bottom mb-4">
+            <h2 class="fs-6 fw-semibold text-secondary text-uppercase mb-2">Información del Proyecto</h2>
+            
+            <details class="card mb-2" open>
+                <summary class="card-header fw-medium custom-summary">Acerca del Proyecto</summary>
+                <div class="card-body fs-6">
+                    Planix es un planificador de tareas mediante un diagrama de Gantt. Permite organizar y visualizar el cronograma de un proyecto. Desarrollado por Prog. Web I - UCES 2026.
+                </div>
+            </details>
+            
+            <details class="card mb-2">
+                <summary class="card-header fw-medium custom-summary">Cómo usar el Planificador</summary>
+                <div class="card-body fs-6">
+                    <p class="mb-1">1. <strong>Agregar tarea:</strong> Usa el formulario para agregar tareas indicando nombre, fechas, responsable y porcentaje de avance.</p>
+                    <p class="mb-1">2. <strong>Ver progreso:</strong> La tabla mostrará la barra de progreso correspondiente al porcentaje ingresado.</p>
+                    <p class="mb-0">3. <strong>Interpretar las barras:</strong> Visualiza las fechas a través de las columnas semanales.</p>
+                </div>
+            </details>
+
+            <details class="card mb-2">
+                <summary class="card-header fw-medium custom-summary">Leyenda del Diagrama</summary>
+                <div class="card-body fs-6">
+                    <ul class="mb-0 ps-3">
+                        <li><strong>Barra azul:</strong> Indica el progreso de una tarea individual.</li>
+                        <li><strong>Barra gris oscura / verde:</strong> Indica un grupo de tareas.</li>
+                        <li><strong>Fondo celeste:</strong> Indica las columnas de las semanas.</li>
+                    </ul>
+                </div>
+            </details>
+        </section>
+
+        <!-- ========================================================
+             VIDEO TUTORIAL (Iframe responsive)
+        ======================================================== -->
+        <section id="video-tutorial" class="container-fluid py-3 px-4 border-bottom mb-4">
+            <h2 class="fs-6 fw-semibold text-secondary text-uppercase mb-2">¿Qué es un Diagrama de Gantt?</h2>
+            <div class="video-container" style="max-width: 640px;">
+                <div class="ratio ratio-16x9">
+                    <iframe src="https://www.youtube.com/embed/7dXAFrxBOCY" 
+                            title="Video tutorial: Qué es un diagrama de Gantt" 
+                            allowfullscreen 
+                            loading="lazy" 
+                            frameborder="0">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+
+        <!-- ========================================================
              FORMULARIO NUEVA TAREA — ancho completo, parte superior
              TODO: CSS - Fondo blanco, borde inferior, padding, shrink-0
              TODO: CSS - Campos en fila horizontal con flex y gap
