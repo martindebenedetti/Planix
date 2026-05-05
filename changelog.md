@@ -26,7 +26,7 @@ PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desar
 ### Fixed
 
 - [fix/limpieza-changelog-RC02-RC03] Corrección del changelog, eliminación duplicado y backport RC02 y RC03. 
-PR: [#]() - @giann98 (Coordinador / DevOps) 
+PR: [#66](https://github.com/martindebenedetti/Planix/pull/66) - @giann98 (Coordinador / DevOps) 
 
 - [fix/sidebar-responsive1] Corrección del sidebar en mobile.
 PR: [#62](https://github.com/martindebenedetti/Planix/pull/62) - @giann98 (Frontend/Bootstrap) - Issue: #55
