@@ -14,25 +14,25 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#54](https://github.com/martindebenedetti/Planix/pull/54) - @leanlex (Coordinador / DevOps) - Issue: #53
 
 - [feature/esp-com-bootstrap-add-component] Documentación y creación de archivos correspondientes al rol de Especialista en Bootstrap
-PR: [#64](https://github.com/martindebenedetti/Planix/pull/64) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #57
-
+  PR: [#64](https://github.com/martindebenedetti/Planix/pull/64) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #57
 
 - [feature/dev-comp-html-avanzados-add-components] Documentación completa y creación de archivos correspondientes al rol de Desarrollador de Componentes HTML Avanzados
   PR: [#61](https://github.com/martindebenedetti/Planix/pull/61) - @martindebenedetti (Desarrollador de Componentes HTML Avanzado) - Issue: #60
 
 - [feature/dev-frontend-bootstrap-migration] Documentación completa y creación de archivos correspondientes al rol de Desarrollador Frontend/Bootstrap
-PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #56
+  PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desarrollador Frontend/Bootstrap) - Issue: #56
 
 ### Fixed
 
-- [fix/rc14-test-cases-9-10-playwrigth] RC-14: Reescritura completa de test-case-9.md y test-case-10.md utilizando Playwright MCP, con capturas de herramientas en acción mostrando ejecución real de tool calls. Regeneración de todas las capturas en capturas/tc-9/ y capturas/tc-10/. Documentación completa con prompts, pasos ejecutados, resultados por viewport (iPhone 14 Pro, Samsung Galaxy S23, iPad Air). Estado: 12/12 tests PASSED, 0 bugs generados. 
-  PR: [#67](https://github.com/martindebenedetti/Planix/pull/67) - @martindebenedetti (Desarrollador de Componentes HTML Avanzado)
+- [fix/rc14-test-cases-9-10-playwrigth] RC-14: Reescritura completa de test-case-9.md y test-case-10.md utilizando Playwright MCP, con capturas de herramientas en acción mostrando ejecución real de tool calls. Regeneración de todas las capturas en capturas/tc-9/ y capturas/tc-10/. Documentación completa con prompts, pasos ejecutados, resultados por viewport (iPhone 14 Pro, Samsung Galaxy S23, iPad Air). Estado: 12/12 tests PASSED, 0 bugs generados.
+  PR: [#67](https://github.com/martindebenedetti/Planix/pull/67) - @martindebenedetti (ARQUITECTO DE DIAGRAMAS DE ACTIVIDADES) Ayudando al rol(Coordinador / DevOps)
 
-- [fix/limpieza-changelog-RC02-RC03] Corrección del changelog, eliminación duplicado y backport RC02 y RC03. 
-  PR: [#66](https://github.com/martindebenedetti/Planix/pull/66) - @giann98 (Coordinador / DevOps) 
+- [fix/limpieza-changelog-RC02-RC03] Corrección del changelog, eliminación duplicado y backport RC02 y RC03.
+  PR: [#66](https://github.com/martindebenedetti/Planix/pull/66) - @giann98 (Coordinador / DevOps)
 
 - [fix/sidebar-responsive1] Corrección del sidebar en mobile.
   PR: [#62](https://github.com/martindebenedetti/Planix/pull/62) - @giann98 (Frontend/Bootstrap) - Issue: #55
+
 ---
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-13
@@ -79,7 +79,7 @@ PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desar
   PR: [#41](https://github.com/martindebenedetti/Planix/pull/41) - @leanlex- Issue: #38 (Coordinador / DevOps).
 
 - [fix/qa-add-mcp-config] Se agregaron Playwright MCP y GitHub MCP en `.vscode/mcp.json`.  
-  PR: [#39](https://github.com/martindebenedetti/Planix/pull/39) - @leanlex - Issue: #37  (Coordinador / DevOps).
+  PR: [#39](https://github.com/martindebenedetti/Planix/pull/39) - @leanlex - Issue: #37 (Coordinador / DevOps).
 
 ---
 
