@@ -4,10 +4,11 @@
       "url": "https://mcp.figma.com/mcp",
       "type": "http"
     },
-    "playwright": {
-      "command": "npx",
-      "args": ["-y", "@microsoft/mcp-server-playwright"]
-    },
+      "playwright": {
+        "type": "stdio",
+        "command": "C:/Users/marti/AppData/Roaming/npm/playwright-mcp.cmd",
+        "args": ["--browser", "chromium"]
+      },
     "github": {
       "url": "https://api.githubcopilot.com/mcp/",
       "type": "http"
