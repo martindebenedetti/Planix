@@ -25,11 +25,14 @@ PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) - @giann98 (Desar
 
 ### Fixed
 
+- [fix/rc14-test-cases-9-10-playwrigth] RC-14: Reescritura completa de test-case-9.md y test-case-10.md utilizando Playwright MCP, con capturas de herramientas en acción mostrando ejecución real de tool calls. Regeneración de todas las capturas en capturas/tc-9/ y capturas/tc-10/. Documentación completa con prompts, pasos ejecutados, resultados por viewport (iPhone 14 Pro, Samsung Galaxy S23, iPad Air). Estado: 12/12 tests PASSED, 0 bugs generados. 
+  PR: [#67](https://github.com/martindebenedetti/Planix/pull/67) - @martindebenedetti (Desarrollador de Componentes HTML Avanzado)
+
 - [fix/limpieza-changelog-RC02-RC03] Corrección del changelog, eliminación duplicado y backport RC02 y RC03. 
-PR: [#66](https://github.com/martindebenedetti/Planix/pull/66) - @giann98 (Coordinador / DevOps) 
+  PR: [#66](https://github.com/martindebenedetti/Planix/pull/66) - @giann98 (Coordinador / DevOps) 
 
 - [fix/sidebar-responsive1] Corrección del sidebar en mobile.
-PR: [#62](https://github.com/martindebenedetti/Planix/pull/62) - @giann98 (Frontend/Bootstrap) - Issue: #55
+  PR: [#62](https://github.com/martindebenedetti/Planix/pull/62) - @giann98 (Frontend/Bootstrap) - Issue: #55
 ---
 
 ## [Release Actividad Obligatoria N°2] - 2026-04-13
