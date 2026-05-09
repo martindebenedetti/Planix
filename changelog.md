@@ -24,6 +24,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/rc16-eliminar-seccion-descripcion] RC-16: Eliminada la sección `#descripcion` ("¿Qué es este planificador?") de `index.html` por no estar contemplada en el diseño Figma. El Figma muestra la vista Gantt directamente como pantalla principal; la sección fue agregada sin respaldo en el mockup (`docs/01-mockup/disenio-bootstrap.png`).
+  PR: [#68](https://github.com/martindebenedetti/Planix/pull/68) - @martindebenedetti (ARQUITECTO DE DIAGRAMAS DE ACTIVIDADES) Ayudando al rol(Coordinador / DevOps)
+
 - [fix/rc14-test-cases-9-10-playwrigth] RC-14: Reescritura completa de test-case-9.md y test-case-10.md utilizando Playwright MCP, con capturas de herramientas en acción mostrando ejecución real de tool calls. Regeneración de todas las capturas en capturas/tc-9/ y capturas/tc-10/. Documentación completa con prompts, pasos ejecutados, resultados por viewport (iPhone 14 Pro, Samsung Galaxy S23, iPad Air). Estado: 12/12 tests PASSED, 0 bugs generados.
   PR: [#67](https://github.com/martindebenedetti/Planix/pull/67) - @martindebenedetti (ARQUITECTO DE DIAGRAMAS DE ACTIVIDADES) Ayudando al rol(Coordinador / DevOps)
 
