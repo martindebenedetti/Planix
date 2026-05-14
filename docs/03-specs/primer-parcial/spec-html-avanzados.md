@@ -447,3 +447,26 @@ Se ejecutaron un total de **6 tests** (3 para TC-9 iframe + 3 para TC-10 details
 - ✅ **Documentación:** test-case-9.md y test-case-10.md completamente documentados con prompts, pasos, resultados y capturas.
 
 **Estado Final: APROBADO PARA PRODUCCIÓN** ✅
+
+## Corrección RC-13
+
+Se verificó el historial de la rama:
+
+feature/dev-comp-html-avanzados-add-components
+
+Actualmente los commits:
+- e54fbcf — creación de spec-html-avanzados.md
+- f7758fc — implementación de componentes HTML avanzados
+
+Forman parte del feature branch correspondiente.
+
+Validación realizada mediante:
+
+git branch --contains e54fbcf
+![alt text](git-branch-e54fbcf.png)
+
+git branch --contains f7758fc
+![alt text](git-branch-f7758fc.png)
+
+confirmando que ambos commits pertenecen a:
+feature/dev-comp-html-avanzados-add-components
