@@ -24,6 +24,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/RC9-RC12-frontend-spec] Se deja evidencia que se utiliza Figma MCP para analizar mockup y se realiza review sobre una PR — PR#75 — @giann98 (Coordinador / DevOps)
+
 - [fix/RC-13-Recrear-feature-hmtl-avanzado] Se documenta que los commits se encuentran dentro del feature de html-avanzado — PR#74 — @giann98 (Coordinador / DevOps) 
 
 - [fix/RC11-Agregar-TC7-TC8] Se generan los TC7 y TC8 con evidencia Playwright MCP, además se ajustó el documento testing-doc.md — PR#72 — @giann98 (Coordinador / DevOps) 
