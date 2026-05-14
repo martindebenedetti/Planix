@@ -7,6 +7,10 @@
 - [Test Case 4 — Accesibilidad web](./test-case-4.md)
 - [Test Case 5 — Validación de estructura HTML semántica y CSS](./test-case-5.md)
 - [Test Case 6 — Migración Bootstrap responsive](./test-case-6.md)
+- [Test Case 7 — Modal compartir enlace Bootstrap](./test-case-7.md)
+- [Test Case 8 — Offcanvas de ayuda Bootstrap](./test-case-8.md)
+- [Test Case 9 — Responsive: Implementación de Componente Avanzado HTML (iframe YouTube)](./test-case-9.md)
+- [Test Case 10 — Responsive: Implementación de Componente Avanzado HTML (details/summary)](./test-case-10.md)
 
 
 ## Resumen general
@@ -69,5 +73,25 @@ En el **Momento 2**, ya con todas las features integradas en `develop`, se obtuv
 - **TC5** — Validación de estructura HTML semántica y CSS  
   Resultado: **PASS — Sin hallazgos**  
   La jerarquía de headings, los landmarks semánticos, los labels y la carga de estilos fueron correctos.
+
+- **TC6** — Migración Bootstrap responsive  
+  Resultado: **PASS — Sin hallazgos**  
+  Los breakpoints mobile, tablet y desktop se mantienen estables y los overrides visuales de Bootstrap se aplican correctamente.
+
+- **TC7** — Modal compartir enlace Bootstrap  
+  Resultado: **PASS — Sin hallazgos**  
+  El modal se abre, muestra overlay/backdrop y se cierra correctamente en desktop, mobile e iPad. `bootstrap-overrides.css` se aplica en `.modal-content`.
+
+- **TC8** — Offcanvas de ayuda Bootstrap  
+  Resultado: **PASS — Sin hallazgos**  
+  El offcanvas de ayuda se abre y cierra correctamente, el overlay funciona y se mantiene la identidad visual en desktop, mobile e iPad.
+
+- **TC9** — Responsive: iframe YouTube  
+  Resultado: **PASS — Sin hallazgos**  
+  El componente iframe se adapta correctamente en los tres viewports y conserva la experiencia visual esperada.
+
+- **TC10** — Responsive: details/summary  
+  Resultado: **PASS — Sin hallazgos**  
+  El componente accordion se comporta bien en desktop, mobile e iPad, las transiciones son estables y la visual permanece coherente.
 
 No se detectaron nuevos bugs en Momento 2.
