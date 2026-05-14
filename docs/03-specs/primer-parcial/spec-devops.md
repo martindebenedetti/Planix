@@ -326,3 +326,76 @@ feature/esp-com-bootstrap-add-component -> develop
 Objetivo:
 Verificar si esta PR cumple correctamente con las tareas del rol "Especialista en Componentes Bootstrap" del Primer Parcial.
 ```
+
+---
+
+## AT CLOSE — Integración de correcciones posteriores a la devolución docente
+
+Luego de recibir la devolución del Primer Parcial, se inició una etapa de corrección coordinada sobre la rama `release/primer-parcial`.
+
+Como Coordinador/DevOps, el objetivo de esta etapa fue integrar las correcciones realizadas por los distintos roles, verificar que cada una tenga trazabilidad en GitHub y dejar documentado el estado real de los archivos entregables.
+
+### Criterio de trabajo adoptado
+
+Las correcciones posteriores a la devolución se organizaron mediante ramas `fix/` creadas desde `release/primer-parcial`, manteniendo la lógica de trabajo con Pull Requests y revisión antes del merge.
+
+No se realizaron correcciones directamente sobre `release/primer-parcial`, para conservar trazabilidad y permitir revisión técnica de cada cambio.
+
+### Estado de correcciones verificadas en `release/primer-parcial`
+
+| RC / Observación | Rol asociado | Estado en release | Evidencia verificada |
+|---|---|---|---|
+| RC-17 | Coordinador/DevOps | Integrado | Se verificó la existencia de `docs/01-mockup/disenio-bootstrap.png` actualizado en la rama `release/primer-parcial`. |
+| RC-14 / RC-15 | Desarrollador de Componentes HTML Avanzados | Integrado | Se verificaron `docs/04-testing/test-case-9.md`, `docs/04-testing/test-case-10.md`, `docs/04-testing/capturas/tc-9/`, `docs/04-testing/capturas/tc-10/` y actualización de `spec-html-avanzados.md`. |
+| RC-11 | Especialista en Componentes Bootstrap | Pendiente de integración | Al momento de esta revisión no existen `docs/04-testing/test-case-7.md`, `docs/04-testing/test-case-8.md`, `docs/04-testing/capturas/tc-7/` ni `docs/04-testing/capturas/tc-8/` en `release/primer-parcial`. |
+
+### Verificación local realizada
+
+Se ejecutaron comandos de verificación sobre la rama `release/primer-parcial` actualizada:
+
+```powershell
+git pull origin release/primer-parcial
+dir docs\03-specs\primer-parcial
+dir docs\04-testing
+dir docs\01-mockup
+Test-Path docs\04-testing\test-case-7.md
+Test-Path docs\04-testing\test-case-8.md
+dir docs\04-testing\capturas
+```
+Resultado relevante:
+
+```text
+test-case-7.md: False
+test-case-8.md: False
+capturas/tc-7: no existe
+capturas/tc-8: no existe
+capturas/tc-9: existe
+capturas/tc-10: existe
+```
+
+### Decisión como Coordinador/DevOps
+
+Se decide avanzar con esta rama correctiva para dejar documentada la integración parcial de correcciones ya disponibles, sin declarar como completada la corrección general del Primer Parcial.
+
+La corrección correspondiente a RC-11 del rol Especialista en Componentes Bootstrap quedará pendiente para una rama `fix/` posterior, una vez que el responsable del rol integre `test-case-7.md`, `test-case-8.md` y sus evidencias.
+
+### Criterio de aprobación para próximas PR correctivas
+
+Para aprobar una PR correctiva vinculada a testing con Playwright MCP, se verificará que incluya:
+
+- archivo `test-case-*.md` correspondiente;
+- formato de tabla según la consigna;
+- columna o campo de herramienta indicando Playwright MCP;
+- resultado actual documentado;
+- capturas en la carpeta correspondiente;
+- evidencia del uso de la herramienta;
+- actualización del spec del rol en sección AT CLOSE;
+- actualización de `docs/04-testing/testing-doc.md`;
+- entrada en `changelog.md` con rama, PR y autor.
+
+### Observación sobre trazabilidad
+
+Se mantiene la trazabilidad de las correcciones mediante ramas `fix/`, Pull Requests hacia `release/primer-parcial`, reviews del Coordinador y entradas en `changelog.md`.
+
+Esta decisión se toma para cumplir con el branch model solicitado en la consigna y evitar modificaciones directas sobre ramas de entrega.
+
