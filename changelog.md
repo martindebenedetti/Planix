@@ -24,6 +24,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/rc17-actualizar-mockup-bootstrap] RC-17: Reemplazo de `docs/01-mockup/disenio-bootstrap.png` por la versión actualizada del diseño, que refleja el estado real del HTML: sección introductoria eliminada, acordeón Información del Proyecto, video tutorial y tabla Gantt como pantalla principal.
+  PR: [#69](https://github.com/martindebenedetti/Planix/pull/69) - @martindebenedetti (ARQUITECTO DE DIAGRAMAS DE ACTIVIDADES) Ayudando al rol(Coordinador / DevOps)
+
 - [fix/rc16-eliminar-seccion-descripcion] RC-16: Eliminada la sección `#descripcion` ("¿Qué es este planificador?") de `index.html` por no estar contemplada en el diseño Figma. El Figma muestra la vista Gantt directamente como pantalla principal; la sección fue agregada sin respaldo en el mockup (`docs/01-mockup/disenio-bootstrap.png`).
   PR: [#68](https://github.com/martindebenedetti/Planix/pull/68) - @martindebenedetti (ARQUITECTO DE DIAGRAMAS DE ACTIVIDADES) Ayudando al rol(Coordinador / DevOps)
 
