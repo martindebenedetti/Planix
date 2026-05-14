@@ -399,3 +399,106 @@ Se mantiene la trazabilidad de las correcciones mediante ramas `fix/`, Pull Requ
 
 Esta decisión se toma para cumplir con el branch model solicitado en la consigna y evitar modificaciones directas sobre ramas de entrega.
 
+---
+
+## Evidencia complementaria — Figma MCP
+
+### Objetivo
+
+Registrar evidencia real del uso de Figma MCP para validar el mockup Bootstrap actualizado del proyecto Planix y responder a la observación RC-07.
+
+### Prompt utilizado
+
+```text
+Usando Figma MCP, analizá el mockup actualizado del proyecto Planix disponible en este enlace:
+
+https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=54-283&t=Ww4homzl6jfJxrQm-0
+
+Objetivo:
+Registrar evidencia real del uso de Figma MCP para validar el mockup Bootstrap actualizado del Primer Parcial.
+
+Revisar específicamente:
+1. si el mockup refleja una estructura compatible con Bootstrap;
+2. si aparece una navbar o encabezado principal;
+3. si la vista principal muestra una tabla o layout tipo Gantt;
+4. si el diseño contempla componentes HTML avanzados, como video tutorial o acordeón/details;
+5. si el mockup mantiene coherencia visual con la implementación esperada;
+6. si hay diferencias, inconsistencias o limitaciones relevantes.
+
+No modifiques archivos.
+No generes código.
+No hagas commits.
+No crees archivos nuevos salvo que la herramienta Figma MCP lo requiera explícitamente para inspeccionar el diseño.
+
+Devolvé solamente:
+- resumen del análisis;
+- componentes identificados;
+- hallazgos principales;
+- limitaciones u observaciones;
+- nombre de la herramienta MCP utilizada.
+```
+
+### Output obtenido del Figma MCP
+
+```text
+Resumen del análisis
+
+El mockup de Figma presenta una interfaz compatible con un layout Bootstrap típico: contenedor principal, cabecera superior y panel de contenido con estructura de tablero. La vista principal es una combinación de tabla de tareas y vista tipo Gantt, con columnas de datos y una zona de fechas.
+
+Componentes identificados
+
+Header con:
+- buscador (Buscar...)
+- ícono de notificación
+- título principal: Proyecto Agile
+- barra de progreso: Progreso General 65%
+
+Sección principal Tablero con:
+- cabecera de tablero (Header.tablero)
+- tabla de columnas: ID, Nombre de tarea, Inicio, Fin, Pred.
+- vista Gantt con fechas tipo 26/03...01/04 y estado HOY
+
+Indicadores de estado/leyenda:
+- Cancelado
+- En Proceso
+- Programado
+
+Hallazgos principales
+
+El mockup refleja una estructura compatible con Bootstrap: header + contenido central en un contenedor fijo y filas de datos.
+
+No se identifica una navbar clásica de Bootstrap; hay un Header principal con búsqueda, notificación y título, que cumple la función de encabezado superior.
+
+La vista principal muestra claramente un layout tipo Gantt con fila de tareas y fechas, junto a una tabla de datos.
+
+No hay evidencia textual de componentes avanzados como video tutorial o acordeón/details en el mockup inspeccionado.
+
+El diseño mantiene coherencia visual con una implementación esperada de un planificador Gantt en Bootstrap: columnas alineadas, tarjetas de tablero y leyenda de estados.
+
+Limitaciones / observaciones
+
+El análisis se basa en la estructura de nodos y textos del archivo Figma, no en código HTML real ni en clases Bootstrap.
+
+No se detectó una navbar tradicional; por lo tanto, si se busca un menú global, es posible que el diseño solo incluya un header funcional.
+
+No se encontró contenido explícito de componentes avanzados tipo video o accordion; si existen, no aparecen como nodos textuales reconocibles.
+
+Herramienta MCP utilizada
+
+mcp_figma_dev_mod_use_figma
+```
+
+### Decisiones tomadas a partir del análisis
+
+A partir del análisis obtenido mediante Figma MCP, se documentan las siguientes decisiones:
+
+- Se valida que el mockup actualizado contiene una estructura visual compatible con Bootstrap, organizada en header, contenedor principal, tablero y vista tipo Gantt.
+- Se acepta que el diseño no utiliza una navbar Bootstrap clásica, sino un header funcional con buscador, notificación, título y barra de progreso.
+- Se confirma que la vista principal del proyecto está centrada en la tabla de tareas y el diagrama Gantt, coherente con el objetivo de Planix.
+- Se registra como limitación que el mockup inspeccionado no evidencia textualmente componentes avanzados como video tutorial o acordeón/details.
+- Se deja constancia de que el análisis proviene del MCP de Figma y no de una inspección manual sin herramienta.
+
+### Estado
+
+Evidencia incorporada para responder a RC-07.
+
