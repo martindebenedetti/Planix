@@ -326,3 +326,179 @@ feature/esp-com-bootstrap-add-component -> develop
 Objetivo:
 Verificar si esta PR cumple correctamente con las tareas del rol "Especialista en Componentes Bootstrap" del Primer Parcial.
 ```
+
+---
+
+## AT CLOSE — Integración de correcciones posteriores a la devolución docente
+
+Luego de recibir la devolución del Primer Parcial, se inició una etapa de corrección coordinada sobre la rama `release/primer-parcial`.
+
+Como Coordinador/DevOps, el objetivo de esta etapa fue integrar las correcciones realizadas por los distintos roles, verificar que cada una tenga trazabilidad en GitHub y dejar documentado el estado real de los archivos entregables.
+
+### Criterio de trabajo adoptado
+
+Las correcciones posteriores a la devolución se organizaron mediante ramas `fix/` creadas desde `release/primer-parcial`, manteniendo la lógica de trabajo con Pull Requests y revisión antes del merge.
+
+No se realizaron correcciones directamente sobre `release/primer-parcial`, para conservar trazabilidad y permitir revisión técnica de cada cambio.
+
+### Estado de correcciones verificadas en `release/primer-parcial`
+
+| RC / Observación | Rol asociado | Estado en release | Evidencia verificada |
+|---|---|---|---|
+| RC-17 | Coordinador/DevOps | Integrado | Se verificó la existencia de `docs/01-mockup/disenio-bootstrap.png` actualizado en la rama `release/primer-parcial`. |
+| RC-14 / RC-15 | Desarrollador de Componentes HTML Avanzados | Integrado | Se verificaron `docs/04-testing/test-case-9.md`, `docs/04-testing/test-case-10.md`, `docs/04-testing/capturas/tc-9/`, `docs/04-testing/capturas/tc-10/` y actualización de `spec-html-avanzados.md`. |
+| RC-11 | Especialista en Componentes Bootstrap | Pendiente de integración | Al momento de esta revisión no existen `docs/04-testing/test-case-7.md`, `docs/04-testing/test-case-8.md`, `docs/04-testing/capturas/tc-7/` ni `docs/04-testing/capturas/tc-8/` en `release/primer-parcial`. |
+
+### Verificación local realizada
+
+Se ejecutaron comandos de verificación sobre la rama `release/primer-parcial` actualizada:
+
+```powershell
+git pull origin release/primer-parcial
+dir docs\03-specs\primer-parcial
+dir docs\04-testing
+dir docs\01-mockup
+Test-Path docs\04-testing\test-case-7.md
+Test-Path docs\04-testing\test-case-8.md
+dir docs\04-testing\capturas
+```
+Resultado relevante:
+
+```text
+test-case-7.md: False
+test-case-8.md: False
+capturas/tc-7: no existe
+capturas/tc-8: no existe
+capturas/tc-9: existe
+capturas/tc-10: existe
+```
+
+### Decisión como Coordinador/DevOps
+
+Se decide avanzar con esta rama correctiva para dejar documentada la integración parcial de correcciones ya disponibles, sin declarar como completada la corrección general del Primer Parcial.
+
+La corrección correspondiente a RC-11 del rol Especialista en Componentes Bootstrap quedará pendiente para una rama `fix/` posterior, una vez que el responsable del rol integre `test-case-7.md`, `test-case-8.md` y sus evidencias.
+
+### Criterio de aprobación para próximas PR correctivas
+
+Para aprobar una PR correctiva vinculada a testing con Playwright MCP, se verificará que incluya:
+
+- archivo `test-case-*.md` correspondiente;
+- formato de tabla según la consigna;
+- columna o campo de herramienta indicando Playwright MCP;
+- resultado actual documentado;
+- capturas en la carpeta correspondiente;
+- evidencia del uso de la herramienta;
+- actualización del spec del rol en sección AT CLOSE;
+- actualización de `docs/04-testing/testing-doc.md`;
+- entrada en `changelog.md` con rama, PR y autor.
+
+### Observación sobre trazabilidad
+
+Se mantiene la trazabilidad de las correcciones mediante ramas `fix/`, Pull Requests hacia `release/primer-parcial`, reviews del Coordinador y entradas en `changelog.md`.
+
+Esta decisión se toma para cumplir con el branch model solicitado en la consigna y evitar modificaciones directas sobre ramas de entrega.
+
+---
+
+## Evidencia complementaria — Figma MCP
+
+### Objetivo
+
+Registrar evidencia real del uso de Figma MCP para validar el mockup Bootstrap actualizado del proyecto Planix y responder a la observación RC-07.
+
+### Prompt utilizado
+
+```text
+Usando Figma MCP, analizá el mockup actualizado del proyecto Planix disponible en este enlace:
+
+https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=54-283&t=Ww4homzl6jfJxrQm-0
+
+Objetivo:
+Registrar evidencia real del uso de Figma MCP para validar el mockup Bootstrap actualizado del Primer Parcial.
+
+Revisar específicamente:
+1. si el mockup refleja una estructura compatible con Bootstrap;
+2. si aparece una navbar o encabezado principal;
+3. si la vista principal muestra una tabla o layout tipo Gantt;
+4. si el diseño contempla componentes HTML avanzados, como video tutorial o acordeón/details;
+5. si el mockup mantiene coherencia visual con la implementación esperada;
+6. si hay diferencias, inconsistencias o limitaciones relevantes.
+
+No modifiques archivos.
+No generes código.
+No hagas commits.
+No crees archivos nuevos salvo que la herramienta Figma MCP lo requiera explícitamente para inspeccionar el diseño.
+
+Devolvé solamente:
+- resumen del análisis;
+- componentes identificados;
+- hallazgos principales;
+- limitaciones u observaciones;
+- nombre de la herramienta MCP utilizada.
+```
+
+### Output obtenido del Figma MCP
+
+```text
+Resumen del análisis
+
+El mockup de Figma presenta una interfaz compatible con un layout Bootstrap típico: contenedor principal, cabecera superior y panel de contenido con estructura de tablero. La vista principal es una combinación de tabla de tareas y vista tipo Gantt, con columnas de datos y una zona de fechas.
+
+Componentes identificados
+
+Header con:
+- buscador (Buscar...)
+- ícono de notificación
+- título principal: Proyecto Agile
+- barra de progreso: Progreso General 65%
+
+Sección principal Tablero con:
+- cabecera de tablero (Header.tablero)
+- tabla de columnas: ID, Nombre de tarea, Inicio, Fin, Pred.
+- vista Gantt con fechas tipo 26/03...01/04 y estado HOY
+
+Indicadores de estado/leyenda:
+- Cancelado
+- En Proceso
+- Programado
+
+Hallazgos principales
+
+El mockup refleja una estructura compatible con Bootstrap: header + contenido central en un contenedor fijo y filas de datos.
+
+No se identifica una navbar clásica de Bootstrap; hay un Header principal con búsqueda, notificación y título, que cumple la función de encabezado superior.
+
+La vista principal muestra claramente un layout tipo Gantt con fila de tareas y fechas, junto a una tabla de datos.
+
+No hay evidencia textual de componentes avanzados como video tutorial o acordeón/details en el mockup inspeccionado.
+
+El diseño mantiene coherencia visual con una implementación esperada de un planificador Gantt en Bootstrap: columnas alineadas, tarjetas de tablero y leyenda de estados.
+
+Limitaciones / observaciones
+
+El análisis se basa en la estructura de nodos y textos del archivo Figma, no en código HTML real ni en clases Bootstrap.
+
+No se detectó una navbar tradicional; por lo tanto, si se busca un menú global, es posible que el diseño solo incluya un header funcional.
+
+No se encontró contenido explícito de componentes avanzados tipo video o accordion; si existen, no aparecen como nodos textuales reconocibles.
+
+Herramienta MCP utilizada
+
+mcp_figma_dev_mod_use_figma
+```
+
+### Decisiones tomadas a partir del análisis
+
+A partir del análisis obtenido mediante Figma MCP, se documentan las siguientes decisiones:
+
+- Se valida que el mockup actualizado contiene una estructura visual compatible con Bootstrap, organizada en header, contenedor principal, tablero y vista tipo Gantt.
+- Se acepta que el diseño no utiliza una navbar Bootstrap clásica, sino un header funcional con buscador, notificación, título y barra de progreso.
+- Se confirma que la vista principal del proyecto está centrada en la tabla de tareas y el diagrama Gantt, coherente con el objetivo de Planix.
+- Se registra como limitación que el mockup inspeccionado no evidencia textualmente componentes avanzados como video tutorial o acordeón/details.
+- Se deja constancia de que el análisis proviene del MCP de Figma y no de una inspección manual sin herramienta.
+
+### Estado
+
+Evidencia incorporada para responder a RC-07.
+
