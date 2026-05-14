@@ -1,4 +1,4 @@
-# Testing Doc — Actividad Obligatoria N°2
+# Testing Doc — Primer Parcial
 
 ## Índice de test cases
 - [Test Case 1 — Compatibilidad en navegadores desktop](./test-case-1.md)

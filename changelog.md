@@ -24,6 +24,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/RC11-Agregar-TC7-TC8] Se generan los TC7 y TC8 con evidencia Playwright MCP, además se ajustó el documento testing-doc.md — PR#72 — @giann98 (Coordinador / DevOps) 
+
 - [fix/testcase-6-playwright-format] Corrección del formato y evidencia Playwright MCP del TC-6 — PR#71 — @giann98 (Coordinador / DevOps) 
 
 - [fix/coord-devops-integracion-correcciones-parcial] Documenta integración parcial de correcciones del Primer Parcial y deja RC-11 pendiente para rama posterior — PR #70 — @leanlex — Ayudando al rol(Coordinador / DevOps)
