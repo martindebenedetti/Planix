@@ -6,6 +6,8 @@
 - [Test Case 3 — Performance y carga](./test-case-3.md)
 - [Test Case 4 — Accesibilidad web](./test-case-4.md)
 - [Test Case 5 — Validación de estructura HTML semántica y CSS](./test-case-5.md)
+- [Test Case 6 — Migración Bootstrap responsive](./test-case-6.md)
+
 
 ## Resumen general
 Este documento centraliza los resultados de testing ejecutados en dos momentos:
