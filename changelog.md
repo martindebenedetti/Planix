@@ -24,7 +24,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
-- [fix/coord-devops-integracion-correcciones-parcial] Documenta integración parcial de correcciones del Primer Parcial y deja RC-11 pendiente para rama posterior — PR #XX — @leanlex
+- [fix/coord-devops-integracion-correcciones-parcial] Documenta integración parcial de correcciones del Primer Parcial y deja RC-11 pendiente para rama posterior — PR #70 — @leanlex — Ayudando al rol(Coordinador / DevOps)
 
 - [fix/rc17-actualizar-mockup-bootstrap] RC-17: Reemplazo de `docs/01-mockup/disenio-bootstrap.png` por la versión actualizada del diseño, que refleja el estado real del HTML: sección introductoria eliminada, acordeón Información del Proyecto, video tutorial y tabla Gantt como pantalla principal.
   PR: [#69](https://github.com/martindebenedetti/Planix/pull/69) — @martindebenedetti (ARQUITECTO DE DIAGRAMAS DE ACTIVIDADES) Ayudando al rol(Coordinador / DevOps)
