@@ -78,8 +78,8 @@ Se validará:
 - [x] Los componentes funcionan correctamente
 - [x] Son responsive en todos los dispositivos requeridos
 - [x] No afectan el layout del Gantt
-- [ ] Se documentan test-case-7.md y test-case-8.md (no implementados)
-- [ ] Se generan issues por bugs encontrados (no requerido en esta entrega)
+- [x] Se documentan test-case-7.md y test-case-8.md
+- [x] Se generan issues por bugs encontrados
 
 ---
 
@@ -98,6 +98,24 @@ Se validará:
 - Mantener coherencia visual del sistema
 - Integrar componentes sin romper funcionalidad existente
 - Documentar cambios realizados
+
+### Review realizada sobre PR de otro rol
+
+Desde el rol de Especialista en componentes Bootstrap se realizó revisión técnica sobre:
+
+PR #61 — feature/dev-comp-html-avanzados-add-components
+
+Link:
+https://github.com/martindebenedetti/Planix/pull/61
+
+Observaciones realizadas:
+- necesidad de mejorar trazabilidad de testing
+- ausencia inicial de evidencia explícita de Playwright MCP
+- test cases fuera del formato tabular requerido
+- recomendación de actualizar índice general de testing
+
+La revisión fue realizada para validar coherencia entre implementación, testing y especificaciones generales del parcial.
+Todos estos puntos fueron corregidos en diferentes ramas fix creadas.
 
 ---
 
