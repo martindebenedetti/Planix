@@ -24,7 +24,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
-- [fix/coord-devops-cierre-rc11-bootstrap] Documenta cierre de RC-11 e integración final de TC-7 y TC-8 en la release del Primer Parcial. PR: #XX — @leanlex — Ayudando al rol(Coordinador / DevOps)
+- [fix/modificacion-changelog] Se modifica el changelog agregando la entrada de la PR#77 y PR#76, además de la de propia rama fix/modificacion-changelog  — PR#78 — @giann98 (Coordinador / DevOps)
+
+- [fix/RCN1-RCN2-correccion-markdown] Se mejora el formato markdown del spec-html-avanzado y se crea subcarpeta evidencias dentro de 03-specs  — PR#77 — @giann98 (Coordinador / DevOps)
+
+- [fix/coord-devops-cierre-rc11-bootstrap] Documenta cierre de RC-11 e integración final de TC-7 y TC-8 en la release del Primer Parcial. PR: #76 — @leanlex — Ayudando al rol(Coordinador / DevOps)
 
 - [fix/RC9-RC12-frontend-spec] Se deja evidencia que se utiliza Figma MCP para analizar mockup y se realiza review sobre una PR — PR#75 — @giann98 (Coordinador / DevOps)
 
