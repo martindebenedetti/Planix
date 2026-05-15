@@ -502,3 +502,34 @@ A partir del análisis obtenido mediante Figma MCP, se documentan las siguientes
 
 Evidencia incorporada para responder a RC-07.
 
+---
+
+## AT CLOSE — Cierre de RC-11 e integración final de correcciones
+
+Luego de la integración de la corrección del rol Especialista en Componentes Bootstrap, se verificó que los entregables pendientes de RC-11 ya se encuentran presentes en la rama `release/primer-parcial`.
+
+### Verificación realizada
+
+| Entregable | Estado |
+|---|---|
+| `docs/04-testing/test-case-7.md` | Integrado |
+| `docs/04-testing/test-case-8.md` | Integrado |
+| `docs/04-testing/capturas/tc-7/` | Integrado |
+| `docs/04-testing/capturas/tc-8/` | Integrado |
+| `docs/03-specs/primer-parcial/spec-componentes-bootstrap.md` | Actualizado |
+| `docs/04-testing/testing-doc.md` | Actualizado |
+| `changelog.md` | Actualizado |
+
+### Decisión como Coordinador/DevOps
+
+Se considera integrada la corrección correspondiente a RC-11, dejando documentada la evidencia de testing de los componentes Bootstrap y la trazabilidad mediante rama `fix/`, Pull Request, changelog y archivos de testing.
+
+### Estado final de correcciones coordinadas
+
+| RC / Observación | Estado final |
+|---|---|
+| RC-05 / RC-06 — Body de PR release | Corregido |
+| RC-07 — Evidencia Figma MCP | Corregido |
+| RC-11 — TC-7 y TC-8 Componentes Bootstrap | Corregido |
+| RC-14 / RC-15 — HTML avanzado y testing | Corregido |
+| Changelog A2 — backport / em dash | Corregido |
