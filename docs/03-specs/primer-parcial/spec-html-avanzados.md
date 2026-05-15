@@ -452,21 +452,28 @@ Se ejecutaron un total de **6 tests** (3 para TC-9 iframe + 3 para TC-10 details
 
 Se verificó el historial de la rama:
 
-feature/dev-comp-html-avanzados-add-components
+`feature/dev-comp-html-avanzados-add-components`
 
 Actualmente los commits:
-- e54fbcf — creación de spec-html-avanzados.md
-- f7758fc — implementación de componentes HTML avanzados
+- `e54fbcf` — creación de `spec-html-avanzados.md`
+- `f7758fc` — implementación de componentes HTML avanzados
 
 Forman parte del feature branch correspondiente.
 
-Validación realizada mediante:
+### Validación realizada
 
+```bash
 git branch --contains e54fbcf
-![alt text](git-branch-e54fbcf.png)
+```
 
+![Validación commit e54fbcf](./evidencias/git-branch-e54fbcf.png)
+
+```bash
 git branch --contains f7758fc
-![alt text](git-branch-f7758fc.png)
+```
 
-confirmando que ambos commits pertenecen a:
-feature/dev-comp-html-avanzados-add-components
+![Validación commit f7758fc](./evidencias/git-branch-f7758fc.png)
+
+Confirmando que ambos commits pertenecen a:
+
+`feature/dev-comp-html-avanzados-add-components`
