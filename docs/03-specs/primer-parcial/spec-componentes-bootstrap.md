@@ -123,3 +123,32 @@ Todos estos puntos fueron corregidos en diferentes ramas fix creadas.
 
 - Bootstrap Documentation
 - Documentación del repositorio Planix
+
+---
+
+## AT CLOSE — Corrección RC-11: evidencia Playwright MCP
+
+Luego de la devolución docente, se completó la documentación pendiente correspondiente al testing de los componentes Bootstrap avanzados.
+
+### Test cases integrados
+
+| Test Case | Componente | Herramienta | Evidencia | Estado |
+|---|---|---|---|---|
+| TC-7 | Modal compartir enlace Bootstrap | Playwright MCP | `docs/04-testing/capturas/tc-7/` | PASS |
+| TC-8 | Offcanvas de ayuda Bootstrap | Playwright MCP | `docs/04-testing/capturas/tc-8/` | PASS |
+
+### Archivos verificados
+
+- `docs/04-testing/test-case-7.md`
+- `docs/04-testing/test-case-8.md`
+- `docs/04-testing/capturas/tc-7/`
+- `docs/04-testing/capturas/tc-8/`
+- `docs/04-testing/testing-doc.md`
+
+### Resultado
+
+Se considera corregida la observación RC-11 del rol Especialista en Componentes Bootstrap, ya que los test cases requeridos fueron incorporados, se agregó evidencia de ejecución y se actualizó el índice general de testing.
+
+### Observación
+
+La mención previa a la ausencia inicial de evidencia explícita de Playwright MCP queda documentada como antecedente de revisión. La evidencia actual se encuentra integrada en los test cases y carpetas correspondientes.
