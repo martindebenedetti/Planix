@@ -1,0 +1,535 @@
+# Especificación Técnica - Rol Coordinador / DevOps (Primer Parcial)
+
+## Descripción
+
+Esta especificación técnica documenta las tareas del rol **Coordinador / DevOps** para el **Primer Parcial** de Programación Web I.
+
+Se aplica la metodología **Spec-Driven Development (SDD)**, por lo que este archivo fue creado y versionado **antes de comenzar con cualquier otro cambio del rol**. Su finalidad es dejar registrada la planificación inicial, los criterios de aceptación y, al cierre, la evidencia de las decisiones tomadas y del trabajo de coordinación realizado.
+
+---
+
+## Contexto de partida
+
+El Primer Parcial se construye sobre la base corregida de las Actividades Obligatorias 1 y 2.
+
+Antes de comenzar el trabajo específico de esta entrega, se verificó que:
+
+- la `release/actividad-obligatoria-2` fue corregida según los Request Changes del docente;
+- la rama `release/actividad-obligatoria-2` fue mergeada a `master`;
+- el backport `release/actividad-obligatoria-2` → `develop` fue realizado para dejar establecida la base técnica del Primer Parcial;
+- `develop` quedó como rama de partida para las nuevas `feature/` del parcial.
+
+A partir de esa base, el rol Coordinador / DevOps debe coordinar la actualización del mockup en Figma, la integración de ramas del equipo, las revisiones de Pull Requests, la administración de issues y la preparación de la release final.
+
+---
+
+## ¿Qué se hará?
+
+Como responsable del rol **Coordinador / DevOps**, se planifican las siguientes tareas:
+
+1. **Validación de base técnica**
+   - Confirmar que las correcciones de la Actividad Obligatoria N°2 quedaron resueltas y tomadas como base.
+   - Verificar que `develop` ya contiene el backport de la release anterior.
+   - Asegurar que el equipo inicie el parcial sobre una base estable.
+
+2. **Actualización del mockup en Figma**
+   - Actualizar el mockup visual del proyecto para reflejar la migración a Bootstrap.
+   - Incorporar en el diseño una **navbar**, una **grilla Bootstrap** y una representación coherente de los componentes seleccionados.
+   - Mantener la identidad visual del proyecto, respetando paleta, tipografías y jerarquías visuales ya consolidadas en la Actividad Obligatoria N°2.
+   - Exportar el mockup actualizado como:
+     `docs/01-mockup/disenio-bootstrap.png`
+   - Actualizar el `README.md` con el enlace al archivo Figma actualizado.
+
+3. **Coordinación de ramas y Pull Requests**
+   - Coordinar la creación de ramas `feature/` del equipo con naming correcto.
+   - Supervisar que cada PR hacia `develop` tenga revisión aprobada antes del merge.
+   - Realizar revisiones asistidas con IA sobre las PRs del equipo.
+   - Cargar Request Changes en el diff cuando sea necesario.
+   - Verificar que `changelog.md` documente correctamente la participación de cada integrante.
+
+4. **Gestión de issues y seguimiento**
+   - Verificar que cada integrante cree al menos una issue asociada a su tarea.
+   - Organizar y mantener actualizado el tablero Kanban del proyecto en GitHub Projects.
+   - Controlar que los bugs detectados por testing se documenten y se resuelvan mediante ramas `fix/` contra `develop`.
+
+5. **Preparación de release y publicación**
+   - Crear `release/primer-parcial` a partir de `develop` una vez integradas todas las features.
+   - Habilitar GitHub Pages para la versión entregable.
+   - Crear la PR de entrega:
+     `release/primer-parcial` → `master`
+   - Publicar la PR en Slack y subir al campus los enlaces requeridos.
+   - Gestionar el tag:
+     `v1.1-primer-parcial`
+   - Crear el Release en GitHub con extracto del `changelog.md`.
+
+6. **Limpieza del repositorio**
+   - Eliminar ramas que ya no sean necesarias.
+   - Verificar que, al momento de la entrega, queden únicamente:
+     - `master`
+     - `develop`
+     - `release/primer-parcial`
+
+---
+
+## ¿Por qué?
+
+La planificación previa de este rol permite ordenar el trabajo del equipo, reducir errores de integración y asegurar que la entrega final mantenga coherencia técnica, visual y documental.
+
+Además, el rol Coordinador / DevOps es clave para:
+
+- garantizar que el mockup actualizado sirva como referencia válida para la migración a Bootstrap;
+- asegurar revisiones consistentes de las PRs del equipo;
+- centralizar la organización de issues, changelog, release y publicación final;
+- dejar trazabilidad clara del trabajo de cada integrante.
+
+---
+
+## Correcciones previas de la Actividad Obligatoria N°2 que se toman como base
+
+Se toma como base técnica corregida la Actividad Obligatoria N°2, incluyendo:
+
+- resolución de Request Changes sobre `release/actividad-obligatoria-2`;
+- merge de `release/actividad-obligatoria-2` a `master`;
+- backport de `release/actividad-obligatoria-2` hacia `develop`;
+- actualización del `changelog.md` con las correcciones realizadas;
+- cierre de los hilos de revisión y aprobación final del docente.
+
+Estas tareas fueron resueltas antes del inicio del trabajo específico del Primer Parcial.
+
+---
+
+## Cambios incorporados en el mockup de Figma
+
+Tomando como base el mockup mejorado de la Actividad Obligatoria N°2, se planificó e incorporó una nueva versión visual del proyecto orientada a la migración a Bootstrap.
+
+Los cambios incorporados en el mockup fueron:
+
+- incorporación de una **navbar** superior con marca "Planix", buscador, botón de acción principal y notificación;
+- reorganización del layout con lógica de **grilla Bootstrap**, separando visualmente la lista de tareas y el timeline Gantt;
+- mantenimiento de la **sidebar vertical** del proyecto como elemento de navegación lateral;
+- preservación del encabezado de proyecto con estado, título y barra de progreso;
+- representación visual de tareas, épicas, fechas y badges de estado dentro de una estructura más compatible con Bootstrap;
+- mantenimiento de la identidad visual del proyecto, conservando fondo claro, azules predominantes y jerarquía tipográfica consistente.
+
+El mockup actualizado fue exportado como:
+
+`docs/01-mockup/disenio-bootstrap.png`
+
+---
+
+## Implementación del mockup actualizado
+
+Para generar la nueva versión del mockup del Primer Parcial se siguió este proceso:
+
+1. Se tomó como base el mockup mejorado de la Actividad Obligatoria N°2.
+2. Se intentó utilizar el MCP de Figma como herramienta de apoyo para el trabajo sobre el diseño.
+3. Como alternativa operativa, se realizó una lectura estructural del archivo de Figma para analizar:
+   - dimensiones del frame principal;
+   - jerarquía de capas;
+   - distribución general del layout;
+   - colores y tipografías.
+4. A partir de ese análisis, se construyó una nueva versión visual del mockup incorporando criterios compatibles con Bootstrap.
+5. Se generó la imagen final del mockup actualizado y se guardó en:
+   `docs/01-mockup/disenio-bootstrap.png`
+
+El diseño original de la Actividad Obligatoria N°2 no fue reemplazado, sino tomado como referencia para producir una nueva versión visual del proyecto orientada al Primer Parcial.
+
+---
+
+## Criterios de Aceptación
+
+- [x] El archivo `docs/03-specs/primer-parcial/spec-devops.md` fue creado y commiteado antes que cualquier otro cambio del rol.
+- [x] El mockup en Figma fue actualizado para reflejar la migración a Bootstrap.
+- [x] El mockup actualizado incorpora una navbar.
+- [x] El mockup actualizado reorganiza el layout con lógica de grilla Bootstrap.
+- [x] El mockup actualizado fue exportado como `docs/01-mockup/disenio-bootstrap.png`.
+- [x] El `README.md` contiene el enlace al archivo Figma actualizado.
+- [x] Se realizaron al menos 4 code reviews asistidas por IA.
+- [x] Las issues del equipo fueron administradas mediante un tablero Kanban en GitHub Projects.
+- [x] `changelog.md` registra correctamente los aportes del equipo con links a las PRs.
+- [ ] Todas las ramas `feature/` del equipo fueron integradas en `develop` con revisión aprobada.
+- [ ] La rama `release/primer-parcial` fue creada desde `develop` luego de mergear todas las features.
+- [ ] GitHub Pages quedó habilitado y accesible para la versión de entrega.
+- [ ] La PR `release/primer-parcial` → `master` fue creada con template correcto.
+- [ ] El tag `v1.1-primer-parcial` fue creado luego del merge a `master`.
+- [ ] El Release en GitHub fue publicado con extracto del changelog.
+- [ ] Al cierre del proceso, solo permanecen `master`, `develop` y `release/primer-parcial`.
+
+---
+
+## Riesgos y Mitigaciones
+
+- **Riesgo:** El spec no queda registrado antes que otros cambios del rol.  
+  **Mitigación:** Mantener este archivo como primer commit de la rama `feature/coord-devops-update-doc-project`.
+
+- **Riesgo:** El mockup actualizado no quede disponible a tiempo para el rol Frontend / Bootstrap.  
+  **Mitigación:** Priorizar la actualización del diseño, la exportación de la imagen y la incorporación del enlace en `README.md`.
+
+- **Riesgo:** Las PRs del equipo se mergeen sin revisión suficiente.  
+  **Mitigación:** Verificar que todas las PRs tengan al menos una aprobación antes del merge en `develop`.
+
+- **Riesgo:** El changelog no refleje correctamente la participación del equipo.  
+  **Mitigación:** Revisar `changelog.md` en cada PR antes de aprobar.
+
+- **Riesgo:** La release se cree sin haber integrado todas las features.  
+  **Mitigación:** Confirmar en `develop` que todas las PRs del parcial estén mergeadas antes de crear `release/primer-parcial`.
+
+- **Riesgo:** Se acumulen ramas innecesarias y se complique la lectura del repositorio.  
+  **Mitigación:** Limpiar ramas obsoletas antes de la entrega final.
+
+---
+
+## Archivos principales involucrados
+
+- `docs/03-specs/primer-parcial/spec-devops.md`
+- `docs/01-mockup/disenio-bootstrap.png`
+- `README.md`
+- `changelog.md`
+- `.github/PULL_REQUEST_TEMPLATE/feature-template.md`
+- `.github/PULL_REQUEST_TEMPLATE/release-template.md`
+
+---
+
+## PRs previstas del rol
+
+- **PR principal del rol:**  
+  `feature/coord-devops-update-doc-project` → `develop`
+
+- **PR de release del parcial:**  
+  `release/primer-parcial` → `master`
+
+---
+
+## Reviews realizadas sobre PRs del equipo
+
+Durante la coordinación del Primer Parcial se realizaron revisiones asistidas por IA sobre las siguientes Pull Requests del equipo:
+
+- **PR #58 — `feature/dev-frontend-bootstrap-migration`**
+  - Resultado inicial: `Request Changes`
+  - Observaciones principales: inconsistencia de versión de Bootstrap entre CSS y JS, diferencias entre spec e implementación del header, y necesidad de revisar la trazabilidad de issue/changelog/test-case.
+  - Resultado final: aprobada luego de ajustes.
+
+- **PR #62 — `fix/sidebar-responsive1`**
+  - Resultado: aprobada luego de rehacer correctamente la rama fix desde `develop`.
+  - Observación principal: corrección del sidebar responsive sin arrastrar commits ajenos del feature principal.
+
+- **PR #61 — `feature/dev-comp-html-avanzados-add-components`**
+  - Resultado: `Approve` con comentarios.
+  - Observaciones principales: uso razonable de `bootstrap-overrides.css`, nivel de complejidad aceptable pero acotado de los componentes HTML avanzados, y recomendación de mejorar cobertura de testing desktop.
+
+- **PR #64 — `feature/esp-com-bootstrap-add-component`**
+  - Resultado: aprobada con observaciones de mejora por plazo de entrega.
+  - Observaciones principales: faltantes en `test-case-7.md` / `test-case-8.md` y contenido mínimo pendiente en Offcanvas, dejados como mejora futura.
+
+---
+
+## Evidencia al cierre de la tarea
+
+### Prompts utilizados en Code Reviews asistidas por IA
+
+Las revisiones se realizaron con asistencia de IA utilizando **Claude Code**, con foco en validar cumplimiento de rol, trazabilidad y coherencia con la consigna del parcial.
+
+#### Review PR #58 — Frontend / Bootstrap
+```text
+Actuá como revisor técnico del repositorio.
+
+No modifiques ningún archivo.
+No apliques cambios.
+No generes código.
+No edites el workspace.
+No hagas commits.
+No propongas parches automáticos.
+
+Quiero una code review asistida por IA de la PR #58:
+feature/dev-frontend-bootstrap-migration -> develop
+
+Objetivo:
+Revisar si esta PR cumple correctamente con el rol Desarrollador Frontend/Bootstrap del Primer Parcial.
+
+Criterios de revisión:
+1. verificar si existe docs/03-specs/primer-parcial/spec-frontend-bootstrap.md
+2. verificar si el spec fue commiteado antes que los cambios de Bootstrap
+3. revisar integración de Bootstrap sin romper styles.css, components.css ni responsive.css
+4. verificar si existe css/bootstrap-overrides.css
+5. revisar si index.html incorpora correctamente la migración a Bootstrap y sistema de columnas
+6. verificar coherencia visual con el mockup actualizado del proyecto
+7. verificar si existe docs/04-testing/test-case-6.md
+8. revisar si changelog.md está actualizado con esta PR
+9. detectar errores, riesgos, inconsistencias o cambios incompletos
+10. indicar si corresponde APPROVE, COMMENT o REQUEST CHANGES
+```
+
+#### Review PR #62 — Frontend / Bootstrap
+```text
+Actuá como revisor técnico del repositorio.
+
+No modifiques ningún archivo.
+No generes código.
+No hagas una code review completa desde cero.
+
+Quiero verificar únicamente si la PR #62:
+fix/sidebar-responsive1 -> develop
+
+corrige las observaciones que ya fueron marcadas en la review anterior.
+
+No sugieras comentarios nuevos.
+No busques problemas adicionales fuera de esos puntos.
+Solo decime si lo que se pidió ya fue corregido o no.
+
+Puntos a verificar:
+1. si la rama ahora sí parte correctamente desde develop
+2. si el diff contiene solo el fix real del sidebar responsive
+3. si ya no arrastra commits o cambios completos de la PR #58
+4. si changelog.md, si fue tocado, contiene solo la entrada correspondiente a este fix
+5. si el CSS del sidebar ya no tiene reglas contradictorias o redundantes
+6. si el fix no rompe el layout responsive general
+```
+
+### Review PR #61 — Componentes HTML avanzados
+```text
+Actuá como revisor técnico del repositorio.
+
+IMPORTANTE:
+- No modifiques ningún archivo.
+- No apliques cambios.
+- No generes código.
+- No edites el workspace.
+- No hagas commits.
+- No propongas parches automáticos.
+- Quiero la devolución en formato Markdown.
+
+Quiero una code review asistida por IA de la PR #61:
+feature/dev-comp-html-avanzados-add-components -> develop
+
+Objetivo:
+Revisar si esta PR cumple correctamente con las tareas del rol "Desarrollador de Componentes HTML Avanzados" del Primer Parcial.
+
+```
+
+### Review PR #64 — Especialista en Componentes Bootstrap
+``` text
+Actuá como revisor técnico del repositorio.
+
+IMPORTANTE:
+- No modifiques ningún archivo.
+- No apliques cambios.
+- No generes código.
+- No edites el workspace.
+- No hagas commits.
+- No propongas parches automáticos.
+- Quiero la devolución en formato Markdown.
+- Quiero una revisión suave: priorizá confirmar si la PR cumple el rol y solo señalá observaciones importantes o mejoras claras.
+
+Quiero una code review asistida por IA de la rama:
+feature/esp-com-bootstrap-add-component -> develop
+
+Objetivo:
+Verificar si esta PR cumple correctamente con las tareas del rol "Especialista en Componentes Bootstrap" del Primer Parcial.
+```
+
+---
+
+## AT CLOSE — Integración de correcciones posteriores a la devolución docente
+
+Luego de recibir la devolución del Primer Parcial, se inició una etapa de corrección coordinada sobre la rama `release/primer-parcial`.
+
+Como Coordinador/DevOps, el objetivo de esta etapa fue integrar las correcciones realizadas por los distintos roles, verificar que cada una tenga trazabilidad en GitHub y dejar documentado el estado real de los archivos entregables.
+
+### Criterio de trabajo adoptado
+
+Las correcciones posteriores a la devolución se organizaron mediante ramas `fix/` creadas desde `release/primer-parcial`, manteniendo la lógica de trabajo con Pull Requests y revisión antes del merge.
+
+No se realizaron correcciones directamente sobre `release/primer-parcial`, para conservar trazabilidad y permitir revisión técnica de cada cambio.
+
+### Estado de correcciones verificadas en `release/primer-parcial`
+
+| RC / Observación | Rol asociado | Estado en release | Evidencia verificada |
+|---|---|---|---|
+| RC-17 | Coordinador/DevOps | Integrado | Se verificó la existencia de `docs/01-mockup/disenio-bootstrap.png` actualizado en la rama `release/primer-parcial`. |
+| RC-14 / RC-15 | Desarrollador de Componentes HTML Avanzados | Integrado | Se verificaron `docs/04-testing/test-case-9.md`, `docs/04-testing/test-case-10.md`, `docs/04-testing/capturas/tc-9/`, `docs/04-testing/capturas/tc-10/` y actualización de `spec-html-avanzados.md`. |
+| RC-11 | Especialista en Componentes Bootstrap | Pendiente de integración | Al momento de esta revisión no existen `docs/04-testing/test-case-7.md`, `docs/04-testing/test-case-8.md`, `docs/04-testing/capturas/tc-7/` ni `docs/04-testing/capturas/tc-8/` en `release/primer-parcial`. |
+
+### Verificación local realizada
+
+Se ejecutaron comandos de verificación sobre la rama `release/primer-parcial` actualizada:
+
+```powershell
+git pull origin release/primer-parcial
+dir docs\03-specs\primer-parcial
+dir docs\04-testing
+dir docs\01-mockup
+Test-Path docs\04-testing\test-case-7.md
+Test-Path docs\04-testing\test-case-8.md
+dir docs\04-testing\capturas
+```
+Resultado relevante:
+
+```text
+test-case-7.md: False
+test-case-8.md: False
+capturas/tc-7: no existe
+capturas/tc-8: no existe
+capturas/tc-9: existe
+capturas/tc-10: existe
+```
+
+### Decisión como Coordinador/DevOps
+
+Se decide avanzar con esta rama correctiva para dejar documentada la integración parcial de correcciones ya disponibles, sin declarar como completada la corrección general del Primer Parcial.
+
+La corrección correspondiente a RC-11 del rol Especialista en Componentes Bootstrap quedará pendiente para una rama `fix/` posterior, una vez que el responsable del rol integre `test-case-7.md`, `test-case-8.md` y sus evidencias.
+
+### Criterio de aprobación para próximas PR correctivas
+
+Para aprobar una PR correctiva vinculada a testing con Playwright MCP, se verificará que incluya:
+
+- archivo `test-case-*.md` correspondiente;
+- formato de tabla según la consigna;
+- columna o campo de herramienta indicando Playwright MCP;
+- resultado actual documentado;
+- capturas en la carpeta correspondiente;
+- evidencia del uso de la herramienta;
+- actualización del spec del rol en sección AT CLOSE;
+- actualización de `docs/04-testing/testing-doc.md`;
+- entrada en `changelog.md` con rama, PR y autor.
+
+### Observación sobre trazabilidad
+
+Se mantiene la trazabilidad de las correcciones mediante ramas `fix/`, Pull Requests hacia `release/primer-parcial`, reviews del Coordinador y entradas en `changelog.md`.
+
+Esta decisión se toma para cumplir con el branch model solicitado en la consigna y evitar modificaciones directas sobre ramas de entrega.
+
+---
+
+## Evidencia complementaria — Figma MCP
+
+### Objetivo
+
+Registrar evidencia real del uso de Figma MCP para validar el mockup Bootstrap actualizado del proyecto Planix y responder a la observación RC-07.
+
+### Prompt utilizado
+
+```text
+Usando Figma MCP, analizá el mockup actualizado del proyecto Planix disponible en este enlace:
+
+https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=54-283&t=Ww4homzl6jfJxrQm-0
+
+Objetivo:
+Registrar evidencia real del uso de Figma MCP para validar el mockup Bootstrap actualizado del Primer Parcial.
+
+Revisar específicamente:
+1. si el mockup refleja una estructura compatible con Bootstrap;
+2. si aparece una navbar o encabezado principal;
+3. si la vista principal muestra una tabla o layout tipo Gantt;
+4. si el diseño contempla componentes HTML avanzados, como video tutorial o acordeón/details;
+5. si el mockup mantiene coherencia visual con la implementación esperada;
+6. si hay diferencias, inconsistencias o limitaciones relevantes.
+
+No modifiques archivos.
+No generes código.
+No hagas commits.
+No crees archivos nuevos salvo que la herramienta Figma MCP lo requiera explícitamente para inspeccionar el diseño.
+
+Devolvé solamente:
+- resumen del análisis;
+- componentes identificados;
+- hallazgos principales;
+- limitaciones u observaciones;
+- nombre de la herramienta MCP utilizada.
+```
+
+### Output obtenido del Figma MCP
+
+```text
+Resumen del análisis
+
+El mockup de Figma presenta una interfaz compatible con un layout Bootstrap típico: contenedor principal, cabecera superior y panel de contenido con estructura de tablero. La vista principal es una combinación de tabla de tareas y vista tipo Gantt, con columnas de datos y una zona de fechas.
+
+Componentes identificados
+
+Header con:
+- buscador (Buscar...)
+- ícono de notificación
+- título principal: Proyecto Agile
+- barra de progreso: Progreso General 65%
+
+Sección principal Tablero con:
+- cabecera de tablero (Header.tablero)
+- tabla de columnas: ID, Nombre de tarea, Inicio, Fin, Pred.
+- vista Gantt con fechas tipo 26/03...01/04 y estado HOY
+
+Indicadores de estado/leyenda:
+- Cancelado
+- En Proceso
+- Programado
+
+Hallazgos principales
+
+El mockup refleja una estructura compatible con Bootstrap: header + contenido central en un contenedor fijo y filas de datos.
+
+No se identifica una navbar clásica de Bootstrap; hay un Header principal con búsqueda, notificación y título, que cumple la función de encabezado superior.
+
+La vista principal muestra claramente un layout tipo Gantt con fila de tareas y fechas, junto a una tabla de datos.
+
+No hay evidencia textual de componentes avanzados como video tutorial o acordeón/details en el mockup inspeccionado.
+
+El diseño mantiene coherencia visual con una implementación esperada de un planificador Gantt en Bootstrap: columnas alineadas, tarjetas de tablero y leyenda de estados.
+
+Limitaciones / observaciones
+
+El análisis se basa en la estructura de nodos y textos del archivo Figma, no en código HTML real ni en clases Bootstrap.
+
+No se detectó una navbar tradicional; por lo tanto, si se busca un menú global, es posible que el diseño solo incluya un header funcional.
+
+No se encontró contenido explícito de componentes avanzados tipo video o accordion; si existen, no aparecen como nodos textuales reconocibles.
+
+Herramienta MCP utilizada
+
+mcp_figma_dev_mod_use_figma
+```
+
+### Decisiones tomadas a partir del análisis
+
+A partir del análisis obtenido mediante Figma MCP, se documentan las siguientes decisiones:
+
+- Se valida que el mockup actualizado contiene una estructura visual compatible con Bootstrap, organizada en header, contenedor principal, tablero y vista tipo Gantt.
+- Se acepta que el diseño no utiliza una navbar Bootstrap clásica, sino un header funcional con buscador, notificación, título y barra de progreso.
+- Se confirma que la vista principal del proyecto está centrada en la tabla de tareas y el diagrama Gantt, coherente con el objetivo de Planix.
+- Se registra como limitación que el mockup inspeccionado no evidencia textualmente componentes avanzados como video tutorial o acordeón/details.
+- Se deja constancia de que el análisis proviene del MCP de Figma y no de una inspección manual sin herramienta.
+
+### Estado
+
+Evidencia incorporada para responder a RC-07.
+
+---
+
+## AT CLOSE — Cierre de RC-11 e integración final de correcciones
+
+Luego de la integración de la corrección del rol Especialista en Componentes Bootstrap, se verificó que los entregables pendientes de RC-11 ya se encuentran presentes en la rama `release/primer-parcial`.
+
+### Verificación realizada
+
+| Entregable | Estado |
+|---|---|
+| `docs/04-testing/test-case-7.md` | Integrado |
+| `docs/04-testing/test-case-8.md` | Integrado |
+| `docs/04-testing/capturas/tc-7/` | Integrado |
+| `docs/04-testing/capturas/tc-8/` | Integrado |
+| `docs/03-specs/primer-parcial/spec-componentes-bootstrap.md` | Actualizado |
+| `docs/04-testing/testing-doc.md` | Actualizado |
+| `changelog.md` | Actualizado |
+
+### Decisión como Coordinador/DevOps
+
+Se considera integrada la corrección correspondiente a RC-11, dejando documentada la evidencia de testing de los componentes Bootstrap y la trazabilidad mediante rama `fix/`, Pull Request, changelog y archivos de testing.
+
+### Estado final de correcciones coordinadas
+
+| RC / Observación | Estado final |
+|---|---|
+| RC-05 / RC-06 — Body de PR release | Corregido |
+| RC-07 — Evidencia Figma MCP | Corregido |
+| RC-11 — TC-7 y TC-8 Componentes Bootstrap | Corregido |
+| RC-14 / RC-15 — HTML avanzado y testing | Corregido |
+| Changelog A2 — backport / em dash | Corregido |
