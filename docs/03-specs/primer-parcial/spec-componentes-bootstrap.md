@@ -78,8 +78,8 @@ Se validará:
 - [x] Los componentes funcionan correctamente
 - [x] Son responsive en todos los dispositivos requeridos
 - [x] No afectan el layout del Gantt
-- [ ] Se documentan test-case-7.md y test-case-8.md (no implementados)
-- [ ] Se generan issues por bugs encontrados (no requerido en esta entrega)
+- [x] Se documentan test-case-7.md y test-case-8.md
+- [x] Se generan issues por bugs encontrados
 
 ---
 
@@ -99,9 +99,56 @@ Se validará:
 - Integrar componentes sin romper funcionalidad existente
 - Documentar cambios realizados
 
+### Review realizada sobre PR de otro rol
+
+Desde el rol de Especialista en componentes Bootstrap se realizó revisión técnica sobre:
+
+PR #61 — feature/dev-comp-html-avanzados-add-components
+
+Link:
+https://github.com/martindebenedetti/Planix/pull/61
+
+Observaciones realizadas:
+- necesidad de mejorar trazabilidad de testing
+- ausencia inicial de evidencia explícita de Playwright MCP
+- test cases fuera del formato tabular requerido
+- recomendación de actualizar índice general de testing
+
+La revisión fue realizada para validar coherencia entre implementación, testing y especificaciones generales del parcial.
+Todos estos puntos fueron corregidos en diferentes ramas fix creadas.
+
 ---
 
 ## Referencias
 
 - Bootstrap Documentation
 - Documentación del repositorio Planix
+
+---
+
+## AT CLOSE — Corrección RC-11: evidencia Playwright MCP
+
+Luego de la devolución docente, se completó la documentación pendiente correspondiente al testing de los componentes Bootstrap avanzados.
+
+### Test cases integrados
+
+| Test Case | Componente | Herramienta | Evidencia | Estado |
+|---|---|---|---|---|
+| TC-7 | Modal compartir enlace Bootstrap | Playwright MCP | `docs/04-testing/capturas/tc-7/` | PASS |
+| TC-8 | Offcanvas de ayuda Bootstrap | Playwright MCP | `docs/04-testing/capturas/tc-8/` | PASS |
+
+### Archivos verificados
+
+- `docs/04-testing/test-case-7.md`
+- `docs/04-testing/test-case-8.md`
+- `docs/04-testing/capturas/tc-7/`
+- `docs/04-testing/capturas/tc-8/`
+- `docs/04-testing/testing-doc.md`
+
+### Resultado
+
+Se considera corregida la observación RC-11 del rol Especialista en Componentes Bootstrap, ya que los test cases requeridos fueron incorporados, se agregó evidencia de ejecución y se actualizó el índice general de testing.
+
+### Observación
+
+La mención previa a la ausencia inicial de evidencia explícita de Playwright MCP queda documentada como antecedente de revisión. La evidencia actual se encuentra integrada en los test cases y carpetas correspondientes.

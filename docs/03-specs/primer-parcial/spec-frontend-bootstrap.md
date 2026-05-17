@@ -197,6 +197,44 @@ El testing se realizó manualmente utilizando las DevTools de Google Chrome.
 
 ---
 
+## Uso de Figma MCP
+
+Se realizó un análisis asistido mediante Figma MCP sobre el mockup visual del proyecto ubicado en Figma.
+
+Objetivo:
+- validar estructura general del layout
+- identificar componentes Bootstrap compatibles
+- extraer paleta visual y jerarquía visual
+- verificar comportamiento responsive esperado
+
+Tool call utilizado:
+- análisis visual del mockup mediante Figma MCP
+- extracción de estructura y componentes
+- identificación de colores y tipografías
+
+Prompt utilizado:
+![prompt](../../04-testing/capturas/figma-mcp/prompt-figma-mcp.png)
+
+Output principal obtenido:
+- layout compuesto por header + sidebar + content principal
+- tabla Gantt como componente central
+- sidebar responsive con comportamiento offcanvas en mobile
+- uso predominante de tonos azules, grises claros y fondos neutros
+- tipografía sans-serif moderna alineada con Bootstrap
+- uso compatible con Bootstrap Grid (`container-fluid`, `row`, `col-*`)
+- presencia de componentes equivalentes a Navbar, Modal, Offcanvas, Table y Progress
+
+![output](../../04-testing/capturas/figma-mcp/output-figma-mcp.png)
+
+Decisiones tomadas a partir del análisis:
+- utilización de Bootstrap 5.3
+- implementación de layout responsive basado en Grid System
+- uso de `bootstrap-overrides.css` para preservar identidad visual
+- adaptación del sidebar responsive para mobile/tablet
+- incorporación de componentes Bootstrap equivalentes al mockup
+
+---
+
 ## Conclusión
 
 La migración a Bootstrap se implementó correctamente, mejorando la responsividad del proyecto sin afectar la identidad visual existente. Se logró una integración progresiva y controlada, cumpliendo con los objetivos planteados en el plan del proyecto.

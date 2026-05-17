@@ -1,0 +1,8 @@
+node_modules/
+scripts/
+package-lock.json
+package.json
+tests/
+playwright_tc6.py
+playwright_tc7.py
+playwright_tc8.py
