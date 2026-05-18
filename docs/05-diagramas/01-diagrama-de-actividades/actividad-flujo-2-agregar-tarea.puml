@@ -14,6 +14,7 @@ else (sí)
     :listaTexto = listaTexto + proyectos[i].nombre;
     :i = i + 1;
   endwhile (no)
+  :alert(listaTexto);
   |Usuario|
   :Elegir proyecto por nombre (prompt);
   

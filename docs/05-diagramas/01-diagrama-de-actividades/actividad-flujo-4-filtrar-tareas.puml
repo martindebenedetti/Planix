@@ -9,6 +9,7 @@ if (¿Existen proyectos?) then (no)
 else (sí)
   |Sistema|
   :Construir lista de proyectos;
+  :alert(lista de proyectos);
   |Usuario|
   :Elegir proyecto por nombre;
   |Sistema|

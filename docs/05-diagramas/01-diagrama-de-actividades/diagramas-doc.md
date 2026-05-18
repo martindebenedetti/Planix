@@ -27,7 +27,7 @@ Ante cualquier error se muestra un `alert()` específico y el flujo se detiene.
 **Estructuras de control:** `if/else/endif` (4 validaciones en cascada)
 **Artefactos:** `proyectos[]`, objeto `{ nombre, fechaInicio, fechaFin, tareas: [] }`
 
-[Flujo 1: Crear Proyecto](./actividad-flujo-1-crear-proyecto.png)
+![Flujo 1: Crear Proyecto](./actividad-flujo-1-crear-proyecto.png)
 
 [Ver fuente editable](./actividad-flujo-1-crear-proyecto.puml)
 
@@ -46,7 +46,7 @@ antes de continuar. Si todo es válido, se crea el objeto `Tarea` y se agrega a
 **Estructuras de control:** `if/else/endif` (validaciones + switch de 3 opciones)
 **Artefactos:** `proyectos[]`, `proyecto.tareas[]`, objeto `{ nombre, responsable, estado }`
 
-[Flujo 2: Agregar Tarea a Proyecto](./actividad-flujo-2-agregar-tarea.png)
+![Flujo 2: Agregar Tarea a Proyecto](./actividad-flujo-2-agregar-tarea.png)
 
 [Ver fuente editable](./actividad-flujo-2-agregar-tarea.puml)
 
@@ -65,7 +65,7 @@ Se muestra un informe completo mediante `alert()`.
 **Estructuras de control:** `while/endwhile` (recorrido de tareas) + `if/else/endif` anidados (estado)
 **Artefactos:** `proyectos[]`, `proyecto.tareas[]`, `new Date()`
 
-[Flujo 3: Calcular Avance del Proyecto](./actividad-flujo-3-calcular-avance.png)
+![Flujo 3: Calcular Avance del Proyecto](./actividad-flujo-3-calcular-avance.png)
 
 [Ver fuente editable](./actividad-flujo-3-calcular-avance.puml)
 
@@ -84,7 +84,7 @@ mediante `alert()`; si tiene datos se muestra el listado tanto en `alert()` como
 **Estructuras de control:** `while/endwhile` (filtrado) + `if/else/endif` (switch de 4 opciones + resultado vacío)
 **Artefactos:** `proyectos[]`, `proyecto.tareas[]`, `tareasFiltradas[]`
 
-[Flujo 4: Listar y Filtrar Tareas](./actividad-flujo-4-filtrar-tareas.png)
+![Flujo 4: Listar y Filtrar Tareas](./actividad-flujo-4-filtrar-tareas.png)
 
 [Ver fuente editable](./actividad-flujo-4-filtrar-tareas.puml)
 

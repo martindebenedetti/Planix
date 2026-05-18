@@ -9,6 +9,7 @@ if (¿Existen proyectos?) then (no)
 else (sí)
   |Sistema|
   :Construir lista de proyectos;
+  :alert(lista de proyectos);
   |Usuario|
   :Elegir proyecto por nombre;
   |Sistema|
@@ -36,21 +37,23 @@ else (sí)
       endwhile (no)
       :porcentaje = (completadas / total) * 100;
       :hoy = new Date();
+      :Parsear proyecto.fechaFin (DD/MM/AAAA)\na objeto Date para comparación (fechaFinDate);
       if (porcentaje == 100) then (sí)
-        if (hoy <= proyecto.fechaFin) then (sí)
+        if (hoy <= fechaFinDate) then (sí)
           :estadoProyecto = "Completado antes del plazo";
         else (no)
           :estadoProyecto = "Completado";
         endif
       else (no)
-        if (hoy > proyecto.fechaFin) then (sí)
+        if (hoy > fechaFinDate) then (sí)
           :estadoProyecto = "Atrasado";
         else (no)
           :estadoProyecto = "En curso";
         endif
       endif
+      :informe = "Avance: " + porcentaje + "%\n" + completadas + "/" + total + " tareas\nEstado: " + estadoProyecto;
       |Usuario|
-      :alert(Porcentaje, completadas/total, estadoProyecto);
+      :alert(informe);
       stop
     endif
   endif
