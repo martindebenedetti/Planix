@@ -68,7 +68,7 @@ Este flujo permite simular la creación de un nuevo proyecto dentro de Planix.
 - Validar que el nombre no esté vacío.
 - Validar que el nombre del proyecto sea único.
 - Validar formato de fecha.
-- Validar que la fecha de fin sea posterior o igual a la fecha de inicio.
+- Validar que la fecha de fin sea posterior a la fecha de inicio.
 - Crear un objeto proyecto.
 - Agregar el proyecto al array de proyectos.
 
@@ -344,12 +344,75 @@ Antes de generar código definitivo, devolvé una propuesta de estructura genera
 
 ## AT CLOSE — Evidencia de cierre
 
-> Esta sección se completará al finalizar la implementación.
+### Prompt utilizado con Copilot Agent Mode
 
-Pendiente de documentar:
+```text
+Actuá como asistente de desarrollo JavaScript para el proyecto Planix.
 
-- prompt exacto utilizado con Copilot Agent Mode;
-- fragmento del código generado o asistido;
-- ajustes manuales realizados;
-- decisiones finales sobre testabilidad;
-- coordinación con Arquitecto de Diagramas y Tester JavaScript.
+Contexto:
+Planix es un planificador de proyectos y tareas tipo Gantt.
+
+Necesito implementar la lógica de negocio correspondiente a la Actividad Obligatoria N°3 de Programación Web I.
+
+Archivos de contexto:
+- docs/03-specs/actividad-obligatoria-3/spec-dev-javascript.md
+- docs/05-diagramas/01-diagrama-de-actividades/actividad-flujo-1-crear-proyecto.puml
+- docs/05-diagramas/01-diagrama-de-actividades/actividad-flujo-2-agregar-tarea.puml
+- docs/05-diagramas/01-diagrama-de-actividades/actividad-flujo-3-calcular-avance.puml
+- docs/05-diagramas/01-diagrama-de-actividades/actividad-flujo-4-filtrar-tareas.puml
+
+Flujos a implementar:
+1. Crear Proyecto.
+2. Agregar Tarea.
+3. Calcular Avance.
+4. Filtrar Tareas.
+
+Restricciones:
+- Usar JavaScript puro.
+- Implementar todo en js/script.js.
+- No manipular el DOM.
+- No usar eventos.
+- Usar prompt(), alert() y/o console.log() solo en funciones de interacción.
+- Separar lógica de negocio de entrada/salida.
+- Crear funciones puras testeables con Jasmine.
+- Usar arrays y objetos.
+- Usar condicionales y ciclos.
+- Exponer funciones necesarias para testing.
+- Usar nombres camelCase.
+- Agregar JSDoc donde corresponda.
+
+Antes de generar código definitivo, devolvé una propuesta de estructura general para js/script.js, indicando funciones puras, funciones de UI y responsabilidades.
+```
+
+### Fragmento representativo implementado
+
+```js
+function calcularPorcentajeAvance(completadas, total) {
+  if (total === 0) {
+    return 0;
+  }
+
+  return Math.round((completadas / total) * 100);
+}
+```
+
+### Ajustes manuales realizados
+
+- Se ajustó el formato de fecha a `DD/MM/AAAA` para respetar los diagramas de actividades.
+- Se separaron funciones puras de funciones de interacción con usuario.
+- Se evitó manipulación del DOM y eventos, según la consigna.
+- Se expusieron funciones en `window` para facilitar el testing con Jasmine.
+- Se modificó `determinarEstadoProyecto()` para aceptar una fecha opcional y facilitar pruebas con fechas simuladas.
+- Se validaron estados y filtros según los valores definidos en los diagramas.
+
+### Decisiones finales de testabilidad
+
+- Las funciones de lógica de negocio reciben parámetros y retornan valores.
+- Las funciones `ejecutarFlujo1()`, `ejecutarFlujo2()`, `ejecutarFlujo3()` y `ejecutarFlujo4()` concentran el uso de `prompt()` y `alert()`.
+- El menú principal quedó encapsulado en `mostrarMenuPrincipal()` y no se ejecuta automáticamente al cargar el archivo.
+- Las funciones principales se exponen en `window` para que `script.spec.js` pueda invocarlas desde Jasmine.
+
+### Coordinación con otros roles
+
+- La implementación respeta los cuatro diagramas de actividades generados por el rol Arquitecto de Diagramas.
+- La estructura del código se preparó para facilitar el trabajo del rol Tester JavaScript / QA Engineer.
