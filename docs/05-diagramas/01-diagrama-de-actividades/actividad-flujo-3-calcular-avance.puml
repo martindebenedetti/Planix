@@ -1,0 +1,61 @@
+@startuml actividad-flujo-3-calcular-avance
+|Usuario|
+start
+|Sistema|
+if (¿Existen proyectos?) then (no)
+  |Usuario|
+  :alert("No hay proyectos");
+  stop
+else (sí)
+  |Sistema|
+  :Construir lista de proyectos;
+  :alert(lista de proyectos);
+  |Usuario|
+  :Elegir proyecto por nombre;
+  |Sistema|
+  :Buscar proyecto;
+  if (¿Proyecto encontrado?) then (no)
+    |Usuario|
+    :alert("Proyecto no encontrado");
+    stop
+  else (sí)
+    |Sistema|
+    if (¿Tiene tareas?) then (no)
+      |Usuario|
+      :alert("El proyecto no tiene tareas");
+      stop
+    else (sí)
+      |Sistema|
+      :completadas = 0;
+      :i = 0;
+      while (i < cantidad de tareas) is (sí)
+        if (tareas[i].estado == "completada") then (sí)
+          :completadas = completadas + 1;
+        else (no)
+        endif
+        :i = i + 1;
+      endwhile (no)
+      :porcentaje = (completadas / total) * 100;
+      :hoy = new Date();
+      :Parsear proyecto.fechaFin (DD/MM/AAAA)\na objeto Date para comparación (fechaFinDate);
+      if (porcentaje == 100) then (sí)
+        if (hoy <= fechaFinDate) then (sí)
+          :estadoProyecto = "Completado antes del plazo";
+        else (no)
+          :estadoProyecto = "Completado";
+        endif
+      else (no)
+        if (hoy > fechaFinDate) then (sí)
+          :estadoProyecto = "Atrasado";
+        else (no)
+          :estadoProyecto = "En curso";
+        endif
+      endif
+      :informe = "Avance: " + porcentaje + "%\n" + completadas + "/" + total + " tareas\nEstado: " + estadoProyecto;
+      |Usuario|
+      :alert(informe);
+      stop
+    endif
+  endif
+endif
+@enduml
