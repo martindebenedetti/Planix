@@ -8,6 +8,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/dev-javascript-logica-negocio] Implementación de lógica de negocio JavaScript para los 4 flujos principales de Planix. Se agrega `js/script.js`, se referencia desde `index.html` y se completa `spec-dev-javascript.md`. PR: [#87](https://github.com/martindebenedetti/Planix/pull/87) — @leanlex (Desarrollador JavaScript) — Issue: #80, #81
+
 - [feature/arq-diagramas-actividades] Creación de documentación, diagramas `.puml` y exportación de PNG para los 4 flujos principales del sistema. PR: #85 — @martindebenedetti (Arquitecto de Diagramas de Actividades) — Issue: #82
 
 - [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega, se carga el spec-devops.md. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps) — Issue: #83
