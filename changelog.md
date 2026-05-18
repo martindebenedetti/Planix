@@ -8,9 +8,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
-- [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
-
 - [feature/arq-diagramas-actividades] Creación de documentación, diagramas `.puml` y exportación de PNG para los 4 flujos principales del sistema. PR: #85 — @martindebenedetti (Arquitecto de Diagramas de Actividades)
+
+- [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
 
 ## [Release Primer Parcial] - 2026-04-22
 
