@@ -1,7 +1,7 @@
 # Spec: Coordinador / DevOps
 
 **Actividad Obligatoria N°3 | Programación Web I | UCES**  
-**Estudiante:** Martin Debenedetti  
+**Estudiante:** Gian Franco Pasquali
 **Proyecto:** Planificador de Tareas - Diagrama de Gantt (Planix)
 **Rama:** `feature/coord-devops-tercera-entrega`
 
@@ -35,8 +35,8 @@ más precisos que una revisión manual sin asistencia.
 
 ### Criterios de aceptación — Checklist
 
-- [ ] Correcciones del Primer Parcial aplicadas con ramas `fix/` y documentadas en `changelog.md`
-- [ ] Backport `backport/release-primer-parcial` → `develop` mergeado
+- [x] Correcciones del Primer Parcial aplicadas con ramas `fix/` y documentadas en `changelog.md`
+- [x] Backport `backport/release-primer-parcial` → `develop` mergeado
 - [ ] ≥ 4 code reviews realizados con Copilot Agent Mode y CHANGES_REQUESTED documentados
 - [ ] Todas las ramas `feature/` integradas en `develop` con aprobación
 - [ ] GitHub Pages activo y funcional en rama `release/tercera-entrega`

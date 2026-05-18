@@ -9,10 +9,10 @@
 
 | Nombre y Apellido | Matrícula | Usuario Git | Rol |
 |:---|:---:|:---:|:---:|
-| Martín Debenedetti | 151579 | martindebenedetti | DESARROLLADOR DE COMPONENTES HTML AVANZADOS |
-| Leandro Berro | 155667 | leanlex | Coordinador / DevOps |
-| Gian Franco Pasquali | 148159 | giann98 | Desarrollador Frontend/Bootstrap / Especialista en Componentes 
-Bootstrap |
+| Martín Debenedetti | 151579 | martindebenedetti | Arquitecto de Diagrama de Actividades |
+| Leandro Berro | 155667 | leanlex | Desarrollador JavaScript |
+| Gian Franco Pasquali | 148159 | giann98 |  Coordinador / DevOps |
+| Compartido | - | - | Tester JavaScrip / QA Engineer |
 
 
 ---
@@ -21,7 +21,7 @@ Bootstrap |
 
 Este proyecto propone el desarrollo de una página web orientada a la visualización y planificación de tareas mediante un esquema tipo **diagrama de Gantt**.
 
-El sistema busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones, responsables y nivel de avance. A partir de las bases construidas en las Actividades Obligatorias 1 y 2, el **Primer Parcial** incorpora una nueva etapa de evolución del proyecto, centrada en:
+El sistema busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones, responsables y nivel de avance. A partir de las bases construidas en las Actividades Obligatorias 1 y 2, el **Primer Parcial** y la Actividad Obligatoria 3, que incorpora una nueva etapa de evolución del proyecto, centrada en:
 
 - la **migración visual y estructural a Bootstrap**;
 - la mejora de la **responsividad** del sitio;
@@ -54,6 +54,9 @@ El sistema busca representar de forma clara la organización de tareas, sus fech
 - Playwright MCP
 - GitHub MCP
 - Claude Code MCP
+- JavaScript
+- Jasmine
+- PlantUML
 
 ---
 
@@ -69,7 +72,8 @@ El sistema busca representar de forma clara la organización de tareas, sus fech
 - Incorporación de componentes avanzados de Bootstrap.
 - Incorporación de componentes HTML avanzados.
 - Posibilidad de ampliar el detalle de cada tarea mediante una ventana modal o vista ampliada.
-- Evolución futura con JavaScript e interactividad adicional.
+- Integración progresiva de lógica JavaScript para simulación funcional del sistema.
+- Base preparada para futura integración con DOM y eventos en próximas entregas.
 
 ---
 
@@ -125,7 +129,9 @@ Para el Primer Parcial se generó una nueva versión del mockup tomando como bas
 
 ## Estado del proyecto
 
-El proyecto se encuentra actualmente en desarrollo del **Primer Parcial**, tomando como base corregida las Actividades Obligatorias 1 y 2.
+El proyecto se encuentra actualmente en desarrollo de la **Actividad Obligatoria N°3**, tomando como base consolidada y corregida el Primer Parcial y las actividades anteriores.
+
+En esta etapa se incorpora la lógica de negocio del sistema utilizando JavaScript, testing automatizado con Jasmine y diagramas de actividades mediante PlantUML.
 
 ### Avances alcanzados hasta el momento
 
@@ -133,16 +139,38 @@ El proyecto se encuentra actualmente en desarrollo del **Primer Parcial**, toman
 - backport de la release anterior hacia `develop`;
 - creación de la especificación técnica inicial del rol Coordinador / DevOps;
 - actualización del mockup visual del proyecto para reflejar la migración a Bootstrap;
-- exportación del mockup actualizado como `docs/01-mockup/disenio-bootstrap.png`.
+- exportación del mockup actualizado como `docs/01-mockup/disenio-bootstrap.png`;
+- migración de la interfaz principal a Bootstrap 5 utilizando sistema de grillas responsive;
+- incorporación de componentes avanzados de Bootstrap (`navbar`, `modal`, `offcanvas`, `accordion`, `cards`, `buttons`, `progress`);
+- incorporación de componentes HTML avanzados y mejoras estructurales semánticas;
+- integración de `bootstrap-overrides.css` para conservar la identidad visual del proyecto;
+- implementación de testing responsive mediante Playwright MCP;
+- generación de evidencias de testing en múltiples breakpoints (`mobile`, `tablet`, `desktop`);
+- documentación técnica de los roles mediante specs organizadas por entrega;
+- integración de casos de prueba TC-6 a TC-10;
+- realización de code reviews asistidas por IA utilizando GitHub Copilot Agent;
+- creación de release y versionado formal `v1.1-primer-parcial`;
+- limpieza y normalización de ramas según criterios de entrega;
+- preparación de la base técnica para comenzar la Actividad Obligatoria N°3 orientada a JavaScript y testing automatizado.
 
 ### Pendiente para esta etapa
 
-- instalación e integración de Bootstrap en la interfaz;
-- implementación de componentes avanzados de Bootstrap;
-- incorporación de componentes HTML avanzados;
-- testing responsive con Playwright MCP;
-- cierre de specs por rol con evidencia final;
-- integración final en release del Primer Parcial.
+- actualización de `plan.md` con los nuevos flujos funcionales de JavaScript;
+- implementación de la lógica de negocio principal en `js/script.js`;
+- desarrollo de 4 flujos funcionales utilizando `prompt()`, `alert()` y estructuras de control;
+- incorporación de arrays, objetos y funciones reutilizables para mejorar escalabilidad;
+- creación de diagramas de actividades en PlantUML para cada flujo principal;
+- exportación de diagramas `.puml` y `.png`;
+- implementación de testing automatizado con Jasmine;
+- creación de `js/test/test-runner.html`;
+- desarrollo de `js/test/script.spec.js` con suites de tests por flujo;
+- documentación de testing;
+- ejecución de tests mediante Playwright MCP y captura de evidencias PASS/FAIL;
+- actualización integral del README con documentación de JavaScript y testing;
+- coordinación de PRs y code reviews correspondientes a la tercera entrega;
+- configuración y validación de GitHub Pages para `release/tercera-entrega`;
+- creación del release final `v1.1-tercera-entrega`;
+- integración final hacia `master` y limpieza definitiva de ramas del repositorio.
 
 ---
 
@@ -163,6 +191,11 @@ El proyecto se encuentra actualmente en desarrollo del **Primer Parcial**, toman
 - `docs/04-testing/test-case-6.md` a `test-case-10.md`: testing previsto para el Primer Parcial.
 - `changelog.md`: registro de contribuciones, PRs, fixes y participación del equipo.
 - `.github/PULL_REQUEST_TEMPLATE/`: plantillas de Pull Requests para ramas feature y release.
+- `docs/05-diagramas/01-diagrama-de-actividades/`: diagramas UML de flujos funcionales.
+- `js/script.js`: lógica principal del sistema implementada en JavaScript.
+- `js/test/test-runner.html`: runner de Jasmine para ejecución de tests.
+- `js/test/script.spec.js`: suites de testing automatizado.
+- `js/test/testing-doc.md`: documentación técnica del testing.
 
 ---
 
@@ -175,6 +208,7 @@ El desarrollo del proyecto se organiza mediante:
 - revisión previa antes de cada merge;
 - documentación obligatoria en `changelog.md`;
 - uso de issues para seguimiento de tareas y bugs;
-- coordinación de integración y release por parte del rol Coordinador / DevOps.
+- coordinación de integración y release por parte del rol Coordinador / DevOps;
+- uso de GitHub Copilot Agent y herramientas MCP como apoyo de desarrollo y testing.
 
 ---

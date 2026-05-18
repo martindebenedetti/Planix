@@ -88,3 +88,119 @@ frontend, donde se implementará la estructura HTML, los estilos CSS y la intera
   - Formulario básico, lista y tabla relacionados con la planificación.
   - Comentarios indicando futuras implementaciones de CSS y JS.
 - ✅ El contenido técnico está redactado en español y sigue el formato Markdown.
+
+# Tercera Entrega — Programación Web con JavaScript
+
+## Objetivo General
+
+Implementar la lógica de negocio principal del proyecto utilizando JavaScript, incorporando algoritmos, estructuras de control, funciones, arrays, objetos y testing automatizado, manteniendo coherencia con el mockup, la documentación previa y la arquitectura definida en el Primer Parcial.
+
+---
+
+## Objetivos Específicos
+
+- Implementar 4 flujos funcionales principales del sistema.
+- Incorporar lógica de validación mediante estructuras condicionales.
+- Utilizar ciclos para procesamiento de colecciones de datos.
+- Implementar funciones reutilizables y modulares.
+- Modelar datos mediante arrays y objetos.
+- Incorporar testing automatizado con Jasmine.
+- Generar diagramas de actividades utilizando PlantUML.
+- Mantener trazabilidad Git/GitHub mediante branch model y Pull Requests.
+
+---
+
+## Arquitectura de la Entrega
+
+La tercera entrega se organiza en los siguientes módulos:
+
+| Módulo | Responsable | Objetivo |
+|---|---|---|
+| JavaScript Core | Dev JavaScript | Implementación de lógica y flujos |
+| Diagramas UML | Arquitecto de Diagramas | Modelado de flujos de actividades |
+| Testing Jasmine | Tester / QA | Validación automatizada |
+| Coordinación DevOps | Coordinador | Integración, reviews y releases |
+
+---
+
+## Flujos Funcionales Planificados
+
+Los flujos principales del sistema serán:
+
+1. Creación de proyecto
+2. Agregación de tareas a proyecto
+3. Cálculo de avance del proyecto
+4. Listado y filtrado de tareas
+
+---
+
+## Estrategia de Branching
+
+El repositorio mantendrá el siguiente esquema de ramas:
+
+- `master`
+- `develop`
+- `release/tercera-entrega`
+
+Ramas feature previstas:
+
+- `feature/dev-javascript`
+- `feature/tester-javascript-jasmine`
+- `feature/arquitecto-diagramas`
+- `feature/coord-devops-tercera-entrega`
+
+---
+
+## Herramientas Utilizadas
+
+| Herramienta | Uso |
+|---|---|
+| GitHub Copilot Agent | Generación asistida de código y testing |
+| Playwright MCP | Ejecución automatizada en browser |
+| Jasmine | Testing automatizado |
+| PlantUML | Diagramas de actividades |
+| Bootstrap 5 | Base responsive del frontend |
+| GitHub Projects | Gestión Kanban de tareas |
+
+---
+
+## Estrategia de Testing
+
+La validación del sistema incluirá:
+
+- Happy paths
+- Casos borde
+- Validaciones de errores
+- Testing de arrays y objetos
+- Verificación de algoritmos
+
+Los tests serán ejecutados mediante Jasmine en navegador real utilizando Playwright MCP.
+
+---
+
+## Integración Continua y Coordinación
+
+La integración de cambios seguirá el siguiente flujo:
+
+1. Desarrollo en ramas feature
+2. Pull Request hacia `develop`
+3. Code Review asistido por IA
+4. Correcciones y aprobación
+5. Merge controlado
+6. Release final hacia `master`
+
+---
+
+## Versionado
+
+La entrega finalizará con:
+
+- Tag:
+  `v1.1-tercera-entrega`
+
+- Release GitHub documentada con:
+  - changelog
+  - enlaces relevantes
+  - evidencias de testing
+  - documentación técnica
+
