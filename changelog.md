@@ -4,13 +4,17 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ---
 
-## [Release Actividad Obligatoria N°2] - 2026-05-18
+## [Unreleased] - 2026-05-18
 
 ### Added
 
-- [feature/arq-diagramas-actividades] Creación de documentación, diagramas `.puml` y exportación de PNG para los 4 flujos principales del sistema. PR: #85 — @martindebenedetti (Arquitecto de Diagramas de Actividades)
+- [feature/arq-diagramas-actividades] Creación de documentación, diagramas `.puml` y exportación de PNG para los 4 flujos principales del sistema. PR: #85 — @martindebenedetti (Arquitecto de Diagramas de Actividades) — Issue: #82
 
-- [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
+- [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega, se carga el spec-devops.md. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps) — Issue: #83
+
+### Fixed
+
+- [fix/update-plan-readme-tercer-entrega] Se actualiza el documento plan.md y README.md con los cambios realizados en la tercer entrega. PR[#](https://github.com/martindebenedetti/Planix/pull/) — @giann98 (Coordinador / DevOps) — Issue: #83
 
 ## [Release Primer Parcial] - 2026-04-22
 
