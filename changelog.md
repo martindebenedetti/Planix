@@ -4,7 +4,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ---
 
-## [Unreleased]
+## [Release Actividad Obligatoria N°2] - 2026-05-18
+
+### Added
+
+- [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
 
 ## [Release Primer Parcial] - 2026-04-22
 
@@ -24,19 +28,19 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
-- [fix/modificacion-changelog] Se modifica el changelog agregando la entrada de la PR#77 y PR#76, además de la de propia rama fix/modificacion-changelog  — PR#78 — @giann98 (Coordinador / DevOps)
+- [fix/modificacion-changelog] Se modifica el changelog agregando la entrada de la PR#77 y PR#76, además de la de propia rama fix/modificacion-changelog — PR#78 — @giann98 (Coordinador / DevOps)
 
-- [fix/RCN1-RCN2-correccion-markdown] Se mejora el formato markdown del spec-html-avanzado y se crea subcarpeta evidencias dentro de 03-specs  — PR#77 — @giann98 (Coordinador / DevOps)
+- [fix/RCN1-RCN2-correccion-markdown] Se mejora el formato markdown del spec-html-avanzado y se crea subcarpeta evidencias dentro de 03-specs — PR#77 — @giann98 (Coordinador / DevOps)
 
 - [fix/coord-devops-cierre-rc11-bootstrap] Documenta cierre de RC-11 e integración final de TC-7 y TC-8 en la release del Primer Parcial. PR: #76 — @leanlex — Ayudando al rol(Coordinador / DevOps)
 
 - [fix/RC9-RC12-frontend-spec] Se deja evidencia que se utiliza Figma MCP para analizar mockup y se realiza review sobre una PR — PR#75 — @giann98 (Coordinador / DevOps)
 
-- [fix/RC-13-Recrear-feature-hmtl-avanzado] Se documenta que los commits se encuentran dentro del feature de html-avanzado — PR#74 — @giann98 (Coordinador / DevOps) 
+- [fix/RC-13-Recrear-feature-hmtl-avanzado] Se documenta que los commits se encuentran dentro del feature de html-avanzado — PR#74 — @giann98 (Coordinador / DevOps)
 
-- [fix/RC11-Agregar-TC7-TC8] Se generan los TC7 y TC8 con evidencia Playwright MCP, además se ajustó el documento testing-doc.md — PR#72 — @giann98 (Coordinador / DevOps) 
+- [fix/RC11-Agregar-TC7-TC8] Se generan los TC7 y TC8 con evidencia Playwright MCP, además se ajustó el documento testing-doc.md — PR#72 — @giann98 (Coordinador / DevOps)
 
-- [fix/testcase-6-playwright-format] Corrección del formato y evidencia Playwright MCP del TC-6 — PR#71 — @giann98 (Coordinador / DevOps) 
+- [fix/testcase-6-playwright-format] Corrección del formato y evidencia Playwright MCP del TC-6 — PR#71 — @giann98 (Coordinador / DevOps)
 
 - [fix/coord-devops-integracion-correcciones-parcial] Documenta integración parcial de correcciones del Primer Parcial y deja RC-11 pendiente para rama posterior — PR #70 — @leanlex — Ayudando al rol(Coordinador / DevOps)
 
@@ -167,4 +171,3 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#24](https://github.com/martindebenedetti/Planix/pull/24) — @martindebenedetti (Coordinador / DevOps)
 
 ---
-
