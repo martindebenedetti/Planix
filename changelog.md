@@ -14,7 +14,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
-- [fix/update-plan-readme-tercer-entrega] Se actualiza el documento plan.md y README.md con los cambios realizados en la tercer entrega. PR[#](https://github.com/martindebenedetti/Planix/pull/) — @giann98 (Coordinador / DevOps) — Issue: #83
+- [fix/update-plan-readme-tercer-entrega] Se actualiza el documento plan.md y README.md con los cambios realizados en la tercer entrega. PR[#86](https://github.com/martindebenedetti/Planix/pull/86) — @giann98 (Coordinador / DevOps) — Issue: #83
 
 ## [Release Primer Parcial] - 2026-04-22
 
