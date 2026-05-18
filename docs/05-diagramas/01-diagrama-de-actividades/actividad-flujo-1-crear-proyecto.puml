@@ -1,0 +1,28 @@
+@startuml actividad-flujo-1-crear-proyecto
+|Usuario|
+start
+:Ingresar nombre del proyecto;
+:Ingresar fecha de inicio y fin;
+
+|Sistema|
+if (¿Nombre vacío?) then (sí)
+  |Usuario|
+  :alert("Nombre vacío");
+  stop
+elseif (¿Nombre duplicado?) then (sí)
+  |Usuario|
+  :alert("Proyecto duplicado");
+  stop
+elseif (¿Fecha fin <= Fecha inicio o formato inválido?) then (sí)
+  |Usuario|
+  :alert("Fechas inválidas");
+  stop
+else (no)
+  |Sistema|
+  :Crear objeto Proyecto;
+  :Agregar a proyectos[];
+  |Usuario|
+  :alert("Proyecto creado");
+  stop
+endif
+@enduml

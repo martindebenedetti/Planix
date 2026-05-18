@@ -1,0 +1,60 @@
+@startuml actividad-flujo-2-agregar-tarea
+|Usuario|
+start
+|Sistema|
+if (¿Existen proyectos cargados?) then (no)
+  |Usuario|
+  :alert("No hay proyectos");
+  stop
+else (sí)
+  |Sistema|
+  :Inicializar listaTexto = "";
+  :i = 0;
+  while (i < cantidad de proyectos) is (sí)
+    :listaTexto = listaTexto + proyectos[i].nombre;
+    :i = i + 1;
+  endwhile (no)
+  |Usuario|
+  :Elegir proyecto por nombre (prompt);
+  
+  |Sistema|
+  :Buscar proyecto;
+  if (¿Proyecto encontrado?) then (no)
+    |Usuario|
+    :alert("Proyecto no encontrado");
+    stop
+  else (sí)
+    |Usuario|
+    :Ingresar nombre de tarea;
+    :Ingresar responsable;
+    :Ingresar estado (1=pendiente, 2=en curso, 3=completada);
+    
+    |Sistema|
+    if (¿Campos vacíos?) then (sí)
+      |Usuario|
+      :alert("Campos incompletos");
+      stop
+    elseif (Estado == 1) then (sí)
+      |Sistema|
+      :estado = "pendiente";
+    elseif (Estado == 2) then (sí)
+      |Sistema|
+      :estado = "en curso";
+    elseif (Estado == 3) then (sí)
+      |Sistema|
+      :estado = "completada";
+    else (no)
+      |Usuario|
+      :alert("Estado inválido");
+      stop
+    endif
+    
+    |Sistema|
+    :Crear objeto Tarea;
+    :Agregar a proyecto.tareas[];
+    |Usuario|
+    :alert("Tarea agregada correctamente");
+    stop
+  endif
+endif
+@enduml

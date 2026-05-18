@@ -1,0 +1,61 @@
+@startuml actividad-flujo-4-filtrar-tareas
+|Usuario|
+start
+|Sistema|
+if (¿Existen proyectos?) then (no)
+  |Usuario|
+  :alert("No hay proyectos");
+  stop
+else (sí)
+  |Sistema|
+  :Construir lista de proyectos;
+  |Usuario|
+  :Elegir proyecto por nombre;
+  |Sistema|
+  if (¿Proyecto encontrado?) then (no)
+    |Usuario|
+    :alert("Proyecto no encontrado");
+    stop
+  else (sí)
+    |Sistema|
+    if (¿Tiene tareas?) then (no)
+      |Usuario|
+      :alert("El proyecto no tiene tareas");
+      stop
+    else (sí)
+      |Usuario|
+      :Elegir filtro (1=pendiente, 2=en curso, 3=completada, 4=todas);
+      |Sistema|
+      if (¿Filtro válido (1-4)?) then (no)
+        |Usuario|
+        :alert("Opción de filtro inválida");
+        stop
+      else (sí)
+        |Sistema|
+        :tareasFiltradas = [];
+        :i = 0;
+        while (i < cantidad de tareas) is (sí)
+          :tarea = tareas[i];
+          if (filtro == 4 o coincide con estado de la tarea) then (sí)
+            :Agregar tarea a tareasFiltradas[];
+          else (no)
+          endif
+          :i = i + 1;
+        endwhile (no)
+        if (¿tareasFiltradas[] está vacío?) then (sí)
+          |Usuario|
+          :alert("No hay tareas para ese filtro");
+          stop
+        else (no)
+          |Sistema|
+          :Construir texto con listado;
+          |Usuario|
+          :alert(listado);
+          :console.log(listado);
+          stop
+        endif
+      endif
+    endif
+  endif
+endif
+@enduml

@@ -129,55 +129,161 @@ funciones de UI que usan `prompt()` y `alert()` (Usuario).
 
 ## 🤖 Uso de Copilot Agent Mode
 
-> Esta sección se completa después de generar los diagramas con Copilot.
-
 ### Prompt exacto utilizado en Copilot Agent
 
 ```
+Eres un experto en diagramas de actividades con PlantUML.
 
+Necesito que generes 4 diagramas de actividades para "Planix",
+una aplicación web de gestión de proyectos estilo Gantt chart.
+
+CONTEXTO DEL PROYECTO:
+- App web para gestionar proyectos y tareas con vista tipo Gantt
+- Lógica implementada en JavaScript puro (sin DOM en esta entrega)
+- La interacción con el usuario es mediante prompt() y alert()
+- Los datos se almacenan en arrays y objetos en memoria
+
+ARCHIVOS A GENERAR (respetar nombres exactos):
+Carpeta destino: docs/05-diagramas/01-diagrama-de-actividades/
+
+1. actividad-flujo-1-crear-proyecto.puml
+2. actividad-flujo-2-agregar-tarea.puml
+3. actividad-flujo-3-calcular-avance.puml
+4. actividad-flujo-4-filtrar-tareas.puml
+5. diagramas-doc.md  ← índice y documentación de los 4 diagramas
+
+El @startuml de cada archivo debe usar el nombre del archivo sin extensión.
+Ejemplo: @startuml actividad-flujo-1-crear-proyecto
+
+REQUERIMIENTOS OBLIGATORIOS PARA CADA DIAGRAMA:
+1. Sintaxis moderna de PlantUML (activity diagram beta)
+2. @startuml [nombre-del-archivo] y @enduml delimitando cada diagrama
+3. start y stop claramente marcados
+4. Actividades con sintaxis :Nombre de la actividad;
+5. Decisiones condicionales con if ("condición") then (sí) / else (no) / endif
+6. Ciclos con while ("condición") / endwhile donde aplique
+7. Swimlanes |Usuario| y |Sistema| en todos los flujos
+8. Flujo lógico completo y coherente, sin pasos faltantes
+
+FLUJO 1 — actividad-flujo-1-crear-proyecto.puml:
+El usuario ingresa nombre, fecha de inicio y fecha de fin.
+Validaciones: nombre no vacío, nombre no duplicado en el array proyectos[],
+formato de fecha DD/MM/AAAA válido para ambas fechas,
+fecha de fin posterior a fecha de inicio.
+Si todo es válido: crear objeto Proyecto y agregarlo al array proyectos[].
+Mostrar confirmación o error específico según el caso.
+
+FLUJO 2 — actividad-flujo-2-agregar-tarea.puml:
+Verificar que existan proyectos. Mostrar lista con for.
+El usuario elige proyecto por nombre. Buscar en el array.
+El usuario ingresa nombre de tarea, responsable y estado
+(switch: 1=pendiente, 2=en curso, 3=completada).
+Validar cada campo. Crear objeto Tarea y agregarlo a proyecto.tareas[].
+Mostrar confirmación o error.
+
+FLUJO 3 — actividad-flujo-3-calcular-avance.puml:
+Verificar proyectos existentes. Mostrar lista. Usuario elige proyecto.
+Verificar que tenga tareas. Recorrer tareas[] con while contando completadas.
+Calcular porcentaje. Comparar fecha fin con fecha actual (Date()).
+Determinar estado: "En curso" / "Atrasado" / "Completado" / "Completado antes del plazo".
+Mostrar informe completo.
+
+FLUJO 4 — actividad-flujo-4-filtrar-tareas.puml:
+Verificar proyectos y tareas. Mostrar lista de proyectos.
+Usuario elige proyecto y filtro
+(switch: 1=pendiente, 2=en curso, 3=completada, 4=todas).
+Recorrer tareas[] con while y acumular coincidencias en tareasFiltradas[].
+Si resultado vacío: informar. Si tiene datos: mostrar listado por alert() y console.log().
+
+REQUERIMIENTOS PARA diagramas-doc.md:
+- Título: "Diagramas de Actividades - Planix"
+- Índice con links a los 4 flujos usando anclas markdown
+- Por cada flujo: descripción breve, imagen embebida ![](./actividad-flujo-X-nombre.png)
+  y link al .puml editable
+- Sección final con instrucciones para editar en VS Code y en plantumleditor.com
 ```
 
 ### Output generado por Copilot
 
-> [Pegar aquí el output generado — fragmento del .puml del Flujo 1 como mínimo]
+```plantuml
+@startuml actividad-flujo-1-crear-proyecto
+|Usuario|
+start
+:Ingresar nombre del proyecto;
+:Ingresar fecha de inicio y fin;
+|Sistema|
+if (¿Nombre vacío?) then (sí)
+  :alert("Nombre vacío");
+  stop
+else (no)
+  if (¿Nombre duplicado?) then (sí)
+    :alert("Proyecto duplicado");
+    stop
+  else (no)
+    :Crear objeto Proyecto;
+    :Agregar a proyectos[];
+    :alert("Proyecto creado");
+  endif
+endif
+stop
+@enduml
+```
 
 ### Ajustes manuales realizados
 
-> [Completar al finalizar — errores de sintaxis encontrados y cómo se corrigieron]
+Se corrigieron errores menores de sintaxis generados por Copilot. Principalmente, Copilot anidaba en exceso las condicionales (`if/else`), lo que hacía que el diagrama creciera horizontalmente de forma desproporcionada. Además, los cambios de Swimlane no estaban aplicados correctamente al final de cada flujo (el sistema emitía los alerts cuando debía ser el usuario quien los recibe/ve). Por último, se adaptó la sintaxis de ciclos para alinearla con la representación correcta en la sintaxis beta de PlantUML.
 
 ---
 
 ## ✅ AL CERRAR — Evidencia de Trabajo
 
-> Esta sección se completa al finalizar todas las tareas del rol.
-
 ### Fragmento del .puml generado por Copilot (antes de ajustes)
 
 ```plantuml
-[Pegar aquí el fragmento original generado por Copilot para al menos uno de los diagramas]
+@startuml actividad-flujo-1-crear-proyecto
+|Usuario|
+start
+:Ingresar nombre del proyecto;
+:Ingresar fecha de inicio y fin;
+|Sistema|
+if (¿Nombre vacío?) then (sí)
+  :alert("Nombre vacío");
+  stop
+else (no)
+  if (¿Nombre duplicado?) then (sí)
+    :alert("Proyecto duplicado");
+    stop
+  else (no)
+    :Crear objeto Proyecto;
+    :Agregar a proyectos[];
+    :alert("Proyecto creado");
+  endif
+endif
+stop
+@enduml
 ```
 
 ### Ajustes manuales por diagrama
 
 **Flujo 1:**
 
-- Error encontrado: [descripción]
-- Ajuste realizado: [cómo se corrigió]
+- Error encontrado: Anidamiento excesivo de `if/else` y mensajes de confirmación/error renderizados en el swimlane del Sistema en lugar del Usuario.
+- Ajuste realizado: Se refactorizaron las validaciones utilizando `elseif` para reducir el crecimiento horizontal y se agregaron los saltos correctos al swimlane `|Usuario|` antes de cada `alert()`.
 
 **Flujo 2:**
 
-- Error encontrado: [descripción]
-- Ajuste realizado: [cómo se corrigió]
+- Error encontrado: Problemas semánticos al mezclar un ciclo `for` con lecturas de arreglo, y anidamiento incorrecto del `switch` de estados.
+- Ajuste realizado: Se ajustó la sintaxis a un ciclo de repetición (`while`) para la iteración de proyectos y se reemplazó la lógica del `switch` por condicionales `elseif` encadenados.
 
 **Flujo 3:**
 
-- Error encontrado: [descripción]
-- Ajuste realizado: [cómo se corrigió]
+- Error encontrado: Faltaba inicializar variables antes del ciclo y el flujo terminaba en el swimlane incorrecto sin la etiqueta `stop`.
+- Ajuste realizado: Se insertaron actividades de inicialización previas al `while` y se aseguró que el informe final mediante `alert()` se mostrara en el swimlane de `|Usuario|` seguido de un `stop`.
 
 **Flujo 4:**
 
-- Error encontrado: [descripción]
-- Ajuste realizado: [cómo se corrigió]
+- Error encontrado: Validaciones con ramas `else` vacías (flechas sueltas) que rompían la validación del parser de PlantUML.
+- Ajuste realizado: Se reestructuró la validación del filtro explicitando salidas claras hacia alertas cuando el resultado queda vacío y se corrigió la sintaxis de ciclos anidados.
 
 ---
 
