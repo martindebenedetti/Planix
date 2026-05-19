@@ -3,7 +3,7 @@
 ## Datos Académicos
 - **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
 - **Materia:** Programación Web I - 1º Cuat. 2026
-- **Docente:** Matias Velasquez
+- **Docente:** Matías Velásquez
 
 ## Integrantes del equipo
 
@@ -11,8 +11,8 @@
 |:---|:---:|:---:|:---:|
 | Martín Debenedetti | 151579 | martindebenedetti | Arquitecto de Diagrama de Actividades |
 | Leandro Berro | 155667 | leanlex | Desarrollador JavaScript |
-| Gian Franco Pasquali | 148159 | giann98 |  Coordinador / DevOps |
-| Compartido | - | - | Tester JavaScrip / QA Engineer |
+| Gian Franco Pasquali | 148159 | giann98 | Coordinador / DevOps |
+| Compartido | - | - | Tester JavaScript / QA Engineer |
 
 
 ---
@@ -21,7 +21,7 @@
 
 Este proyecto propone el desarrollo de una página web orientada a la visualización y planificación de tareas mediante un esquema tipo **diagrama de Gantt**.
 
-El sistema busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones, responsables y nivel de avance. A partir de las bases construidas en las Actividades Obligatorias 1 y 2, el **Primer Parcial** y la Actividad Obligatoria 3, que incorpora una nueva etapa de evolución del proyecto, centrada en:
+El sistema busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones, responsables y nivel de avance. A partir de las bases construidas en las Actividades Obligatorias 1 y 2, el **Primer Parcial** y la Actividad Obligatoria 3, esta etapa incorpora una nueva evolución del proyecto centrada en:
 
 - la **migración visual y estructural a Bootstrap**;
 - la mejora de la **responsividad** del sitio;
@@ -144,33 +144,24 @@ En esta etapa se incorpora la lógica de negocio del sistema utilizando JavaScri
 - incorporación de componentes avanzados de Bootstrap (`navbar`, `modal`, `offcanvas`, `accordion`, `cards`, `buttons`, `progress`);
 - incorporación de componentes HTML avanzados y mejoras estructurales semánticas;
 - integración de `bootstrap-overrides.css` para conservar la identidad visual del proyecto;
-- implementación de testing responsive mediante Playwright MCP;
-- generación de evidencias de testing en múltiples breakpoints (`mobile`, `tablet`, `desktop`);
+- implementación de 4 flujos funcionales en `js/script.js` con validaciones de nombre, fecha y estado;
+- implementación de testing automatizado con Jasmine en `js/test/script.spec.js` y `js/test/test-runner.html`;
+- ejecución de Jasmine mediante Playwright MCP y documentación de resultados en `js/test/testing-doc.md`;
+- generación de evidencias de testing en `js/test/screenshots/` y `docs/04-testing/`;
 - documentación técnica de los roles mediante specs organizadas por entrega;
 - integración de casos de prueba TC-6 a TC-10;
 - realización de code reviews asistidas por IA utilizando GitHub Copilot Agent;
 - creación de release y versionado formal `v1.1-primer-parcial`;
 - limpieza y normalización de ramas según criterios de entrega;
-- preparación de la base técnica para comenzar la Actividad Obligatoria N°3 orientada a JavaScript y testing automatizado.
+- consolidación de la base técnica de la Actividad Obligatoria N°3 con JavaScript y testing automatizado.
 
 ### Pendiente para esta etapa
 
-- actualización de `plan.md` con los nuevos flujos funcionales de JavaScript;
-- implementación de la lógica de negocio principal en `js/script.js`;
-- desarrollo de 4 flujos funcionales utilizando `prompt()`, `alert()` y estructuras de control;
-- incorporación de arrays, objetos y funciones reutilizables para mejorar escalabilidad;
-- creación de diagramas de actividades en PlantUML para cada flujo principal;
-- exportación de diagramas `.puml` y `.png`;
-- implementación de testing automatizado con Jasmine;
-- creación de `js/test/test-runner.html`;
-- desarrollo de `js/test/script.spec.js` con suites de tests por flujo;
-- documentación de testing;
-- ejecución de tests mediante Playwright MCP y captura de evidencias PASS/FAIL;
-- actualización integral del README con documentación de JavaScript y testing;
-- coordinación de PRs y code reviews correspondientes a la tercera entrega;
-- configuración y validación de GitHub Pages para `release/tercera-entrega`;
+- revisión final de diagramas de actividades PlantUML y sus exportaciones `.puml` y `.png`;
+- validación de la publicación de GitHub Pages para la rama `release/tercera-entrega`;
 - creación del release final `v1.1-tercera-entrega`;
-- integración final hacia `master` y limpieza definitiva de ramas del repositorio.
+- seguimiento y limpieza definitiva de ramas para dejar solo `master`, `develop` y `release/tercera-entrega`;
+- publicación final de la entrega en Slack y en el campus.
 
 ---
 
