@@ -8,6 +8,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/tester-javascript-jasmine] Se agrega `spec-tester.md` y completa con la realización de los test. Se crean archivos `js/test/script.spec.js`, `js/test/test-runner.html`, `js/test/testing-doc.md` y las capturas en `js/test/screenshots/`. PR: [#88](https://github.com/martindebenedetti/Planix/pull/88) — @giann98 (Tester QA)
+
 - [feature/dev-javascript-logica-negocio] Implementación de lógica de negocio JavaScript para los 4 flujos principales de Planix. Se agrega `js/script.js`, se referencia desde `index.html` y se completa `spec-dev-javascript.md`. PR: [#87](https://github.com/martindebenedetti/Planix/pull/87) — @leanlex (Desarrollador JavaScript) — Issue: #80, #81
 
 - [feature/arq-diagramas-actividades] Creación de documentación, diagramas `.puml` y exportación de PNG para los 4 flujos principales del sistema. PR: #85 — @martindebenedetti (Arquitecto de Diagramas de Actividades) — Issue: #82
