@@ -11,7 +11,7 @@ Se desarrollará una página web básica que sirva de base para un planificador 
 - Preparar el código para futuras mejoras de CSS y JavaScript mediante comentarios/markadores.
 - Cumplir con los requerimientos de entrega establecidos (documentación, specs y organización).
 - Antes de realizar la implementación, redactar la especificación técnica (spec) y agregarla al PR correspondiente.
-- Cada rol debe tener su archivo `spec-<rol>.md` eb `docs/03-specs/` con el detalle del trabajo a realizar.
+- Cada rol debe tener su archivo `spec-<rol>.md` en `docs/03-specs/` con el detalle del trabajo a realizar.
 
 ## Requerimientos Funcionales (Extraídos de la consigna)
 
@@ -81,7 +81,7 @@ frontend, donde se implementará la estructura HTML, los estilos CSS y la intera
 
 - ✅ El repositorio contiene `plan.md` con los requerimientos funcionales, objetivos y criterios de aceptación.
 - ✅ Existe un `README.md` con descripción y estructura del proyecto.
-- ✅ `docs/03-specs/` incluye los 4 archivos de spec (`spec-devops.md`, `spec-frontend.md`, `spec-ux.md`, `spec-ia.md`).
+- ✅ `docs/03-specs/` incluye los archivos clave de spec de cada rol y de cada etapa de entrega.
 - ✅ `docs/02-prompts/` contiene al menos 5 archivos `prompts-*.md` con prompts reales y su aporte.
 - ✅ La página principal (`index.html`) incluye:
   - Header, main y footer semánticos.
@@ -125,12 +125,21 @@ La tercera entrega se organiza en los siguientes módulos:
 
 ## Flujos Funcionales Planificados
 
-Los flujos principales del sistema serán:
+Los flujos principales del sistema son:
 
 1. Creación de proyecto
 2. Agregación de tareas a proyecto
 3. Cálculo de avance del proyecto
 4. Listado y filtrado de tareas
+
+---
+
+## Estado actual de la tercera entrega
+
+- Se implementaron los 4 flujos funcionales principales en `js/script.js`.
+- Se generó `js/test/script.spec.js` y `js/test/test-runner.html` para pruebas automatizadas.
+- Se ejecutaron las suites Jasmine con Playwright MCP y se documentaron los resultados.
+- La coordinación de PRs y code reviews asistidos por Copilot Agent está documentada en `docs/03-specs/actividad-obligatoria-3/`.
 
 ---
 
@@ -144,9 +153,9 @@ El repositorio mantendrá el siguiente esquema de ramas:
 
 Ramas feature previstas:
 
-- `feature/dev-javascript`
+- `feature/dev-javascript-logica-negocio`
 - `feature/tester-javascript-jasmine`
-- `feature/arquitecto-diagramas`
+- `feature/arq-diagramas-actividades`
 - `feature/coord-devops-tercera-entrega`
 
 ---
