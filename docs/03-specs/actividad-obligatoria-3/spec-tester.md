@@ -58,18 +58,18 @@ de ejecución.
 
 ### Criterios de aceptación — Checklist
 
-- [ ] 4 suites de tests implementadas (una por flujo principal)
-- [ ] Mínimo 3 tests por suite utilizando Jasmine
-- [ ] Uso correcto de `describe()`, `it()` y `expect()`
-- [ ] Tests de happy path implementados
-- [ ] Tests de edge cases implementados
-- [ ] Tests de validaciones y errores implementados
-- [ ] Tests sobre arrays y objetos implementados
-- [ ] Archivo `js/test/test-runner.html` funcionando correctamente
-- [ ] Archivo `js/test/script.spec.js` implementado
-- [ ] Archivo `js/test/testing-doc.md` documentado
-- [ ] Tests ejecutados exitosamente mediante Playwright MCP
-- [ ] Capturas PASS/FAIL obtenidas mediante Playwright MCP
+- [x] 4 suites de tests implementadas (una por flujo principal)
+- [x] Mínimo 3 tests por suite utilizando Jasmine
+- [x] Uso correcto de `describe()`, `it()` y `expect()`
+- [x] Tests de happy path implementados
+- [x] Tests de edge cases implementados
+- [x] Tests de validaciones y errores implementados
+- [x] Tests sobre arrays y objetos implementados
+- [x] Archivo `js/test/test-runner.html` funcionando correctamente
+- [x] Archivo `js/test/script.spec.js` implementado
+- [x] Archivo `js/test/testing-doc.md` documentado
+- [x] Tests ejecutados exitosamente mediante Playwright MCP
+- [x] Capturas PASS/FAIL obtenidas mediante Playwright MCP
 - [ ] Bugs encontrados reportados como issues en GitHub
 - [ ] Coordinación realizada con el Desarrollador JavaScript para mejorar testabilidad
 
@@ -147,3 +147,90 @@ No utilizar DOM ni eventos.
 Todo debe testear lógica pura de JavaScript.
 
 El código debe ser compatible con Jasmine CDN ejecutándose en navegador.
+
+### Resultado de la ejecución
+- Se generó `js/test/script.spec.js` con 18 specs.
+- La suite se ejecutó en `js/test/test-runner.html` usando Playwright MCP.
+- El resultado fue: `18 specs, 0 fallos`.
+- Capturas guardadas en `js/test/screenshots/` como `tests-passing.png` y `suite-detail.png`.
+- No se identificaron bugs en esta ejecución.
+
+### Prompt usado en Playwright MCP
+
+```text
+Abrí js/test/test-runner.html utilizando Playwright MCP,
+ejecutá todas las suites de Jasmine y capturá screenshots
+mostrando el resultado PASS/FAIL de cada suite.
+```
+
+```text
+Necesito generar un archivo Jasmine llamado js/test/script.spec.js
+para el proyecto Planix.
+
+Contexto adjunto:
+- js/script.js
+- docs/05-diagramas/01-diagrama-de-actividades/
+- spec-dev-javascript.md
+
+El proyecto posee estos 4 flujos principales:
+
+1. Crear Proyecto
+- crearProyecto(nombre, fechaInicio, fechaFin)
+- valida:
+  - nombre no vacío
+  - fechaInicio < fechaFin
+  - proyecto no duplicado
+
+2. Agregar Tarea a un Proyecto
+- agregarTarea()
+- buscarProyecto(nombre)
+- validarEstado(estado)
+- estados válidos:
+  - pendiente
+  - en curso
+  - completada
+
+3. Calcular Avance del Proyecto
+- calcularAvance(tareas)
+- calcula porcentaje de tareas completadas
+- determina:
+  - atrasado
+  - en tiempo
+  - completado
+
+4. Listar y Filtrar Tareas
+- filtrarTareas(tareas, estado)
+- filtra por:
+  - pendiente
+  - en curso
+  - completada
+  - todas
+
+Requisitos obligatorios:
+
+- Utilizar describe() e it()
+- Implementar mínimo 3 tests por suite
+- Cubrir:
+  - happy path
+  - edge cases
+  - validaciones de errores
+  - arrays
+  - objetos
+  - cálculos
+- Utilizar assertions:
+  - toBe()
+  - toEqual()
+  - toContain()
+  - toThrow()
+  - toBeTruthy()
+  - toBeFalsy()
+
+No utilizar DOM ni eventos.
+Todo debe testear lógica pura de JavaScript.
+
+El código debe ser compatible con Jasmine CDN ejecutándose en navegador.
+```
+
+![prompt utilizado](evidencia-prompt/prompt.png)
+
+![resultado obtenido](evidencia-prompt/resultado-prompt.png)

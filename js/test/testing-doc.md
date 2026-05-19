@@ -44,6 +44,15 @@ mostrando el resultado PASS/FAIL de cada suite.
 
 ---
 
+## Resultados de la Ejecución Actual
+- Total de tests ejecutados: 18
+- Tests pasaron: 18 ✅
+- Tests fallaron: 0 ❌
+- Estado: `PASS` en la suite Jasmine
+- Capturas guardadas en `js/test/screenshots/`
+
+---
+
 ## Suites de Tests
 
 ### Suite 1: Crear Proyecto
@@ -128,10 +137,10 @@ mostrando el resultado PASS/FAIL de cada suite.
 
 | Métrica | Valor |
 |---------|-------|
-| Total de Tests | [Pendiente] |
-| Tests Pasando | [Pendiente] |
-| Tests Fallando | [Pendiente] |
-| Porcentaje de Éxito | [Pendiente] |
+| Total de Tests | 18 |
+| Tests Pasando | 18 |
+| Tests Fallando | 0 |
+| Porcentaje de Éxito | 100% |
 
 ### Cobertura por Tipo de Test
 
@@ -172,13 +181,13 @@ mediante las suites de Jasmine.
 
 ![Tests Exitosos](./screenshots/tests-passing.png)
 
-*Captura pendiente de ejecución real mediante Playwright MCP.*
+*Captura real obtenida mediante Playwright sobre `js/test/test-runner.html`.*
 
 ### Vista Detallada de Suites
 
 ![Detalle Suites](./screenshots/suite-detail.png)
 
-*Captura pendiente de ejecución real mediante Playwright MCP.*
+*Captura real obtenida mediante Playwright sobre `js/test/test-runner.html`.*
 
 ---
 
@@ -186,7 +195,7 @@ mediante las suites de Jasmine.
 
 ### Bugs Reportados
 
-Pendiente de ejecución de las suites y análisis de resultados reales.
+No se detectaron fallas en la ejecución actual de las suites Jasmine.
 
 ---
 
