@@ -405,12 +405,16 @@ function calcularPorcentajeAvance(completadas, total) {
 - Se modificó `determinarEstadoProyecto()` para aceptar una fecha opcional y facilitar pruebas con fechas simuladas.
 - Se validaron estados y filtros según los valores definidos en los diagramas.
 
+- A partir de la code review, se reemplazó la exposición individual de funciones en `window` por una API pública única `window.Planix`, reduciendo la contaminación del scope global.
+- Se agregó `generarSiguienteId()` para evitar IDs duplicados basados en `array.length + 1`.
+- Se reforzó `validarNombreUnico()` con validaciones defensivas sobre la estructura de los objetos proyecto.
+
 ### Decisiones finales de testabilidad
 
 - Las funciones de lógica de negocio reciben parámetros y retornan valores.
 - Las funciones `ejecutarFlujo1()`, `ejecutarFlujo2()`, `ejecutarFlujo3()` y `ejecutarFlujo4()` concentran el uso de `prompt()` y `alert()`.
 - El menú principal quedó encapsulado en `mostrarMenuPrincipal()` y no se ejecuta automáticamente al cargar el archivo.
-- Las funciones principales se exponen en `window` para que `script.spec.js` pueda invocarlas desde Jasmine.
+- Las funciones principales se exponen mediante `window.Planix` para que `script.spec.js` pueda invocarlas desde Jasmine sin contaminar innecesariamente el scope global.
 
 ### Coordinación con otros roles
 

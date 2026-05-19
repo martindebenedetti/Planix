@@ -30,12 +30,18 @@ function validarNombreUnico(nombre, listaProyectos) {
 
   for (let i = 0; i < listaProyectos.length; i++) {
     const proyectoActual = listaProyectos[i];
+
+    if (!proyectoActual || typeof proyectoActual.nombre !== "string") {
+      continue;
+    }
+
     const nombreProyectoActual = proyectoActual.nombre.trim().toLowerCase();
 
     if (nombreProyectoActual === nombreNormalizado) {
       return false;
     }
   }
+
   return true;
 }
 
@@ -84,6 +90,24 @@ function validarFechaFinPosterior(fechaInicio, fechaFin) {
   }
 
   return fin > inicio;
+}
+
+function generarSiguienteId(listaItems) {
+  if (!Array.isArray(listaItems)) {
+    return 1;
+  }
+
+  let maxId = 0;
+
+  for (let i = 0; i < listaItems.length; i++) {
+    const item = listaItems[i];
+
+    if (item && typeof item.id === "number" && item.id > maxId) {
+      maxId = item.id;
+    }
+  }
+
+  return maxId + 1;
 }
   
 // ========================================
@@ -138,7 +162,7 @@ function ejecutarFlujo1() {
     return;
   }
 
-  const nuevoId = proyectos.length + 1;
+  const nuevoId = generarSiguienteId(proyectos);
   const nuevoProyecto = crearProyecto(nuevoId, nombre, fechaInicio, fechaFin);
 
   agregarProyecto(proyectos, nuevoProyecto);
@@ -245,7 +269,7 @@ function ejecutarFlujo2() {
     return;
   }
 
-  const nuevoId = proyectoEncontrado.tareas.length + 1;
+  const nuevoId = generarSiguienteId(proyectoEncontrado.tareas);
   const nuevaTarea = crearTarea(nuevoId, nombreTarea, responsable, estado);
 
   agregarTarea(proyectoEncontrado, nuevaTarea);
@@ -493,36 +517,39 @@ function mostrarMenuPrincipal() {
 }
 
 if (typeof window !== "undefined") {
-  window.proyectos = proyectos;
-  window.estadosPermitidos = estadosPermitidos;
+  window.Planix = {
+    proyectos: proyectos,
+    estadosPermitidos: estadosPermitidos,
 
-  window.validarNoVacio = validarNoVacio;
-  window.validarNombreUnico = validarNombreUnico;
-  window.validarFormatoFecha = validarFormatoFecha;
-  window.parsearFecha = parsearFecha;
-  window.validarFechaFinPosterior = validarFechaFinPosterior;
+    validarNoVacio: validarNoVacio,
+    validarNombreUnico: validarNombreUnico,
+    validarFormatoFecha: validarFormatoFecha,
+    parsearFecha: parsearFecha,
+    validarFechaFinPosterior: validarFechaFinPosterior,
+    generarSiguienteId: generarSiguienteId,
 
-  window.crearProyecto = crearProyecto;
-  window.agregarProyecto = agregarProyecto;
-  window.ejecutarFlujo1 = ejecutarFlujo1;
+    crearProyecto: crearProyecto,
+    agregarProyecto: agregarProyecto,
+    ejecutarFlujo1: ejecutarFlujo1,
 
-  window.buscarProyecto = buscarProyecto;
-  window.construirListaProyectos = construirListaProyectos;
-  window.validarEstado = validarEstado;
-  window.crearTarea = crearTarea;
-  window.agregarTarea = agregarTarea;
-  window.ejecutarFlujo2 = ejecutarFlujo2;
+    buscarProyecto: buscarProyecto,
+    construirListaProyectos: construirListaProyectos,
+    validarEstado: validarEstado,
+    crearTarea: crearTarea,
+    agregarTarea: agregarTarea,
+    ejecutarFlujo2: ejecutarFlujo2,
 
-  window.contarTareasCompletadas = contarTareasCompletadas;
-  window.calcularPorcentajeAvance = calcularPorcentajeAvance;
-  window.determinarEstadoProyecto = determinarEstadoProyecto;
-  window.calcularAvanceProyecto = calcularAvanceProyecto;
-  window.ejecutarFlujo3 = ejecutarFlujo3;
+    contarTareasCompletadas: contarTareasCompletadas,
+    calcularPorcentajeAvance: calcularPorcentajeAvance,
+    determinarEstadoProyecto: determinarEstadoProyecto,
+    calcularAvanceProyecto: calcularAvanceProyecto,
+    ejecutarFlujo3: ejecutarFlujo3,
 
-  window.validarFiltro = validarFiltro;
-  window.filtrarTareas = filtrarTareas;
-  window.construirTextoTarea = construirTextoTarea;
-  window.ejecutarFlujo4 = ejecutarFlujo4;
+    validarFiltro: validarFiltro,
+    filtrarTareas: filtrarTareas,
+    construirTextoTarea: construirTextoTarea,
+    ejecutarFlujo4: ejecutarFlujo4,
 
-  window.mostrarMenuPrincipal = mostrarMenuPrincipal;
+    mostrarMenuPrincipal: mostrarMenuPrincipal
+  };
 }
