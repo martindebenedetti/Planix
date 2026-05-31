@@ -284,22 +284,22 @@ Se dividirá el código en dos tipos de funciones:
 
 ## Criterios de aceptación
 
-- [ ] Existe `docs/03-specs/actividad-obligatoria-3/spec-dev-javascript.md`.
-- [ ] El spec fue commiteado antes que `js/script.js`.
-- [ ] Existe `js/script.js`.
-- [ ] `index.html` referencia correctamente `js/script.js`.
-- [ ] Se implementan 4 flujos principales.
-- [ ] Se implementa un menú principal con `prompt()`.
-- [ ] Se utilizan condicionales `if`, `else if` y/o `switch`.
-- [ ] Se utilizan ciclos `for` o `while`.
-- [ ] Se utilizan arrays.
-- [ ] Se utilizan objetos.
-- [ ] Las funciones tienen nombres descriptivos.
-- [ ] Las funciones puras están separadas de las funciones de UI.
-- [ ] Las funciones principales son testeables con Jasmine.
-- [ ] No se manipula el DOM.
-- [ ] No se utilizan eventos.
-- [ ] Se documentan funciones relevantes con comentarios JSDoc.
+- [x] Existe `docs/03-specs/actividad-obligatoria-3/spec-dev-javascript.md`.
+- [x] El spec fue commiteado antes que `js/script.js`.
+- [x] Existe `js/script.js`.
+- [x] `index.html` referencia correctamente `js/script.js`.
+- [x] Se implementan 4 flujos principales.
+- [x] Se implementa un menú principal con `prompt()`.
+- [x] Se utilizan condicionales `if`, `else if` y/o `switch`.
+- [x] Se utilizan ciclos `for` o `while`.
+- [x] Se utilizan arrays.
+- [x] Se utilizan objetos.
+- [x] Las funciones tienen nombres descriptivos.
+- [x] Las funciones puras están separadas de las funciones de UI.
+- [x] Las funciones principales son testeables con Jasmine.
+- [x] No se manipula el DOM.
+- [x] No se utilizan eventos.
+- [x] Se documentan funciones relevantes con comentarios JSDoc.
 
 ---
 
@@ -412,8 +412,8 @@ function calcularPorcentajeAvance(completadas, total) {
 ### Decisiones finales de testabilidad
 
 - Las funciones de lógica de negocio reciben parámetros y retornan valores.
-- Las funciones `ejecutarFlujo1()`, `ejecutarFlujo2()`, `ejecutarFlujo3()` y `ejecutarFlujo4()` concentran el uso de `prompt()` y `alert()`.
-- El menú principal quedó encapsulado en `mostrarMenuPrincipal()` y no se ejecuta automáticamente al cargar el archivo.
+- Las funciones `ejecutarCrearProyecto()`, `ejecutarAgregarTarea()`, `ejecutarCalcularAvance()` y `ejecutarFiltrarTareas()` concentran el uso de `prompt()` y `alert()`.
+- El menú principal `mostrarMenuPrincipal()` se invoca automáticamente al cargar la página mediante `DOMContentLoaded`.
 - Las funciones principales se exponen mediante `window.Planix` para que `script.spec.js` pueda invocarlas desde Jasmine sin contaminar innecesariamente el scope global.
 
 ### Coordinación con otros roles
