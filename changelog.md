@@ -44,11 +44,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/dev-javascript-issue-changelog-spec] Actualización de `changelog.md` y completado del checklist AT CLOSE en `spec-dev-javascript.md`.
+  PR: [#93](https://github.com/martindebenedetti/Planix/pull/93) — @leanlex (Desarrollador JavaScript) — Issue: [#92](https://github.com/martindebenedetti/Planix/issues/92)
+
 - [fix/dev-javascript-jsdoc-menu-nombres] Corrección de `js/script.js`: se agrega JSDoc en todas las funciones, se renombran funciones para que el menú se dispare al cargar la página.
   PR: [#91](https://github.com/martindebenedetti/Planix/pull/91) — @leanlex (Desarrollador JavaScript)
-
-- [fix/dev-javascript-issue-changelog-spec] Actualización de `changelog.md` y completado del checklist AT CLOSE en `spec-dev-javascript.md`.
-  PR: [#92](https://github.com/martindebenedetti/Planix/pull/92) — @leanlex (Desarrollador JavaScript) — Issue: [#92](https://github.com/martindebenedetti/Planix/issues/92)
 
 - [fix/modificacion-changelog] Se modifica el changelog agregando la entrada de la PR#77 y PR#76, además de la de propia rama fix/modificacion-changelog — PR#78 — @giann98 (Coordinador / DevOps)
 
