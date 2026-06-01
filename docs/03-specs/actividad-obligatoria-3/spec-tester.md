@@ -70,8 +70,8 @@ de ejecución.
 - [x] Archivo `js/test/testing-doc.md` documentado
 - [x] Tests ejecutados exitosamente mediante Playwright MCP
 - [x] Capturas PASS/FAIL obtenidas mediante Playwright MCP
-- [ ] Bugs encontrados reportados como issues en GitHub
-- [ ] Coordinación realizada con el Desarrollador JavaScript para mejorar testabilidad
+- [x] Bugs encontrados reportados como issues en GitHub (no se detectaron bugs — 18/18 specs pasando, sin issues a reportar)
+- [x] Coordinación realizada con el Desarrollador JavaScript para mejorar testabilidad (no fue necesaria: el código de `script.js` resultó directamente testeable, 18/18 specs pasando con 0 fallos)
 
 ---
 
