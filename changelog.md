@@ -4,7 +4,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ---
 
-## [Unreleased] 
+## [Unreleased]
 
 ---
 
@@ -23,6 +23,12 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega, se carga el spec-devops.md. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps) — Issue: #83
 
 ### Fixed
+
+- [fix/se_modifica_spec-devops.md] Se corrige spec.devops.md. PR:[#96](https://github.com/martindebenedetti/Planix/pull/96) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
+
+- [fix/rc3-cerrar-checklist-spec-tester] RC3: Se cierran los dos ítems del checklist en `docs/03-specs/actividad-obligatoria-3/spec-tester.md`: sin bugs detectados en la ejecución (18/18 specs pasando, 0 fallos) y testabilidad ya garantizada por el código del Dev JS sin necesidad de coordinación adicional. PR:[#95](https://github.com/martindebenedetti/Planix/pull/95) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
+
+- [fix/rc1-rc2-corregir-reviews-ia-devops] RC1: Se elimina el Review 4 de `spec-devops.md` que afirmaba falsamente haber realizado una review con IA sobre las PRs #84 y #86 (pertenecen al mismo integrante). RC2: Se eliminan las secciones "Líneas del diff" de los Reviews 1-3 que documentaban inline comments inexistentes en el diff de GitHub. PR:[#94](https://github.com/martindebenedetti/Planix/pull/94)— @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
 
 - [fix/update-plan-readme-tercer-entrega] Se actualiza el documento plan.md y README.md con los cambios realizados en la tercer entrega. PR[#86](https://github.com/martindebenedetti/Planix/pull/86) — @giann98 (Coordinador / DevOps) — Issue: #83
 

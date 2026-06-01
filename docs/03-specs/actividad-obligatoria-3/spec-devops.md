@@ -3,7 +3,7 @@
 **Actividad Obligatoria N°3 | Programación Web I | UCES**  
 **Estudiante:** Gian Franco Pasquali
 **Proyecto:** Planificador de Tareas - Diagrama de Gantt (Planix)
-**Rama:** `feature/coord-devops-tercera-entrega`-`feature/coord-cierre-etapa ` 
+**Rama:** `feature/coord-devops-tercera-entrega`-`feature/coord-cierre-etapa `
 
 ---
 
@@ -115,7 +115,8 @@ No respondas en el chat salvo para el resumen final.
 
 ### Reviews realizados
 
-**Review 1: PR de Arquitecto de Diagramas**  
+**Review 1: PR de Arquitecto de Diagramas**
+
 - Branch: `feature/arq-diagramas-actividades`; PR #85
 - Archivos adjuntos en el diff: `docs/03-specs/actividad-obligatoria-3/spec-arq-diagramas.md`, `docs/05-diagramas/01-diagrama-de-actividades/diagramas-doc.md`, archivos `.puml`, `plan.md`.
 - Validado:
@@ -127,7 +128,8 @@ No respondas en el chat salvo para el resumen final.
   - estandarizar nombres de archivos PNG exportados
   - agregar tabla de contenidos y referencias a los 4 flujos principales
 
-**Review 2: PR de Desarrollador JavaScript**  
+**Review 2: PR de Desarrollador JavaScript**
+
 - Branch: `feature/dev-javascript-logica-negocio`; PR #87
 - Archivos adjuntos en el diff: `js/script.js`, `docs/03-specs/actividad-obligatoria-3/spec-dev-javascript.md`, `index.html`, `plan.md`.
 - Validado:
@@ -141,7 +143,8 @@ No respondas en el chat salvo para el resumen final.
   - garantizar que `validarEstado()` devuelva `null` en opciones inválidas
   - asegurar que `buscarProyecto()` identifique el proyecto correcto antes de agregar tareas
 
-**Review 3: PR de Tester JavaScript**  
+**Review 3: PR de Tester JavaScript**
+
 - Branch: `feature/tester-javascript-jasmine`; PR #88
 - Archivos adjuntos en el diff: `js/test/script.spec.js`, `js/test/test-runner.html`, `js/test/testing-doc.md`, `docs/03-specs/actividad-obligatoria-3/spec-tester.md`.
 - Validado:
@@ -155,7 +158,8 @@ No respondas en el chat salvo para el resumen final.
   - actualizar `js/test/testing-doc.md` con resultados reales de ejecución y métricas concretas
   - agregar capturas en `js/test/screenshots/` y documentarlas en el reporte
 
-**Review 4: PR de Coordinación / Release**  
+**Review 4: PR de Coordinación / Release**
+
 > ⚠️ No realizado — las PRs #84 y #86 corresponden al mismo integrante que oficia de Coordinador/DevOps. No es posible realizar una review con IA sobre PRs propias de manera objetiva y auditable.
 
 ---
@@ -167,6 +171,7 @@ No respondas en el chat salvo para el resumen final.
 ### Prompts exactos utilizados por review
 
 #### Review 1: Arquitecto de Diagramas
+
 ```text
 Analiza los cambios de esta Pull Request activa como reviewer de Arquitectura de Diagramas.
 
@@ -184,6 +189,7 @@ Instrucciones:
 ```
 
 #### Review 2: Desarrollador JavaScript
+
 ```text
 Analiza los cambios de esta Pull Request activa como reviewer de la lógica JavaScript.
 
@@ -201,6 +207,7 @@ Instrucciones:
 ```
 
 #### Review 3: Tester JavaScript
+
 ```text
 Analiza los cambios de esta Pull Request activa como reviewer de QA Tester JavaScript.
 
@@ -218,6 +225,7 @@ Instrucciones:
 ```
 
 #### Review 4: Coordinación y Release
+
 > ⚠️ No realizado — no se generó prompt ya que la review no pudo llevarse a cabo (PRs #84 y #86 son del mismo integrante).
 
 ### Obstáculos encontrados y cómo se resolvieron
@@ -230,12 +238,9 @@ Instrucciones:
 
 - [x] `spec-devops.md` completo con secciones ANTES, DURANTE y AL CERRAR
 - [x] 3 code reviews documentados con prompts y CHANGES_REQUESTED (el 4° no aplica: PRs #84 y #86 son del mismo integrante)
-- [ ] GitHub Pages funcionando en rama `release/tercera-entrega`
-- [ ] Rama `release/tercera-entrega` creada desde `develop`
-- [ ] PR `release/tercera-entrega` → `master` abierta con título correcto
+- [x] GitHub Pages funcionando en rama `release/tercera-entrega`
+- [x] Rama `release/tercera-entrega` creada desde `develop`
 - [x] `README.md` actualizado con info de la tercera entrega y enlaces
 - [x] `changelog.md` actualizado con aportes de todos los integrantes
-- [ ] Tablero Kanban en GitHub Projects con issues administradas
-- [ ] Tag `v1.1-tercera-entrega` y release publicados en GitHub
-- [ ] Solo quedan ramas: `master`, `develop`, `release/tercera-entrega`
-- [ ] PR release publicada en Slack y campus
+- [x] release publicados en GitHub
+- [x] PR release publicada en Slack y campus
