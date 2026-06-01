@@ -18,11 +18,13 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 - [feature/dev-javascript-logica-negocio] Implementación de lógica de negocio JavaScript para los 4 flujos principales de Planix. Se agrega `js/script.js`, se referencia desde `index.html` y se completa `spec-dev-javascript.md`. PR: [#87](https://github.com/martindebenedetti/Planix/pull/87) — @leanlex (Desarrollador JavaScript) — Issue: #80, #81
 
-- [feature/arq-diagramas-actividades] Creación de documentación, diagramas `.puml` y exportación de PNG para los 4 flujos principales del sistema. PR: #85 — @martindebenedetti (Arquitecto de Diagramas de Actividades) — Issue: #82
+- [feature/arq-diagramas-actividades] Creación de documentación, diagramas `.puml` y exportación de PNG para los 4 flujos principales del sistema. PR: [#85](https://github.com/martindebenedetti/Planix/pull/85) — @martindebenedetti (Arquitecto de Diagramas de Actividades) — Issue: #82
 
 - [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega, se carga el spec-devops.md. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps) — Issue: #83
 
 ### Fixed
+
+- [fix/RC4-RC5-README.md] RC4/RC5: Se agrega en `README.md` la sección "Diagramas de Actividades" con link a `diagramas-doc.md` y descripción de los 4 flujos funcionales cubiertos. (Crear Proyecto, Agregar Tarea, Calcular Avance, Listar y Filtrar Tareas).Se agrega linken PR #85. PR:[#97](https://github.com/martindebenedetti/Planix/pull/97) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
 
 - [fix/se_modifica_spec-devops.md] Se corrige spec.devops.md. PR:[#96](https://github.com/martindebenedetti/Planix/pull/96) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
 
