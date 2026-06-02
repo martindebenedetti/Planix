@@ -1,59 +1,61 @@
 @startuml actividad-flujo-2-agregar-tarea
+title Agregar Tarea a Proyecto
 |Usuario|
 start
-|Sistema|
+|Lógica de Negocio|
 if (¿Existen proyectos cargados?) then (no)
-  |Usuario|
+  |Interfaz de Usuario|
   :alert("No hay proyectos");
-  stop
+  end
 else (sí)
-  |Sistema|
+  |Lógica de Negocio|
   :Inicializar listaTexto = "";
   :i = 0;
   while (i < cantidad de proyectos) is (sí)
     :listaTexto = listaTexto + proyectos[i].nombre;
     :i = i + 1;
   endwhile (no)
+  |Interfaz de Usuario|
   :alert(listaTexto);
   |Usuario|
   :Elegir proyecto por nombre (prompt);
   
-  |Sistema|
+  |Lógica de Negocio|
   :Buscar proyecto;
   if (¿Proyecto encontrado?) then (no)
-    |Usuario|
+    |Interfaz de Usuario|
     :alert("Proyecto no encontrado");
-    stop
+    end
   else (sí)
     |Usuario|
     :Ingresar nombre de tarea;
     :Ingresar responsable;
     :Ingresar estado (1=pendiente, 2=en curso, 3=completada);
     
-    |Sistema|
+    |Lógica de Negocio|
     if (¿Campos vacíos?) then (sí)
-      |Usuario|
+      |Interfaz de Usuario|
       :alert("Campos incompletos");
-      stop
+      end
     elseif (Estado == 1) then (sí)
-      |Sistema|
+      |Lógica de Negocio|
       :estado = "pendiente";
     elseif (Estado == 2) then (sí)
-      |Sistema|
+      |Lógica de Negocio|
       :estado = "en curso";
     elseif (Estado == 3) then (sí)
-      |Sistema|
+      |Lógica de Negocio|
       :estado = "completada";
     else (no)
-      |Usuario|
+      |Interfaz de Usuario|
       :alert("Estado inválido");
-      stop
+      end
     endif
     
-    |Sistema|
+    |Lógica de Negocio|
     :Crear objeto Tarea;
     :Agregar a proyecto.tareas[];
-    |Usuario|
+    |Interfaz de Usuario|
     :alert("Tarea agregada correctamente");
     stop
   endif
