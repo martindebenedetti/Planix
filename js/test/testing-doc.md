@@ -208,6 +208,8 @@ No se detectaron fallas en la ejecución actual de las suites Jasmine.
 - No se utiliza cobertura automática de código
 - Requiere navegador compatible con ES6
 - Dependencia de Playwright MCP para evidencia visual automatizada
+- No se incluyeron pruebas sobre mostrarMenuPrincipal() ni sobre las funciones ejecutar*(), ya que dependen de prompt(), alert() e interacción de usuario.
+- La cobertura implementada corresponde a pruebas unitarias de lógica de negocio y no a pruebas de interfaz de usuario.
 
 ---
 
