@@ -683,6 +683,19 @@ if (typeof window !== "undefined") {
  
   // Inicia el menú principal al cargar el documento
   window.addEventListener("DOMContentLoaded", function () {
+    // Lógica del modal compartir
+    const btnCopiar = document.querySelector("#modalCompartir .btn-primary");
+    if (btnCopiar) {
+      btnCopiar.addEventListener("click", function () {
+        const input = document.querySelector("#modalCompartir input");
+        input.select();
+        input.setSelectionRange(0, 99999);
+        navigator.clipboard.writeText(input.value);
+        this.innerText = "Copiado!";
+        setTimeout(() => this.innerText = "Copiar enlace", 2000);
+      });
+    }
+
     mostrarMenuPrincipal();
   });
 }
