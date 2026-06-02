@@ -24,6 +24,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/rc-diagramas-actividades] RC7 a RC17: Se corrigen los diagramas de actividades reemplazando swimlanes genéricos por particiones específicas (Usuario, Interfaz, Lógica), se ajusta el uso de 'stop' y 'end', se agregan títulos a los archivos `.puml` y se completan los checklist en `spec-arq-diagramas.md`. PR:[#98](https://github.com/martindebenedetti/Planix/pull/98) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
+
 - [fix/RC4-RC5-README.md] RC4/RC5: Se agrega en `README.md` la sección "Diagramas de Actividades" con link a `diagramas-doc.md` y descripción de los 4 flujos funcionales cubiertos. (Crear Proyecto, Agregar Tarea, Calcular Avance, Listar y Filtrar Tareas).Se agrega linken PR #85. PR:[#97](https://github.com/martindebenedetti/Planix/pull/97) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
 
 - [fix/se_modifica_spec-devops.md] Se corrige spec.devops.md. PR:[#96](https://github.com/martindebenedetti/Planix/pull/96) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
