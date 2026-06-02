@@ -5,6 +5,10 @@ describe('Planix script functions', function () {
     }
   });
 
+  // ========================================
+  // Funciones de validación
+  // ========================================
+
   it('validarNoVacio returns false for empty or non-string values', function () {
     expect(Planix.validarNoVacio('')).toBe(false);
     expect(Planix.validarNoVacio('   ')).toBe(false);
@@ -45,6 +49,10 @@ describe('Planix script functions', function () {
     expect(Planix.generarSiguienteId(null)).toBe(1);
   });
 
+  // ========================================
+  // Flujo 1 — Crear Proyecto
+  // ========================================
+
   it('crearProyecto returns a normalized project object', function () {
     const proyecto = Planix.crearProyecto(1, ' Proyecto ', '01/01/2024', '15/01/2024');
     expect(proyecto.id).toBe(1);
@@ -61,6 +69,10 @@ describe('Planix script functions', function () {
     expect(lista.length).toBe(1);
     expect(lista[0].nombre).toBe('Proyecto');
   });
+
+  // ========================================
+  // Flujo 2 — Agregar Tarea
+  // ========================================
 
   it('buscarProyecto finds the correct project by name', function () {
     const lista = [Planix.crearProyecto(1, 'Alpha', '01/01/2024', '10/01/2024')];
@@ -91,6 +103,10 @@ describe('Planix script functions', function () {
     expect(proyecto.tareas[0].nombre).toBe('Tarea');
   });
 
+  // ========================================
+  // Flujo 3 — Calcular Avance
+  // ========================================
+
   it('contarTareasCompletadas counts only completed tasks', function () {
     const tareas = [
       { estado: 'completada' },
@@ -114,6 +130,7 @@ describe('Planix script functions', function () {
 
   it('calcularAvanceProyecto returns correct advancement report structure', function () {
     const proyecto = Planix.crearProyecto(1, 'Proyecto', '01/01/2024', '31/12/2099');
+    Planix.agregarProyecto(Planix.proyectos, proyecto);
     Planix.agregarTarea(proyecto, Planix.crearTarea(1, 'T1', 'Juan', 'completada'));
     Planix.agregarTarea(proyecto, Planix.crearTarea(2, 'T2', 'Ana', 'pendiente'));
     const avance = Planix.calcularAvanceProyecto(proyecto);
@@ -123,11 +140,15 @@ describe('Planix script functions', function () {
     expect(avance.estadoProyecto).toBe('En curso');
   });
 
+  // ========================================
+  // Flujo 4 — Filtrar Tareas
+  // ========================================
+
   it('filtrarTareas returns only tasks matching the filter or all tasks if filter is todas', function () {
     const tareas = [
       { id: 1, nombre: 'T1', responsable: 'Juan', estado: 'pendiente' },
       { id: 2, nombre: 'T2', responsable: 'Ana', estado: 'en curso' },
-      { id: 3, nombre: 'T3', responsable: 'Sofía', estado: 'completada' }
+      { id: 3, nombre: 'T3', responsable: 'Sofia', estado: 'completada' }
     ];
     expect(Planix.filtrarTareas(tareas, 'pendiente').length).toBe(1);
     expect(Planix.filtrarTareas(tareas, 'todas').length).toBe(3);
@@ -139,4 +160,290 @@ describe('Planix script functions', function () {
     ];
     expect(Planix.construirTextoTarea(tareas)).toBe('1 - T1 - Juan - pendiente\n');
   });
+
+  it('validarFiltro maps numeric options to filter values', function () {
+    expect(Planix.validarFiltro('1')).toBe('pendiente');
+    expect(Planix.validarFiltro('2')).toBe('en curso');
+    expect(Planix.validarFiltro('3')).toBe('completada');
+    expect(Planix.validarFiltro('4')).toBe('todas');
+    expect(Planix.validarFiltro('5')).toBeNull();
+  });
+
+  // ========================================
+  // Tests de UI — ejecutarCrearProyecto
+  // ========================================
+
+  describe('ejecutarCrearProyecto - UI con spies', function () {
+    beforeEach(function () {
+      Planix.proyectos.splice(0, Planix.proyectos.length);
+    });
+
+    it('crea un proyecto correctamente cuando todos los datos son válidos', function () {
+      spyOn(window, 'prompt').and.returnValues(
+        'Proyecto Test',
+        '01/01/2025',
+        '31/12/2025'
+      );
+      spyOn(window, 'alert');
+
+      Planix.ejecutarCrearProyecto();
+
+      expect(Planix.proyectos.length).toBe(1);
+      expect(Planix.proyectos[0].nombre).toBe('Proyecto Test');
+      expect(window.alert).toHaveBeenCalledWith('Proyecto "Proyecto Test" creado correctamente.');
+    });
+
+    it('muestra error si el nombre está vacío', function () {
+      spyOn(window, 'prompt').and.returnValue('');
+      spyOn(window, 'alert');
+
+      Planix.ejecutarCrearProyecto();
+
+      expect(Planix.proyectos.length).toBe(0);
+      expect(window.alert).toHaveBeenCalledWith('El nombre del proyecto no puede estar vacío.');
+    });
+
+    it('muestra error si el nombre ya existe', function () {
+      Planix.agregarProyecto(Planix.proyectos, Planix.crearProyecto(1, 'Duplicado', '01/01/2025', '31/12/2025'));
+      spyOn(window, 'prompt').and.returnValue('Duplicado');
+      spyOn(window, 'alert');
+
+      Planix.ejecutarCrearProyecto();
+
+      expect(Planix.proyectos.length).toBe(1);
+      expect(window.alert).toHaveBeenCalledWith('Ya existe un proyecto con ese nombre.');
+    });
+
+    it('muestra error si el formato de fecha inicio es inválido', function () {
+      spyOn(window, 'prompt').and.returnValues('Proyecto', 'fecha-invalida');
+      spyOn(window, 'alert');
+
+      Planix.ejecutarCrearProyecto();
+
+      expect(window.alert).toHaveBeenCalledWith('Formato de fecha inicio inválido. Usar DD/MM/AAAA.');
+    });
+
+    it('muestra error si la fecha fin es anterior a la de inicio', function () {
+      spyOn(window, 'prompt').and.returnValues('Proyecto', '01/06/2025', '01/01/2025');
+      spyOn(window, 'alert');
+
+      Planix.ejecutarCrearProyecto();
+
+      expect(window.alert).toHaveBeenCalledWith('La fecha de fin debe ser posterior a la de inicio.');
+    });
+  });
+
+  // ========================================
+  // Tests de UI — ejecutarAgregarTarea
+  // ========================================
+
+  describe('ejecutarAgregarTarea - UI con spies', function () {
+    beforeEach(function () {
+      Planix.proyectos.splice(0, Planix.proyectos.length);
+    });
+
+    it('muestra error si no hay proyectos', function () {
+      spyOn(window, 'alert');
+
+      Planix.ejecutarAgregarTarea();
+
+      expect(window.alert).toHaveBeenCalledWith('No hay proyectos');
+    });
+
+    it('agrega una tarea correctamente a un proyecto existente', function () {
+      Planix.agregarProyecto(Planix.proyectos, Planix.crearProyecto(1, 'Proyecto Test', '01/01/2025', '31/12/2025'));
+      spyOn(window, 'alert');
+      spyOn(window, 'prompt').and.returnValues(
+        'Proyecto Test',
+        'Tarea nueva',
+        'Juan',
+        '1'
+      );
+
+      Planix.ejecutarAgregarTarea();
+
+      expect(Planix.proyectos[0].tareas.length).toBe(1);
+      expect(window.alert).toHaveBeenCalledWith('Tarea agregada correctamente');
+    });
+
+    it('muestra error si el proyecto no existe', function () {
+      Planix.agregarProyecto(Planix.proyectos, Planix.crearProyecto(1, 'Proyecto Test', '01/01/2025', '31/12/2025'));
+      spyOn(window, 'alert');
+      spyOn(window, 'prompt').and.returnValues('Proyecto Inexistente');
+
+      Planix.ejecutarAgregarTarea();
+
+      expect(window.alert).toHaveBeenCalledWith('Proyecto no encontrado');
+    });
+
+    it('muestra error si el estado ingresado es inválido', function () {
+      Planix.agregarProyecto(Planix.proyectos, Planix.crearProyecto(1, 'Proyecto Test', '01/01/2025', '31/12/2025'));
+      spyOn(window, 'alert');
+      spyOn(window, 'prompt').and.returnValues(
+        'Proyecto Test',
+        'Tarea',
+        'Juan',
+        '9'
+      );
+
+      Planix.ejecutarAgregarTarea();
+
+      expect(window.alert).toHaveBeenCalledWith('Estado inválido');
+    });
+  });
+
+  // ========================================
+  // Tests de UI — ejecutarCalcularAvance
+  // ========================================
+
+  describe('ejecutarCalcularAvance - UI con spies', function () {
+    beforeEach(function () {
+      Planix.proyectos.splice(0, Planix.proyectos.length);
+    });
+
+    it('muestra error si no hay proyectos', function () {
+      spyOn(window, 'alert');
+
+      Planix.ejecutarCalcularAvance();
+
+      expect(window.alert).toHaveBeenCalledWith('No hay proyectos');
+    });
+
+    it('muestra error si el proyecto no tiene tareas', function () {
+      Planix.agregarProyecto(Planix.proyectos, Planix.crearProyecto(1, 'Proyecto Test', '01/01/2025', '31/12/2025'));
+      spyOn(window, 'alert');
+      spyOn(window, 'prompt').and.returnValue('Proyecto Test');
+
+      Planix.ejecutarCalcularAvance();
+
+      expect(window.alert).toHaveBeenCalledWith('El proyecto no tiene tareas');
+    });
+
+    it('muestra el informe de avance correctamente', function () {
+      const proyecto = Planix.crearProyecto(1, 'Proyecto Test', '01/01/2025', '31/12/2099');
+      Planix.agregarTarea(proyecto, Planix.crearTarea(1, 'T1', 'Juan', 'completada'));
+      Planix.agregarTarea(proyecto, Planix.crearTarea(2, 'T2', 'Ana', 'pendiente'));
+      Planix.agregarProyecto(Planix.proyectos, proyecto);
+      spyOn(window, 'alert');
+      spyOn(window, 'prompt').and.returnValue('Proyecto Test');
+
+      Planix.ejecutarCalcularAvance();
+
+      expect(window.alert).toHaveBeenCalledWith(
+        'Avance: 50%\n1/2 tareas\nEstado: En curso'
+      );
+    });
+  });
+
+  // ========================================
+  // Tests de UI — ejecutarFiltrarTareas
+  // ========================================
+
+  describe('ejecutarFiltrarTareas - UI con spies', function () {
+    beforeEach(function () {
+      Planix.proyectos.splice(0, Planix.proyectos.length);
+    });
+
+    it('muestra error si no hay proyectos', function () {
+      spyOn(window, 'alert');
+
+      Planix.ejecutarFiltrarTareas();
+
+      expect(window.alert).toHaveBeenCalledWith('No hay proyectos');
+    });
+
+    it('filtra tareas por estado correctamente', function () {
+      const proyecto = Planix.crearProyecto(1, 'Proyecto Test', '01/01/2025', '31/12/2025');
+      Planix.agregarTarea(proyecto, Planix.crearTarea(1, 'T1', 'Juan', 'pendiente'));
+      Planix.agregarTarea(proyecto, Planix.crearTarea(2, 'T2', 'Ana', 'completada'));
+      Planix.agregarProyecto(Planix.proyectos, proyecto);
+      spyOn(window, 'alert');
+      spyOn(window, 'prompt').and.returnValues('Proyecto Test', '1');
+
+      Planix.ejecutarFiltrarTareas();
+
+      expect(window.alert).toHaveBeenCalledWith('1 - T1 - Juan - pendiente\n');
+    });
+
+    it('muestra error si el filtro es inválido', function () {
+      const proyecto = Planix.crearProyecto(1, 'Proyecto Test', '01/01/2025', '31/12/2025');
+      Planix.agregarTarea(proyecto, Planix.crearTarea(1, 'T1', 'Juan', 'pendiente'));
+      Planix.agregarProyecto(Planix.proyectos, proyecto);
+      spyOn(window, 'alert');
+      spyOn(window, 'prompt').and.returnValues('Proyecto Test', '9');
+
+      Planix.ejecutarFiltrarTareas();
+
+      expect(window.alert).toHaveBeenCalledWith('Opción de filtro inválida');
+    });
+  });
+
+  // ========================================
+  // Tests de UI — mostrarMenuPrincipal
+  // ========================================
+
+  describe('mostrarMenuPrincipal - UI con spies', function () {
+    beforeEach(function () {
+      Planix.proyectos.splice(0, Planix.proyectos.length);
+    });
+
+    it('llama a ejecutarCrearProyecto cuando se elige opción 1', function () {
+      spyOn(window, 'prompt').and.returnValues('1', '0');
+      spyOn(window, 'alert');
+      spyOn(Planix, 'ejecutarCrearProyecto');
+
+      Planix.mostrarMenuPrincipal();
+
+      expect(Planix.ejecutarCrearProyecto).toHaveBeenCalled();
+    });
+
+    it('llama a ejecutarAgregarTarea cuando se elige opción 2', function () {
+      spyOn(window, 'prompt').and.returnValues('2', '0');
+      spyOn(window, 'alert');
+      spyOn(Planix, 'ejecutarAgregarTarea');
+
+      Planix.mostrarMenuPrincipal();
+
+      expect(Planix.ejecutarAgregarTarea).toHaveBeenCalled();
+    });
+
+    it('llama a ejecutarCalcularAvance cuando se elige opción 3', function () {
+      spyOn(window, 'prompt').and.returnValues('3', '0');
+      spyOn(window, 'alert');
+      spyOn(Planix, 'ejecutarCalcularAvance');
+
+      Planix.mostrarMenuPrincipal();
+
+      expect(Planix.ejecutarCalcularAvance).toHaveBeenCalled();
+    });
+
+    it('llama a ejecutarFiltrarTareas cuando se elige opción 4', function () {
+      spyOn(window, 'prompt').and.returnValues('4', '0');
+      spyOn(window, 'alert');
+      spyOn(Planix, 'ejecutarFiltrarTareas');
+
+      Planix.mostrarMenuPrincipal();
+
+      expect(Planix.ejecutarFiltrarTareas).toHaveBeenCalled();
+    });
+
+    it('muestra alerta de opción inválida cuando se ingresa una opción desconocida', function () {
+      spyOn(window, 'prompt').and.returnValues('9', '0');
+      spyOn(window, 'alert');
+
+      Planix.mostrarMenuPrincipal();
+
+      expect(window.alert).toHaveBeenCalledWith('Opción inválida.');
+    });
+
+    it('sale del menú cuando se elige opción 0', function () {
+      spyOn(window, 'prompt').and.returnValue('0');
+      spyOn(window, 'alert');
+
+      Planix.mostrarMenuPrincipal();
+
+      expect(window.alert).toHaveBeenCalledWith('Saliendo de Planix.');
+    });
+  });
+
 });
