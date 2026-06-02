@@ -24,6 +24,15 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/RC24-seccion-at-close] RC24 Corrección de estructura en `spec-tester.md` separando la sección
+  "AL CERRAR" de la sección "DURANTE". PR: [#101] (https://github.com/martindebenedetti/Planix/pull/101) — @giann98 (Tester JavaScript)
+
+- [fix/tester-ui-spies-changelog] Se agregan tests de UI con spies de Jasmine para `ejecutarCrearProyecto`, `ejecutarAgregarTarea`, `ejecutarCalcularAvance`, `ejecutarFiltrarTareas` y `mostrarMenuPrincipal`. Se actualiza changelog con PR #99.
+  PR: [#100](https://github.com/martindebenedetti/Planix/pull/100) — @leanlex (Tester JavaScript)
+
+- [fix/dev-javascript-rc19-rc20] Se mueve el script embebido del modal compartir de `index.html` a `js/script.js`, integrándolo en el bloque `DOMContentLoaded` junto con `mostrarMenuPrincipal()`.
+  PR: [#99](https://github.com/martindebenedetti/Planix/pull/99) — @leanlex (Desarrollador JavaScript)
+
 - [fix/rc-diagramas-actividades] RC7 a RC17: Se corrigen los diagramas de actividades reemplazando swimlanes genéricos por particiones específicas (Usuario, Interfaz, Lógica), se ajusta el uso de 'stop' y 'end', se agregan títulos a los archivos `.puml` y se completan los checklist en `spec-arq-diagramas.md`. PR:[#98](https://github.com/martindebenedetti/Planix/pull/98) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
 
 - [fix/RC4-RC5-README.md] RC4/RC5: Se agrega en `README.md` la sección "Diagramas de Actividades" con link a `diagramas-doc.md` y descripción de los 4 flujos funcionales cubiertos. (Crear Proyecto, Agregar Tarea, Calcular Avance, Listar y Filtrar Tareas).Se agrega linken PR #85. PR:[#97](https://github.com/martindebenedetti/Planix/pull/97) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
@@ -33,6 +42,12 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [fix/rc3-cerrar-checklist-spec-tester] RC3: Se cierran los dos ítems del checklist en `docs/03-specs/actividad-obligatoria-3/spec-tester.md`: sin bugs detectados en la ejecución (18/18 specs pasando, 0 fallos) y testabilidad ya garantizada por el código del Dev JS sin necesidad de coordinación adicional. PR:[#95](https://github.com/martindebenedetti/Planix/pull/95) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
 
 - [fix/rc1-rc2-corregir-reviews-ia-devops] RC1: Se elimina el Review 4 de `spec-devops.md` que afirmaba falsamente haber realizado una review con IA sobre las PRs #84 y #86 (pertenecen al mismo integrante). RC2: Se eliminan las secciones "Líneas del diff" de los Reviews 1-3 que documentaban inline comments inexistentes en el diff de GitHub. PR:[#94](https://github.com/martindebenedetti/Planix/pull/94)— @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps)
+
+- [fix/dev-javascript-issue-changelog-spec] Actualización de `changelog.md` y completado del checklist AT CLOSE en `spec-dev-javascript.md`.
+  PR: [#93](https://github.com/martindebenedetti/Planix/pull/93) — @leanlex (Desarrollador JavaScript) — Issue: [#92](https://github.com/martindebenedetti/Planix/issues/92)
+
+- [fix/dev-javascript-jsdoc-menu-nombres] Corrección de `js/script.js`: se agrega JSDoc en todas las funciones, se renombran funciones para que el menú se dispare al cargar la página.
+  PR: [#91](https://github.com/martindebenedetti/Planix/pull/91) — @leanlex (Desarrollador JavaScript)
 
 - [fix/update-plan-readme-tercer-entrega] Se actualiza el documento plan.md y README.md con los cambios realizados en la tercer entrega. PR[#86](https://github.com/martindebenedetti/Planix/pull/86) — @giann98 (Coordinador / DevOps) — Issue: #83
 
@@ -53,18 +68,6 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
   PR: [#58](https://github.com/martindebenedetti/Planix/pull/58) — @giann98 (Desarrollador Frontend/Bootstrap) — Issue: #56
 
 ### Fixed
-
-- [fix/tester-ui-spies-changelog] Se agregan tests de UI con spies de Jasmine para `ejecutarCrearProyecto`, `ejecutarAgregarTarea`, `ejecutarCalcularAvance`, `ejecutarFiltrarTareas` y `mostrarMenuPrincipal`. Se actualiza changelog con PR #99.
-  PR: [#100](https://github.com/martindebenedetti/Planix/pull/100) — @leanlex (Tester JavaScript)
-
-- [fix/dev-javascript-rc19-rc20] Se mueve el script embebido del modal compartir de `index.html` a `js/script.js`, integrándolo en el bloque `DOMContentLoaded` junto con `mostrarMenuPrincipal()`.
-  PR: [#99](https://github.com/martindebenedetti/Planix/pull/99) — @leanlex (Desarrollador JavaScript)
-
-- [fix/dev-javascript-issue-changelog-spec] Actualización de `changelog.md` y completado del checklist AT CLOSE en `spec-dev-javascript.md`.
-  PR: [#93](https://github.com/martindebenedetti/Planix/pull/93) — @leanlex (Desarrollador JavaScript) — Issue: [#92](https://github.com/martindebenedetti/Planix/issues/92)
-
-- [fix/dev-javascript-jsdoc-menu-nombres] Corrección de `js/script.js`: se agrega JSDoc en todas las funciones, se renombran funciones para que el menú se dispare al cargar la página.
-  PR: [#91](https://github.com/martindebenedetti/Planix/pull/91) — @leanlex (Desarrollador JavaScript)
 
 - [fix/modificacion-changelog] Se modifica el changelog agregando la entrada de la PR#77 y PR#76, además de la de propia rama fix/modificacion-changelog — PR#78 — @giann98 (Coordinador / DevOps)
 
