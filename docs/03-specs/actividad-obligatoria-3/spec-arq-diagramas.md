@@ -98,32 +98,30 @@ de la aplicación Gantt chart, cubriendo el ciclo completo: crear → cargar →
 
 ---
 
-### Decisión sobre Swimlanes (Particiones Usuario / Sistema)
+### Decisión sobre Swimlanes (Particiones)
 
 Se decidió aplicar swimlanes en los **4 flujos**, ya que en todos existe una
-separación clara entre las acciones que ejecuta el usuario (ingresar datos,
-elegir opciones) y las que ejecuta el sistema (validar, calcular, almacenar).
-Esta separación también alinea el diagrama con la arquitectura del código,
-donde las funciones puras de negocio (Sistema) están separadas de las
-funciones de UI que usan `prompt()` y `alert()` (Usuario).
+separación clara entre las acciones que ejecuta el usuario (ingresar datos, elegir opciones),
+las respuestas que da la interfaz (mostrar alertas, pedir datos) y
+la lógica de negocio pura (validar, calcular, almacenar).
 
-| Flujo                     | Swimlanes            | Justificación                                                               |
-| ------------------------- | -------------------- | --------------------------------------------------------------------------- |
-| Flujo 1 — Crear Proyecto  | ✅ Usuario / Sistema | El usuario ingresa datos; el sistema valida y crea el objeto                |
-| Flujo 2 — Agregar Tarea   | ✅ Usuario / Sistema | El usuario elige proyecto y estado; el sistema busca, valida y persiste     |
-| Flujo 3 — Calcular Avance | ✅ Usuario / Sistema | El usuario selecciona proyecto; el sistema calcula métricas y evalúa fechas |
-| Flujo 4 — Filtrar Tareas  | ✅ Usuario / Sistema | El usuario elige filtro; el sistema recorre y filtra el array de tareas     |
+| Flujo                     | Swimlanes                                            | Justificación                                                                         |
+| ------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------- |
+| Flujo 1 — Crear Proyecto  | ✅ Usuario / Interfaz de Usuario / Lógica de Negocio | El usuario ingresa datos; la lógica valida y crea el objeto; la interfaz notifica     |
+| Flujo 2 — Agregar Tarea   | ✅ Usuario / Interfaz de Usuario / Lógica de Negocio | El usuario elige opciones; la lógica busca, valida y persiste; la interfaz notifica   |
+| Flujo 3 — Calcular Avance | ✅ Usuario / Interfaz de Usuario / Lógica de Negocio | El usuario selecciona proyecto; la lógica calcula métricas; la interfaz emite informe |
+| Flujo 4 — Filtrar Tareas  | ✅ Usuario / Interfaz de Usuario / Lógica de Negocio | El usuario elige filtro; la lógica recorre y filtra; la interfaz muestra listado      |
 
 ---
 
 ### Criterios de aceptación — Checklist
 
-- [ ] 4 diagramas con `start`, `stop`, actividades (`:texto;`), decisiones (`if-then-else`) y ciclos (`while` / `for`)
-- [ ] Swimlanes `|Usuario|` y `|Sistema|` presentes en los 4 flujos
-- [ ] Flujo lógico coherente con la implementación planificada en `plan.md`
-- [ ] Archivos `.puml` (editable) y `.png` (visualización) exportados para cada diagrama
-- [ ] `diagramas-doc.md` con índice, descripción, enlaces e instrucciones de edición
-- [ ] `spec-arq-diagramas.md` commiteado **antes** que cualquier archivo `.puml`
+- [x] 4 diagramas con `start`, `stop` o `end`, actividades (`:texto;`), decisiones (`if-then-else`) y ciclos (`while` / `for`)
+- [x] Swimlanes `|Usuario|`, `|Interfaz de Usuario|` y `|Lógica de Negocio|` presentes en los 4 flujos
+- [x] Flujo lógico coherente con la implementación planificada en `plan.md`
+- [x] Archivos `.puml` (editable) y `.png` (visualización) exportados para cada diagrama
+- [x] `diagramas-doc.md` con índice, descripción, enlaces e instrucciones de edición
+- [x] `spec-arq-diagramas.md` commiteado **antes** que cualquier archivo `.puml`
 
 ---
 
@@ -289,10 +287,10 @@ stop
 
 ### Checklist de cierre
 
-- [ ] 4 archivos `.puml` commiteados en `docs/05-diagramas/01-diagrama-de-actividades/`
-- [ ] 4 archivos `.png` exportados y commiteados en la misma carpeta
-- [ ] `diagramas-doc.md` creado con índice, descripciones, imágenes y enlaces
-- [ ] `spec-arq-diagramas.md` completado con secciones DURANTE y AL CERRAR
-- [ ] PR `feature/arq-diagramas-actividades` → `develop` creada
-- [ ] Coordinador notificado para code review
-- [ ] `changelog.md` actualizado con el aporte y link a la PR
+- [x] 4 archivos `.puml` commiteados en `docs/05-diagramas/01-diagrama-de-actividades/`
+- [x] 4 archivos `.png` exportados y commiteados en la misma carpeta
+- [x] `diagramas-doc.md` creado con índice, descripciones, imágenes y enlaces
+- [x] `spec-arq-diagramas.md` completado con secciones DURANTE y AL CERRAR
+- [x] PR `feature/arq-diagramas-actividades` → `develop` creada
+- [x] Coordinador notificado para code review
+- [x] `changelog.md` actualizado con el aporte y link a la PR

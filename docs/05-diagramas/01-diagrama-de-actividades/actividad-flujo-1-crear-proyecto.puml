@@ -1,42 +1,43 @@
 @startuml actividad-flujo-1-crear-proyecto
+title Crear Proyecto
 |Usuario|
 start
 :Ingresar nombre del proyecto (prompt);
 
-|Sistema|
+|Lógica de Negocio|
 if (¿Nombre vacío?) then (sí)
-  |Usuario|
+  |Interfaz de Usuario|
   :alert("Nombre vacío");
-  stop
+  end
 elseif (¿Nombre duplicado?) then (sí)
-  |Usuario|
+  |Interfaz de Usuario|
   :alert("Proyecto duplicado");
-  stop
+  end
 else (no)
   |Usuario|
   :Ingresar fecha de inicio (prompt);
-  |Sistema|
+  |Lógica de Negocio|
   if (¿Formato fecha de inicio inválido (DD/MM/AAAA)?) then (sí)
-    |Usuario|
+    |Interfaz de Usuario|
     :alert("Formato de fecha inicio inválido. Usar DD/MM/AAAA");
-    stop
+    end
   else (no)
     |Usuario|
     :Ingresar fecha de fin (prompt);
-    |Sistema|
+    |Lógica de Negocio|
     if (¿Formato fecha de fin inválido (DD/MM/AAAA)?) then (sí)
-      |Usuario|
+      |Interfaz de Usuario|
       :alert("Formato de fecha fin inválido. Usar DD/MM/AAAA");
-      stop
+      end
     elseif (¿Fecha fin <= Fecha inicio?) then (sí)
-      |Usuario|
+      |Interfaz de Usuario|
       :alert("La fecha de fin debe ser posterior a la de inicio");
-      stop
+      end
     else (no)
-      |Sistema|
+      |Lógica de Negocio|
       :Crear objeto Proyecto;
       :Agregar a proyectos[];
-      |Usuario|
+      |Interfaz de Usuario|
       :alert("Proyecto creado");
       stop
     endif

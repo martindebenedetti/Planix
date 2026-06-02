@@ -23,7 +23,7 @@ respeten el formato `DD/MM/AAAA` y que la fecha de fin sea posterior a la de ini
 Si todas las validaciones pasan, se crea el objeto `Proyecto` y se agrega al array `proyectos[]`.
 Ante cualquier error se muestra un `alert()` específico y el flujo se detiene.
 
-**Swimlanes:** `Usuario` · `Sistema`
+**Swimlanes:** `Usuario` · `Interfaz de Usuario` · `Lógica de Negocio`
 **Estructuras de control:** `if/else/endif` (4 validaciones en cascada)
 **Artefactos:** `proyectos[]`, objeto `{ nombre, fechaInicio, fechaFin, tareas: [] }`
 
@@ -42,7 +42,7 @@ ingresa nombre de tarea, responsable y estado (mediante un `switch` representado
 antes de continuar. Si todo es válido, se crea el objeto `Tarea` y se agrega a
 `proyecto.tareas[]`.
 
-**Swimlanes:** `Usuario` · `Sistema`
+**Swimlanes:** `Usuario` · `Interfaz de Usuario` · `Lógica de Negocio`
 **Estructuras de control:** `if/else/endif` (validaciones + switch de 3 opciones)
 **Artefactos:** `proyectos[]`, `proyecto.tareas[]`, objeto `{ nombre, responsable, estado }`
 
@@ -61,7 +61,7 @@ con estado `"completada"`. Se calcula el porcentaje de avance y se compara la fe
 posibilidades: `"En curso"`, `"Atrasado"`, `"Completado"` o `"Completado antes del plazo"`.
 Se muestra un informe completo mediante `alert()`.
 
-**Swimlanes:** `Usuario` · `Sistema`
+**Swimlanes:** `Usuario` · `Interfaz de Usuario` · `Lógica de Negocio`
 **Estructuras de control:** `while/endwhile` (recorrido de tareas) + `if/else/endif` anidados (estado)
 **Artefactos:** `proyectos[]`, `proyecto.tareas[]`, `new Date()`
 
@@ -80,7 +80,7 @@ y el usuario elige uno. Luego elige un filtro de estado mediante un `switch` de 
 mediante `alert()`; si tiene datos se muestra el listado tanto en `alert()` como en
 `console.log()`.
 
-**Swimlanes:** `Usuario` · `Sistema`
+**Swimlanes:** `Usuario` · `Interfaz de Usuario` · `Lógica de Negocio`
 **Estructuras de control:** `while/endwhile` (filtrado) + `if/else/endif` (switch de 4 opciones + resultado vacío)
 **Artefactos:** `proyectos[]`, `proyecto.tareas[]`, `tareasFiltradas[]`
 
