@@ -24,6 +24,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/RC25-justificacion-test] RC25 Se agrega justificación al test realizado en `testing-doc.md`. PR: [#102] (https://github.com/martindebenedetti/Planix/pull/102) — @giann98 (Tester JavaScript)
+
+
 - [fix/RC24-seccion-at-close] RC24 Corrección de estructura en `spec-tester.md` separando la sección
   "AL CERRAR" de la sección "DURANTE". PR: [#101] (https://github.com/martindebenedetti/Planix/pull/101) — @giann98 (Tester JavaScript)
 
