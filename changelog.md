@@ -54,6 +54,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/dev-javascript-rc19-rc20] Se mueve el script embebido del modal compartir de `index.html` a `js/script.js`, integrándolo en el bloque `DOMContentLoaded` junto con `mostrarMenuPrincipal()`.
+  PR: [#99](https://github.com/martindebenedetti/Planix/pull/99) — @leanlex (Desarrollador JavaScript)
+
 - [fix/dev-javascript-issue-changelog-spec] Actualización de `changelog.md` y completado del checklist AT CLOSE en `spec-dev-javascript.md`.
   PR: [#93](https://github.com/martindebenedetti/Planix/pull/93) — @leanlex (Desarrollador JavaScript) — Issue: [#92](https://github.com/martindebenedetti/Planix/issues/92)
 
