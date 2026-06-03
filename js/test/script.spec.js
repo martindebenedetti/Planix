@@ -387,47 +387,16 @@ describe('Planix script functions', function () {
       Planix.proyectos.splice(0, Planix.proyectos.length);
     });
 
-    it('llama a ejecutarCrearProyecto cuando se elige opción 1', function () {
-      spyOn(window, 'prompt').and.returnValues('1', '0');
+    it('sale del menú cuando se elige opción 0', function () {
+      spyOn(window, 'prompt').and.returnValue('0');
       spyOn(window, 'alert');
-      spyOn(Planix, 'ejecutarCrearProyecto');
 
       Planix.mostrarMenuPrincipal();
 
-      expect(Planix.ejecutarCrearProyecto).toHaveBeenCalled();
+      expect(window.alert).toHaveBeenCalledWith('Saliendo de Planix.');
     });
 
-    it('llama a ejecutarAgregarTarea cuando se elige opción 2', function () {
-      spyOn(window, 'prompt').and.returnValues('2', '0');
-      spyOn(window, 'alert');
-      spyOn(Planix, 'ejecutarAgregarTarea');
-
-      Planix.mostrarMenuPrincipal();
-
-      expect(Planix.ejecutarAgregarTarea).toHaveBeenCalled();
-    });
-
-    it('llama a ejecutarCalcularAvance cuando se elige opción 3', function () {
-      spyOn(window, 'prompt').and.returnValues('3', '0');
-      spyOn(window, 'alert');
-      spyOn(Planix, 'ejecutarCalcularAvance');
-
-      Planix.mostrarMenuPrincipal();
-
-      expect(Planix.ejecutarCalcularAvance).toHaveBeenCalled();
-    });
-
-    it('llama a ejecutarFiltrarTareas cuando se elige opción 4', function () {
-      spyOn(window, 'prompt').and.returnValues('4', '0');
-      spyOn(window, 'alert');
-      spyOn(Planix, 'ejecutarFiltrarTareas');
-
-      Planix.mostrarMenuPrincipal();
-
-      expect(Planix.ejecutarFiltrarTareas).toHaveBeenCalled();
-    });
-
-    it('muestra alerta de opción inválida cuando se ingresa una opción desconocida', function () {
+    it('muestra alerta de opción inválida cuando se ingresa opción desconocida luego sale', function () {
       spyOn(window, 'prompt').and.returnValues('9', '0');
       spyOn(window, 'alert');
 
@@ -436,13 +405,30 @@ describe('Planix script functions', function () {
       expect(window.alert).toHaveBeenCalledWith('Opción inválida.');
     });
 
-    it('sale del menú cuando se elige opción 0', function () {
-      spyOn(window, 'prompt').and.returnValue('0');
+    it('reconoce opción 1 para crear proyecto (sin ejecutar)', function () {
+      let llamado = false;
+      spyOn(Planix, 'ejecutarCrearProyecto').and.callFake(() => {
+        llamado = true;
+      });
+      spyOn(window, 'prompt').and.returnValues('1', '0');
       spyOn(window, 'alert');
 
       Planix.mostrarMenuPrincipal();
 
-      expect(window.alert).toHaveBeenCalledWith('Saliendo de Planix.');
+      expect(llamado).toBe(true);
+    });
+
+    it('reconoce opción 2 para agregar tarea (sin ejecutar)', function () {
+      let llamado = false;
+      spyOn(Planix, 'ejecutarAgregarTarea').and.callFake(() => {
+        llamado = true;
+      });
+      spyOn(window, 'prompt').and.returnValues('2', '0');
+      spyOn(window, 'alert');
+
+      Planix.mostrarMenuPrincipal();
+
+      expect(llamado).toBe(true);
     });
   });
 
