@@ -24,6 +24,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/RCN1-ui-test-spies] RCN1 Se realiza cambios en los documentos de test y se vuelve a ejecutar la suite de Jasmine con 43 casos, agregando los spies PR: [#103] (https://github.com/martindebenedetti/Planix/pull/103) — @giann98 (Tester JavaScript)
+
 - [fix/RC25-justificacion-test] RC25 Se agrega justificación al test realizado en `testing-doc.md`. PR: [#102] (https://github.com/martindebenedetti/Planix/pull/102) — @giann98 (Tester JavaScript)
 
 
