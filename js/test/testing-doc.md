@@ -46,32 +46,31 @@ mostrando el resultado PASS/FAIL de cada suite.
 
 ## Resultados de la Ejecución Actual
 
-### Iteración 2 — Tests de UI con Spies (03/06/2026)
+### Iteración 3 — Jasmine CDN con UI Spies (03/06/2026)
 
-- Total de tests ejecutados: **35**
-- Tests pasaron: **35 ✅**
+- Total de tests ejecutados: **43**
+- Tests pasaron: **43**
 - Tests fallaron: **0 ❌**
 - Estado: `PASS` en la suite Jasmine
 - Cobertura de UI con spies: **100%**
 
 #### Detalles de Ejecución
 
-- Tests de lógica pura: 18 specs ✓
-  - Validaciones (6 tests)
-  - Flujo 1: Crear Proyecto (2 tests)
-  - Flujo 2: Agregar Tarea (3 tests)
-  - Flujo 3: Calcular Avance (4 tests)
-  - Flujo 4: Filtrar Tareas (3 tests)
+- Tests de lógica pura: 20 specs
+  - Flujo 1: Crear Proyecto (5 tests)
+  - Flujo 2: Agregar Tarea (5 tests)
+  - Flujo 3: Calcular Avance (5 tests)
+  - Flujo 4: Filtrar Tareas (5 tests)
 
-- Tests de UI con spies: 17 specs ✓
+- Tests de UI con spies: 23 specs
   - ejecutarCrearProyecto() (5 tests) - Validación de entrada con prompts
-  - ejecutarAgregarTarea() (4 tests) - Manejo de proyectos y tareas
+  - ejecutarAgregarTarea() (5 tests) - Manejo de proyectos y tareas
   - ejecutarCalcularAvance() (3 tests) - Reporte de avance
-  - ejecutarFiltrarTareas() (3 tests) - Filtrado de estados
+  - ejecutarFiltrarTareas() (4 tests) - Filtrado de estados
   - mostrarMenuPrincipal() (6 tests) - Navegación interactiva y bucle
 
 - Capturas guardadas en `js/test/screenshots/`
-- Archivo de reporte HTML: `js/test/generate-report.html` ✨
+- Capturas de evidencia final: `jasmine-ui-spies-2026-06-03.png` y `jasmine-ui-spies-suite-detail-2026-06-03.png`
 
 ---
 
@@ -256,10 +255,8 @@ mostrando el resultado PASS/FAIL de cada suite.
 | 5 | Mostrar error para opción inválida | Validación de Errores |
 | 6 | Salir correctamente con opción 0 | Happy Path |
 
-**Método de Testing:**
-- Utiliza `spyOn(Planix, 'función')` para espiar llamadas a funciones
-- Simula selección de menú con prompts
-- Verifica que se ejecuten los flujos correctos
+- Simula selección de menú con `spyOn(window, 'prompt')`
+- Verifica efectos reales de cada flujo: proyectos creados, tareas agregadas, informes y listados mostrados
 - Valida bucle while controlado por opción "0"
 
 **Nota Importante:**
@@ -275,12 +272,12 @@ Los tests controlan esto proporcionando "0" como segundo prompt para salir.
 
 | Métrica | Valor |
 |---------|-------|
-| Total de Tests | 35 |
-| Tests Pasando | 35 |
+| Total de Tests | 43 |
+| Tests Pasando | 43 |
 | Tests Fallando | 0 |
 | Porcentaje de Éxito | 100% |
-| Tests de Lógica Pura | 18 |
-| Tests de UI con Spies | 17 |
+| Tests de Lógica Pura | 20 |
+| Tests de UI con Spies | 23 |
 
 ### Cobertura por Tipo de Test
 
@@ -319,29 +316,23 @@ mediante las suites de Jasmine.
 
 ### Resumen Ejecutivo
 
-![Resumen General](./screenshots/report-header.png)
+![Resumen General](./screenshots/jasmine-ui-spies-2026-06-03.png)
 
-*Captura del header del reporte Jasmine mostrando: 35 Total Tests, 35 Passed, 0 Failed, 0 Pending*
+*Captura del header del reporte Jasmine mostrando: 43 specs, 0 failures*
 
 ### Tests de Lógica Pura
 
-![Tests Lógica Pura](./screenshots/logic-tests.png)
+![Detalle de suites](./screenshots/jasmine-ui-spies-suite-detail-2026-06-03.png)
 
-*Captura mostrando 18 tests de validación, creación, cálculos y manipulación de datos - todos con estado ✓ (passed)*
+*Captura mostrando 20 tests de validación, creación, cálculos y manipulación de datos - todos con estado ✓ (passed)*
 
 ### Tests de UI con Spies
 
-![Tests UI](./screenshots/ui-tests-part1.png)
-
-*Captura mostrando tests de UI para ejecutarCrearProyecto() y ejecutarAgregarTarea() con spyOn(window, 'prompt') y spyOn(window, 'alert')*
-
-![Tests Menu Principal](./screenshots/ui-tests-part2.png)
-
-*Captura mostrando tests de ejecutarCalcularAvance(), ejecutarFiltrarTareas() y mostrarMenuPrincipal() con verificación de calls a funciones*
+*Captura mostrando tests de UI para ejecutarCrearProyecto(), ejecutarAgregarTarea(), ejecutarCalcularAvance(), ejecutarFiltrarTareas() y mostrarMenuPrincipal() con `spyOn(window, 'prompt')` y `spyOn(window, 'alert')`.*
 
 ### Status Completo
 
-![Final Report](./screenshots/report-footer.png)
+![Status completo](./screenshots/jasmine-ui-spies-2026-06-03.png)
 
 *Captura del footer del reporte mostrando: ✅ All tests passing | Generated on 2026-06-03*
 
@@ -394,3 +385,28 @@ if (document.querySelector("#modalCompartir")) {
 **Última Actualización:** 03/06/2026  
 **Tester/QA Engineer:** Gian Franco Pasquali  
 **Colaboración con:** Desarrollador JavaScript (código testeable sin cambios)
+ 
+---
+
+## Actualizacion - Iteracion 3: Jasmine CDN con UI Spies (03/06/2026)
+
+- Rama ejecutada: `fix/RCN1-ui-test-spies`
+- Runner utilizado: `js/test/test-runner.html`
+- Navegador: Google Chrome headless
+- Resultado: **43 specs, 0 failures**
+- Capturas nuevas guardadas:
+  - `js/test/screenshots/jasmine-ui-spies-2026-06-03.png`
+  - `js/test/screenshots/jasmine-ui-spies-suite-detail-2026-06-03.png`
+
+### Ajustes incluidos
+
+- Se reorganizo `js/test/script.spec.js` en 9 suites Jasmine.
+- Se mantuvo un minimo de 3 tests por suite.
+- Se cubrieron los 4 flujos principales con tests de logica pura.
+- Se agrego cobertura de UI con `spyOn(window, 'prompt')` y `spyOn(window, 'alert')`.
+- Se cubrio `mostrarMenuPrincipal()` ejecutando opciones reales del menu y salida con `0`.
+- Se incorporaron assertions requeridas: `toBe()`, `toEqual()`, `toContain()`, `toThrow()`, `toBeTruthy()` y `toBeFalsy()`.
+
+### Nota sobre `mostrarMenuPrincipal()`
+
+La funcion llama a las funciones de flujo desde su scope interno. Por ese motivo, los tests no espian `Planix.ejecutarCrearProyecto()` ni funciones equivalentes; simulan secuencias completas de `prompt()` y verifican efectos observables: proyectos creados, tareas agregadas, reportes mostrados y alerts de salida.

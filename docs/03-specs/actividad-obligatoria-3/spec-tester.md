@@ -76,9 +76,9 @@ spyOn(window, 'alert');
 // ... código que llama a alert()
 expect(window.alert).toHaveBeenCalledWith('mensaje esperado');
 
-// Espiar funciones internas del objeto Planix
-spyOn(Planix, 'crearProyecto');
-expect(Planix.crearProyecto).toHaveBeenCalled();
+// Verificar efectos observables del flujo testeado
+expect(Planix.proyectos.length).toBe(1);
+expect(Planix.proyectos[0].nombre).toBe('Proyecto Test');
 ```
 
 #### Playwright MCP
@@ -176,24 +176,24 @@ El código debe ser compatible con Jasmine CDN ejecutándose en navegador.
 
 ## ✅ AL CERRAR — Evidencia de Trabajo
 
-### Resultado de la ejecución (Iteración 1 — Lógica Pura)
-- Se generó `js/test/script.spec.js` con 18 specs de lógica pura.
-- La suite se ejecutó en `js/test/test-runner.html` usando Playwright MCP.
-- El resultado fue: `18 specs, 0 fallos`.
-- Capturas guardadas en `js/test/screenshots/` como `tests-passing.png` y `suite-detail.png`.
+### Resultado de la ejecución final — Jasmine CDN con UI Spies
+- Se generó `js/test/script.spec.js` con 43 specs totales.
+- La suite se ejecutó en `js/test/test-runner.html` usando Google Chrome headless.
+- El resultado final consolidado fue: `43 specs, 0 fallos`.
+- Capturas guardadas en `js/test/screenshots/` como `jasmine-ui-spies-2026-06-03.png` y `jasmine-ui-spies-suite-detail-2026-06-03.png`.
 
-### Resultado de la ejecución (Iteración 2 — Tests de UI con Spies)
-- Se extendió `js/test/script.spec.js` con 17 specs adicionales de UI.
-- Total de tests: **35 specs**
-- Tests exitosos: **35 specs, 0 fallos** ✅
+### Distribución de specs
+- Se extendió `js/test/script.spec.js` con 23 specs de UI con spies.
+- Total de tests: **43 specs**
+- Tests exitosos: **43 specs, 0 fallos**
 - Cobertura de funciones UI: 100%
   - `ejecutarCrearProyecto()` - 5 tests
-  - `ejecutarAgregarTarea()` - 4 tests
+  - `ejecutarAgregarTarea()` - 5 tests
   - `ejecutarCalcularAvance()` - 3 tests
-  - `ejecutarFiltrarTareas()` - 3 tests
+  - `ejecutarFiltrarTareas()` - 4 tests
   - `mostrarMenuPrincipal()` - 6 tests
-- Se generó `js/test/generate-report.html` con reporte visual completo
-- Problema corregido: `mostrarMenuPrincipal()` ya no se ejecuta en test-runner
+- Se usó `js/test/test-runner.html` con Jasmine CDN.
+- `mostrarMenuPrincipal()` se testeó con secuencias reales de `prompt()` y salida controlada con opción `0`.
 - No se identificaron bugs en estas ejecuciones.
 
 #### Correcciones Realizadas en js/script.js
@@ -210,17 +210,17 @@ if (document.querySelector("#modalCompartir")) {
 
 ### Técnicas de Testing Utilizadas
 
-#### Tests de Lógica Pura (18 specs)
+#### Tests de Lógica Pura (20 specs)
 - Validaciones: `validarNoVacio()`, `validarNombreUnico()`, `validarFormatoFecha()`, etc.
 - Creación de objetos: `crearProyecto()`, `crearTarea()`
 - Manipulación de datos: `agregarProyecto()`, `agregarTarea()`, `filtrarTareas()`
 - Cálculos: `calcularPorcentajeAvance()`, `calcularAvanceProyecto()`
 - Búsqueda y mapeo: `buscarProyecto()`, `validarEstado()`, `validarFiltro()`
 
-#### Tests de UI con Spies (17 specs)
+#### Tests de UI con Spies (23 specs)
 - **Spies de `prompt()`**: `spyOn(window, 'prompt').and.returnValue()` para simular entrada
 - **Spies de `alert()`**: `spyOn(window, 'alert')` para capturar mensajes
-- **Spies de funciones**: `spyOn(Planix, 'función')` para verificar calls
+- **Verificación de efectos reales**: se validan proyectos creados, tareas agregadas, reportes y alerts del menú principal
 - **Secuencias de prompts**: `and.returnValues('val1', 'val2', 'val3')` para flujos complejos
 - **Verificaciones**: `expect().toHaveBeenCalledWith()` para validar argumentos
 
@@ -308,11 +308,11 @@ El código debe ser compatible con Jasmine CDN ejecutándose en navegador.
 
 | Métrica | Resultado |
 |----------|------------|
-| Total de Specs | 35 |
-| Specs Exitosas | 35 |
+| Total de Specs | 43 |
+| Specs Exitosas | 43 |
 | Specs Fallidas | 0 |
-| Tests de Lógica Pura | 18 |
-| Tests de UI con Spies | 17 |
+| Tests de Lógica Pura | 20 |
+| Tests de UI con Spies | 23 |
 | Bugs Detectados | 0 |
 | Issues Reportadas | 0 |
 | Ramas utilizadas | `feature/tester-javascript-jasmine` → `fix/RCN1-ui-test-spies` |
@@ -320,26 +320,16 @@ El código debe ser compatible con Jasmine CDN ejecutándose en navegador.
 ### Archivos Generados
 
 #### js/test/script.spec.js
-- **Tamaño:** ~35 KB
-- **Contenido:** 35 specs Jasmine totales
-  - 18 specs de lógica pura (validaciones, cálculos, manipulación de datos)
-  - 17 specs de UI con spies (testing de prompt/alert)
+- **Tamaño:** ~40 KB
+- **Contenido:** 43 specs Jasmine totales
+  - 20 specs de lógica pura (validaciones, cálculos, manipulación de datos)
+  - 23 specs de UI con spies (testing de prompt/alert)
 - **Estado:** ✅ Todos pasando sin errores
 
-#### js/test/test-runner-optimized.html (Nuevo)
-- **Propósito:** Runner de Jasmine optimizado sin DOMContentLoaded conflicts
-- **Uso:** `file:///C:/Users/20411705057/Desktop/Git/Planix/js/test/test-runner-optimized.html`
-- **Estado:** ✅ Cargando y ejecutando tests correctamente
-
-#### js/test/generate-report.html (Nuevo)
-- **Propósito:** Reporte visual HTML de todos los 35 tests
-- **Contenido:** 
-  - Header con resumen (35 Total, 35 Passed, 0 Failed, 0 Pending)
-  - 9 secciones de test suites organizadas por funcionalidad
-  - Footer con metadata
-- **Uso:** `file:///C:/Users/20411705057/Desktop/Git/Planix/js/test/generate-report.html`
-- **Ventaja:** Carga rápida sin dependencias de Jasmine CDN
-- **Estado:** ✅ Generado correctamente
+#### js/test/test-runner.html
+- **Propósito:** Runner oficial de Jasmine con CDN.
+- **Uso:** `file:///C:/Users/20411705057/Desktop/Git/Planix/js/test/test-runner.html`
+- **Estado:** ✅ Ejecuta 43 specs correctamente.
 
 #### js/script.js (Modificado)
 - **Cambio:** Protección de `mostrarMenuPrincipal()` en DOMContentLoaded
@@ -359,7 +349,7 @@ Se revisó la estructura de `script.js` para validar que las funciones fueran ac
 
 ### Criterios de aceptación — Checklist
 
-- [x] `spec-tester.md` completado (incluyendo iteración 2 de UI tests)
+- [x] `spec-tester.md` completado (incluyendo ejecución final de 43 specs)
 - [x] 4 suites de tests de lógica pura (una por flujo principal)
 - [x] 5 suites de tests de UI con spies (ejecutar*() y mostrarMenuPrincipal())
 - [x] Mínimo 3 tests por suite utilizando Jasmine
@@ -374,11 +364,11 @@ Se revisó la estructura de `script.js` para validar que las funciones fueran ac
 - [x] Tests de secuencias de prompts con `and.returnValues()`
 - [x] Tests de verificación de calls a funciones con `toHaveBeenCalled()`
 - [x] Archivo `js/test/test-runner.html` funcionando correctamente
-- [x] Archivo `js/test/script.spec.js` implementado (35 specs totales)
+- [x] Archivo `js/test/script.spec.js` implementado (43 specs totales)
 - [x] Archivo `js/test/testing-doc.md` documentado con nuevas suites
 - [x] Tests ejecutados exitosamente mediante Playwright MCP
 - [x] Capturas PASS/FAIL obtenidas mediante Playwright MCP
-- [x] Bugs encontrados reportados (no se detectaron bugs — 35/35 specs pasando)
+- [x] Bugs encontrados reportados (no se detectaron bugs — 43/43 specs pasando)
 - [x] Rama `fix/RCN1-ui-test-spies` creada y actualizada
 - [x] Coordinación con Desarrollo completada (código testeable sin cambios)
 
@@ -387,3 +377,42 @@ Se revisó la estructura de `script.js` para validar que las funciones fueran ac
 **Última Actualización:** 03/06/2026  
 **Tester/QA Engineer:** Gian Franco Pasquali  
 **Colaboración con:** Desarrollador JavaScript (sin cambios requeridos)
+ 
+---
+
+## Actualizacion final - fix/RCN1-ui-test-spies (03/06/2026)
+
+- Archivo actualizado: `js/test/script.spec.js`
+- Runner utilizado: `js/test/test-runner.html`
+- Entorno: Jasmine 5.10.0 desde CDN ejecutado en Google Chrome headless
+- Resultado: **43 specs, 0 failures**
+- Capturas guardadas:
+  - `js/test/screenshots/jasmine-ui-spies-2026-06-03.png`
+  - `js/test/screenshots/jasmine-ui-spies-suite-detail-2026-06-03.png`
+
+### Suites ejecutadas
+
+| Suite | Specs | Cobertura |
+|---|---:|---|
+| Planix - flujo 1: crear proyecto | 5 | Objetos, arrays, validaciones de nombre/fecha, duplicados y `toThrow()` |
+| Planix - flujo 2: agregar tarea a un proyecto | 5 | Busqueda, estados permitidos, objetos tarea, arrays y listados |
+| Planix - flujo 3: calcular avance del proyecto | 5 | Conteo, porcentajes, estado temporal, fecha invalida y resumen |
+| Planix - flujo 4: listar y filtrar tareas | 5 | Filtros `pendiente`, `en curso`, `completada`, `todas` y arrays vacios |
+| Planix UI - ejecutarCrearProyecto con spies | 5 | Happy path y errores con `prompt()` / `alert()` |
+| Planix UI - ejecutarAgregarTarea con spies | 5 | Sin proyectos, proyecto inexistente, campos incompletos, estado invalido y alta correcta |
+| Planix UI - ejecutarCalcularAvance con spies | 3 | Sin proyectos, proyecto sin tareas e informe de avance |
+| Planix UI - ejecutarFiltrarTareas con spies | 4 | Sin proyectos, filtro valido, filtro invalido y sin coincidencias |
+| Planix UI - mostrarMenuPrincipal con spies | 6 | Salida, opcion invalida y opciones reales 1, 2, 3 y 4 |
+
+### Assertions cubiertas
+
+- `toBe()`
+- `toEqual()`
+- `toContain()`
+- `toThrow()`
+- `toBeTruthy()`
+- `toBeFalsy()`
+
+### Criterio tecnico para el menu
+
+`mostrarMenuPrincipal()` invoca las funciones de flujo desde el scope interno del archivo, por lo que es mas confiable probarlo con secuencias completas de `prompt()` y verificar efectos reales. La cobertura valida la creacion de proyectos, alta de tareas, calculo de avance, filtrado y salida del menu sin usar DOM ni eventos.
