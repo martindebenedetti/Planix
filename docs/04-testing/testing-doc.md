@@ -95,3 +95,17 @@ En el **Momento 2**, ya con todas las features integradas en `develop`, se obtuv
   El componente accordion se comporta bien en desktop, mobile e iPad, las transiciones son estables y la visual permanece coherente.
 
 No se detectaron nuevos bugs en Momento 2.
+ 
+## Ejecucion Jasmine - Actividad Obligatoria 3
+
+Se agrego una ejecucion especifica de tests unitarios y de funciones UI para la rama `fix/RCN1-ui-test-spies`.
+
+| Fecha | Runner | Resultado | Evidencia |
+|---|---|---|---|
+| 03/06/2026 | `js/test/test-runner.html` con Jasmine CDN en Chrome headless | **43 specs, 0 failures** | `js/test/screenshots/jasmine-ui-spies-2026-06-03.png` y `js/test/screenshots/jasmine-ui-spies-suite-detail-2026-06-03.png` |
+
+Cobertura incorporada:
+- 4 flujos de logica pura: crear proyecto, agregar tarea, calcular avance, listar/filtrar tareas.
+- Tests de UI para `ejecutarCrearProyecto()`, `ejecutarAgregarTarea()`, `ejecutarCalcularAvance()`, `ejecutarFiltrarTareas()` y `mostrarMenuPrincipal()`.
+- Uso de `spyOn(window, 'prompt')` y `spyOn(window, 'alert')`.
+- Assertions requeridas: `toBe()`, `toEqual()`, `toContain()`, `toThrow()`, `toBeTruthy()` y `toBeFalsy()`.

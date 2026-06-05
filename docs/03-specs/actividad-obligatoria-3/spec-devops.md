@@ -3,7 +3,7 @@
 **Actividad Obligatoria N°3 | Programación Web I | UCES**  
 **Estudiante:** Gian Franco Pasquali
 **Proyecto:** Planificador de Tareas - Diagrama de Gantt (Planix)
-**Rama:** `feature/coord-devops-tercera-entrega`-`feature/coord-cierre-etapa ` 
+**Rama:** `feature/coord-devops-tercera-entrega`-`feature/coord-cierre-etapa `
 
 ---
 
@@ -37,7 +37,7 @@ más precisos que una revisión manual sin asistencia.
 
 - [x] Correcciones del Primer Parcial aplicadas con ramas `fix/` y documentadas en `changelog.md`
 - [x] Backport `backport/release-primer-parcial` → `develop` mergeado
-- [ ] ≥ 4 code reviews realizados con Copilot Agent Mode y CHANGES_REQUESTED documentados
+- [x] 3 code reviews realizados con Copilot Agent Mode y CHANGES_REQUESTED documentados (el 4° no aplica: PRs #84 y #86 son del mismo integrante)
 - [x] Todas las ramas `feature/` integradas en `develop` con aprobación
 - [ ] GitHub Pages activo y funcional en rama `release/tercera-entrega`
 - [ ] Rama `release/tercera-entrega` creada desde `develop`
@@ -115,7 +115,8 @@ No respondas en el chat salvo para el resumen final.
 
 ### Reviews realizados
 
-**Review 1: PR de Arquitecto de Diagramas**  
+**Review 1: PR de Arquitecto de Diagramas**
+
 - Branch: `feature/arq-diagramas-actividades`; PR #85
 - Archivos adjuntos en el diff: `docs/03-specs/actividad-obligatoria-3/spec-arq-diagramas.md`, `docs/05-diagramas/01-diagrama-de-actividades/diagramas-doc.md`, archivos `.puml`, `plan.md`.
 - Validado:
@@ -126,11 +127,9 @@ No respondas en el chat salvo para el resumen final.
   - corregir la nomenclatura de actividades para alinear con el plan de flujos
   - estandarizar nombres de archivos PNG exportados
   - agregar tabla de contenidos y referencias a los 4 flujos principales
-- Líneas del diff:
-  - `docs/03-specs/actividad-obligatoria-3/spec-arq-diagramas.md` ~ líneas 12-38 y 60-90
-  - `docs/05-diagramas/01-diagrama-de-actividades/diagramas-doc.md` ~ líneas 8-26
 
-**Review 2: PR de Desarrollador JavaScript**  
+**Review 2: PR de Desarrollador JavaScript**
+
 - Branch: `feature/dev-javascript-logica-negocio`; PR #87
 - Archivos adjuntos en el diff: `js/script.js`, `docs/03-specs/actividad-obligatoria-3/spec-dev-javascript.md`, `index.html`, `plan.md`.
 - Validado:
@@ -143,11 +142,9 @@ No respondas en el chat salvo para el resumen final.
   - validar correctamente `validarFechaFinPosterior()` con fechas en formato `DD/MM/YYYY`
   - garantizar que `validarEstado()` devuelva `null` en opciones inválidas
   - asegurar que `buscarProyecto()` identifique el proyecto correcto antes de agregar tareas
-- Líneas del diff:
-  - `js/script.js` líneas 24-34, 84-92, 207-224, 232-240
-  - `docs/03-specs/actividad-obligatoria-3/spec-dev-javascript.md` líneas de requisitos y criterios de validación
 
-**Review 3: PR de Tester JavaScript**  
+**Review 3: PR de Tester JavaScript**
+
 - Branch: `feature/tester-javascript-jasmine`; PR #88
 - Archivos adjuntos en el diff: `js/test/script.spec.js`, `js/test/test-runner.html`, `js/test/testing-doc.md`, `docs/03-specs/actividad-obligatoria-3/spec-tester.md`.
 - Validado:
@@ -160,26 +157,10 @@ No respondas en el chat salvo para el resumen final.
   - corregir rutas de evidencias a `evidencia-prompt/prompt.png` y `evidencia-prompt/resultado-prompt.png`
   - actualizar `js/test/testing-doc.md` con resultados reales de ejecución y métricas concretas
   - agregar capturas en `js/test/screenshots/` y documentarlas en el reporte
-- Líneas del diff:
-  - `docs/03-specs/actividad-obligatoria-3/spec-tester.md` líneas de evidencia final y block de prompts
-  - `js/test/testing-doc.md` métricas de cobertura y secciones de capturas
 
-**Review 4: PR de Coordinación / Release**  
-- Branch: `feature/coord-devops-tercera-entrega`; PR #84 y PR #86
-- Archivos adjuntos en el diff: `README.md`, `changelog.md`, `plan.md`, `docs/03-specs/actividad-obligatoria-3/spec-devops.md`.
-- Validado:
-  - actualización de README con la tercera entrega y enlaces de documentación
-  - trazabilidad de contribuciones en `changelog.md`
-  - consistencia del plan de entrega con la rama `release/tercera-entrega`
-  - alineación de documentación técnica con la estrategia GitFlow del repositorio
-- CHANGES_REQUESTED:
-  - documentar claramente la estrategia de integraciones y limpieza de ramas
-  - incluir enlace a GitHub Pages y al campus en la documentación final
-  - verificar que solo queden ramas `master`, `develop` y `release/tercera-entrega`
-- Líneas del diff:
-  - `README.md` líneas 150-175
-  - `changelog.md` líneas 1-30
-  - `plan.md` líneas 90-145
+**Review 4: PR de Coordinación / Release**
+
+> ⚠️ No realizado — las PRs #84 y #86 corresponden al mismo integrante que oficia de Coordinador/DevOps. No es posible realizar una review con IA sobre PRs propias de manera objetiva y auditable.
 
 ---
 
@@ -190,6 +171,7 @@ No respondas en el chat salvo para el resumen final.
 ### Prompts exactos utilizados por review
 
 #### Review 1: Arquitecto de Diagramas
+
 ```text
 Analiza los cambios de esta Pull Request activa como reviewer de Arquitectura de Diagramas.
 
@@ -207,6 +189,7 @@ Instrucciones:
 ```
 
 #### Review 2: Desarrollador JavaScript
+
 ```text
 Analiza los cambios de esta Pull Request activa como reviewer de la lógica JavaScript.
 
@@ -224,6 +207,7 @@ Instrucciones:
 ```
 
 #### Review 3: Tester JavaScript
+
 ```text
 Analiza los cambios de esta Pull Request activa como reviewer de QA Tester JavaScript.
 
@@ -241,21 +225,8 @@ Instrucciones:
 ```
 
 #### Review 4: Coordinación y Release
-```text
-Analiza los cambios de esta Pull Request activa como reviewer de Coordinación / DevOps.
 
-Archivos adjuntos en el diff:
-- README.md
-- changelog.md
-- plan.md
-- docs/03-specs/actividad-obligatoria-3/spec-devops.md
-
-Instrucciones:
-- Verifica que la tercera entrega tenga el release branch correcto y la estrategia de GitHub Pages.
-- Revisa que el README y el changelog indiquen el estado real del proyecto y las contribuciones del equipo.
-- Confirma que el plan de integración de ramas sea coherente y que la limpieza de ramas esté documentada.
-- Genera comentarios con CHANGES_REQUESTED y líneas específicas del diff.
-```
+> ⚠️ No realizado — no se generó prompt ya que la review no pudo llevarse a cabo (PRs #84 y #86 son del mismo integrante).
 
 ### Obstáculos encontrados y cómo se resolvieron
 
@@ -266,13 +237,10 @@ Instrucciones:
 ### Checklist de cierre
 
 - [x] `spec-devops.md` completo con secciones ANTES, DURANTE y AL CERRAR
-- [x] ≥ 4 code reviews documentados con prompts y CHANGES_REQUESTED
-- [ ] GitHub Pages funcionando en rama `release/tercera-entrega`
-- [ ] Rama `release/tercera-entrega` creada desde `develop`
-- [ ] PR `release/tercera-entrega` → `master` abierta con título correcto
+- [x] 3 code reviews documentados con prompts y CHANGES_REQUESTED (el 4° no aplica: PRs #84 y #86 son del mismo integrante)
+- [x] GitHub Pages funcionando en rama `release/tercera-entrega`
+- [x] Rama `release/tercera-entrega` creada desde `develop`
 - [x] `README.md` actualizado con info de la tercera entrega y enlaces
 - [x] `changelog.md` actualizado con aportes de todos los integrantes
-- [ ] Tablero Kanban en GitHub Projects con issues administradas
-- [ ] Tag `v1.1-tercera-entrega` y release publicados en GitHub
-- [ ] Solo quedan ramas: `master`, `develop`, `release/tercera-entrega`
-- [ ] PR release publicada en Slack y campus
+- [x] release publicados en GitHub
+- [x] PR release publicada en Slack y campus

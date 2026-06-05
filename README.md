@@ -1,19 +1,19 @@
 # Planificador de Tareas - Diagrama de Gantt
 
 ## Datos Académicos
+
 - **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
 - **Materia:** Programación Web I - 1º Cuat. 2026
-- **Docente:** Matías Velásquez
+- **Docente:** Matias Velasquez
 
 ## Integrantes del equipo
 
-| Nombre y Apellido | Matrícula | Usuario Git | Rol |
-|:---|:---:|:---:|:---:|
-| Martín Debenedetti | 151579 | martindebenedetti | Arquitecto de Diagrama de Actividades |
-| Leandro Berro | 155667 | leanlex | Desarrollador JavaScript |
-| Gian Franco Pasquali | 148159 | giann98 | Coordinador / DevOps |
-| Compartido | - | - | Tester JavaScript / QA Engineer |
-
+| Nombre y Apellido    | Matrícula |    Usuario Git    |                  Rol                  |
+| :------------------- | :-------: | :---------------: | :-----------------------------------: |
+| Martín Debenedetti   |  151579   | martindebenedetti | Arquitecto de Diagrama de Actividades |
+| Leandro Berro        |  155667   |      leanlex      |       Desarrollador JavaScript        |
+| Gian Franco Pasquali |  148159   |      giann98      |         Coordinador / DevOps          |
+| Compartido           |     -     |         -         |    Tester JavaScript / QA Engineer    |
 
 ---
 
@@ -94,6 +94,7 @@ La página contempla una organización visual compuesta por:
 ## Documentación
 
 ### Mockup del proyecto en Figma
+
 - **Enlace al archivo de Figma:** [Ver mockup en Figma](https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=54-283&t=Ww4homzl6jfJxrQm-0)
 
 ### Mockup inicial (Actividad Obligatoria 1)
@@ -122,7 +123,19 @@ Para el Primer Parcial se generó una nueva versión del mockup tomando como bas
 
 ![Mockup Bootstrap](docs/01-mockup/disenio-bootstrap.png)
 
+### Diagramas de Actividades — 4 flujos funcionales
+
+[Ver documentación de diagramas de actividades](docs/05-diagramas/01-diagrama-de-actividades/diagramas-doc.md)
+
+Los diagramas cubren los siguientes flujos del sistema:
+
+- **Flujo 1:** Crear Proyecto
+- **Flujo 2:** Agregar Tarea a un Proyecto
+- **Flujo 3:** Calcular Avance del Proyecto
+- **Flujo 4:** Listar y Filtrar Tareas
+
 ### Índice de testing y casos de prueba
+
 [Ver documentación de testing](docs/04-testing/testing-doc.md)
 
 ---

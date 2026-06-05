@@ -1,31 +1,33 @@
 @startuml actividad-flujo-3-calcular-avance
+title Calcular Avance del Proyecto
 |Usuario|
 start
-|Sistema|
+|Lógica de Negocio|
 if (¿Existen proyectos?) then (no)
-  |Usuario|
+  |Interfaz de Usuario|
   :alert("No hay proyectos");
-  stop
+  end
 else (sí)
-  |Sistema|
+  |Lógica de Negocio|
   :Construir lista de proyectos;
+  |Interfaz de Usuario|
   :alert(lista de proyectos);
   |Usuario|
   :Elegir proyecto por nombre;
-  |Sistema|
+  |Lógica de Negocio|
   :Buscar proyecto;
   if (¿Proyecto encontrado?) then (no)
-    |Usuario|
+    |Interfaz de Usuario|
     :alert("Proyecto no encontrado");
-    stop
+    end
   else (sí)
-    |Sistema|
+    |Lógica de Negocio|
     if (¿Tiene tareas?) then (no)
-      |Usuario|
+      |Interfaz de Usuario|
       :alert("El proyecto no tiene tareas");
-      stop
+      end
     else (sí)
-      |Sistema|
+      |Lógica de Negocio|
       :completadas = 0;
       :i = 0;
       while (i < cantidad de tareas) is (sí)
@@ -52,7 +54,7 @@ else (sí)
         endif
       endif
       :informe = "Avance: " + porcentaje + "%\n" + completadas + "/" + total + " tareas\nEstado: " + estadoProyecto;
-      |Usuario|
+      |Interfaz de Usuario|
       :alert(informe);
       stop
     endif
