@@ -1,0 +1,63 @@
+@startuml actividad-flujo-2-agregar-tarea
+title Agregar Tarea a Proyecto
+|Usuario|
+start
+|Lógica de Negocio|
+if (¿Existen proyectos cargados?) then (no)
+  |Interfaz de Usuario|
+  :alert("No hay proyectos");
+  end
+else (sí)
+  |Lógica de Negocio|
+  :Inicializar listaTexto = "";
+  :i = 0;
+  while (i < cantidad de proyectos) is (sí)
+    :listaTexto = listaTexto + proyectos[i].nombre;
+    :i = i + 1;
+  endwhile (no)
+  |Interfaz de Usuario|
+  :alert(listaTexto);
+  |Usuario|
+  :Elegir proyecto por nombre (prompt);
+  
+  |Lógica de Negocio|
+  :Buscar proyecto;
+  if (¿Proyecto encontrado?) then (no)
+    |Interfaz de Usuario|
+    :alert("Proyecto no encontrado");
+    end
+  else (sí)
+    |Usuario|
+    :Ingresar nombre de tarea;
+    :Ingresar responsable;
+    :Ingresar estado (1=pendiente, 2=en curso, 3=completada);
+    
+    |Lógica de Negocio|
+    if (¿Campos vacíos?) then (sí)
+      |Interfaz de Usuario|
+      :alert("Campos incompletos");
+      end
+    elseif (Estado == 1) then (sí)
+      |Lógica de Negocio|
+      :estado = "pendiente";
+    elseif (Estado == 2) then (sí)
+      |Lógica de Negocio|
+      :estado = "en curso";
+    elseif (Estado == 3) then (sí)
+      |Lógica de Negocio|
+      :estado = "completada";
+    else (no)
+      |Interfaz de Usuario|
+      :alert("Estado inválido");
+      end
+    endif
+    
+    |Lógica de Negocio|
+    :Crear objeto Tarea;
+    :Agregar a proyecto.tareas[];
+    |Interfaz de Usuario|
+    :alert("Tarea agregada correctamente");
+    stop
+  endif
+endif
+@enduml

@@ -1,19 +1,19 @@
 # Planificador de Tareas - Diagrama de Gantt
 
 ## Datos Académicos
+
 - **Carrera:** Tecnicatura Universitaria en Programación de Sistemas
 - **Materia:** Programación Web I - 1º Cuat. 2026
 - **Docente:** Matias Velasquez
 
 ## Integrantes del equipo
 
-| Nombre y Apellido | Matrícula | Usuario Git | Rol |
-|:---|:---:|:---:|:---:|
-| Martín Debenedetti | 151579 | martindebenedetti | DESARROLLADOR DE COMPONENTES HTML AVANZADOS |
-| Leandro Berro | 155667 | leanlex | Coordinador / DevOps |
-| Gian Franco Pasquali | 148159 | giann98 | Desarrollador Frontend/Bootstrap / Especialista en Componentes 
-Bootstrap |
-
+| Nombre y Apellido    | Matrícula |    Usuario Git    |                  Rol                  |
+| :------------------- | :-------: | :---------------: | :-----------------------------------: |
+| Martín Debenedetti   |  151579   | martindebenedetti | Arquitecto de Diagrama de Actividades |
+| Leandro Berro        |  155667   |      leanlex      |       Desarrollador JavaScript        |
+| Gian Franco Pasquali |  148159   |      giann98      |         Coordinador / DevOps          |
+| Compartido           |     -     |         -         |    Tester JavaScript / QA Engineer    |
 
 ---
 
@@ -21,7 +21,7 @@ Bootstrap |
 
 Este proyecto propone el desarrollo de una página web orientada a la visualización y planificación de tareas mediante un esquema tipo **diagrama de Gantt**.
 
-El sistema busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones, responsables y nivel de avance. A partir de las bases construidas en las Actividades Obligatorias 1 y 2, el **Primer Parcial** incorpora una nueva etapa de evolución del proyecto, centrada en:
+El sistema busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones, responsables y nivel de avance. A partir de las bases construidas en las Actividades Obligatorias 1 y 2, el **Primer Parcial** y la Actividad Obligatoria 3, esta etapa incorpora una nueva evolución del proyecto centrada en:
 
 - la **migración visual y estructural a Bootstrap**;
 - la mejora de la **responsividad** del sitio;
@@ -54,6 +54,9 @@ El sistema busca representar de forma clara la organización de tareas, sus fech
 - Playwright MCP
 - GitHub MCP
 - Claude Code MCP
+- JavaScript
+- Jasmine
+- PlantUML
 
 ---
 
@@ -69,7 +72,8 @@ El sistema busca representar de forma clara la organización de tareas, sus fech
 - Incorporación de componentes avanzados de Bootstrap.
 - Incorporación de componentes HTML avanzados.
 - Posibilidad de ampliar el detalle de cada tarea mediante una ventana modal o vista ampliada.
-- Evolución futura con JavaScript e interactividad adicional.
+- Integración progresiva de lógica JavaScript para simulación funcional del sistema.
+- Base preparada para futura integración con DOM y eventos en próximas entregas.
 
 ---
 
@@ -90,6 +94,7 @@ La página contempla una organización visual compuesta por:
 ## Documentación
 
 ### Mockup del proyecto en Figma
+
 - **Enlace al archivo de Figma:** [Ver mockup en Figma](https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=54-283&t=Ww4homzl6jfJxrQm-0)
 
 ### Mockup inicial (Actividad Obligatoria 1)
@@ -118,14 +123,28 @@ Para el Primer Parcial se generó una nueva versión del mockup tomando como bas
 
 ![Mockup Bootstrap](docs/01-mockup/disenio-bootstrap.png)
 
+### Diagramas de Actividades — 4 flujos funcionales
+
+[Ver documentación de diagramas de actividades](docs/05-diagramas/01-diagrama-de-actividades/diagramas-doc.md)
+
+Los diagramas cubren los siguientes flujos del sistema:
+
+- **Flujo 1:** Crear Proyecto
+- **Flujo 2:** Agregar Tarea a un Proyecto
+- **Flujo 3:** Calcular Avance del Proyecto
+- **Flujo 4:** Listar y Filtrar Tareas
+
 ### Índice de testing y casos de prueba
+
 [Ver documentación de testing](docs/04-testing/testing-doc.md)
 
 ---
 
 ## Estado del proyecto
 
-El proyecto se encuentra actualmente en desarrollo del **Primer Parcial**, tomando como base corregida las Actividades Obligatorias 1 y 2.
+El proyecto se encuentra actualmente en desarrollo de la **Actividad Obligatoria N°3**, tomando como base consolidada y corregida el Primer Parcial y las actividades anteriores.
+
+En esta etapa se incorpora la lógica de negocio del sistema utilizando JavaScript, testing automatizado con Jasmine y diagramas de actividades mediante PlantUML.
 
 ### Avances alcanzados hasta el momento
 
@@ -133,16 +152,29 @@ El proyecto se encuentra actualmente en desarrollo del **Primer Parcial**, toman
 - backport de la release anterior hacia `develop`;
 - creación de la especificación técnica inicial del rol Coordinador / DevOps;
 - actualización del mockup visual del proyecto para reflejar la migración a Bootstrap;
-- exportación del mockup actualizado como `docs/01-mockup/disenio-bootstrap.png`.
+- exportación del mockup actualizado como `docs/01-mockup/disenio-bootstrap.png`;
+- migración de la interfaz principal a Bootstrap 5 utilizando sistema de grillas responsive;
+- incorporación de componentes avanzados de Bootstrap (`navbar`, `modal`, `offcanvas`, `accordion`, `cards`, `buttons`, `progress`);
+- incorporación de componentes HTML avanzados y mejoras estructurales semánticas;
+- integración de `bootstrap-overrides.css` para conservar la identidad visual del proyecto;
+- implementación de 4 flujos funcionales en `js/script.js` con validaciones de nombre, fecha y estado;
+- implementación de testing automatizado con Jasmine en `js/test/script.spec.js` y `js/test/test-runner.html`;
+- ejecución de Jasmine mediante Playwright MCP y documentación de resultados en `js/test/testing-doc.md`;
+- generación de evidencias de testing en `js/test/screenshots/` y `docs/04-testing/`;
+- documentación técnica de los roles mediante specs organizadas por entrega;
+- integración de casos de prueba TC-6 a TC-10;
+- realización de code reviews asistidas por IA utilizando GitHub Copilot Agent;
+- creación de release y versionado formal `v1.1-primer-parcial`;
+- limpieza y normalización de ramas según criterios de entrega;
+- consolidación de la base técnica de la Actividad Obligatoria N°3 con JavaScript y testing automatizado.
 
 ### Pendiente para esta etapa
 
-- instalación e integración de Bootstrap en la interfaz;
-- implementación de componentes avanzados de Bootstrap;
-- incorporación de componentes HTML avanzados;
-- testing responsive con Playwright MCP;
-- cierre de specs por rol con evidencia final;
-- integración final en release del Primer Parcial.
+- revisión final de diagramas de actividades PlantUML y sus exportaciones `.puml` y `.png`;
+- validación de la publicación de GitHub Pages para la rama `release/tercera-entrega`;
+- creación del release final `v1.1-tercera-entrega`;
+- seguimiento y limpieza definitiva de ramas para dejar solo `master`, `develop` y `release/tercera-entrega`;
+- publicación final de la entrega en Slack y en el campus.
 
 ---
 
@@ -163,6 +195,11 @@ El proyecto se encuentra actualmente en desarrollo del **Primer Parcial**, toman
 - `docs/04-testing/test-case-6.md` a `test-case-10.md`: testing previsto para el Primer Parcial.
 - `changelog.md`: registro de contribuciones, PRs, fixes y participación del equipo.
 - `.github/PULL_REQUEST_TEMPLATE/`: plantillas de Pull Requests para ramas feature y release.
+- `docs/05-diagramas/01-diagrama-de-actividades/`: diagramas UML de flujos funcionales.
+- `js/script.js`: lógica principal del sistema implementada en JavaScript.
+- `js/test/test-runner.html`: runner de Jasmine para ejecución de tests.
+- `js/test/script.spec.js`: suites de testing automatizado.
+- `js/test/testing-doc.md`: documentación técnica del testing.
 
 ---
 
@@ -175,6 +212,7 @@ El desarrollo del proyecto se organiza mediante:
 - revisión previa antes de cada merge;
 - documentación obligatoria en `changelog.md`;
 - uso de issues para seguimiento de tareas y bugs;
-- coordinación de integración y release por parte del rol Coordinador / DevOps.
+- coordinación de integración y release por parte del rol Coordinador / DevOps;
+- uso de GitHub Copilot Agent y herramientas MCP como apoyo de desarrollo y testing.
 
 ---

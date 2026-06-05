@@ -1,0 +1,64 @@
+@startuml actividad-flujo-4-filtrar-tareas
+title Listar y Filtrar Tareas
+|Usuario|
+start
+|Lógica de Negocio|
+if (¿Existen proyectos?) then (no)
+  |Interfaz de Usuario|
+  :alert("No hay proyectos");
+  end
+else (sí)
+  |Lógica de Negocio|
+  :Construir lista de proyectos;
+  |Interfaz de Usuario|
+  :alert(lista de proyectos);
+  |Usuario|
+  :Elegir proyecto por nombre;
+  |Lógica de Negocio|
+  if (¿Proyecto encontrado?) then (no)
+    |Interfaz de Usuario|
+    :alert("Proyecto no encontrado");
+    end
+  else (sí)
+    |Lógica de Negocio|
+    if (¿Tiene tareas?) then (no)
+      |Interfaz de Usuario|
+      :alert("El proyecto no tiene tareas");
+      end
+    else (sí)
+      |Usuario|
+      :Elegir filtro (1=pendiente, 2=en curso, 3=completada, 4=todas);
+      |Lógica de Negocio|
+      if (¿Filtro válido (1-4)?) then (no)
+        |Interfaz de Usuario|
+        :alert("Opción de filtro inválida");
+        end
+      else (sí)
+        |Lógica de Negocio|
+        :tareasFiltradas = [];
+        :i = 0;
+        while (i < cantidad de tareas) is (sí)
+            :tarea = tareas[i];
+            if (filtro == 4 o coincide con estado de la tarea) then (sí)
+              :Agregar tarea a tareasFiltradas[];
+            else (no)
+            endif
+            :i = i + 1;
+          endwhile (no)
+          if (¿tareasFiltradas[] está vacío?) then (sí)
+            |Interfaz de Usuario|
+            :alert("No hay tareas para ese filtro");
+            end
+          else (no)
+            |Lógica de Negocio|
+            :Construir texto con listado;
+            |Interfaz de Usuario|
+            :alert(listado);
+            :console.log(listado);
+            stop
+          endif
+        endif
+      endif
+    endif
+  endif
+  @enduml
