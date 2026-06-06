@@ -12,6 +12,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/dev-storage] Se agrega la capa de abstracción para `localStorage` y `sessionStorage` mediante `js/utils/storage.js`, y documentación de estrategia en `docs/06-storage/storage-doc.md`.  
+PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (Desarrollador JS Storage) — Issue: [#105](https://github.com/martindebenedetti/Planix/issues/105)
+
+---
+
 - [feature/coord-cierre-etapa] Se actualiza `spec-devops.md` con cierre de Actividad, se actualiza `plan.md` y `README.md`. PR: [#89](https://github.com/martindebenedetti/Planix/pull/89) — @giann98 (Coordinador / DevOps) — Issue: #83
 
 - [feature/tester-javascript-jasmine] Se agrega `spec-tester.md` y completa con la realización de los test. Se crean archivos `js/test/script.spec.js`, `js/test/test-runner.html`, `js/test/testing-doc.md` y las capturas en `js/test/screenshots/`. PR: [#88](https://github.com/martindebenedetti/Planix/pull/88) — @giann98 (Tester QA)
