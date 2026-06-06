@@ -159,39 +159,108 @@ Al finalizar la implementación se deberá documentar:
 
 ## AT CLOSE - Evidencia final
 
-Pendiente de completar luego de implementar y revisar la funcionalidad.
-
 ### Prompt utilizado en Copilot Agent Mode
 
+Archivos adjuntados como contexto:
+
+- `docs/03-specs/actividad-obligatoria-4/spec-dev-storage.md`
+- `js/utils/storage.js`
+- `docs/06-storage/storage-doc.md`
+
+Prompt utilizado:
+
 ```text
-Pendiente de completar.
+Revisá la implementación de la capa de Storage para la Actividad Obligatoria N°4 del proyecto Planix.
+
+Contexto:
+- El archivo js/utils/storage.js debe funcionar como capa de abstracción para localStorage y sessionStorage.
+- Debe implementar operaciones CRUD completas: guardar, obtener, actualizar, eliminar, listar y limpiar.
+- Debe usar serialización/deserialización JSON.
+- Debe manejar errores con try-catch.
+- No debe manipular DOM ni contener lógica visual.
+- El proyecto actualmente carga scripts tradicionales desde index.html, por eso StorageUtil se expone en window para facilitar integración con script.js y tests Jasmine.
+
+Tareas:
+1. Verificar si js/utils/storage.js cumple con la consigna.
+2. Indicar si falta alguna validación o mejora.
+3. Revisar si la documentación docs/06-storage/storage-doc.md es coherente con el código.
+4. Sugerir ajustes mínimos sin modificar la arquitectura actual.
+5. Devolver un resumen breve para documentar en spec-dev-storage.md.
 ```
 
-### Archivos adjuntados como contexto
+### Output generado por Copilot Agent
 
-- Pendiente de completar.
+Copilot Agent revisó `storage.js`, `storage-doc.md` y `spec-dev-storage.md`.
 
-### Fragmento de código generado por Copilot
+Indicó que la implementación cumple con los criterios principales del rol Storage:
+
+- implementa operaciones CRUD mediante `guardar`, `obtener`, `actualizar`, `eliminar`, `listar` y `limpiar`;
+- utiliza `JSON.stringify()` y `JSON.parse()` para serialización y deserialización;
+- incluye manejo de errores con `try-catch`;
+- no manipula DOM ni contiene lógica visual;
+- expone `StorageUtil` en `window` para compatibilidad con scripts tradicionales y tests Jasmine.
+
+También recomendó mejoras mínimas sin modificar la arquitectura:
+
+- validar que la clave sea una cadena no vacía;
+- normalizar el parámetro `tipo`, aceptando solo `local` o `session`;
+- agregar una función `existe(clave, tipo)` para facilitar validaciones y tests;
+- agregar una función `limpiarPorPrefijo(prefijo, tipo)` para eliminar solo claves del proyecto y evitar el uso destructivo de `clear()`;
+- documentar que `guardar()` puede fallar ante valores no serializables en JSON.
+
+### Fragmento de código revisado y ajustado
 
 ```js
-// Pendiente de completar.
+const StorageUtil = {
+  guardar,
+  obtener,
+  actualizar,
+  eliminar,
+  existe,
+  listar,
+  limpiar,
+  limpiarPorPrefijo
+};
+
+if (typeof window !== "undefined") {
+  window.StorageUtil = StorageUtil;
+}
 ```
 
 ### Ajustes manuales realizados
 
-Pendiente de completar.
+A partir de la revisión de Copilot Agent se aplicaron los siguientes ajustes manuales en `js/utils/storage.js`:
 
-### Decisiones finales de Storage
+- se agregó `validarClave(clave)` para evitar operaciones con claves vacías, indefinidas o inválidas;
+- se agregó `normalizarTipo(tipo)` para aceptar únicamente `local` o `session`;
+- se ajustó `obtenerStorage(tipo)` para devolver `null` si el tipo de storage no es válido;
+- se agregó `existe(clave, tipo)` para verificar la existencia de claves;
+- se agregó `limpiarPorPrefijo(prefijo, tipo)` para eliminar únicamente claves asociadas al prefijo del proyecto;
+- se mantuvo `limpiar(tipo)` como operación general, documentando que debe usarse con precaución;
+- se mantuvo la exposición global `window.StorageUtil` para no modificar todavía `index.html` a `type="module"`.
 
-Pendiente de completar.
+### Decisiones finales sobre la estrategia de Storage
+
+- `localStorage` se reserva para datos persistentes del proyecto, como proyectos, tareas y preferencias.
+- `sessionStorage` se reserva para datos temporales, como filtros, vista activa o estado de navegación.
+- Las claves del proyecto usan el prefijo `planix:`.
+- El módulo no depende del DOM ni de la interfaz.
+- La capa de Storage queda preparada para integrarse con futuras clases del dominio mediante objetos serializables.
+- La integración final con clases POO se realizará cuando existan los modelos en `js/models/`.
 
 ### Coordinación con Desarrollador JS POO
 
-Pendiente de completar.
+La capa Storage queda preparada para persistir objetos planos generados por futuras clases del dominio. Cuando se implementen clases como `Proyecto` o `Tarea`, se podrán guardar objetos mediante `toJSON()` y reconstruir instancias mediante métodos estáticos como `fromJSON()`.
 
-### Resultado final
+### Checklist de cierre
 
-- [ ] `storage.js` implementado.
-- [ ] `storage-doc.md` documentado.
-- [ ] Funciones CRUD probadas.
-- [ ] Integración prevista con modelos POO.
+- [x] El archivo `spec-dev-storage.md` fue creado y commiteado antes de `js/utils/storage.js`.
+- [x] Existe el archivo `js/utils/storage.js`.
+- [x] Se implementan funciones CRUD completas.
+- [x] Todas las operaciones tienen manejo de errores con `try-catch`.
+- [x] Se implementa serialización y deserialización automática con JSON.
+- [x] Se documenta la estrategia en `docs/06-storage/storage-doc.md`.
+- [x] El código no manipula DOM ni contiene lógica visual.
+- [x] El módulo queda preparado para ser probado desde Jasmine.
+- [x] Se aplicaron mejoras mínimas sugeridas por Copilot Agent.
+- [x] Se incorporaron `existe()` y `limpiarPorPrefijo()`.
