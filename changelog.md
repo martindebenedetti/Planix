@@ -8,6 +8,13 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ---
 
+## [Release Actividad Obligatoria N° 4] 2026-06-15
+
+- [feature/dev-storage] Se agrega la capa de abstracción para `localStorage` y `sessionStorage` mediante `js/utils/storage.js`, y documentación de estrategia en `docs/06-storage/storage-doc.md`.  
+PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (Desarrollador JS Storage) — Issue: [#105](https://github.com/martindebenedetti/Planix/issues/105)
+
+### Fixed
+
 ## [Release Actividad Obligatoria N° 3] 2026-05-18
 
 ### Added
@@ -23,6 +30,8 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/coord-devops-tercera-entrega] Se documenta la carga de la PR Feature/coord devops tercera entrega, se carga el spec-devops.md. PR: [#84](https://github.com/martindebenedetti/Planix/pull/84) — @martindebenedetti (Arquitecto de Diagrama de Actividades) Ayudando al rol(Coordinador / DevOps) — Issue: #83
 
 ### Fixed
+
+---
 
 - [fix/RCN1-ui-test-spies] RCN1 Se realiza cambios en los documentos de test y se vuelve a ejecutar la suite de Jasmine con 43 casos, agregando los spies PR: [#103] (https://github.com/martindebenedetti/Planix/pull/103) — @giann98 (Tester JavaScript)
 
