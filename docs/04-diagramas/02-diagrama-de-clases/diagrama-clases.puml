@@ -1,0 +1,57 @@
+@startuml diagrama-clases
+
+title Diagrama de Clases — Planix AO4
+
+skinparam classAttributeIconSize 0
+skinparam classFontStyle Bold
+
+class GestorProyectos {
+  - proyectos: Proyecto[]
+  + constructor()
+  + agregar(proyecto: Proyecto): void
+  + buscar(nombre: String): Proyecto
+  + listar(): Proyecto[]
+  + filtrarTareas(proyecto: Proyecto, criterio: String): Tarea[]
+}
+
+class Proyecto {
+  - nombre: String
+  - fechaInicio: String
+  - fechaFin: String
+  - tareas: Tarea[]
+  + constructor(nombre, fechaInicio, fechaFin)
+  + agregarTarea(tarea: Tarea): void
+  + calcularAvance(): Number
+  + determinarEstado(): String
+  + toJSON(): Object
+  + {static} fromJSON(json: Object): Proyecto
+}
+
+class Tarea {
+  - nombre: String
+  - responsable: String
+  - estado: String
+  + {static} ESTADOS_VALIDOS: String[]
+  + constructor(nombre, responsable, estado)
+  + cambiarEstado(nuevoEstado: String): void
+  + esValida(): Boolean
+  + toJSON(): Object
+  + {static} fromJSON(json: Object): Tarea
+}
+
+GestorProyectos "1" o-- "0..*" Proyecto : gestiona >
+Proyecto "1" *-- "0..*" Tarea : contiene >
+
+note right of GestorProyectos
+  Agregación:
+  el gestor puede existir
+  sin proyectos
+end note
+
+note right of Proyecto
+  Composición:
+  las tareas no existen
+  fuera de un Proyecto
+end note
+
+@enduml
