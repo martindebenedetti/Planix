@@ -153,6 +153,8 @@ StorageUtil.limpiar("session");
 
 Elimina solamente las claves que comienzan con un prefijo determinado. Es una alternativa más segura que `limpiar()`, porque evita borrar información ajena al proyecto.
 
+Por seguridad, esta función rechaza prefijos vacíos. Para limpiar completamente el storage indicado, se debe usar `limpiar(tipo)`.
+
 ```js
 StorageUtil.limpiarPorPrefijo("planix:", "local");
 ```
@@ -165,6 +167,40 @@ El módulo utiliza:
 - `JSON.parse()` para recuperar datos complejos.
 
 Esto permite almacenar estructuras como proyectos, tareas, filtros y configuraciones.
+
+## Limitaciones de serialización
+
+El módulo utiliza JSON para persistir datos. Por ese motivo, no puede persistir correctamente ciertos valores.
+
+No se pueden guardar como valor principal:
+
+- valores `undefined`;
+- funciones;
+- símbolos (`Symbol`);
+- objetos con referencias circulares;
+- métodos de instancia.
+
+Para persistir instancias de clases, se recomienda convertirlas previamente a objetos planos mediante métodos como `toJSON()`.
+
+Ejemplo incorrecto:
+
+```js
+StorageUtil.guardar("planix:datos", {
+  id: 1,
+  handler: () => {}
+}, "local");
+```
+
+Ejemplo correcto:
+
+```js
+StorageUtil.guardar("planix:datos", {
+  id: 1,
+  nombre: "Proyecto"
+}, "local");
+```
+
+Si el valor no puede serializarse correctamente, la función `guardar()` retorna `false`.
 
 ## Manejo de errores
 

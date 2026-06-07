@@ -8,6 +8,8 @@
 
 /**
  * Valida que la clave sea una cadena no vacía.
+ * Los espacios iniciales y finales se ignoran mediante trim().
+ *
  * @param {string} clave - Clave a validar.
  * @returns {boolean} true si la clave es válida, false en caso contrario.
  */
@@ -46,8 +48,16 @@ function obtenerStorage(tipo = "local") {
 
 /**
  * Guarda un valor en localStorage o sessionStorage.
+ *
+ * Limitaciones de serialización:
+ * - No se pueden persistir valores undefined.
+ * - No se pueden persistir funciones.
+ * - No se pueden persistir símbolos (Symbol) como valor principal.
+ * - No se pueden persistir objetos con referencias circulares.
+ * - Para instancias de clases, se recomienda convertirlas previamente a objetos planos con toJSON().
+ *
  * @param {string} clave - Clave donde se guardará el dato.
- * @param {*} valor - Valor a guardar.
+ * @param {*} valor - Valor a guardar. Debe ser serializable a JSON.
  * @param {string} tipo - Tipo de storage: "local" o "session".
  * @returns {boolean} true si se guardó correctamente, false si ocurrió un error.
  */
@@ -67,7 +77,9 @@ function guardar(clave, valor, tipo = "local") {
     const valorSerializado = JSON.stringify(valor);
 
     if (valorSerializado === undefined) {
-      console.error("No se puede guardar un valor no serializable en JSON.");
+      console.error(
+        "No se puede guardar el valor en storage: undefined, funciones y símbolos no son serializables como valor principal en JSON."
+      );
       return false;
     }
 
@@ -232,7 +244,11 @@ function limpiar(tipo = "local") {
 /**
  * Elimina únicamente las claves que comienzan con un prefijo determinado.
  * Es una alternativa más segura que limpiar(), porque no borra datos ajenos al proyecto.
- * @param {string} prefijo - Prefijo de claves a eliminar.
+ *
+ * Importante: esta función rechaza prefijos vacíos como medida de seguridad.
+ * Para limpiar completamente el storage indicado, usar limpiar(tipo).
+ *
+ * @param {string} prefijo - Prefijo de claves a eliminar. No puede ser vacío.
  * @param {string} tipo - Tipo de storage: "local" o "session".
  * @returns {boolean} true si se eliminaron correctamente, false si ocurrió un error.
  */
