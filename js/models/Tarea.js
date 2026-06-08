@@ -1,7 +1,9 @@
 /**
  * Representa una tarea dentro de un proyecto.
  */
-function Tarea(nombre, responsable, estado = "pendiente") {
+function Tarea(nombre, responsable, estado) {
+  var estadoInicial = estado || "pendiente";
+
   if (typeof nombre !== "string" || nombre.trim().length === 0) {
     throw new Error("El nombre de la tarea no puede estar vacío.");
   }
@@ -10,13 +12,13 @@ function Tarea(nombre, responsable, estado = "pendiente") {
     throw new Error("El responsable de la tarea no puede estar vacío.");
   }
 
-  if (typeof estado !== "string" || Tarea.ESTADOS_VALIDOS.indexOf(estado) === -1) {
+  if (typeof estadoInicial !== "string" || Tarea.ESTADOS_VALIDOS.indexOf(estadoInicial) === -1) {
     throw new Error("Estado de tarea inválido.");
   }
 
   this.nombre = nombre.trim();
   this.responsable = responsable.trim();
-  this.estado = estado;
+  this.estado = estadoInicial;
 }
 
 /**
@@ -33,7 +35,6 @@ Tarea.ESTADOS_VALIDOS = ["pendiente", "en curso", "completada"];
 Tarea.prototype.cambiarEstado = function (nuevoEstado) {
   if (typeof nuevoEstado !== "string" || Tarea.ESTADOS_VALIDOS.indexOf(nuevoEstado) === -1) {
     throw new Error("Nuevo estado inválido.");
-
   }
 
   this.estado = nuevoEstado;

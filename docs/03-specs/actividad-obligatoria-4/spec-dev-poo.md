@@ -215,3 +215,5 @@ Tarea.prototype.cambiarEstado = function (nuevoEstado) {
 - [x] index.html actualizado con referencias a las clases
 - [x] PR creada hacia develop con Coordinador como reviewer
 - [x] changelog.md actualizado con link a la PR
+
+> **Nota de trazabilidad:** Se verificó y confirma que la PR #108 fue creada apuntando a la rama base `develop` y tiene al Coordinador asignado efectivamente como reviewer, cumpliendo con el flujo de trabajo establecido.
