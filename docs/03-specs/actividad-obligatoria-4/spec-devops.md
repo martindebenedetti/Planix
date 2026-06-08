@@ -169,6 +169,113 @@ Se utilizará para verificar el seguimiento de tareas, issues y estado de avance
 
 ---
 
+---
+
+---
+
+## DURANTE - Reviews de Pull Requests
+
+### Review PR #108 - Desarrollador JS POO
+
+- **PR:** [#108](https://github.com/martindebenedetti/Planix/pull/108)
+- **Issue asociado:** [#107](https://github.com/martindebenedetti/Planix/issues/107)
+- **Rama origen:** `feature/dev-poo-logica-negocio`
+- **Rama destino:** `develop`
+- **Rol revisado:** Desarrollador JS POO
+- **Estado de la review:** Changes requested
+- **Reviewer:** @leanlex
+
+#### Archivos revisados
+
+- `docs/03-specs/actividad-obligatoria-4/spec-dev-poo.md`
+- `js/models/Tarea.js`
+- `js/models/Proyecto.js`
+- `js/models/GestorProyectos.js`
+- `docs/05-diagramas/02-diagrama-de-clases/diagrama-clases.puml`
+- `docs/05-diagramas/02-diagrama-de-clases/diagrama-clases-doc.md`
+- `index.html`
+- `changelog.md`
+
+#### Prompt utilizado en Copilot Agent Mode
+
+```text
+Actuá como Coordinador / DevOps de la Actividad Obligatoria N°4 de Programación Web I.
+
+Necesito revisar la PR #108 correspondiente al rol Desarrollador JS POO, rama feature/dev-poo-logica-negocio hacia develop, asociada al Issue #107.
+
+Verificá si la PR cumple con la consigna del rol POO:
+
+- spec-dev-poo.md debe estar en docs/03-specs/actividad-obligatoria-4/
+- el spec debe tener sección BEFORE y AT CLOSE
+- debe haber clases del dominio en js/models/
+- debe haber al menos 3 clases
+- cada clase debe tener constructor, propiedades, métodos de negocio, validaciones internas, JSDoc, toJSON() y fromJSON()
+- las clases no deben manipular DOM
+- las clases no deben usar prompt(), alert(), innerHTML ni document.querySelector()
+- debe existir diagrama de clases en PlantUML y documentación
+- el changelog debe registrar la PR #108 y el Issue #107 sin duplicados
+- index.html solo debe referenciar archivos necesarios sin romper la carga actual
+
+Devolveme hallazgos con este formato:
+
+HALLAZGO #
+Archivo:
+Línea aproximada:
+Tipo de problema:
+Severidad:
+Explicación técnica:
+Sugerencia de mejora:
+Decisión sugerida: Comment / Changes requested / Approve
+```
+
+#### Resumen del output generado por Copilot Agent
+
+Copilot Agent indicó que la implementación POO cumple con la mayoría de los requisitos de la consigna:
+
+- se implementan 3 clases del dominio: `Tarea`, `Proyecto` y `GestorProyectos`;
+- las clases tienen constructores, validaciones internas, métodos de negocio y JSDoc;
+- las clases implementan `toJSON()` y `fromJSON()`;
+- no se detectó manipulación del DOM dentro de las clases;
+- no se detectaron usos de `prompt()` ni `alert()`;
+- se incluye diagrama de clases en PlantUML y documentación asociada;
+- `changelog.md` registra la PR #108 y el Issue #107.
+
+#### Hallazgos cargados en la review
+
+##### Hallazgo 1
+
+- **Archivo:** `js/models/Tarea.js`
+- **Tipo de problema:** compatibilidad / arquitectura
+- **Severidad:** media
+- **Descripción:** el constructor utiliza parámetro por defecto `estado = "pendiente"`, que corresponde a sintaxis ES6. Esto contradice el criterio documentado en el spec de mantener compatibilidad con ES5 puro.
+- **Acción tomada:** se solicitó reemplazar el parámetro por defecto por una asignación interna.
+- **Decisión:** Changes requested.
+
+##### Hallazgo 2
+
+- **Archivo:** `js/models/Tarea.js`
+- **Tipo de problema:** legibilidad
+- **Severidad:** baja
+- **Descripción:** se observó un salto de línea innecesario en el método `cambiarEstado()`.
+- **Acción tomada:** se dejó comentario menor de mejora.
+- **Decisión:** Comment.
+
+##### Hallazgo 3
+
+- **Archivo:** `docs/03-specs/actividad-obligatoria-4/spec-dev-poo.md`
+- **Tipo de problema:** trazabilidad
+- **Severidad:** baja
+- **Descripción:** se sugirió verificar que el checklist final del spec se corresponda con la configuración real de la PR, especialmente reviewer asignado y base `develop`.
+- **Acción tomada:** se dejó comentario de trazabilidad.
+- **Decisión:** Comment.
+
+#### Comentario general de la review
+
+Se solicitó corregir antes del merge el uso de parámetro por defecto ES6 en `Tarea.js`.
+
+La decisión final de la review fue **Request changes**, manteniendo como observaciones menores el formateo del método `cambiarEstado()` y la verificación de trazabilidad en el checklist final del spec.
+
+---
 ## AT CLOSE - Evidencia final
 
 Pendiente de completar al cerrar la tarea de coordinación.
