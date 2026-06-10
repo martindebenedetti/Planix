@@ -6,9 +6,10 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ## [Unreleased]
 
----
+### Added
 
-## [Release Actividad Obligatoria N° 4] 2026-06-15
+- [feature/dev-eventos-dom] Refactorización de `js/script.js` a controlador puro, eliminación de `prompt()`/`alert()`, implementación de eventos del DOM para captura de datos, renderizado dinámico de la interfaz (tabla Gantt, barra de progreso, alertas visuales) e integración con persistencia y modelos. Actualización de `index.html` y documentación técnica en `spec-dev-eventos-dom.md`.  
+  PR: [#113](https://github.com/martindebenedetti/Planix/pull/113) — @giann98 (Desarrollador JS Eventos + DOM) — Issue: [#111](https://github.com/martindebenedetti/Planix/issues/111)
 
 - [feature/dev-poo-logica-negocio] Implementación de clases del dominio (Tarea, Proyecto, GestorProyectos) en `js/models/` aplicando POO en ES5. Creación de diagrama de clases PlantUML, actualización de `index.html` y documentación técnica en `spec-dev-poo.md`.  
   PR: [#108](https://github.com/martindebenedetti/Planix/pull/108) — @martindebenedetti (Desarrollador JS POO) — Issue: [#107](https://github.com/martindebenedetti/Planix/issues/107)
@@ -16,7 +17,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/dev-storage] Se agrega la capa de abstracción para `localStorage` y `sessionStorage` mediante `js/utils/storage.js`, y documentación de estrategia en `docs/06-storage/storage-doc.md`.  
   PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (Desarrollador JS Storage) — Issue: [#105](https://github.com/martindebenedetti/Planix/issues/105)
 
-### Fixed
+---
 
 ## [Release Actividad Obligatoria N° 3] 2026-05-18
 
