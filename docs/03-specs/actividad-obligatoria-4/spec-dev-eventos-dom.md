@@ -246,28 +246,26 @@ Facilitar testing mediante:
 
 ### Criterios de aceptación — Checklist
 
-- [ ] Todos los `prompt()` eliminados.
-- [ ] Todos los `alert()` eliminados.
-- [ ] Event listeners implementados para todos los controles relevantes.
-- [ ] Uso consistente de `addEventListener()`.
-- [ ] Validación en tiempo real implementada.
-- [ ] Feedback visual mediante clases CSS o Bootstrap.
-- [ ] Creación dinámica de elementos DOM.
-- [ ] Actualización dinámica de elementos DOM.
-- [ ] Eliminación dinámica de elementos DOM.
-- [ ] Mostrar y ocultar secciones según contexto.
-- [ ] Resultados de los cuatro flujos visibles en la interfaz.
-- [ ] `js/script.js` contiene manejo de eventos, DOM y coordinación con modelos/storage.
-- [ ] Integración con `Tarea`, `Proyecto` y `GestorProyectos` completada.
-- [ ] Integración con `StorageUtil` completada.
-- [ ] `index.html` carga `js/utils/storage.js` antes de `js/script.js`.
-- [ ] Código documentado con comentarios y JSDoc.
+- [x] Todos los `prompt()` eliminados.
+- [x] Todos los `alert()` eliminados.
+- [x] Event listeners implementados para todos los controles relevantes.
+- [x] Uso consistente de `addEventListener()`.
+- [x] Validación en tiempo real implementada.
+- [x] Feedback visual mediante clases CSS o Bootstrap.
+- [x] Creación dinámica de elementos DOM.
+- [x] Actualización dinámica de elementos DOM.
+- [x] Eliminación dinámica de elementos DOM.
+- [x] Mostrar y ocultar secciones según contexto.
+- [x] Resultados de los cuatro flujos visibles en la interfaz.
+- [x] `js/script.js` contiene manejo de eventos, DOM y coordinación con modelos/storage.
+- [x] Integración con `Tarea`, `Proyecto` y `GestorProyectos` completada.
+- [x] Integración con `StorageUtil` completada.
+- [x] `index.html` carga `js/utils/storage.js` antes de `js/script.js`.
+- [x] Código documentado con comentarios y JSDoc.
 
 ---
 
 ## 🤖 DURANTE — Uso de Copilot Agent Mode
-
-> Completar después de utilizar Copilot.
 
 ### Archivos adjuntados como contexto
 
@@ -282,19 +280,41 @@ Facilitar testing mediante:
 ### Prompt exacto utilizado
 
 ```text
-[PENDIENTE DE COMPLETAR]
-```
+Actúa como experto en JavaScript moderno. 
+Necesito refactorizar `js/script.js` para transformarlo en un controlador de UI puro, eliminando completamente `prompt()` y `alert()`, así como toda la lógica de validación que ya está en los archivos de `/models`.
+El controlador debe escuchar los eventos del DOM (submit en formularios, change en selects), recolectar datos de la interfaz, instanciar los modelos `Tarea` y `Proyecto`, guardarlos a través de `StorageUtil`, y actualizar el HTML dinámicamente mediante funciones modulares (feedback de éxito/error, renderizado de tablas y barras de progreso).
+### Prompt exacto utilizado
 
 ### Output generado por Copilot
 
 ```javascript
-// Fragmento generado por Copilot
-// Pendiente de completar
+// Fragmento generado por Copilot (Manejador de creación de proyecto)
+function manejarCrearProyecto(event) {
+  event.preventDefault(); 
+  
+  const nombre = document.getElementById("p-nombre").value;
+  const fechaInicio = document.getElementById("p-inicio").value;
+  const fechaFin = document.getElementById("p-fin").value;
+
+  try {
+    const nuevoProyecto = new Proyecto(nombre, fechaInicio, fechaFin);
+    gestor.agregar(nuevoProyecto);
+    guardarEstado();
+    
+    mostrarExito(`Proyecto "${nombre}" creado correctamente.`);
+    event.target.reset();
+    actualizarSelectorProyectos();
+  } catch (error) {
+    mostrarError(error.message);
+  }
+}
 ```
 
 ### Ajustes manuales realizados
 
-- Pendiente de completar.
+- Se vinculó el ID de los formularios en `index.html` para que coincidan con los `getElementById()` en los selectores del script.
+- Se implementaron elementos de UI de Bootstrap 5 en las funciones `mostrarError` y `mostrarExito` para reemplazar los `alert()` bloqueantes.
+- Se incorporó la lógica de parseo en `cargarEstadoInicial()` mapeando cada JSON con el factory method `Proyecto.fromJSON()` provisto por el rol de POO, encapsulándolo dentro de un `try/catch` para prevenir que un JSON malformado frene la renderización de la app.
 
 ---
 
@@ -326,20 +346,20 @@ La lógica de negocio puede testearse independientemente del DOM y los eventos p
 
 ### Checklist de cierre
 
-- [ ] spec-dev-eventos-dom.md commiteado antes de modificar js/script.js
-- [ ] js/script.js refactorizado como controlador
-- [ ] Prompt utilizado documentado
-- [ ] Fragmento de código generado documentado
-- [ ] Ajustes manuales documentados
-- [ ] prompt() eliminados
-- [ ] alert() eliminados
-- [ ] Eventos implementados
-- [ ] DOM actualizado dinámicamente
-- [ ] index.html actualizado si fue necesario
-- [ ] `js/utils/storage.js` cargado en `index.html` antes de `js/script.js`
-- [ ] Persistencia integrada con `StorageUtil`
-- [ ] PR creada hacia develop
-- [ ] Reviewer asignado
-- [ ] changelog.md actualizado
+- [x] spec-dev-eventos-dom.md commiteado antes de modificar js/script.js
+- [x] js/script.js refactorizado como controlador
+- [x] Prompt utilizado documentado
+- [x] Fragmento de código generado documentado
+- [x] Ajustes manuales documentados
+- [x] prompt() eliminados
+- [x] alert() eliminados
+- [x] Eventos implementados
+- [x] DOM actualizado dinámicamente
+- [x] index.html actualizado si fue necesario
+- [x] `js/utils/storage.js` cargado en `index.html` antes de `js/script.js`
+- [x] Persistencia integrada con `StorageUtil`
+- [x] PR creada hacia develop
+- [x] Reviewer asignado
+- [x] changelog.md actualizado
 
 > **Nota de trazabilidad:** El objetivo principal de esta actividad es transformar la aplicación basada en `prompt()` y `alert()` en una aplicación web interactiva basada en eventos y manipulación dinámica del DOM, manteniendo toda la lógica de negocio encapsulada en las clases del dominio y la persistencia centralizada en `StorageUtil`.
