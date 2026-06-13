@@ -10,8 +10,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ## [Release Actividad Obligatoria N° 4] 2026-06-15
 
+- [feature/dev-poo-logica-negocio] Implementación de clases del dominio (Tarea, Proyecto, GestorProyectos) en `js/models/` aplicando POO en ES5. Creación de diagrama de clases PlantUML, actualización de `index.html` y documentación técnica en `spec-dev-poo.md`.  
+  PR: [#108](https://github.com/martindebenedetti/Planix/pull/108) — @martindebenedetti (Desarrollador JS POO) — Issue: [#107](https://github.com/martindebenedetti/Planix/issues/107)
+
 - [feature/dev-storage] Se agrega la capa de abstracción para `localStorage` y `sessionStorage` mediante `js/utils/storage.js`, y documentación de estrategia en `docs/06-storage/storage-doc.md`.  
-PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (Desarrollador JS Storage) — Issue: [#105](https://github.com/martindebenedetti/Planix/issues/105)
+  PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (Desarrollador JS Storage) — Issue: [#105](https://github.com/martindebenedetti/Planix/issues/105)
 
 ### Fixed
 
@@ -36,7 +39,6 @@ PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (D
 - [fix/RCN1-ui-test-spies] RCN1 Se realiza cambios en los documentos de test y se vuelve a ejecutar la suite de Jasmine con 43 casos, agregando los spies PR: [#103] (https://github.com/martindebenedetti/Planix/pull/103) — @giann98 (Tester JavaScript)
 
 - [fix/RC25-justificacion-test] RC25 Se agrega justificación al test realizado en `testing-doc.md`. PR: [#102] (https://github.com/martindebenedetti/Planix/pull/102) — @giann98 (Tester JavaScript)
-
 
 - [fix/RC24-seccion-at-close] RC24 Corrección de estructura en `spec-tester.md` separando la sección
   "AL CERRAR" de la sección "DURANTE". PR: [#101] (https://github.com/martindebenedetti/Planix/pull/101) — @giann98 (Tester JavaScript)
