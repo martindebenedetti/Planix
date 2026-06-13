@@ -1,3 +1,6 @@
+/**
+ * Representa un proyecto con fechas y tareas asociadas.
+ */
 function Proyecto(nombre, fechaInicio, fechaFin) {
   if (typeof nombre !== "string" || nombre.trim().length === 0) {
     throw new Error("El nombre del proyecto no puede estar vacío.");
