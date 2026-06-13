@@ -275,6 +275,105 @@ Se solicitó corregir antes del merge el uso de parámetro por defecto ES6 en `T
 
 La decisión final de la review fue **Request changes**, manteniendo como observaciones menores el formateo del método `cambiarEstado()` y la verificación de trazabilidad en el checklist final del spec.
 
+
+### Review PR #113 - Desarrollador JS Eventos + DOM
+
+- **PR:** [#113](https://github.com/martindebenedetti/Planix/pull/113)
+- **Rama origen:** `feature/dev-eventos-dom`
+- **Rama destino:** `develop`
+- **Rol revisado:** Desarrollador JS Eventos + DOM
+- **Estado de la review:** Changes requested
+- **Reviewer:** @leanlex
+- **Bug externo asociado:** [Issue #114](https://github.com/martindebenedetti/Planix/issues/114)
+
+#### Archivos revisados
+
+- `index.html`
+- `js/script.js`
+- `docs/03-specs/actividad-obligatoria-4/spec-dev-eventos-dom.md`
+- `js/models/Tarea.js`
+- `js/models/Proyecto.js`
+- `js/models/GestorProyectos.js`
+- `js/utils/storage.js`
+- `changelog.md`
+
+#### Prompt utilizado en Copilot Agent Mode
+
+```text
+Actuá como Coordinador / DevOps y revisor técnico de la Actividad Obligatoria N°4 de Programación Web I.
+
+Necesito revisar la PR #113 correspondiente al rol Desarrollador JS Eventos + DOM, desde la rama feature/dev-eventos-dom hacia develop.
+
+La aplicación Planix cuenta con clases del dominio en js/models/, una capa StorageUtil en js/utils/storage.js y una interfaz HTML en index.html.
+
+Ya se detectó un bloqueo externo proveniente de la capa POO:
+Proyecto.js utiliza validarFormatoFecha() y parsearFecha(), pero estas funciones no están definidas. El error fue registrado en el Issue #114. No atribuyas este error al desarrollador de Eventos + DOM, pero tenelo en cuenta como riesgo de integración.
+
+Verificá el rol de script.js como controlador, la eliminación de prompt() y alert(), los listeners, los cuatro flujos, la validación en tiempo real, el feedback visual, la integración con los modelos y Storage, el orden de scripts, el spec del rol, el changelog y la preparación para Jasmine.
+
+Devolvé hallazgos con archivo, línea aproximada, tipo, severidad, explicación, comportamiento esperado y actual, sugerencia concreta y decisión.
+```
+
+#### Resumen de la revisión
+
+La implementación cumple correctamente con varios requisitos:
+
+- `js/script.js` funciona principalmente como controlador;
+- gestiona eventos, formularios y manipulación del DOM;
+- delega la lógica de negocio en las clases del dominio;
+- utiliza `StorageUtil`;
+- no contiene llamadas activas a `prompt()` ni `alert()`;
+- `index.html` carga los scripts en el orden correcto;
+- el spec del rol se encuentra completo y documentado.
+
+#### Hallazgos cargados
+
+##### Hallazgo 1 - Validación en tiempo real
+
+- **Archivo:** `js/script.js`
+- **Tipo:** validación / experiencia de usuario
+- **Severidad:** media
+- **Descripción:** los formularios solo registran el evento `submit`. No se implementan listeners `input` o `change` para validar mientras el usuario completa los campos.
+- **Acción solicitada:** agregar validación en tiempo real y feedback visual mediante `is-valid`, `is-invalid`, `aria-invalid` o mensajes contextuales.
+- **Decisión:** Changes requested.
+
+##### Hallazgo 2 - Persistencia temporal del filtro
+
+- **Archivo:** `js/script.js`
+- **Tipo:** integración con Storage
+- **Severidad:** baja
+- **Descripción:** el filtro actualiza la interfaz, pero no se guarda ni recupera desde `sessionStorage`.
+- **Acción sugerida:** persistir el filtro activo mediante `StorageUtil`.
+- **Decisión:** Comment no bloqueante.
+
+##### Bloqueo externo - Capa POO
+
+Durante una prueba manual se ejecutó:
+
+```js
+new Proyecto("Proyecto de prueba", "01/06/2026", "30/06/2026");
+```
+
+Resultado:
+
+```text
+Uncaught ReferenceError: validarFormatoFecha is not defined
+at new Proyecto (Proyecto.js:9)
+```
+
+El problema proviene de `Proyecto.js`, que utiliza `validarFormatoFecha()` y `parsearFecha()` sin que estas funciones estén definidas.
+
+El bug fue registrado en el Issue #114 y asignado al rol Desarrollador JS POO. No se atribuye como error propio de la PR #113, pero bloquea la validación completa de sus flujos.
+
+#### Decisión de la review
+
+Se seleccionó **Request changes** hasta incorporar:
+
+- validación en tiempo real;
+- feedback visual individual en los formularios.
+
+La PR deberá revisarse nuevamente después de las correcciones y después de resolver el Issue #114.
+
 ---
 ## AT CLOSE - Evidencia final
 
