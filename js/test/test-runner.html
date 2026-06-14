@@ -26,21 +26,66 @@
 <body>
 
     <script>
-        // Flag para testing - prevenir ejecución automática del menú
+        // Evita comportamientos automáticos no deseados durante los tests.
         window.TESTING_MODE = true;
     </script>
 
-    <!-- Código fuente: modelos POO -->
+    <!-- DOM mínimo requerido por js/script.js -->
+    <div id="test-fixture" style="display: none;">
+
+        <form id="form-crear-proyecto">
+            <input id="p-nombre" type="text">
+            <input id="p-inicio" type="text">
+            <input id="p-fin" type="text">
+            <button type="submit">Crear proyecto</button>
+        </form>
+
+        <form id="form-nueva-tarea">
+            <input id="t-nombre" type="text">
+            <input id="t-responsable" type="text">
+
+            <select id="t-estado">
+                <option value="">Seleccionar estado</option>
+                <option value="pendiente">Pendiente</option>
+                <option value="en curso">En curso</option>
+                <option value="completada">Completada</option>
+            </select>
+
+            <button type="submit">Agregar tarea</button>
+        </form>
+
+        <select id="select-proyecto">
+            <option value="">Seleccionar proyecto</option>
+        </select>
+
+        <select id="filtro-tareas">
+            <option value="todas">Todas</option>
+            <option value="pendiente">Pendientes</option>
+            <option value="en curso">En curso</option>
+            <option value="completada">Completadas</option>
+        </select>
+
+        <table>
+            <tbody id="cuerpo-tabla"></tbody>
+        </table>
+
+        <div id="barra-avance"></div>
+        <div id="texto-estado-proyecto"></div>
+        <div id="contenedor-alertas"></div>
+
+    </div>
+
+    <!-- Código fuente -->
+    <script src="../utils/storage.js"></script>
     <script src="../models/Tarea.js"></script>
     <script src="../models/Proyecto.js"></script>
     <script src="../models/GestorProyectos.js"></script>
-
-    <!-- Código fuente existente -->
     <script src="../script.js"></script>
 
-    <!-- Tests -->
-    <script src="./script.spec.js"></script>
+    <!-- Tests actualmente compatibles -->
     <script src="./models.spec.js"></script>
+    <script src="./storage.spec.js"></script>
+    <script src="./script.spec.js"></script>
 
 </body>
 </html>
