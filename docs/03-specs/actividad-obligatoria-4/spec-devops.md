@@ -276,7 +276,7 @@ Se solicitó corregir antes del merge el uso de parámetro por defecto ES6 en `T
 La decisión final de la review fue **Request changes**, manteniendo como observaciones menores el formateo del método `cambiarEstado()` y la verificación de trazabilidad en el checklist final del spec.
 
 
-### Review PR #113 - Desarrollador JS Eventos + DOM
+### Review PR [#113] - Desarrollador JS Eventos + DOM
 
 - **PR:** [#113](https://github.com/martindebenedetti/Planix/pull/113)
 - **Rama origen:** `feature/dev-eventos-dom`
@@ -284,7 +284,7 @@ La decisión final de la review fue **Request changes**, manteniendo como observ
 - **Rol revisado:** Desarrollador JS Eventos + DOM
 - **Estado de la review:** Changes requested
 - **Reviewer:** @leanlex
-- **Bug externo asociado:** [Issue #114](https://github.com/martindebenedetti/Planix/issues/114)
+- **Bug externo asociado:** Issue [#114](https://github.com/martindebenedetti/Planix/issues/114)
 
 #### Archivos revisados
 
@@ -363,7 +363,7 @@ at new Proyecto (Proyecto.js:9)
 
 El problema proviene de `Proyecto.js`, que utiliza `validarFormatoFecha()` y `parsearFecha()` sin que estas funciones estén definidas.
 
-El bug fue registrado en el Issue #114 y asignado al rol Desarrollador JS POO. No se atribuye como error propio de la PR #113, pero bloquea la validación completa de sus flujos.
+El bug fue registrado en el Issue [#114] y asignado al rol Desarrollador JS POO. No se atribuye como error propio de la PR [#113], pero bloquea la validación completa de sus flujos.
 
 #### Decisión de la review
 
@@ -377,15 +377,49 @@ La PR deberá revisarse nuevamente después de las correcciones y después de re
 ---
 ## AT CLOSE - Evidencia final
 
-Pendiente de completar al cerrar la tarea de coordinación.
+### Cierre de coordinación e integración
 
-En esta sección se documentarán:
+Se completaron las tareas correspondientes al rol Coordinador / DevOps + Tester QA.
 
-- prompts exactos utilizados en Copilot Agent para cada code review;
-- archivos adjuntados como contexto;
-- resumen de cada revisión;
-- hallazgos identificados;
-- decisiones tomadas: aprobación, comentario o cambios solicitados;
-- obstáculos encontrados durante la coordinación;
-- resolución de conflictos o ajustes de integración;
-- estado final de README, changelog, release y GitHub Pages.
+#### Integraciones coordinadas
+
+* PR [#108] — Desarrollador JS POO.
+* PR [#113] — Desarrollador JS Eventos + DOM.
+* PR [#116] — Corrección de los Issues [#114] y [#115].
+* Integración del trabajo Tester QA en `feature/coord-devops-cuarta-entrega`.
+
+#### Revisiones realizadas
+
+* Se documentaron los hallazgos encontrados durante las code reviews.
+* Se solicitaron cambios cuando correspondía.
+* Se verificaron las correcciones antes de aprobar las PR.
+* Se confirmó la resolución de los Issues #114 y #115.
+* Se comprobó la persistencia de proyectos y tareas mediante `localStorage`.
+
+#### Resultado final de testing
+
+```text
+75 specs, 0 failures
+```
+
+* 75 tests ejecutados.
+* 75 tests aprobados.
+* Sin errores de carga.
+* Sin regresiones detectadas en POO, Storage ni Eventos + DOM.
+
+#### Evidencias
+
+* `js/test/screenshots/jasmine-pr-116-pass-2026-06-14 1.png`
+* `js/test/screenshots/jasmine-pr-116-pass-2026-06-14 2.png`
+* `js/test/screenshots/jasmine-pr-116-pass-2026-06-14 3.png`
+
+#### Estado final
+
+* [x] Revisiones técnicas completadas.
+* [x] Hallazgos registrados.
+* [x] Correcciones verificadas.
+* [x] Ramas técnicas integradas en `develop`.
+* [x] Testing QA incorporado.
+* [x] Suite Jasmine completa aprobada.
+* [x] Evidencias finales incorporadas.
+* [x] PR [#110] actualizada para revisión final.
