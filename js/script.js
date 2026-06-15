@@ -21,28 +21,42 @@ document.addEventListener("DOMContentLoaded", () => {
 function configurarEventListeners() {
   // Flujo 1: Crear Proyecto
   const formCrearProyecto = document.getElementById("form-crear-proyecto");
-  formCrearProyecto.addEventListener("submit", manejarCrearProyecto);
+  if (formCrearProyecto) {
+    formCrearProyecto.addEventListener("submit", manejarCrearProyecto);
+  }
 
   // Flujo 2: Agregar Tarea
   const formNuevaTarea = document.getElementById("form-nueva-tarea");
-  formNuevaTarea.addEventListener("submit", manejarAgregarTarea);
+  if (formNuevaTarea) {
+    formNuevaTarea.addEventListener("submit", manejarAgregarTarea);
+  }
 
   // Flujo 3: Calcular Avance (cambio de proyecto seleccionado)
-  document.getElementById("select-proyecto").addEventListener("change", manejarCalcularAvance);
+  const selectProyecto = document.getElementById("select-proyecto");
+  if (selectProyecto) {
+    selectProyecto.addEventListener("change", manejarCalcularAvance);
+  }
 
   // Flujo 4: Filtrar Tareas
-  document.getElementById("filtro-tareas").addEventListener("change", manejarFiltrarTareas);
+  const filtroTareas = document.getElementById("filtro-tareas");
+  if (filtroTareas) {
+    filtroTareas.addEventListener("change", manejarFiltrarTareas);
+  }
 
   // Validación visual en tiempo real — Formulario Proyecto
-  formCrearProyecto.querySelectorAll("input").forEach(input => {
-    input.addEventListener("input", validarFormularioProyecto);
-  });
+  if (formCrearProyecto) {
+    formCrearProyecto.querySelectorAll("input").forEach(input => {
+      input.addEventListener("input", validarFormularioProyecto);
+    });
+  }
 
   // Validación visual en tiempo real — Formulario Tarea
-  formNuevaTarea.querySelectorAll("input, select").forEach(input => {
-    input.addEventListener("input", validarFormularioTarea);
-    input.addEventListener("change", validarFormularioTarea);
-  });
+  if (formNuevaTarea) {
+    formNuevaTarea.querySelectorAll("input, select").forEach(input => {
+      input.addEventListener("input", validarFormularioTarea);
+      input.addEventListener("change", validarFormularioTarea);
+    });
+  }
 
   // Inicializar estado de los botones
   validarFormularioProyecto();
@@ -157,6 +171,8 @@ function manejarFiltrarTareas(event) {
 // ========================================
 
 function marcarCampo(input, esValido) {
+  if (!input) return;
+
   if (input.value.trim() === "" && !esValido) {
     input.classList.remove("is-valid", "is-invalid");
     input.removeAttribute("aria-invalid");
@@ -180,6 +196,10 @@ function validarFormularioProyecto() {
   const pFin = document.getElementById("p-fin");
   const btnSubmit = document.querySelector("#form-crear-proyecto button[type='submit']");
 
+  if (!pNombre || !pInicio || !pFin) {
+    return;
+  }
+
   const nombreValido = pNombre.value.trim().length > 0;
   const inicioValido = /^\d{2}\/\d{2}\/\d{4}$/.test(pInicio.value);
   const finValido = /^\d{2}\/\d{2}\/\d{4}$/.test(pFin.value);
@@ -187,6 +207,10 @@ function validarFormularioProyecto() {
   marcarCampo(pNombre, nombreValido);
   marcarCampo(pInicio, inicioValido);
   marcarCampo(pFin, finValido);
+
+  if (!btnSubmit) {
+    return;
+  }
 
   if (nombreValido && inicioValido && finValido) {
     btnSubmit.removeAttribute("disabled");
@@ -201,6 +225,10 @@ function validarFormularioTarea() {
   const tResp = document.getElementById("t-responsable");
   const btnSubmit = document.querySelector("#form-nueva-tarea button[type='submit']");
 
+  if (!selectP || !tNombre || !tResp) {
+    return;
+  }
+
   const proyectoValido = selectP.value.trim().length > 0;
   const nombreValido = tNombre.value.trim().length > 0;
   const respValido = tResp.value.trim().length > 0;
@@ -208,6 +236,10 @@ function validarFormularioTarea() {
   marcarCampo(selectP, proyectoValido);
   marcarCampo(tNombre, nombreValido);
   marcarCampo(tResp, respValido);
+
+  if (!btnSubmit) {
+    return;
+  }
 
   if (proyectoValido && nombreValido && respValido) {
     btnSubmit.removeAttribute("disabled");
@@ -277,12 +309,28 @@ function renderizarTablaGantt(tareas) {
     if (tarea.estado === "en curso") badgeClass = "bg-primary";
     if (tarea.estado === "completada") badgeClass = "bg-success";
 
-    tr.innerHTML = `
-      <td class="fw-bold">${tarea.nombre}</td>
-      <td>${tarea.responsable}</td>
-      <td><span class="badge ${badgeClass}">${tarea.estado.toUpperCase()}</span></td>
-      <td colspan="10" class="text-muted text-center small align-middle">Renderizado de Gantt pendiente (Módulo Canvas/CSS)</td>
-    `;
+    const tdNombre = document.createElement("td");
+    tdNombre.className = "fw-bold";
+    tdNombre.textContent = tarea.nombre;
+
+    const tdResponsable = document.createElement("td");
+    tdResponsable.textContent = tarea.responsable;
+
+    const tdEstado = document.createElement("td");
+    const badge = document.createElement("span");
+    badge.className = `badge ${badgeClass}`;
+    badge.textContent = tarea.estado.toUpperCase();
+    tdEstado.appendChild(badge);
+
+    const tdGantt = document.createElement("td");
+    tdGantt.setAttribute("colspan", "10");
+    tdGantt.className = "text-muted text-center small align-middle";
+    tdGantt.textContent = "Renderizado de Gantt pendiente (Módulo Canvas/CSS)";
+
+    tr.appendChild(tdNombre);
+    tr.appendChild(tdResponsable);
+    tr.appendChild(tdEstado);
+    tr.appendChild(tdGantt);
     tbody.appendChild(tr);
   });
 }
@@ -294,22 +342,26 @@ function renderizarTablaGantt(tareas) {
  */
 function actualizarAvanceDOM(porcentaje, textoEstado) {
   const barra = document.getElementById("barra-avance");
+  const textoElemento = document.getElementById("texto-estado-proyecto");
   const pRedondeado = Math.round(porcentaje);
 
-  barra.style.width = `${pRedondeado}%`;
-  barra.textContent = `${pRedondeado}%`;
-  barra.setAttribute("aria-valuenow", pRedondeado);
-
-  barra.className = "progress-bar progress-bar-striped progress-bar-animated";
-  if (pRedondeado === 100) {
-    barra.classList.add("bg-success");
-  } else if (pRedondeado > 0) {
-    barra.classList.add("bg-primary");
-  } else {
-    barra.classList.add("bg-info");
+  if (barra) {
+    barra.style.width = `${pRedondeado}%`;
+    barra.textContent = `${pRedondeado}%`;
+    barra.setAttribute("aria-valuenow", pRedondeado);
+    barra.className = "progress-bar progress-bar-striped progress-bar-animated";
+    if (pRedondeado === 100) {
+      barra.classList.add("bg-success");
+    } else if (pRedondeado > 0) {
+      barra.classList.add("bg-primary");
+    } else {
+      barra.classList.add("bg-info");
+    }
   }
 
-  document.getElementById("texto-estado-proyecto").textContent = textoEstado;
+  if (textoElemento) {
+    textoElemento.textContent = textoEstado;
+  }
 }
 
 /**
@@ -351,10 +403,21 @@ function mostrarMensaje(contenedorId, mensaje, tipoColor) {
   if (!contenedor) return;
   const alerta = document.createElement("div");
   alerta.className = `alert alert-${tipoColor} alert-dismissible fade show`;
-  alerta.innerHTML = `
-    <strong>${tipoColor === "danger" ? "Error" : "Éxito"}:</strong> ${mensaje}
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-  `;
+
+  const prefijo = document.createElement("strong");
+  prefijo.textContent = tipoColor === "danger" ? "Error:" : "Éxito:";
+  alerta.appendChild(prefijo);
+
+  const texto = document.createTextNode(" " + mensaje);
+  alerta.appendChild(texto);
+
+  const botonCerrar = document.createElement("button");
+  botonCerrar.type = "button";
+  botonCerrar.className = "btn-close";
+  botonCerrar.setAttribute("data-bs-dismiss", "alert");
+  botonCerrar.setAttribute("aria-label", "Close");
+  alerta.appendChild(botonCerrar);
+
   contenedor.appendChild(alerta);
 
   setTimeout(() => {
@@ -375,7 +438,13 @@ function cargarDatosDesdeStorage() {
   if (datosGuardados && Array.isArray(datosGuardados)) {
     datosGuardados.forEach(jsonObj => {
       try {
-        gestor.agregar(Proyecto.fromJSON(jsonObj));
+        const proyectoReconstruido = Proyecto.fromJSON(jsonObj);
+        const existente = gestor.buscar(proyectoReconstruido.nombre);
+        if (!existente) {
+          gestor.agregar(proyectoReconstruido);
+        } else {
+          console.warn(`Proyecto omitido al restaurar desde storage: ${proyectoReconstruido.nombre}`);
+        }
       } catch (error) {
         console.error("Error al reconstruir proyecto desde storage:", error);
       }
@@ -383,8 +452,9 @@ function cargarDatosDesdeStorage() {
   }
 
   const filtroGuardado = StorageUtil.obtener("planix:sesion:filtros", "session");
-  if (filtroGuardado) {
-    document.getElementById("filtro-tareas").value = filtroGuardado;
+  const filtroElemento = document.getElementById("filtro-tareas");
+  if (filtroGuardado && filtroElemento) {
+    filtroElemento.value = filtroGuardado;
   }
 }
 

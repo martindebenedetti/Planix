@@ -8,6 +8,10 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+* [feature/coord-devops-cuarta-entrega] Se completaron las tareas de Coordinación, DevOps y Tester QA de la Actividad Obligatoria N.º 4, incluyendo revisión de entregas, gestión de hallazgos, correcciones de robustez y seguridad, pruebas Jasmine y evidencias finales con 83 specs aprobados y 0 failures.
+  PR: [#110](https://github.com/martindebenedetti/Planix/pull/110) - @leanlex (Coordinador / DevOps + Tester QA) - Issue: [#109](https://github.com/martindebenedetti/Planix/issues/109)
+
+
 - [feature/dev-eventos-dom] Refactorización de `js/script.js` a controlador puro, eliminación de `prompt()`/`alert()`, implementación de eventos del DOM para captura de datos, renderizado dinámico de la interfaz (tabla Gantt, barra de progreso, alertas visuales) e integración con persistencia y modelos. Actualización de `index.html` y documentación técnica en `spec-dev-eventos-dom.md`.  
   PR: [#113](https://github.com/martindebenedetti/Planix/pull/113) — @giann98 (Desarrollador JS Eventos + DOM) — Issue: [#111](https://github.com/martindebenedetti/Planix/issues/111)
 
