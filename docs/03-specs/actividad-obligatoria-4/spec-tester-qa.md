@@ -199,6 +199,148 @@ La clase `Proyecto` utiliza `validarFormatoFecha()` y `parsearFecha()`, pero est
 
 Este problema bloquea la creación de proyectos y deberá verificarse nuevamente cuando se resuelva el Issue #114.
 
+## DURANTE - Implementación y ejecución de pruebas
+
+### Archivos de testing implementados
+
+* `js/test/models.spec.js`
+* `js/test/storage.spec.js`
+* `js/test/script.spec.js`
+* `js/test/test-runner.html`
+
+El runner fue actualizado con un DOM mínimo para permitir la ejecución de `js/script.js` dentro de Jasmine sin depender de la interfaz completa de `index.html`.
+
+### Tests de modelos POO
+
+Se implementaron pruebas para:
+
+* `Tarea`;
+* `Proyecto`;
+* `GestorProyectos`;
+* validaciones de constructores;
+* métodos de negocio;
+* serialización mediante `toJSON()`;
+* reconstrucción mediante `fromJSON()`.
+
+Durante la ejecución se detectó que `GestorProyectos` no implementa:
+
+* `GestorProyectos.prototype.toJSON()`;
+* `GestorProyectos.fromJSON()`.
+
+El hallazgo fue registrado en el Issue #115.
+
+### Tests de Storage
+
+Se implementaron 20 tests para:
+
+* operaciones CRUD;
+* `localStorage`;
+* `sessionStorage`;
+* independencia entre ambos storages;
+* listado y limpieza por prefijo;
+* claves inválidas;
+* JSON corrupto;
+* valores no serializables;
+* referencias circulares.
+
+Resultado:
+
+```text
+20 specs, 0 failures
+```
+
+Evidencia:
+
+```text
+js/test/screenshots/jasmine-storage-pass-2026-06-13.png
+```
+
+### Tests de Eventos + DOM
+
+El antiguo `script.spec.js`, basado en el objeto global `Planix`, fue reemplazado por pruebas de la arquitectura actual.
+
+Se probaron:
+
+* validación en tiempo real;
+* clases `is-valid` e `is-invalid`;
+* atributo `aria-invalid`;
+* formularios de proyecto y tarea;
+* handlers de eventos;
+* selector de proyectos;
+* filtro de tareas;
+* persistencia del filtro en `sessionStorage`;
+* renderizado de la tabla;
+* barra de avance;
+* mensajes de éxito y error;
+* persistencia y recuperación del estado.
+
+La PR #113 fue revisada, corregida, aprobada y mergeada en `develop`.
+
+### Resultado de la suite completa
+
+La ejecución conjunta de modelos, Storage y Eventos + DOM produjo:
+
+```text
+75 specs, 2 failures
+```
+
+Resumen:
+
+* 73 tests aprobados;
+* 2 tests fallidos;
+* ambos fallos corresponden al Issue #115.
+
+Fallos detectados:
+
+```text
+GestorProyectos > expone un metodo toJSON() para serializar el gestor
+Expected 'undefined' to be 'function'.
+
+GestorProyectos > expone un metodo estatico fromJSON() para reconstruir el gestor
+Expected 'undefined' to be 'function'.
+```
+
+Evidencia:
+
+```text
+js/test/screenshots/jasmine-full-suite-issue-115-2026-06-13.png
+```
+
+### Bugs registrados
+
+#### Issue #114
+
+`Proyecto.js` depende de las funciones globales:
+
+* `validarFormatoFecha()`;
+* `parsearFecha()`.
+
+Actualmente `script.js` contiene un parche temporal que permite ejecutar la aplicación, pero la dependencia continúa siendo un problema de arquitectura de la capa POO.
+
+#### Issue #115
+
+`GestorProyectos` no implementa los métodos requeridos de serialización y reconstrucción:
+
+* `toJSON()`;
+* `fromJSON()`.
+
+Los tests permanecerán en estado FAIL hasta que el desarrollador POO implemente ambos métodos.
+
+### Estado actual
+
+* [x] `models.spec.js` implementado.
+* [x] `storage.spec.js` implementado.
+* [x] `script.spec.js` actualizado.
+* [x] Runner Jasmine actualizado.
+* [x] Storage validado con 20 tests aprobados.
+* [x] Eventos + DOM probado con la arquitectura actual.
+* [x] Bugs encontrados registrados como Issues #114 y #115.
+* [ ] Correcciones POO verificadas.
+* [ ] Suite completa ejecutada sin fallos.
+* [ ] Evidencia final PASS generada.
+
+
+
 ---
 
 ## AT CLOSE - Evidencia final
