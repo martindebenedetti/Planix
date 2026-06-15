@@ -79,7 +79,7 @@ La entrega debe integrar los siguientes ejes técnicos:
 
 - Rama: `feature/coord-devops-cuarta-entrega`
 - Base: `develop`
-- Estado: en desarrollo
+- Estado: completada e integrada en `develop` mediante la PR [#110](https://github.com/martindebenedetti/Planix/pull/110).
 - Archivos previstos:
   - `docs/03-specs/actividad-obligatoria-4/spec-devops.md`
   - `README.md`
@@ -154,15 +154,15 @@ Se utilizará para verificar el seguimiento de tareas, issues y estado de avance
 
 - [x] `develop` actualizado con lo último del repositorio remoto.
 - [x] Rama `feature/coord-devops-cuarta-entrega` creada o actualizada desde `develop`.
-- [ ] `spec-devops.md` creado y commiteado antes de otras tareas de coordinación.
-- [ ] PR de Storage mergeada a `develop`.
-- [ ] PR de POO revisada con Copilot Agent Mode.
-- [ ] PR de Eventos + DOM revisada con Copilot Agent Mode.
-- [ ] PR de Tester QA revisada con Copilot Agent Mode.
-- [ ] Reviews documentadas con prompts y resultados.
-- [ ] Changelog actualizado con las contribuciones de la Actividad 4.
-- [ ] README actualizado con la información de la Actividad 4.
-- [ ] Rama `release/cuarta-entrega` creada desde `develop`.
+- [x] `spec-devops.md` creado y commiteado antes de otras tareas de coordinación.
+- [x] PR de Storage mergeada a `develop`.
+- [x] PR de POO revisada con Copilot Agent Mode.
+- [x] PR de Eventos + DOM revisada con Copilot Agent Mode.
+- [x] Trabajo de Tester QA integrado y validado mediante Jasmine.
+- [x] Reviews documentadas con prompts y resultados.
+- [x] Changelog actualizado con las contribuciones de la Actividad 4.
+- [x] README actualizado con la información de la Actividad 4.
+- [x] Rama `release/cuarta-entrega` creada desde `develop`.
 - [ ] GitHub Pages verificado sobre la release.
 - [ ] PR final de release publicada.
 - [ ] Tag `v1.2-cuarta-entrega` preparado luego de aprobación.

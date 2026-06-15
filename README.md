@@ -142,7 +142,7 @@ Los diagramas cubren los siguientes flujos del sistema:
 
 ## Estado del proyecto
 
-El proyecto se encuentra actualmente en desarrollo de la **Actividad Obligatoria N.º 4**, tomando como base consolidada las actividades anteriores y la tercera entrega.
+El proyecto se encuentra en la etapa de cierre y publicación de la **Actividad Obligatoria N.º 4**, tomando como base consolidada las actividades anteriores y la tercera entrega.
 
 En esta etapa se incorporaron clases de dominio orientadas a objetos, persistencia mediante Web Storage, manejo de Eventos + DOM y testing automatizado con Jasmine.
 
@@ -180,14 +180,15 @@ En esta etapa se incorporaron clases de dominio orientadas a objetos, persistenc
 -  sin errores de carga;
 -  sin regresiones detectadas en POO, Storage ni Eventos + DOM.
 
-### Pendiente para el cierre de la entrega
+### Pendiente para la publicación final
 
--  revisión final de la documentación;
--  verificación de GitHub Pages;
--  preparación de la rama `release/cuarta-entrega`;
--  creación del tag y release correspondiente;
--  integración final hacia `master`;
--  publicación de la entrega en los canales solicitados.
+- validación final de la rama `release/cuarta-entrega`;
+- apertura y aprobación de la Pull Request hacia `master`;
+- verificación de GitHub Pages sobre la versión integrada;
+- creación del tag `v1.2-cuarta-entrega`;
+- publicación de la GitHub Release;
+- sincronización final de `master` hacia `develop`;
+- limpieza controlada de ramas ya integradas.
 
 ---
 
