@@ -335,9 +335,9 @@ Los tests permanecerán en estado FAIL hasta que el desarrollador POO implemente
 * [x] Storage validado con 20 tests aprobados.
 * [x] Eventos + DOM probado con la arquitectura actual.
 * [x] Bugs encontrados registrados como Issues #114 y #115.
-* [ ] Correcciones POO verificadas.
-* [ ] Suite completa ejecutada sin fallos.
-* [ ] Evidencia final PASS generada.
+* [x] Correcciones POO verificadas.
+* [x] Suite completa ejecutada sin fallos.
+* [x] Evidencia final PASS generada.
 
 
 
@@ -345,16 +345,47 @@ Los tests permanecerán en estado FAIL hasta que el desarrollador POO implemente
 
 ## AT CLOSE - Evidencia final
 
-Pendiente de completar después de implementar y ejecutar las suites de testing.
+### Correcciones verificadas
 
-Esta sección incluirá:
+Se verificaron las correcciones incorporadas mediante la PR #116:
 
-* prompts exactos utilizados con Copilot Agent;
-* archivos adjuntados como contexto;
-* output generado;
-* ajustes manuales;
-* cantidad de tests ejecutados;
-* cantidad de tests aprobados y fallidos;
-* bugs reportados;
-* screenshots de Jasmine;
-* conclusiones del proceso QA.
+* El Issue #114 quedó resuelto al incorporar `validarFormatoFecha()` y `parsearFecha()` dentro de `Proyecto.js`.
+* El Issue #115 quedó resuelto mediante la implementación de `GestorProyectos.prototype.toJSON()` y `GestorProyectos.fromJSON()`.
+* La refactorización de `script.js` mantiene operativos los flujos de Eventos + DOM.
+* La persistencia de proyectos y tareas mediante `localStorage` funciona correctamente.
+* El filtro activo continúa persistiendo mediante `sessionStorage`.
+* No se detectaron usos activos de `prompt()` ni `alert()`.
+
+### Resultado final de Jasmine
+
+```text
+75 specs, 0 failures
+```
+
+Resumen:
+
+* 75 tests ejecutados.
+* 75 tests aprobados.
+* 0 tests fallidos.
+* Sin errores de carga.
+* Sin regresiones detectadas en POO, Storage ni Eventos + DOM.
+
+### Evidencia final
+
+* `js/test/screenshots/jasmine-pr-116-pass-2026-06-14 1.png`
+* `js/test/screenshots/jasmine-pr-116-pass-2026-06-14 2.png`
+* `js/test/screenshots/jasmine-pr-116-pass-2026-06-14 3.png`
+
+### Checklist final
+
+* [x] Tests de modelos POO implementados.
+* [x] Tests de Storage implementados.
+* [x] Tests de Eventos + DOM actualizados.
+* [x] Runner Jasmine configurado con DOM de prueba.
+* [x] Issues #114 y #115 verificados.
+* [x] PR #116 verificada mediante testing.
+* [x] Suite completa ejecutada.
+* [x] Resultado final de 75 specs y 0 failures.
+* [x] Evidencia visual incorporada.
+* [x] Rama lista para Pull Request hacia `develop`.
+
