@@ -58,7 +58,7 @@ GestorProyectos.prototype.listar = function () {
 };
 
 /**
- * Filtra tareas de un proyecto según un criterio.
+ * Filtra tareas de un proyecto según un criterio de estado.
  * @param {Proyecto} proyecto - Proyecto donde filtrar tareas.
  * @param {string} criterio - "pendiente" | "en curso" | "completada" | "todas".
  * @returns {Tarea[]} Tareas que coinciden con el criterio.
@@ -93,4 +93,38 @@ GestorProyectos.prototype.filtrarTareas = function (proyecto, criterio) {
   }
 
   return tareasFiltradas;
+};
+
+/**
+ * Serializa el gestor y su colección de proyectos a un objeto plano.
+ * @returns {{proyectos: Array}} Objeto con el array de proyectos serializados.
+ */
+GestorProyectos.prototype.toJSON = function () {
+  return {
+    proyectos: this.proyectos.map(function (p) {
+      return p.toJSON();
+    })
+  };
+};
+
+/**
+ * Reconstruye un GestorProyectos a partir de un objeto plano.
+ * @param {{proyectos: Array}} json - Objeto con el array de proyectos serializados.
+ * @returns {GestorProyectos} Instancia reconstruida con todos sus proyectos.
+ * @throws {Error} Si el JSON es inválido.
+ */
+GestorProyectos.fromJSON = function (json) {
+  if (!json || typeof json !== "object") {
+    throw new Error("JSON de gestor inválido.");
+  }
+
+  var gestor = new GestorProyectos();
+
+  if (Array.isArray(json.proyectos)) {
+    for (var i = 0; i < json.proyectos.length; i++) {
+      gestor.agregar(Proyecto.fromJSON(json.proyectos[i]));
+    }
+  }
+
+  return gestor;
 };
