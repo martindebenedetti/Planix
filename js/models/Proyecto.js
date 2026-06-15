@@ -1,5 +1,51 @@
 /**
+ * Valida que una cadena tenga formato de fecha DD/MM/AAAA con valores coherentes.
+ * Día 1-31, mes 1-12, año 2000-2100.
+ * @param {string} fecha - Valor a validar.
+ * @returns {boolean} true si el formato y los valores son válidos.
+ */
+function validarFormatoFecha(fecha) {
+  if (fecha === null || fecha === undefined || fecha === "") return false;
+  if (typeof fecha !== "string") return false;
+  if (!/^\d{2}\/\d{2}\/\d{4}$/.test(fecha)) return false;
+  var partes = fecha.split("/");
+  var dia = Number(partes[0]);
+  var mes = Number(partes[1]);
+  var anio = Number(partes[2]);
+  if (dia < 1 || dia > 31) return false;
+  if (mes < 1 || mes > 12) return false;
+  if (anio < 2000 || anio > 2100) return false;
+  return true;
+}
+
+/**
+ * Parsea una cadena en formato "DD/MM/AAAA" a un objeto Date.
+ * @param {string} fecha - Fecha en formato DD/MM/AAAA.
+ * @returns {Date|null} Objeto Date correspondiente, o null si la fecha es inválida.
+ */
+function parsearFecha(fecha) {
+  if (!validarFormatoFecha(fecha)) return null;
+  var partes = fecha.split("/");
+  var dia = Number(partes[0]);
+  var mes = Number(partes[1]);
+  var anio = Number(partes[2]);
+  var fechaParseada = new Date(anio, mes - 1, dia);
+  if (
+    fechaParseada.getDate() !== dia ||
+    fechaParseada.getMonth() !== mes - 1 ||
+    fechaParseada.getFullYear() !== anio
+  ) {
+    return null;
+  }
+  return fechaParseada;
+}
+
+/**
  * Representa un proyecto con fechas y tareas asociadas.
+ * @param {string} nombre - Nombre del proyecto.
+ * @param {string} fechaInicio - Fecha de inicio en formato DD/MM/AAAA.
+ * @param {string} fechaFin - Fecha de fin en formato DD/MM/AAAA.
+ * @throws {Error} Si algún parámetro es inválido o las fechas son incoherentes.
  */
 function Proyecto(nombre, fechaInicio, fechaFin) {
   if (typeof nombre !== "string" || nombre.trim().length === 0) {
@@ -93,7 +139,7 @@ Proyecto.prototype.determinarEstado = function () {
 };
 
 /**
- * Serializa el proyecto a JSON.
+ * Serializa el proyecto a un objeto plano.
  * @returns {{nombre: string, fechaInicio: string, fechaFin: string, tareas: Array}} Datos serializados.
  */
 Proyecto.prototype.toJSON = function () {
@@ -112,9 +158,10 @@ Proyecto.prototype.toJSON = function () {
 };
 
 /**
- * Reconstruye un proyecto a partir de JSON.
+ * Reconstruye un proyecto a partir de un objeto plano.
  * @param {{nombre: string, fechaInicio: string, fechaFin: string, tareas: Array}} json - Datos del proyecto.
  * @returns {Proyecto} Proyecto reconstruido.
+ * @throws {Error} Si el JSON es inválido.
  */
 Proyecto.fromJSON = function (json) {
   if (!json || typeof json !== "object") {

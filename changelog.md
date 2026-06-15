@@ -17,6 +17,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [feature/dev-storage] Se agrega la capa de abstracción para `localStorage` y `sessionStorage` mediante `js/utils/storage.js`, y documentación de estrategia en `docs/06-storage/storage-doc.md`.  
   PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (Desarrollador JS Storage) — Issue: [#105](https://github.com/martindebenedetti/Planix/issues/105)
 
+### Fixed
+
+- [fix/resolucion_issue] Resolución de issues #112 #114 y #115: se definen `validarFormatoFecha()` y `parsearFecha()` como funciones privadas en `js/models/Proyecto.js` (resuelve `ReferenceError`); se implementan `toJSON()` y `fromJSON()` en `GestorProyectos` (resuelve 2 tests fallidos de Jasmine); y se refactoriza `js/script.js` a controlador puro eliminando funciones de validación y datos globales.  
+  PR: [#116](https://github.com/martindebenedetti/Planix/pull/116) — @martindebenedetti (Desarrollador JS POO) — Issue:[#112](https://github.com/martindebenedetti/Planix/issues/112) [#114](https://github.com/martindebenedetti/Planix/issues/114), [#115](https://github.com/martindebenedetti/Planix/issues/115)
+
 ---
 
 ## [Release Actividad Obligatoria N° 3] 2026-05-18

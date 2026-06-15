@@ -1,116 +1,66 @@
 /**
  * Controlador Principal - Planix
- * Encargado EXCLUSIVAMENTE de manejar eventos, manipular el DOM 
+ * Responsable exclusivamente de manejar eventos, manipular el DOM
  * e invocar métodos de la lógica de negocio y persistencia.
  */
 
 // ========================================
-// 0. Utilidades de Fecha (Parche para Proyecto.js)
-// TODO: El QA debe reportar que el modelo Proyecto 
-// depende de funciones globales. El dev de POO debe 
-// mover esto adentro de Proyecto.js o a un DateUtil.
+// 1. Instancia global del gestor
 // ========================================
-function validarFormatoFecha(fecha) {
-  if (typeof fecha !== "string") return false;
-  return /^\d{2}\/\d{2}\/\d{4}$/.test(fecha);
-}
-
-function parsearFecha(fecha) {
-  if (!validarFormatoFecha(fecha)) return null;
-  const partes = fecha.split("/");
-  const dia = Number(partes[0]);
-  const mes = Number(partes[1]);
-  const anio = Number(partes[2]);
-  const fechaParseada = new Date(anio, mes - 1, dia);
-  if (fechaParseada.getDate() !== dia || fechaParseada.getMonth() !== mes - 1 || fechaParseada.getFullYear() !== anio) return null;
-  return fechaParseada;
-}
+const gestor = new GestorProyectos();
 
 // ========================================
-// 1. Variables Globales de Estado
+// 2. Inicialización
 // ========================================
-let gestor = null; // Instancia de GestorProyectos
+document.addEventListener("DOMContentLoaded", () => {
+  cargarDatosDesdeStorage();
+  configurarEventListeners();
+  actualizarUI();
+});
 
-// ========================================
-// 2. Inicialización y Configuración de Eventos
-// ========================================
-document.addEventListener("DOMContentLoaded", inicializarApp);
+function configurarEventListeners() {
+  // Flujo 1: Crear Proyecto
+  const formCrearProyecto = document.getElementById("form-crear-proyecto");
+  formCrearProyecto.addEventListener("submit", manejarCrearProyecto);
 
-function inicializarApp() {
-  gestor = new GestorProyectos();
-  cargarEstadoInicial();
-  configurarEventos();
-  actualizarSelectorProyectos();
-  
-  // Ejecutar validación inicial para deshabilitar botones
+  // Flujo 2: Agregar Tarea
+  const formNuevaTarea = document.getElementById("form-nueva-tarea");
+  formNuevaTarea.addEventListener("submit", manejarAgregarTarea);
+
+  // Flujo 3: Calcular Avance (cambio de proyecto seleccionado)
+  document.getElementById("select-proyecto").addEventListener("change", manejarCalcularAvance);
+
+  // Flujo 4: Filtrar Tareas
+  document.getElementById("filtro-tareas").addEventListener("change", manejarFiltrarTareas);
+
+  // Validación visual en tiempo real — Formulario Proyecto
+  formCrearProyecto.querySelectorAll("input").forEach(input => {
+    input.addEventListener("input", validarFormularioProyecto);
+  });
+
+  // Validación visual en tiempo real — Formulario Tarea
+  formNuevaTarea.querySelectorAll("input, select").forEach(input => {
+    input.addEventListener("input", validarFormularioTarea);
+    input.addEventListener("change", validarFormularioTarea);
+  });
+
+  // Inicializar estado de los botones
   validarFormularioProyecto();
   validarFormularioTarea();
 }
 
-function configurarEventos() {
-  // Flujo 1: Crear Proyecto
-  const formCrearProyecto = document.getElementById("form-crear-proyecto");
-  formCrearProyecto.addEventListener("submit", manejarCrearProyecto);
-  
-  // Flujo 2: Agregar Tarea
-  const formNuevaTarea = document.getElementById("form-nueva-tarea");
-  formNuevaTarea.addEventListener("submit", manejarAgregarTarea);
-  
-  // Interacciones UI y Flujos 3 y 4
-  document.getElementById("select-proyecto").addEventListener("change", manejarCambioProyecto);
-  document.getElementById("filtro-tareas").addEventListener("change", manejarFiltrarTareas);
-
-  // NUEVO: Validación en tiempo real (Eventos input/change)
-  const inputsProyecto = formCrearProyecto.querySelectorAll("input");
-  inputsProyecto.forEach(input => {
-    input.addEventListener("input", validarFormularioProyecto);
-  });
-
-  const inputsTarea = formNuevaTarea.querySelectorAll("input, select");
-  inputsTarea.forEach(input => {
-    input.addEventListener("input", validarFormularioTarea);
-    input.addEventListener("change", validarFormularioTarea);
-  });
+function actualizarUI() {
+  actualizarListaProyectos();
 }
 
 // ========================================
-// 3. Persistencia (Interacción con StorageUtil)
-// ========================================
-function cargarEstadoInicial() {
-  // Cargar Proyectos (Local)
-  const datosGuardados = StorageUtil.obtener("planix:proyectos", "local");
-  
-  if (datosGuardados && Array.isArray(datosGuardados)) {
-    datosGuardados.forEach(jsonObj => {
-      try {
-        const proyectoReconstruido = Proyecto.fromJSON(jsonObj);
-        gestor.agregar(proyectoReconstruido);
-      } catch (error) {
-        console.error("Error al reconstruir proyecto desde JSON:", error);
-      }
-    });
-  }
-
-  // NUEVO: Cargar Filtro Activo (Session)
-  const filtroGuardado = StorageUtil.obtener("planix:sesion:filtros", "session");
-  if (filtroGuardado) {
-    document.getElementById("filtro-tareas").value = filtroGuardado;
-  }
-}
-
-function guardarEstado() {
-  const dataSerializada = gestor.listar().map(p => p.toJSON());
-  StorageUtil.guardar("planix:proyectos", dataSerializada, "local");
-}
-
-// ========================================
-// 4. Handlers (Manejadores de Eventos)
+// 3. Manejadores de Eventos (Flujos)
 // ========================================
 
-// FLujo 1
+/** Flujo 1: crea un nuevo proyecto y lo agrega al gestor. */
 function manejarCrearProyecto(event) {
-  event.preventDefault(); 
-  
+  event.preventDefault();
+
   const nombre = document.getElementById("p-nombre").value;
   const fechaInicio = document.getElementById("p-inicio").value;
   const fechaFin = document.getElementById("p-fin").value;
@@ -118,26 +68,24 @@ function manejarCrearProyecto(event) {
   try {
     const nuevoProyecto = new Proyecto(nombre, fechaInicio, fechaFin);
     gestor.agregar(nuevoProyecto);
-    
-    guardarEstado();
-    
-    mostrarExito(`Proyecto "${nombre}" creado correctamente.`);
-    event.target.reset();
-    limpiarValidacionesVisuales("form-crear-proyecto"); // Limpiar bordes verdes
-    actualizarSelectorProyectos();
-    
-    document.getElementById("select-proyecto").value = nombre;
-    document.getElementById("select-proyecto").dispatchEvent(new Event('change'));
 
+    guardarEnStorage();
+
+    mostrarExito("contenedor-alertas", `Proyecto "${nombre}" creado correctamente.`);
+    limpiarFormulario("form-crear-proyecto");
+    actualizarListaProyectos();
+
+    document.getElementById("select-proyecto").value = nombre;
+    document.getElementById("select-proyecto").dispatchEvent(new Event("change"));
   } catch (error) {
-    mostrarError(error.message);
+    mostrarError("contenedor-alertas", error.message);
   }
 }
 
-// Flujo 2
+/** Flujo 2: agrega una tarea al proyecto actualmente seleccionado. */
 function manejarAgregarTarea(event) {
   event.preventDefault();
-  
+
   const nombreProyecto = document.getElementById("select-proyecto").value;
   const nombreTarea = document.getElementById("t-nombre").value;
   const responsable = document.getElementById("t-responsable").value;
@@ -149,35 +97,31 @@ function manejarAgregarTarea(event) {
 
     const nuevaTarea = new Tarea(nombreTarea, responsable, estado);
     proyecto.agregarTarea(nuevaTarea);
-    
-    guardarEstado();
 
-    mostrarExito("Tarea agregada exitosamente.");
-    
-    // Limpiar solo los inputs de texto, manteniendo el proyecto
+    guardarEnStorage();
+
+    mostrarExito("contenedor-alertas", "Tarea agregada exitosamente.");
+
     document.getElementById("t-nombre").value = "";
     document.getElementById("t-responsable").value = "";
-    
-    // Forzar re-validación para bloquear el botón de nuevo
-    validarFormularioTarea(); 
-    
-    // Quitar bordes verdes de los campos limpiados
     document.getElementById("t-nombre").classList.remove("is-valid");
     document.getElementById("t-responsable").classList.remove("is-valid");
+    validarFormularioTarea();
 
     actualizarVistaProyecto(proyecto);
   } catch (error) {
-    mostrarError(error.message);
+    mostrarError("contenedor-alertas", error.message);
   }
 }
 
-// Flujos 3 y 4 Combinados
-function manejarCambioProyecto(event) {
+/** Flujo 3: muestra el avance y las tareas del proyecto seleccionado. */
+function manejarCalcularAvance(event) {
   const nombreProyecto = event.target.value;
-  validarFormularioTarea(); // Revalidar botón de nueva tarea
-  
+  validarFormularioTarea();
+
   if (!nombreProyecto) {
-    document.getElementById("cuerpo-tabla").innerHTML = `<tr><td colspan="3" class="text-center text-muted">Aún no hay tareas para mostrar.</td></tr>`;
+    document.getElementById("cuerpo-tabla").innerHTML =
+      `<tr><td colspan="3" class="text-center text-muted">Aún no hay tareas para mostrar.</td></tr>`;
     actualizarAvanceDOM(0, "Seleccione un proyecto para ver su estado.");
     return;
   }
@@ -188,14 +132,13 @@ function manejarCambioProyecto(event) {
   }
 }
 
-// Flujo 4
+/** Flujo 4: filtra las tareas del proyecto según el criterio seleccionado. */
 function manejarFiltrarTareas(event) {
   const criterio = event.target.value;
   const nombreProyecto = document.getElementById("select-proyecto").value;
-  
-  // NUEVO: Guardar en sessionStorage
+
   StorageUtil.guardar("planix:sesion:filtros", criterio, "session");
-  
+
   if (!nombreProyecto) return;
 
   const proyecto = gestor.buscar(nombreProyecto);
@@ -204,17 +147,16 @@ function manejarFiltrarTareas(event) {
       const tareasFiltradas = gestor.filtrarTareas(proyecto, criterio);
       renderizarTablaGantt(tareasFiltradas);
     } catch (error) {
-      mostrarError(error.message);
+      mostrarError("contenedor-alertas", error.message);
     }
   }
 }
 
 // ========================================
-// 5. NUEVO: Lógica de Validación en Tiempo Real
+// 4. Validación Visual en Tiempo Real
 // ========================================
 
 function marcarCampo(input, esValido) {
-  // Evitar marcar como inválido si el campo está vacío y el usuario aún no escribió
   if (input.value.trim() === "" && !esValido) {
     input.classList.remove("is-valid", "is-invalid");
     input.removeAttribute("aria-invalid");
@@ -239,8 +181,8 @@ function validarFormularioProyecto() {
   const btnSubmit = document.querySelector("#form-crear-proyecto button[type='submit']");
 
   const nombreValido = pNombre.value.trim().length > 0;
-  const inicioValido = validarFormatoFecha(pInicio.value);
-  const finValido = validarFormatoFecha(pFin.value);
+  const inicioValido = /^\d{2}\/\d{2}\/\d{4}$/.test(pInicio.value);
+  const finValido = /^\d{2}\/\d{2}\/\d{4}$/.test(pFin.value);
 
   marcarCampo(pNombre, nombreValido);
   marcarCampo(pInicio, inicioValido);
@@ -274,27 +216,20 @@ function validarFormularioTarea() {
   }
 }
 
-function limpiarValidacionesVisuales(formularioId) {
-  const inputs = document.querySelectorAll(`#${formularioId} input, #${formularioId} select`);
-  inputs.forEach(input => {
-    input.classList.remove("is-valid", "is-invalid");
-    input.removeAttribute("aria-invalid");
-  });
-  document.querySelector(`#${formularioId} button[type='submit']`).setAttribute("disabled", "true");
-}
-
 // ========================================
-// 6. Funciones Auxiliares de Manipulación DOM
+// 5. Manipulación del DOM
 // ========================================
 
-function actualizarSelectorProyectos() {
+/**
+ * Actualiza el selector de proyectos con la lista actual del gestor.
+ */
+function actualizarListaProyectos() {
   const select = document.getElementById("select-proyecto");
   const seleccionActual = select.value;
-  
+
   select.innerHTML = '<option value="">Seleccione...</option>';
-  
-  const proyectos = gestor.listar();
-  proyectos.forEach(p => {
+
+  gestor.listar().forEach(p => {
     const option = document.createElement("option");
     option.value = p.nombre;
     option.textContent = p.nombre;
@@ -306,20 +241,28 @@ function actualizarSelectorProyectos() {
   }
 }
 
+/**
+ * Renderiza las tareas del proyecto activo aplicando el filtro vigente.
+ * @param {Proyecto} proyecto - Proyecto cuyas tareas se mostrarán.
+ */
 function actualizarVistaProyecto(proyecto) {
   const criterio = document.getElementById("filtro-tareas").value;
   const tareasFiltradas = gestor.filtrarTareas(proyecto, criterio);
-  
+
   renderizarTablaGantt(tareasFiltradas);
-  
+
   const porcentaje = proyecto.calcularAvance();
   const estadoTexto = proyecto.determinarEstado();
   actualizarAvanceDOM(porcentaje, `Estado: ${estadoTexto}`);
 }
 
+/**
+ * Renderiza el array de tareas en la tabla Gantt del DOM.
+ * @param {Tarea[]} tareas - Tareas a mostrar.
+ */
 function renderizarTablaGantt(tareas) {
   const tbody = document.getElementById("cuerpo-tabla");
-  tbody.innerHTML = ""; 
+  tbody.innerHTML = "";
 
   if (tareas.length === 0) {
     tbody.innerHTML = `<tr><td colspan="13" class="text-center text-muted py-4">No se encontraron tareas.</td></tr>`;
@@ -328,7 +271,7 @@ function renderizarTablaGantt(tareas) {
 
   tareas.forEach(tarea => {
     const tr = document.createElement("tr");
-    
+
     let badgeClass = "bg-secondary";
     if (tarea.estado === "pendiente") badgeClass = "bg-warning text-dark";
     if (tarea.estado === "en curso") badgeClass = "bg-primary";
@@ -344,14 +287,19 @@ function renderizarTablaGantt(tareas) {
   });
 }
 
+/**
+ * Actualiza la barra de avance y el texto de estado en el DOM.
+ * @param {number} porcentaje - Valor entre 0 y 100.
+ * @param {string} textoEstado - Texto descriptivo del estado.
+ */
 function actualizarAvanceDOM(porcentaje, textoEstado) {
   const barra = document.getElementById("barra-avance");
   const pRedondeado = Math.round(porcentaje);
-  
+
   barra.style.width = `${pRedondeado}%`;
   barra.textContent = `${pRedondeado}%`;
   barra.setAttribute("aria-valuenow", pRedondeado);
-  
+
   barra.className = "progress-bar progress-bar-striped progress-bar-animated";
   if (pRedondeado === 100) {
     barra.classList.add("bg-success");
@@ -364,22 +312,86 @@ function actualizarAvanceDOM(porcentaje, textoEstado) {
   document.getElementById("texto-estado-proyecto").textContent = textoEstado;
 }
 
-function mostrarMensaje(mensaje, tipoColor) {
-  const contenedor = document.getElementById("contenedor-alertas");
+/**
+ * Muestra un mensaje de éxito en el contenedor indicado, con auto-cierre a los 4 segundos.
+ * @param {string} contenedorId - ID del elemento contenedor de alertas.
+ * @param {string} mensaje - Texto a mostrar.
+ */
+function mostrarExito(contenedorId, mensaje) {
+  mostrarMensaje(contenedorId, mensaje, "success");
+}
+
+/**
+ * Muestra un mensaje de error en el contenedor indicado, con auto-cierre a los 4 segundos.
+ * @param {string} contenedorId - ID del elemento contenedor de alertas.
+ * @param {string} mensaje - Texto a mostrar.
+ */
+function mostrarError(contenedorId, mensaje) {
+  mostrarMensaje(contenedorId, mensaje, "danger");
+}
+
+/**
+ * Resetea un formulario y limpia sus clases de validación visual.
+ * @param {string} formId - ID del formulario a limpiar.
+ */
+function limpiarFormulario(formId) {
+  const form = document.getElementById(formId);
+  if (form) form.reset();
+  const inputs = document.querySelectorAll(`#${formId} input, #${formId} select`);
+  inputs.forEach(input => {
+    input.classList.remove("is-valid", "is-invalid");
+    input.removeAttribute("aria-invalid");
+  });
+  const btnSubmit = document.querySelector(`#${formId} button[type='submit']`);
+  if (btnSubmit) btnSubmit.setAttribute("disabled", "true");
+}
+
+function mostrarMensaje(contenedorId, mensaje, tipoColor) {
+  const contenedor = document.getElementById(contenedorId);
+  if (!contenedor) return;
   const alerta = document.createElement("div");
   alerta.className = `alert alert-${tipoColor} alert-dismissible fade show`;
   alerta.innerHTML = `
-    <strong>${tipoColor === 'danger' ? 'Error' : 'Éxito'}:</strong> ${mensaje}
+    <strong>${tipoColor === "danger" ? "Error" : "Éxito"}:</strong> ${mensaje}
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
   `;
   contenedor.appendChild(alerta);
 
   setTimeout(() => {
-    if (contenedor.contains(alerta)) {
-      alerta.remove();
-    }
+    if (contenedor.contains(alerta)) alerta.remove();
   }, 4000);
 }
 
-function mostrarError(mensaje) { mostrarMensaje(mensaje, "danger"); }
-function mostrarExito(mensaje) { mostrarMensaje(mensaje, "success"); }
+// ========================================
+// 6. Persistencia
+// ========================================
+
+/**
+ * Carga los proyectos desde localStorage y restaura el filtro de sesión.
+ */
+function cargarDatosDesdeStorage() {
+  const datosGuardados = StorageUtil.obtener("planix:proyectos", "local");
+
+  if (datosGuardados && Array.isArray(datosGuardados)) {
+    datosGuardados.forEach(jsonObj => {
+      try {
+        gestor.agregar(Proyecto.fromJSON(jsonObj));
+      } catch (error) {
+        console.error("Error al reconstruir proyecto desde storage:", error);
+      }
+    });
+  }
+
+  const filtroGuardado = StorageUtil.obtener("planix:sesion:filtros", "session");
+  if (filtroGuardado) {
+    document.getElementById("filtro-tareas").value = filtroGuardado;
+  }
+}
+
+/**
+ * Persiste el estado actual de todos los proyectos en localStorage.
+ */
+function guardarEnStorage() {
+  const dataSerializada = gestor.listar().map(p => p.toJSON());
+  StorageUtil.guardar("planix:proyectos", dataSerializada, "local");
+}
