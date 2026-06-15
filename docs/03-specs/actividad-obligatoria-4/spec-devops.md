@@ -164,7 +164,7 @@ Se utilizará para verificar el seguimiento de tareas, issues y estado de avance
 - [x] README actualizado con la información de la Actividad 4.
 - [x] Rama `release/cuarta-entrega` creada desde `develop`.
 - [ ] GitHub Pages verificado sobre la release.
-- [ ] PR final de release publicada.
+- [x] PR final de release publicada.
 - [ ] Tag `v1.2-cuarta-entrega` preparado luego de aprobación.
 
 ---
