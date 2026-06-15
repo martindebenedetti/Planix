@@ -41,7 +41,7 @@ describe('Planix - Evento y DOM Controller', function () {
   }
 
   beforeEach(function () {
-    gestor = new GestorProyectos();
+    gestor.proyectos.splice(0, gestor.proyectos.length);
     localStorage.removeItem('planix:proyectos');
     sessionStorage.removeItem('planix:sesion:filtros');
     resetFixture();
@@ -143,7 +143,7 @@ describe('Planix - Evento y DOM Controller', function () {
 
     it('agrega una tarea a un proyecto existente', function () {
       const proyecto = createProject('Proyecto Dos');
-      actualizarSelectorProyectos();
+      actualizarListaProyectos();
       selectProyecto().value = 'Proyecto Dos';
       tNombre().value = 'Tarea Uno';
       tResponsable().value = 'Mora';
@@ -186,7 +186,7 @@ describe('Planix - Evento y DOM Controller', function () {
       createProject('Proyecto Tres');
 
       // Primera actualización: crea la opción en el select.
-      actualizarSelectorProyectos();
+      actualizarListaProyectos();
 
       expect(selectProyecto().options.length).toBeGreaterThan(1);
 
@@ -194,14 +194,14 @@ describe('Planix - Evento y DOM Controller', function () {
       selectProyecto().value = 'Proyecto Tres';
 
       // Segunda actualización: debe conservar la selección.
-      actualizarSelectorProyectos();
+      actualizarListaProyectos();
 
       expect(selectProyecto().value).toBe('Proyecto Tres');
     });
 
     it('muestra un mensaje cuando no hay proyecto seleccionado', function () {
       selectProyecto().value = '';
-      manejarCambioProyecto({ target: selectProyecto() });
+      manejarCalcularAvance({ target: selectProyecto() });
 
       expect(textoEstado().textContent).toBe('Seleccione un proyecto para ver su estado.');
       expect(cuerpoTabla().textContent).toContain('Aún no hay tareas para mostrar.');
@@ -210,10 +210,10 @@ describe('Planix - Evento y DOM Controller', function () {
     it('actualiza la vista del proyecto cuando se selecciona un proyecto', function () {
       const proyecto = createProject('Proyecto Cuatro');
       proyecto.agregarTarea(new Tarea('Tarea A', 'Luis', 'pendiente'));
-      actualizarSelectorProyectos();
+      actualizarListaProyectos();
       selectProyecto().value = 'Proyecto Cuatro';
 
-      manejarCambioProyecto({ target: selectProyecto() });
+      manejarCalcularAvance({ target: selectProyecto() });
 
       expect(cuerpoTabla().querySelectorAll('tr').length).toBe(1);
       expect(barraAvance().style.width).toContain('%');
@@ -224,7 +224,7 @@ describe('Planix - Evento y DOM Controller', function () {
       const proyecto = createProject('Proyecto Cinco');
       proyecto.agregarTarea(new Tarea('A', 'Ana', 'pendiente'));
       proyecto.agregarTarea(new Tarea('B', 'Luis', 'completada'));
-      actualizarSelectorProyectos();
+      actualizarListaProyectos();
       selectProyecto().value = 'Proyecto Cinco';
       filtroTareas().value = 'pendiente';
 
@@ -288,7 +288,7 @@ describe('Planix - Evento y DOM Controller', function () {
   describe('Persistencia de estado', function () {
     it('guarda el estado del gestor en localStorage', function () {
       createProject('Proyecto Seis');
-      guardarEstado();
+      guardarEnStorage();
 
       const datos = StorageUtil.obtener('planix:proyectos', 'local');
       expect(datos.length).toBe(1);
@@ -298,10 +298,10 @@ describe('Planix - Evento y DOM Controller', function () {
     it('carga el estado inicial desde localStorage y sessionStorage', function () {
       createProject('Proyecto Siete');
       StorageUtil.guardar('planix:sesion:filtros', 'pendiente', 'session');
-      guardarEstado();
+      guardarEnStorage();
 
-      gestor = new GestorProyectos();
-      cargarEstadoInicial();
+      gestor.proyectos.splice(0, gestor.proyectos.length);
+      cargarDatosDesdeStorage();
 
       expect(gestor.listar().length).toBe(1);
       expect(filtroTareas().value).toBe('pendiente');
@@ -319,7 +319,7 @@ describe('Planix - Evento y DOM Controller', function () {
     });
 
     it('muestra y remueve error después del timeout', function () {
-      mostrarError('Error de prueba');
+      mostrarError('contenedor-alertas', 'Error de prueba');
 
       expect(contenedorAlertas().querySelector('.alert-danger')).toBeTruthy();
       jasmine.clock().tick(4000);
@@ -327,7 +327,7 @@ describe('Planix - Evento y DOM Controller', function () {
     });
 
     it('muestra y remueve mensaje de éxito después del timeout', function () {
-      mostrarExito('Éxito de prueba');
+      mostrarExito('contenedor-alertas', 'Éxito de prueba');
 
       expect(contenedorAlertas().querySelector('.alert-success')).toBeTruthy();
       jasmine.clock().tick(4000);
