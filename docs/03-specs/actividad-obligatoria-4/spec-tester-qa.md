@@ -359,13 +359,13 @@ Se verificaron las correcciones incorporadas mediante la PR #116:
 ### Resultado final de Jasmine
 
 ```text
-75 specs, 0 failures
+83 specs, 0 failures
 ```
 
 Resumen:
 
-* 75 tests ejecutados.
-* 75 tests aprobados.
+* 83 tests ejecutados.
+* 83 tests aprobados.
 * 0 tests fallidos.
 * Sin errores de carga.
 * Sin regresiones detectadas en POO, Storage ni Eventos + DOM.
@@ -385,7 +385,7 @@ Resumen:
 * [x] Issues #114 y #115 verificados.
 * [x] PR #116 verificada mediante testing.
 * [x] Suite completa ejecutada.
-* [x] Resultado final de 75 specs y 0 failures.
+* [x] Resultado final de 83 specs y 0 failures.
 * [x] Evidencia visual incorporada.
 * [x] Rama lista para Pull Request hacia `develop`.
 

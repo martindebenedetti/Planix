@@ -103,6 +103,39 @@ describe('Planix - Evento y DOM Controller', function () {
       validarFormularioTarea();
       expect(formTarea().querySelector('button[type="submit"]').hasAttribute('disabled')).toBeTrue();
     });
+
+    it('no falla validarFormularioProyecto si faltan campos o botón', function () {
+      const fixture = document.getElementById('test-fixture');
+      const formEl = formProyecto();
+
+      fixture.removeChild(formEl);
+
+      try {
+        expect(function () {
+      validarFormularioProyecto();
+    }).not.toThrow();
+  } finally {
+    fixture.appendChild(formEl);
+  }
+});
+
+    it('no falla validarFormularioTarea si faltan campos o botón', function () {
+      const fixture = document.getElementById('test-fixture');
+      const formEl = formTarea();
+      const selectEl = selectProyecto();
+
+      fixture.removeChild(formEl);
+      fixture.removeChild(selectEl);
+
+      try {
+        expect(function () {
+          validarFormularioTarea();
+        }).not.toThrow();
+      } finally {
+        fixture.appendChild(formEl);
+        fixture.appendChild(selectEl);
+      }
+    });
   });
 
   describe('Manejadores de formulario', function () {
@@ -207,6 +240,18 @@ describe('Planix - Evento y DOM Controller', function () {
       expect(cuerpoTabla().textContent).toContain('Aún no hay tareas para mostrar.');
     });
 
+    it('configurarEventListeners no falla con DOM parcial', function () {
+      const fixture = document.getElementById('test-fixture');
+      const elementos = [formProyecto(), formTarea(), selectProyecto(), filtroTareas()];
+      elementos.forEach(el => fixture.removeChild(el));
+
+      expect(function () {
+        configurarEventListeners();
+      }).not.toThrow();
+
+      elementos.forEach(el => fixture.appendChild(el));
+    });
+
     it('actualiza la vista del proyecto cuando se selecciona un proyecto', function () {
       const proyecto = createProject('Proyecto Cuatro');
       proyecto.agregarTarea(new Tarea('Tarea A', 'Luis', 'pendiente'));
@@ -269,6 +314,46 @@ describe('Planix - Evento y DOM Controller', function () {
       expect(filas[2].querySelector('span.badge').className).toContain('bg-success');
     });
 
+    it('renderiza texto literalmente y no crea elementos img o script para valores de tarea maliciosos', function () {
+      const payload = '<img src=x onerror=alert(1)><script>alert(1)</script>';
+      const tareas = [new Tarea(payload, payload, 'pendiente')];
+
+      renderizarTablaGantt(tareas);
+
+      const filas = cuerpoTabla().querySelectorAll('tr');
+      expect(filas.length).toBe(1);
+      expect(cuerpoTabla().textContent).toContain(payload);
+      expect(filas[0].querySelector('img')).toBeNull();
+      expect(filas[0].querySelector('script')).toBeNull();
+      expect(filas[0].querySelector('span.badge').textContent).toBe('PENDIENTE');
+    });
+
+    it('no falla actualizarAvanceDOM si falta la barra de avance', function () {
+      const barra = barraAvance();
+      const wrapper = barra.parentNode;
+      wrapper.removeChild(barra);
+
+      expect(function () {
+        actualizarAvanceDOM(25, 'Estado parcial');
+      }).not.toThrow();
+      expect(textoEstado().textContent).toBe('Estado parcial');
+
+      wrapper.appendChild(barra);
+    });
+
+    it('no falla actualizarAvanceDOM si falta el texto de estado', function () {
+      const texto = textoEstado();
+      const wrapper = texto.parentNode;
+      wrapper.removeChild(texto);
+
+      expect(function () {
+        actualizarAvanceDOM(50, 'Mitad');
+      }).not.toThrow();
+      expect(barraAvance().style.width).toBe('50%');
+
+      wrapper.appendChild(texto);
+    });
+
     it('actualiza la barra de avance y el texto de estado correctamente', function () {
       actualizarAvanceDOM(0, 'Estado: Ninguno');
       expect(barraAvance().style.width).toBe('0%');
@@ -293,6 +378,24 @@ describe('Planix - Evento y DOM Controller', function () {
       const datos = StorageUtil.obtener('planix:proyectos', 'local');
       expect(datos.length).toBe(1);
       expect(datos[0].nombre).toBe('Proyecto Seis');
+    });
+
+    it('omite proyectos duplicados durante la carga desde storage y emite console.warn', function () {
+      const proyectoJSON = {
+        nombre: 'Proyecto Duplicado',
+        fechaInicio: '01/01/2026',
+        fechaFin: '31/12/2026',
+        tareas: []
+      };
+
+      StorageUtil.guardar('planix:proyectos', [proyectoJSON, proyectoJSON], 'local');
+      spyOn(console, 'warn');
+
+      gestor.proyectos.splice(0, gestor.proyectos.length);
+      cargarDatosDesdeStorage();
+
+      expect(gestor.listar().length).toBe(1);
+      expect(console.warn).toHaveBeenCalledWith('Proyecto omitido al restaurar desde storage: Proyecto Duplicado');
     });
 
     it('carga el estado inicial desde localStorage y sessionStorage', function () {
@@ -332,6 +435,15 @@ describe('Planix - Evento y DOM Controller', function () {
       expect(contenedorAlertas().querySelector('.alert-success')).toBeTruthy();
       jasmine.clock().tick(4000);
       expect(contenedorAlertas().querySelector('.alert-success')).toBeNull();
+    });
+
+    it('no interpreta como HTML el contenido de mensajes y no crea nodos img o script', function () {
+      const payload = '<img src=x onerror=alert(1)><script>alert(1)</script>';
+      mostrarError('contenedor-alertas', payload);
+
+      expect(contenedorAlertas().querySelector('img')).toBeNull();
+      expect(contenedorAlertas().querySelector('script')).toBeNull();
+      expect(contenedorAlertas().textContent).toContain(payload);
     });
   });
 });

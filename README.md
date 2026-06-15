@@ -172,11 +172,11 @@ En esta etapa se incorporaron clases de dominio orientadas a objetos, persistenc
 ### Resultado final de testing
 
 ```text
-75 specs, 0 failures
+83 specs, 0 failures
 ```
 
--  75 tests ejecutados;
--  75 tests aprobados;
+-  83 tests ejecutados;
+-  83 tests aprobados;
 -  sin errores de carga;
 -  sin regresiones detectadas en POO, Storage ni Eventos + DOM.
 
