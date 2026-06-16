@@ -16,7 +16,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
-* [feature/coord-devops-cuarta-entrega] Se completaron las tareas de Coordinación, DevOps y Tester QA de la Actividad Obligatoria N.º 4, incluyendo revisión de entregas, gestión de hallazgos, correcciones de robustez y seguridad, pruebas Jasmine y evidencias finales con 83 specs aprobados y 0 failures.
+* [feature/coord-devops-cuarta-entrega] Se completaron las tareas de Coordinación, DevOps y Tester QA de la Actividad Obligatoria N.º 4, incluyendo revisión de entregas, gestión de hallazgos, correcciones de robustez y seguridad, pruebas Jasmine y evidencias finales con 88 specs aprobados y 0 failures.
   PR: [#110](https://github.com/martindebenedetti/Planix/pull/110) - @leanlex (Coordinador / DevOps + Tester QA) - Issue: [#109](https://github.com/martindebenedetti/Planix/issues/109)
 
 

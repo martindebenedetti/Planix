@@ -7,6 +7,25 @@
 // ========================================
 // 1. Instancia global del gestor
 // ========================================
+function verificarDependencias() {
+  const faltantes = [];
+
+  if (typeof StorageUtil === "undefined") faltantes.push("StorageUtil");
+  if (typeof Tarea === "undefined") faltantes.push("Tarea");
+  if (typeof Proyecto === "undefined") faltantes.push("Proyecto");
+  if (typeof GestorProyectos === "undefined") faltantes.push("GestorProyectos");
+
+  if (faltantes.length > 0) {
+    const mensaje =
+      `No se puede iniciar Planix. Dependencias faltantes: ${faltantes.join(", ")}.`;
+
+    console.error(mensaje);
+    throw new Error(mensaje);
+  }
+}
+
+verificarDependencias();
+
 const gestor = new GestorProyectos();
 
 // ========================================
@@ -63,6 +82,22 @@ function configurarEventListeners() {
   validarFormularioTarea();
 }
 
+function advertirElementosFaltantes(contexto, elementos) {
+  const faltantes = elementos
+    .filter(item => !item.elemento)
+    .map(item => item.id);
+
+  if (faltantes.length === 0) {
+    return false;
+  }
+
+  console.warn(
+    `${contexto}: faltan elementos requeridos del DOM: ${faltantes.join(", ")}.`
+  );
+
+  return true;
+}
+
 function actualizarUI() {
   actualizarListaProyectos();
 }
@@ -75,9 +110,21 @@ function actualizarUI() {
 function manejarCrearProyecto(event) {
   event.preventDefault();
 
-  const nombre = document.getElementById("p-nombre").value;
-  const fechaInicio = document.getElementById("p-inicio").value;
-  const fechaFin = document.getElementById("p-fin").value;
+  const inputNombre = document.getElementById("p-nombre");
+  const inputInicio = document.getElementById("p-inicio");
+  const inputFin = document.getElementById("p-fin");
+
+  if (!inputNombre || !inputInicio || !inputFin) {
+    mostrarError(
+      "contenedor-alertas",
+      "Formulario incompleto: no se encontraron todos los campos del proyecto."
+    );
+    return;
+  }
+
+  const nombre = inputNombre.value;
+  const fechaInicio = inputInicio.value;
+  const fechaFin = inputFin.value;
 
   try {
     const nuevoProyecto = new Proyecto(nombre, fechaInicio, fechaFin);
@@ -162,6 +209,22 @@ function manejarFiltrarTareas(event) {
       renderizarTablaGantt(tareasFiltradas);
     } catch (error) {
       mostrarError("contenedor-alertas", error.message);
+
+      const tbody = document.getElementById("cuerpo-tabla");
+
+      if (tbody) {
+        tbody.innerHTML = "";
+
+        const fila = document.createElement("tr");
+        const celda = document.createElement("td");
+
+        celda.setAttribute("colspan", "13");
+        celda.className = "text-center text-danger py-4";
+        celda.textContent = "Error al aplicar filtro.";
+
+        fila.appendChild(celda);
+        tbody.appendChild(fila);
+      }
     }
   }
 }
@@ -196,7 +259,14 @@ function validarFormularioProyecto() {
   const pFin = document.getElementById("p-fin");
   const btnSubmit = document.querySelector("#form-crear-proyecto button[type='submit']");
 
-  if (!pNombre || !pInicio || !pFin) {
+  if (
+    advertirElementosFaltantes("validarFormularioProyecto", [
+      { id: "p-nombre", elemento: pNombre },
+      { id: "p-inicio", elemento: pInicio },
+      { id: "p-fin", elemento: pFin },
+      { id: "botón submit de form-crear-proyecto", elemento: btnSubmit }
+    ])
+  ) {
     return;
   }
 
@@ -208,9 +278,6 @@ function validarFormularioProyecto() {
   marcarCampo(pInicio, inicioValido);
   marcarCampo(pFin, finValido);
 
-  if (!btnSubmit) {
-    return;
-  }
 
   if (nombreValido && inicioValido && finValido) {
     btnSubmit.removeAttribute("disabled");
@@ -225,9 +292,17 @@ function validarFormularioTarea() {
   const tResp = document.getElementById("t-responsable");
   const btnSubmit = document.querySelector("#form-nueva-tarea button[type='submit']");
 
-  if (!selectP || !tNombre || !tResp) {
+  if (
+    advertirElementosFaltantes("validarFormularioTarea", [
+      { id: "select-proyecto", elemento: selectP },
+      { id: "t-nombre", elemento: tNombre },
+      { id: "t-responsable", elemento: tResp },
+      { id: "botón submit de form-nueva-tarea", elemento: btnSubmit }
+    ])
+  ) {
     return;
   }
+
 
   const proyectoValido = selectP.value.trim().length > 0;
   const nombreValido = tNombre.value.trim().length > 0;
@@ -237,9 +312,6 @@ function validarFormularioTarea() {
   marcarCampo(tNombre, nombreValido);
   marcarCampo(tResp, respValido);
 
-  if (!btnSubmit) {
-    return;
-  }
 
   if (proyectoValido && nombreValido && respValido) {
     btnSubmit.removeAttribute("disabled");
@@ -383,6 +455,72 @@ function mostrarError(contenedorId, mensaje) {
 }
 
 /**
+ * Recupera proyectos y filtros almacenados.
+ */
+function cargarDatosDesdeStorage() {
+  const datosGuardados = StorageUtil.obtener("planix:proyectos", "local");
+  let erroresRecuperacion = 0;
+
+  if (datosGuardados && Array.isArray(datosGuardados)) {
+    datosGuardados.forEach(jsonObj => {
+      try {
+        const proyecto = Proyecto.fromJSON(jsonObj);
+        const existe = gestor.buscar(proyecto.nombre);
+
+        if (!existe) {
+          gestor.agregar(proyecto);
+        } else {
+          console.warn(
+            `Proyecto "${proyecto.nombre}" omitido: duplicado en Storage.`
+          );
+        }
+      } catch (error) {
+        erroresRecuperacion++;
+
+        console.error(
+          "Error al reconstruir proyecto desde Storage:",
+          jsonObj,
+          error
+        );
+      }
+    });
+  }
+
+  if (erroresRecuperacion > 0) {
+    mostrarError(
+      "contenedor-alertas",
+      `Advertencia: ${erroresRecuperacion} proyecto(s) no pudieron recuperarse del almacenamiento.`
+    );
+  }
+
+  const filtroGuardado = StorageUtil.obtener(
+    "planix:sesion:filtros",
+    "session"
+  );
+
+  if (filtroGuardado) {
+    const filtroEl = document.getElementById("filtro-tareas");
+
+    if (filtroEl) {
+      filtroEl.value = filtroGuardado;
+    }
+  }
+}
+
+/**
+ * Persiste el gestor completo utilizando su método de serialización.
+ */
+function guardarEnStorage() {
+  const dataSerializada = gestor.toJSON().proyectos;
+
+  StorageUtil.guardar(
+    "planix:proyectos",
+    dataSerializada,
+    "local"
+  );
+}
+
+/**
  * Resetea un formulario y limpia sus clases de validación visual.
  * @param {string} formId - ID del formulario a limpiar.
  */
@@ -423,45 +561,4 @@ function mostrarMensaje(contenedorId, mensaje, tipoColor) {
   setTimeout(() => {
     if (contenedor.contains(alerta)) alerta.remove();
   }, 4000);
-}
-
-// ========================================
-// 6. Persistencia
-// ========================================
-
-/**
- * Carga los proyectos desde localStorage y restaura el filtro de sesión.
- */
-function cargarDatosDesdeStorage() {
-  const datosGuardados = StorageUtil.obtener("planix:proyectos", "local");
-
-  if (datosGuardados && Array.isArray(datosGuardados)) {
-    datosGuardados.forEach(jsonObj => {
-      try {
-        const proyectoReconstruido = Proyecto.fromJSON(jsonObj);
-        const existente = gestor.buscar(proyectoReconstruido.nombre);
-        if (!existente) {
-          gestor.agregar(proyectoReconstruido);
-        } else {
-          console.warn(`Proyecto omitido al restaurar desde storage: ${proyectoReconstruido.nombre}`);
-        }
-      } catch (error) {
-        console.error("Error al reconstruir proyecto desde storage:", error);
-      }
-    });
-  }
-
-  const filtroGuardado = StorageUtil.obtener("planix:sesion:filtros", "session");
-  const filtroElemento = document.getElementById("filtro-tareas");
-  if (filtroGuardado && filtroElemento) {
-    filtroElemento.value = filtroGuardado;
-  }
-}
-
-/**
- * Persiste el estado actual de todos los proyectos en localStorage.
- */
-function guardarEnStorage() {
-  const dataSerializada = gestor.listar().map(p => p.toJSON());
-  StorageUtil.guardar("planix:proyectos", dataSerializada, "local");
 }

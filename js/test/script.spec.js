@@ -53,6 +53,12 @@ describe('Planix - Evento y DOM Controller', function () {
     contenedorAlertas().innerHTML = '';
   });
 
+  it('verifica que las dependencias principales estén disponibles', function () {
+    expect(function () {
+      verificarDependencias();
+    }).not.toThrow();
+  });
+
   describe('Validación en tiempo real', function () {
     it('no marca un campo vacío como inválido', function () {
       pNombre().value = '';
@@ -105,15 +111,21 @@ describe('Planix - Evento y DOM Controller', function () {
     });
 
     it('no falla validarFormularioProyecto si faltan campos o botón', function () {
-      const fixture = document.getElementById('test-fixture');
-      const formEl = formProyecto();
+  const fixture = document.getElementById('test-fixture');
+  const formEl = formProyecto();
 
-      fixture.removeChild(formEl);
+  spyOn(console, 'warn');
 
-      try {
-        expect(function () {
+  fixture.removeChild(formEl);
+
+  try {
+    expect(function () {
       validarFormularioProyecto();
     }).not.toThrow();
+
+    expect(console.warn).toHaveBeenCalled();
+    expect(console.warn.calls.mostRecent().args[0])
+      .toContain('validarFormularioProyecto');
   } finally {
     fixture.appendChild(formEl);
   }
@@ -124,6 +136,8 @@ describe('Planix - Evento y DOM Controller', function () {
       const formEl = formTarea();
       const selectEl = selectProyecto();
 
+      spyOn(console, 'warn');
+
       fixture.removeChild(formEl);
       fixture.removeChild(selectEl);
 
@@ -131,6 +145,10 @@ describe('Planix - Evento y DOM Controller', function () {
         expect(function () {
           validarFormularioTarea();
         }).not.toThrow();
+
+        expect(console.warn).toHaveBeenCalled();
+        expect(console.warn.calls.mostRecent().args[0])
+          .toContain('validarFormularioTarea');
       } finally {
         fixture.appendChild(formEl);
         fixture.appendChild(selectEl);
@@ -139,6 +157,29 @@ describe('Planix - Evento y DOM Controller', function () {
   });
 
   describe('Manejadores de formulario', function () {
+    it('no falla al crear un proyecto si faltan campos del formulario', function () {
+      const fixture = document.getElementById('test-fixture');
+      const formEl = formProyecto();
+
+      fixture.removeChild(formEl);
+
+      try {
+        const event = {
+          preventDefault: jasmine.createSpy('preventDefault'),
+          target: formEl
+        };
+
+        expect(function () {
+          manejarCrearProyecto(event);
+        }).not.toThrow();
+
+        expect(event.preventDefault).toHaveBeenCalled();
+        expect(gestor.listar().length).toBe(0);
+        expect(contenedorAlertas().textContent).toContain('Formulario incompleto');
+      } finally {
+        fixture.appendChild(formEl);
+      }
+    });
     it('crea un proyecto y actualiza el selector de proyectos', function () {
       pNombre().value = 'Nuevo Proyecto';
       pInicio().value = '01/01/2026';
@@ -213,6 +254,30 @@ describe('Planix - Evento y DOM Controller', function () {
   });
 
   describe('Manipulación de selectores y vistas', function () {
+    it('limpia la tabla y muestra un mensaje si falla el filtrado', function () {
+      createProject('Proyecto Filtro');
+
+      actualizarListaProyectos();
+      selectProyecto().value = 'Proyecto Filtro';
+
+      cuerpoTabla().innerHTML =
+        '<tr><td>Contenido anterior</td></tr>';
+
+      spyOn(gestor, 'filtrarTareas')
+        .and.throwError('Criterio inválido');
+
+      manejarFiltrarTareas({
+        target: {
+          value: 'criterio-invalido'
+        }
+      });
+
+      expect(cuerpoTabla().textContent)
+        .toContain('Error al aplicar filtro.');
+
+      expect(cuerpoTabla().textContent)
+        .not.toContain('Contenido anterior');
+    });
     it('actualiza el selector de proyectos manteniendo la selección actual', function () {
       expect(selectProyecto().options.length).toBe(1);
 
@@ -371,6 +436,20 @@ describe('Planix - Evento y DOM Controller', function () {
   });
 
   describe('Persistencia de estado', function () {
+    it('utiliza GestorProyectos.toJSON al guardar el estado', function () {
+      createProject('Proyecto Serializado');
+
+      spyOn(gestor, 'toJSON').and.callThrough();
+
+      guardarEnStorage();
+
+      expect(gestor.toJSON).toHaveBeenCalled();
+
+      const datos = StorageUtil.obtener('planix:proyectos', 'local');
+
+      expect(datos.length).toBe(1);
+      expect(datos[0].nombre).toBe('Proyecto Serializado');
+    });
     it('guarda el estado del gestor en localStorage', function () {
       createProject('Proyecto Seis');
       guardarEnStorage();
@@ -395,7 +474,7 @@ describe('Planix - Evento y DOM Controller', function () {
       cargarDatosDesdeStorage();
 
       expect(gestor.listar().length).toBe(1);
-      expect(console.warn).toHaveBeenCalledWith('Proyecto omitido al restaurar desde storage: Proyecto Duplicado');
+      expect(console.warn).toHaveBeenCalledWith('Proyecto "Proyecto Duplicado" omitido: duplicado en Storage.');
     });
 
     it('carga el estado inicial desde localStorage y sessionStorage', function () {
@@ -408,6 +487,37 @@ describe('Planix - Evento y DOM Controller', function () {
 
       expect(gestor.listar().length).toBe(1);
       expect(filtroTareas().value).toBe('pendiente');
+    });
+
+    it('recupera proyectos válidos e informa los proyectos corruptos', function () {
+      const valido = new Proyecto(
+        'Proyecto Válido',
+        '01/01/2026',
+        '31/12/2026'
+      ).toJSON();
+
+      const corrupto = {
+        nombre: '',
+        fechaInicio: 'fecha-invalida',
+        fechaFin: null,
+        tareas: []
+      };
+
+      StorageUtil.guardar(
+        'planix:proyectos',
+        [valido, corrupto],
+        'local'
+      );
+
+      spyOn(console, 'error');
+
+      cargarDatosDesdeStorage();
+
+      expect(gestor.buscar('Proyecto Válido')).not.toBeNull();
+      expect(gestor.listar().length).toBe(1);
+      expect(console.error).toHaveBeenCalled();
+      expect(contenedorAlertas().textContent)
+        .toContain('1 proyecto(s) no pudieron recuperarse');
     });
   });
 
