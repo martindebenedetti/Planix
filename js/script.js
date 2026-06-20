@@ -464,7 +464,7 @@ function cargarDatosDesdeStorage() {
   if (datosGuardados && Array.isArray(datosGuardados)) {
     datosGuardados.forEach(jsonObj => {
       try {
-        const proyecto = Proyecto.fromJSON(jsonObj);
+        const proyecto = GestorProyectos.fromJSON({ proyectos: [jsonObj] }).listar()[0];
         const existe = gestor.buscar(proyecto.nombre);
 
         if (!existe) {
