@@ -26,6 +26,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/RC5-a-RC13-corrección-script.js] Refactorización defensiva del controlador resolviendo observaciones RC5 a RC13: implementación de null-checks en accesos al DOM, delegación de eventos, manejo estricto de excepciones (try/catch) en serialización/recuperación del Storage, corrección en persistencia de sesión y actualización dinámica de visibilidad de secciones.  
+  PR: [#119](https://github.com/martindebenedetti/Planix/pull/119) — @giann98 (Desarrollador JS Eventos + DOM)
+
 - [fix/rc14-rc15]RC14: Se completa "Criterios de aceptación — Checklist". RC15: Se reemplaza el uso directo de `Proyecto.fromJSON()` en `cargarDatosDesdeStorage()` por una delegación a `GestorProyectos.fromJSON()`, eliminando la duplicación de lógica de reconstrucción en el controlador.
   PR: [#118](https://github.com/martindebenedetti/Planix/pull/118) — @martindebenedetti (Desarrollador JS POO)
 
