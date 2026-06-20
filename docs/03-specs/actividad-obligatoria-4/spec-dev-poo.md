@@ -60,12 +60,12 @@
 
 ### Criterios de aceptación — Checklist
 
-- [ ] 3 clases implementadas en js/models/ (Tarea, Proyecto, GestorProyectos)
-- [ ] Constructores con validaciones internas que lanzan errores descriptivos
-- [ ] Métodos documentados con JSDoc completo
-- [ ] toJSON() y static fromJSON(json) en cada clase
-- [ ] Diagrama de clases PlantUML exportado en .puml y .png
-- [ ] diagrama-clases-doc.md con descripción y justificación
+- [x] 3 clases implementadas en js/models/ (Tarea, Proyecto, GestorProyectos)
+- [x] Constructores con validaciones internas que lanzan errores descriptivos
+- [x] Métodos documentados con JSDoc completo
+- [x] toJSON() y static fromJSON(json) en cada clase
+- [x] Diagrama de clases PlantUML exportado en .puml y .png
+- [x] diagrama-clases-doc.md con descripción y justificación
 
 ---
 
