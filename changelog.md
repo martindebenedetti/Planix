@@ -6,30 +6,28 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ## [Unreleased]
 
-### Added
-
-### Fixed
-
 ---
 
 ## [Release Actividad Obligatoria N° 4] 2026-06-15
 
 ### Added
 
-* [feature/coord-devops-cuarta-entrega] Se completaron las tareas de Coordinación, DevOps y Tester QA de la Actividad Obligatoria N.º 4, incluyendo revisión de entregas, gestión de hallazgos, correcciones de robustez y seguridad, pruebas Jasmine y evidencias finales con 88 specs aprobados y 0 failures.
+- [feature/coord-devops-cuarta-entrega] Se completaron las tareas de Coordinación, DevOps y Tester QA de la Actividad Obligatoria N.º 4, incluyendo revisión de entregas, gestión de hallazgos, correcciones de robustez y seguridad, pruebas Jasmine y evidencias finales con 88 specs aprobados y 0 failures.
   PR: [#110](https://github.com/martindebenedetti/Planix/pull/110) - @leanlex (Coordinador / DevOps + Tester QA) - Issue: [#109](https://github.com/martindebenedetti/Planix/issues/109)
 
-
-- [feature/dev-eventos-dom] Refactorización de `js/script.js` a controlador puro, eliminación de `prompt()`/`alert()`, implementación de eventos del DOM para captura de datos, renderizado dinámico de la interfaz (tabla Gantt, barra de progreso, alertas visuales) e integración con persistencia y modelos. Actualización de `index.html` y documentación técnica en `spec-dev-eventos-dom.md`.  
+* [feature/dev-eventos-dom] Refactorización de `js/script.js` a controlador puro, eliminación de `prompt()`/`alert()`, implementación de eventos del DOM para captura de datos, renderizado dinámico de la interfaz (tabla Gantt, barra de progreso, alertas visuales) e integración con persistencia y modelos. Actualización de `index.html` y documentación técnica en `spec-dev-eventos-dom.md`.  
   PR: [#113](https://github.com/martindebenedetti/Planix/pull/113) — @giann98 (Desarrollador JS Eventos + DOM) — Issue: [#111](https://github.com/martindebenedetti/Planix/issues/111)
 
-- [feature/dev-poo-logica-negocio] Implementación de clases del dominio (Tarea, Proyecto, GestorProyectos) en `js/models/` aplicando POO en ES5. Creación de diagrama de clases PlantUML, actualización de `index.html` y documentación técnica en `spec-dev-poo.md`.  
+* [feature/dev-poo-logica-negocio] Implementación de clases del dominio (Tarea, Proyecto, GestorProyectos) en `js/models/` aplicando POO en ES5. Creación de diagrama de clases PlantUML, actualización de `index.html` y documentación técnica en `spec-dev-poo.md`.  
   PR: [#108](https://github.com/martindebenedetti/Planix/pull/108) — @martindebenedetti (Desarrollador JS POO) — Issue: [#107](https://github.com/martindebenedetti/Planix/issues/107)
 
-- [feature/dev-storage] Se agrega la capa de abstracción para `localStorage` y `sessionStorage` mediante `js/utils/storage.js`, y documentación de estrategia en `docs/06-storage/storage-doc.md`.  
+* [feature/dev-storage] Se agrega la capa de abstracción para `localStorage` y `sessionStorage` mediante `js/utils/storage.js`, y documentación de estrategia en `docs/06-storage/storage-doc.md`.  
   PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (Desarrollador JS Storage) — Issue: [#105](https://github.com/martindebenedetti/Planix/issues/105)
 
 ### Fixed
+
+- [fix/rc14-rc15]RC14: Se completa "Criterios de aceptación — Checklist". RC15: Se reemplaza el uso directo de `Proyecto.fromJSON()` en `cargarDatosDesdeStorage()` por una delegación a `GestorProyectos.fromJSON()`, eliminando la duplicación de lógica de reconstrucción en el controlador.
+  PR: [#118](https://github.com/martindebenedetti/Planix/pull/118) — @martindebenedetti (Desarrollador JS POO)
 
 - [fix/resolucion_issue] Resolución de issues #112 #114 y #115: se definen `validarFormatoFecha()` y `parsearFecha()` como funciones privadas en `js/models/Proyecto.js` (resuelve `ReferenceError`); se implementan `toJSON()` y `fromJSON()` en `GestorProyectos` (resuelve 2 tests fallidos de Jasmine); y se refactoriza `js/script.js` a controlador puro eliminando funciones de validación y datos globales.  
   PR: [#116](https://github.com/martindebenedetti/Planix/pull/116) — @martindebenedetti (Desarrollador JS POO) — Issue:[#112](https://github.com/martindebenedetti/Planix/issues/112) [#114](https://github.com/martindebenedetti/Planix/issues/114), [#115](https://github.com/martindebenedetti/Planix/issues/115)
