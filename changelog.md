@@ -26,6 +26,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/rc16-rc17] RC16: Se completa checklist de criterios de aceptación en `docs/03-specs/actividad-obligatoria-4/spec-dev-storage.md`. RC17: Se agrega manejo específico de `QuotaExceededError` en `js/utils/storage.js`, distinguiendo el caso de storage lleno con un mensaje diferenciado del error genérico.  
+  PR: [#121](https://github.com/martindebenedetti/Planix/pull/121) — @martindebenedetti (Desarrollador JS POO)
+
 - [fix/rc1-a-rc3] RC1: Se completa checklist de criterios de aceptación en `docs/03-specs/actividad-obligatoria-4/spec-tester-qa.md`, marcando el ítem `spec-tester-qa.md creado y commiteado antes de modificar tests`. RC2: Se elimina sección "Pendiente para la publicación final" de `README.md` por contener información no relevante. RC3: Se actualizan los roles en la tabla de integrantes del `README.md`.  
   PR: [#120](https://github.com/martindebenedetti/Planix/pull/120) — @martindebenedetti (Desarrollador JS POO)
 
