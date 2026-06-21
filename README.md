@@ -8,12 +8,12 @@
 
 ## Integrantes del equipo
 
-| Nombre y Apellido    | Matrícula |    Usuario Git    |                  Rol                  |
-| :------------------- | :-------: | :---------------: | :-----------------------------------: |
-| Martín Debenedetti   |  151579   | martindebenedetti | Arquitecto de Diagrama de Actividades |
-| Leandro Berro        |  155667   |      leanlex      |       Desarrollador JavaScript        |
-| Gian Franco Pasquali |  148159   |      giann98      |         Coordinador / DevOps          |
-| Compartido           |     -     |         -         |    Tester JavaScript / QA Engineer    |
+| Nombre y Apellido    | Matrícula |    Usuario Git    |               Rol                |
+| :------------------- | :-------: | :---------------: | :------------------------------: |
+| Martín Debenedetti   |  151579   | martindebenedetti |       Desarrollador JS POO       |
+| Leandro Berro        |  155667   |      leanlex      | Coordinador - DevOps / Tester QA |
+| Gian Franco Pasquali |  148159   |      giann98      |  Desarrollador JS Eventos + DOM  |
+| Leandro Berro        |  155667   |      leanlex      |     Desarrollador JS Storage     |
 
 ---
 
@@ -148,37 +148,32 @@ En esta etapa se incorporaron clases de dominio orientadas a objetos, persistenc
 
 ### Avances alcanzados
 
--  implementación de las clases `Tarea`, `Proyecto` y `GestorProyectos`;
--  incorporación de validaciones dentro de los modelos;
--  implementación de serialización y reconstrucción mediante `toJSON()` y `fromJSON()`;
--  persistencia de proyectos y tareas mediante `localStorage`;
--  persistencia del filtro activo mediante `sessionStorage`;
--  implementación de operaciones reutilizables en `StorageUtil`;
--  refactorización de `js/script.js` como controlador de Eventos + DOM;
--  reemplazo de `prompt()` y `alert()` por formularios y alertas visuales de Bootstrap;
--  validación de formularios en tiempo real;
--  actualización dinámica del selector de proyectos;
--  renderizado de tareas y estados en la tabla;
--  actualización de la barra de avance;
--  filtrado de tareas por estado;
--  revisión técnica de las PR #108, #113 y #116;
--  registro y seguimiento de los Issues #114 y #115;
--  implementación de tests Jasmine para POO, Storage y Eventos + DOM;
--  actualización de `test-runner.html` con un DOM mínimo para testing;
--  incorporación de evidencias visuales de las ejecuciones;
--  documentación técnica de los roles mediante specs;
--  integración progresiva de las ramas técnicas hacia `develop`.
+- implementación de las clases `Tarea`, `Proyecto` y `GestorProyectos`;
+- incorporación de validaciones dentro de los modelos;
+- implementación de serialización y reconstrucción mediante `toJSON()` y `fromJSON()`;
+- persistencia de proyectos y tareas mediante `localStorage`;
+- persistencia del filtro activo mediante `sessionStorage`;
+- implementación de operaciones reutilizables en `StorageUtil`;
+- refactorización de `js/script.js` como controlador de Eventos + DOM;
+- reemplazo de `prompt()` y `alert()` por formularios y alertas visuales de Bootstrap;
+- validación de formularios en tiempo real;
+- actualización dinámica del selector de proyectos;
+- renderizado de tareas y estados en la tabla;
+- actualización de la barra de avance;
+- filtrado de tareas por estado;
+- revisión técnica de las PR #108, #113 y #116;
+- registro y seguimiento de los Issues #114 y #115;
+- implementación de tests Jasmine para POO, Storage y Eventos + DOM;
+- actualización de `test-runner.html` con un DOM mínimo para testing;
+- incorporación de evidencias visuales de las ejecuciones;
+- documentación técnica de los roles mediante specs;
+- integración progresiva de las ramas técnicas hacia `develop`.
 
 ### Resultado final de testing
 
 ```text
 88 specs, 0 failures
 ```
-
--  88 tests ejecutados;
--  88 tests aprobados;
--  sin errores de carga;
--  sin regresiones detectadas en POO, Storage ni Eventos + DOM.
 
 ### Pendiente para la publicación final
 
@@ -194,32 +189,31 @@ En esta etapa se incorporaron clases de dominio orientadas a objetos, persistenc
 
 ## Organización del repositorio
 
--  `plan.md`: requerimientos funcionales y contexto general del proyecto.
--  `README.md`: presentación, objetivos, tecnologías y estado del proyecto.
--  `index.html`: estructura principal de la interfaz.
--  `css/styles.css`: variables, tipografías y layout general.
--  `css/components.css`: estilos de componentes visuales.
--  `css/responsive.css`: media queries y ajustes responsivos.
--  `css/bootstrap-overrides.css`: personalizaciones sobre Bootstrap.
--  `docs/01-mockup/`: imágenes y recursos visuales.
--  `docs/03-specs/`: especificaciones técnicas organizadas por actividad y rol.
--  `docs/03-specs/actividad-obligatoria-4/`: specs correspondientes a la Actividad Obligatoria N.º 4.
--  `docs/04-testing/`: documentación y casos de prueba.
--  `docs/05-diagramas/`: diagramas UML y archivos PlantUML.
--  `changelog.md`: registro de contribuciones, PR, fixes y participación.
--  `.github/PULL_REQUEST_TEMPLATE/`: plantillas para Pull Requests.
--  `js/models/Tarea.js`: clase de dominio para las tareas.
--  `js/models/Proyecto.js`: clase de dominio para proyectos y sus tareas.
--  `js/models/GestorProyectos.js`: administración de la colección de proyectos.
--  `js/utils/storage.js`: operaciones de persistencia con Web Storage.
--  `js/script.js`: controlador de Eventos + DOM.
--  `js/test/test-runner.html`: runner de Jasmine con DOM de prueba.
--  `js/test/models.spec.js`: tests de las clases del dominio.
--  `js/test/storage.spec.js`: tests de `localStorage`, `sessionStorage` y `StorageUtil`.
--  `js/test/script.spec.js`: tests de formularios, eventos y manipulación del DOM.
--  `js/test/screenshots/`: evidencias visuales de las ejecuciones de Jasmine.
--  `js/test/testing-doc.md`: documentación técnica del testing.
-
+- `plan.md`: requerimientos funcionales y contexto general del proyecto.
+- `README.md`: presentación, objetivos, tecnologías y estado del proyecto.
+- `index.html`: estructura principal de la interfaz.
+- `css/styles.css`: variables, tipografías y layout general.
+- `css/components.css`: estilos de componentes visuales.
+- `css/responsive.css`: media queries y ajustes responsivos.
+- `css/bootstrap-overrides.css`: personalizaciones sobre Bootstrap.
+- `docs/01-mockup/`: imágenes y recursos visuales.
+- `docs/03-specs/`: especificaciones técnicas organizadas por actividad y rol.
+- `docs/03-specs/actividad-obligatoria-4/`: specs correspondientes a la Actividad Obligatoria N.º 4.
+- `docs/04-testing/`: documentación y casos de prueba.
+- `docs/05-diagramas/`: diagramas UML y archivos PlantUML.
+- `changelog.md`: registro de contribuciones, PR, fixes y participación.
+- `.github/PULL_REQUEST_TEMPLATE/`: plantillas para Pull Requests.
+- `js/models/Tarea.js`: clase de dominio para las tareas.
+- `js/models/Proyecto.js`: clase de dominio para proyectos y sus tareas.
+- `js/models/GestorProyectos.js`: administración de la colección de proyectos.
+- `js/utils/storage.js`: operaciones de persistencia con Web Storage.
+- `js/script.js`: controlador de Eventos + DOM.
+- `js/test/test-runner.html`: runner de Jasmine con DOM de prueba.
+- `js/test/models.spec.js`: tests de las clases del dominio.
+- `js/test/storage.spec.js`: tests de `localStorage`, `sessionStorage` y `StorageUtil`.
+- `js/test/script.spec.js`: tests de formularios, eventos y manipulación del DOM.
+- `js/test/screenshots/`: evidencias visuales de las ejecuciones de Jasmine.
+- `js/test/testing-doc.md`: documentación técnica del testing.
 
 ---
 
