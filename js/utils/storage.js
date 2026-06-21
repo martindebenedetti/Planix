@@ -86,7 +86,11 @@ function guardar(clave, valor, tipo = "local") {
     storage.setItem(clave, valorSerializado);
     return true;
   } catch (error) {
-    console.error("Error al guardar en storage:", error);
+    if (error && error.name === "QuotaExceededError") {
+      console.error("Storage lleno: no se pudo guardar '" + clave + "'. Se ha alcanzado el límite de almacenamiento disponible.");
+    } else {
+      console.error("Error al guardar en storage:", error);
+    }
     return false;
   }
 }
