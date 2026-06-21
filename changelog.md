@@ -26,6 +26,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/rc1-a-rc3] RC1: Se completa checklist de criterios de aceptación en `docs/03-specs/actividad-obligatoria-4/spec-tester-qa.md`, marcando el ítem `spec-tester-qa.md creado y commiteado antes de modificar tests`. RC2: Se elimina sección "Pendiente para la publicación final" de `README.md` por contener información no relevante. RC3: Se actualizan los roles en la tabla de integrantes del `README.md`.  
+  PR: [#120](https://github.com/martindebenedetti/Planix/pull/120) — @martindebenedetti (Desarrollador JS POO)
+
 - [fix/RC5-a-RC13-corrección-script.js] Refactorización defensiva del controlador resolviendo observaciones RC5 a RC13: implementación de null-checks en accesos al DOM, delegación de eventos, manejo estricto de excepciones (try/catch) en serialización/recuperación del Storage, corrección en persistencia de sesión y actualización dinámica de visibilidad de secciones.  
   PR: [#119](https://github.com/martindebenedetti/Planix/pull/119) — @giann98 (Desarrollador JS Eventos + DOM)
 
