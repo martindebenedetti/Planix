@@ -131,15 +131,15 @@ Donde `tipo` podrá recibir:
 
 ### Criterios de aceptación
 
-- [ ] El archivo `spec-dev-storage.md` fue creado y commiteado antes de `js/utils/storage.js`.
-- [ ] Existe el archivo `js/utils/storage.js`.
-- [ ] Se implementan funciones CRUD completas.
-- [ ] Todas las operaciones tienen manejo de errores con `try-catch`.
-- [ ] Se implementa serialización y deserialización automática con JSON.
-- [ ] Se documenta la estrategia en `docs/06-storage/storage-doc.md`.
-- [ ] El código no manipula DOM ni contiene lógica visual.
-- [ ] El módulo puede ser probado desde Jasmine.
-- [ ] La implementación puede integrarse con clases del dominio mediante `toJSON()` y `fromJSON()`.
+- [x] El archivo `spec-dev-storage.md` fue creado y commiteado antes de `js/utils/storage.js`.
+- [x] Existe el archivo `js/utils/storage.js`.
+- [x] Se implementan funciones CRUD completas.
+- [x] Todas las operaciones tienen manejo de errores con `try-catch`.
+- [x] Se implementa serialización y deserialización automática con JSON.
+- [x] Se documenta la estrategia en `docs/06-storage/storage-doc.md`.
+- [x] El código no manipula DOM ni contiene lógica visual.
+- [x] El módulo puede ser probado desde Jasmine.
+- [x] La implementación puede integrarse con clases del dominio mediante `toJSON()` y `fromJSON()`.
 
 ---
 
