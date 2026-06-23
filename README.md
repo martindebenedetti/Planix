@@ -8,12 +8,12 @@
 
 ## Integrantes del equipo
 
-| Nombre y Apellido    | Matrícula |    Usuario Git    |                  Rol                  |
-| :------------------- | :-------: | :---------------: | :-----------------------------------: |
-| Martín Debenedetti   |  151579   | martindebenedetti | Arquitecto de Diagrama de Actividades |
-| Leandro Berro        |  155667   |      leanlex      |       Desarrollador JavaScript        |
-| Gian Franco Pasquali |  148159   |      giann98      |         Coordinador / DevOps          |
-| Compartido           |     -     |         -         |    Tester JavaScript / QA Engineer    |
+| Nombre y Apellido    | Matrícula |    Usuario Git    |               Rol                |
+| :------------------- | :-------: | :---------------: | :------------------------------: |
+| Martín Debenedetti   |  151579   | martindebenedetti |       Desarrollador JS POO       |
+| Leandro Berro        |  155667   |      leanlex      | Coordinador - DevOps / Tester QA |
+| Gian Franco Pasquali |  148159   |      giann98      |  Desarrollador JS Eventos + DOM  |
+| Leandro Berro        |  155667   |      leanlex      |     Desarrollador JS Storage     |
 
 ---
 
@@ -142,63 +142,77 @@ Los diagramas cubren los siguientes flujos del sistema:
 
 ## Estado del proyecto
 
-El proyecto se encuentra actualmente en desarrollo de la **Actividad Obligatoria N°3**, tomando como base consolidada y corregida el Primer Parcial y las actividades anteriores.
+El proyecto se encuentra en la etapa de cierre y publicación de la **Actividad Obligatoria N.º 4**, tomando como base consolidada las actividades anteriores y la tercera entrega.
 
-En esta etapa se incorpora la lógica de negocio del sistema utilizando JavaScript, testing automatizado con Jasmine y diagramas de actividades mediante PlantUML.
+En esta etapa se incorporaron clases de dominio orientadas a objetos, persistencia mediante Web Storage, manejo de Eventos + DOM y testing automatizado con Jasmine.
 
-### Avances alcanzados hasta el momento
+### Avances alcanzados
 
-- integración de la base corregida de las Actividades Obligatorias 1 y 2;
-- backport de la release anterior hacia `develop`;
-- creación de la especificación técnica inicial del rol Coordinador / DevOps;
-- actualización del mockup visual del proyecto para reflejar la migración a Bootstrap;
-- exportación del mockup actualizado como `docs/01-mockup/disenio-bootstrap.png`;
-- migración de la interfaz principal a Bootstrap 5 utilizando sistema de grillas responsive;
-- incorporación de componentes avanzados de Bootstrap (`navbar`, `modal`, `offcanvas`, `accordion`, `cards`, `buttons`, `progress`);
-- incorporación de componentes HTML avanzados y mejoras estructurales semánticas;
-- integración de `bootstrap-overrides.css` para conservar la identidad visual del proyecto;
-- implementación de 4 flujos funcionales en `js/script.js` con validaciones de nombre, fecha y estado;
-- implementación de testing automatizado con Jasmine en `js/test/script.spec.js` y `js/test/test-runner.html`;
-- ejecución de Jasmine mediante Playwright MCP y documentación de resultados en `js/test/testing-doc.md`;
-- generación de evidencias de testing en `js/test/screenshots/` y `docs/04-testing/`;
-- documentación técnica de los roles mediante specs organizadas por entrega;
-- integración de casos de prueba TC-6 a TC-10;
-- realización de code reviews asistidas por IA utilizando GitHub Copilot Agent;
-- creación de release y versionado formal `v1.1-primer-parcial`;
-- limpieza y normalización de ramas según criterios de entrega;
-- consolidación de la base técnica de la Actividad Obligatoria N°3 con JavaScript y testing automatizado.
+- implementación de las clases `Tarea`, `Proyecto` y `GestorProyectos`;
+- incorporación de validaciones dentro de los modelos;
+- implementación de serialización y reconstrucción mediante `toJSON()` y `fromJSON()`;
+- persistencia de proyectos y tareas mediante `localStorage`;
+- persistencia del filtro activo mediante `sessionStorage`;
+- implementación de operaciones reutilizables en `StorageUtil`;
+- refactorización de `js/script.js` como controlador de Eventos + DOM;
+- reemplazo de `prompt()` y `alert()` por formularios y alertas visuales de Bootstrap;
+- validación de formularios en tiempo real;
+- actualización dinámica del selector de proyectos;
+- renderizado de tareas y estados en la tabla;
+- actualización de la barra de avance;
+- filtrado de tareas por estado;
+- revisión técnica de las PR #108, #113 y #116;
+- registro y seguimiento de los Issues #114 y #115;
+- implementación de tests Jasmine para POO, Storage y Eventos + DOM;
+- actualización de `test-runner.html` con un DOM mínimo para testing;
+- incorporación de evidencias visuales de las ejecuciones;
+- documentación técnica de los roles mediante specs;
+- integración progresiva de las ramas técnicas hacia `develop`.
 
-### Pendiente para esta etapa
+### Resultado final de testing
 
-- revisión final de diagramas de actividades PlantUML y sus exportaciones `.puml` y `.png`;
-- validación de la publicación de GitHub Pages para la rama `release/tercera-entrega`;
-- creación del release final `v1.1-tercera-entrega`;
-- seguimiento y limpieza definitiva de ramas para dejar solo `master`, `develop` y `release/tercera-entrega`;
-- publicación final de la entrega en Slack y en el campus.
+```text
+88 specs, 0 failures
+```
+
+### Pendiente para la publicación final
+
+- validación final de la rama `release/cuarta-entrega`;
+- apertura y aprobación de la Pull Request hacia `master`;
+- verificación de GitHub Pages sobre la versión integrada;
+- creación del tag `v1.2-cuarta-entrega`;
+- publicación de la GitHub Release;
+- sincronización final de `master` hacia `develop`;
+- limpieza controlada de ramas ya integradas.
 
 ---
 
 ## Organización del repositorio
 
-- `plan.md`: archivo base con los requerimientos funcionales y el contexto general del proyecto.
-- `README.md`: presentación general del proyecto, objetivos, tecnologías, referencias visuales y estado de avance.
-- `index.html`: estructura base del frontend.
-- `css/styles.css`: variables, reset, tipografías y layout general del proyecto.
-- `css/components.css`: estilos de componentes visuales específicos del sistema.
+- `plan.md`: requerimientos funcionales y contexto general del proyecto.
+- `README.md`: presentación, objetivos, tecnologías y estado del proyecto.
+- `index.html`: estructura principal de la interfaz.
+- `css/styles.css`: variables, tipografías y layout general.
+- `css/components.css`: estilos de componentes visuales.
 - `css/responsive.css`: media queries y ajustes responsivos.
-- `css/bootstrap-overrides.css`: personalizaciones visuales sobre Bootstrap para mantener la identidad del proyecto.
-- `docs/01-mockup/`: imágenes y recursos visuales del mockup organizados por actividad o entrega.
-- `docs/03-specs/`: especificaciones técnicas organizadas por etapa y por rol.
-- `docs/03-specs/primer-parcial/`: especificaciones técnicas correspondientes al Primer Parcial.
-- `docs/04-testing/`: documentación de testing y casos de prueba.
-- `docs/04-testing/test-case-1.md` a `test-case-5.md`: testing de la Actividad Obligatoria 2.
-- `docs/04-testing/test-case-6.md` a `test-case-10.md`: testing previsto para el Primer Parcial.
-- `changelog.md`: registro de contribuciones, PRs, fixes y participación del equipo.
-- `.github/PULL_REQUEST_TEMPLATE/`: plantillas de Pull Requests para ramas feature y release.
-- `docs/05-diagramas/01-diagrama-de-actividades/`: diagramas UML de flujos funcionales.
-- `js/script.js`: lógica principal del sistema implementada en JavaScript.
-- `js/test/test-runner.html`: runner de Jasmine para ejecución de tests.
-- `js/test/script.spec.js`: suites de testing automatizado.
+- `css/bootstrap-overrides.css`: personalizaciones sobre Bootstrap.
+- `docs/01-mockup/`: imágenes y recursos visuales.
+- `docs/03-specs/`: especificaciones técnicas organizadas por actividad y rol.
+- `docs/03-specs/actividad-obligatoria-4/`: specs correspondientes a la Actividad Obligatoria N.º 4.
+- `docs/04-testing/`: documentación y casos de prueba.
+- `docs/05-diagramas/`: diagramas UML y archivos PlantUML.
+- `changelog.md`: registro de contribuciones, PR, fixes y participación.
+- `.github/PULL_REQUEST_TEMPLATE/`: plantillas para Pull Requests.
+- `js/models/Tarea.js`: clase de dominio para las tareas.
+- `js/models/Proyecto.js`: clase de dominio para proyectos y sus tareas.
+- `js/models/GestorProyectos.js`: administración de la colección de proyectos.
+- `js/utils/storage.js`: operaciones de persistencia con Web Storage.
+- `js/script.js`: controlador de Eventos + DOM.
+- `js/test/test-runner.html`: runner de Jasmine con DOM de prueba.
+- `js/test/models.spec.js`: tests de las clases del dominio.
+- `js/test/storage.spec.js`: tests de `localStorage`, `sessionStorage` y `StorageUtil`.
+- `js/test/script.spec.js`: tests de formularios, eventos y manipulación del DOM.
+- `js/test/screenshots/`: evidencias visuales de las ejecuciones de Jasmine.
 - `js/test/testing-doc.md`: documentación técnica del testing.
 
 ---

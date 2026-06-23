@@ -8,6 +8,41 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ---
 
+## [Release Actividad Obligatoria N° 4] 2026-06-15
+
+### Added
+
+- [feature/coord-devops-cuarta-entrega] Se completaron las tareas de Coordinación, DevOps y Tester QA de la Actividad Obligatoria N.º 4, incluyendo revisión de entregas, gestión de hallazgos, correcciones de robustez y seguridad, pruebas Jasmine y evidencias finales con 88 specs aprobados y 0 failures.
+  PR: [#110](https://github.com/martindebenedetti/Planix/pull/110) - @leanlex (Coordinador / DevOps + Tester QA) - Issue: [#109](https://github.com/martindebenedetti/Planix/issues/109)
+
+* [feature/dev-eventos-dom] Refactorización de `js/script.js` a controlador puro, eliminación de `prompt()`/`alert()`, implementación de eventos del DOM para captura de datos, renderizado dinámico de la interfaz (tabla Gantt, barra de progreso, alertas visuales) e integración con persistencia y modelos. Actualización de `index.html` y documentación técnica en `spec-dev-eventos-dom.md`.  
+  PR: [#113](https://github.com/martindebenedetti/Planix/pull/113) — @giann98 (Desarrollador JS Eventos + DOM) — Issue: [#111](https://github.com/martindebenedetti/Planix/issues/111)
+
+* [feature/dev-poo-logica-negocio] Implementación de clases del dominio (Tarea, Proyecto, GestorProyectos) en `js/models/` aplicando POO en ES5. Creación de diagrama de clases PlantUML, actualización de `index.html` y documentación técnica en `spec-dev-poo.md`.  
+  PR: [#108](https://github.com/martindebenedetti/Planix/pull/108) — @martindebenedetti (Desarrollador JS POO) — Issue: [#107](https://github.com/martindebenedetti/Planix/issues/107)
+
+* [feature/dev-storage] Se agrega la capa de abstracción para `localStorage` y `sessionStorage` mediante `js/utils/storage.js`, y documentación de estrategia en `docs/06-storage/storage-doc.md`.  
+  PR: [#106](https://github.com/martindebenedetti/Planix/pull/106) — @leanlex (Desarrollador JS Storage) — Issue: [#105](https://github.com/martindebenedetti/Planix/issues/105)
+
+### Fixed
+
+- [fix/rc16-rc17] RC16: Se completa checklist de criterios de aceptación en `docs/03-specs/actividad-obligatoria-4/spec-dev-storage.md`. RC17: Se agrega manejo específico de `QuotaExceededError` en `js/utils/storage.js`, distinguiendo el caso de storage lleno con un mensaje diferenciado del error genérico.  
+  PR: [#121](https://github.com/martindebenedetti/Planix/pull/121) — @martindebenedetti (Desarrollador JS POO)
+
+- [fix/rc1-a-rc3] RC1: Se completa checklist de criterios de aceptación en `docs/03-specs/actividad-obligatoria-4/spec-tester-qa.md`, marcando el ítem `spec-tester-qa.md creado y commiteado antes de modificar tests`. RC2: Se elimina sección "Pendiente para la publicación final" de `README.md` por contener información no relevante. RC3: Se actualizan los roles en la tabla de integrantes del `README.md`.  
+  PR: [#120](https://github.com/martindebenedetti/Planix/pull/120) — @martindebenedetti (Desarrollador JS POO)
+
+- [fix/RC5-a-RC13-corrección-script.js] Refactorización defensiva del controlador resolviendo observaciones RC5 a RC13: implementación de null-checks en accesos al DOM, delegación de eventos, manejo estricto de excepciones (try/catch) en serialización/recuperación del Storage, corrección en persistencia de sesión y actualización dinámica de visibilidad de secciones.  
+  PR: [#119](https://github.com/martindebenedetti/Planix/pull/119) — @giann98 (Desarrollador JS Eventos + DOM)
+
+- [fix/rc14-rc15]RC14: Se completa "Criterios de aceptación — Checklist". RC15: Se reemplaza el uso directo de `Proyecto.fromJSON()` en `cargarDatosDesdeStorage()` por una delegación a `GestorProyectos.fromJSON()`, eliminando la duplicación de lógica de reconstrucción en el controlador.
+  PR: [#118](https://github.com/martindebenedetti/Planix/pull/118) — @martindebenedetti (Desarrollador JS POO)
+
+- [fix/resolucion_issue] Resolución de issues #112 #114 y #115: se definen `validarFormatoFecha()` y `parsearFecha()` como funciones privadas en `js/models/Proyecto.js` (resuelve `ReferenceError`); se implementan `toJSON()` y `fromJSON()` en `GestorProyectos` (resuelve 2 tests fallidos de Jasmine); y se refactoriza `js/script.js` a controlador puro eliminando funciones de validación y datos globales.  
+  PR: [#116](https://github.com/martindebenedetti/Planix/pull/116) — @martindebenedetti (Desarrollador JS POO) — Issue:[#112](https://github.com/martindebenedetti/Planix/issues/112) [#114](https://github.com/martindebenedetti/Planix/issues/114), [#115](https://github.com/martindebenedetti/Planix/issues/115)
+
+---
+
 ## [Release Actividad Obligatoria N° 3] 2026-05-18
 
 ### Added
@@ -24,10 +59,11 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+---
+
 - [fix/RCN1-ui-test-spies] RCN1 Se realiza cambios en los documentos de test y se vuelve a ejecutar la suite de Jasmine con 43 casos, agregando los spies PR: [#103] (https://github.com/martindebenedetti/Planix/pull/103) — @giann98 (Tester JavaScript)
 
 - [fix/RC25-justificacion-test] RC25 Se agrega justificación al test realizado en `testing-doc.md`. PR: [#102] (https://github.com/martindebenedetti/Planix/pull/102) — @giann98 (Tester JavaScript)
-
 
 - [fix/RC24-seccion-at-close] RC24 Corrección de estructura en `spec-tester.md` separando la sección
   "AL CERRAR" de la sección "DURANTE". PR: [#101] (https://github.com/martindebenedetti/Planix/pull/101) — @giann98 (Tester JavaScript)
