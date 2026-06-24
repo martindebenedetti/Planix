@@ -172,17 +172,17 @@ function manejarAgregarTarea(event) {
 
     guardarEnStorage();
 
-    mostrarExito("contenedor-alertas", "Tarea agregada exitosamente.");
+    Notificaciones.exito("Tarea guardada correctamente");
 
     inputNombreT.value = "";
     inputResp.value = "";
     inputNombreT.classList.remove("is-valid");
     inputResp.classList.remove("is-valid");
-    
+
     validarFormularioTarea();
     actualizarVistaProyecto(proyecto);
   } catch (error) {
-    mostrarError("contenedor-alertas", error.message);
+    Notificaciones.error("No se pudo guardar la tarea");
   }
 }
 
