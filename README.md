@@ -8,12 +8,13 @@
 
 ## Integrantes del equipo
 
-| Nombre y Apellido    | Matrícula |    Usuario Git    |               Rol                |
-| :------------------- | :-------: | :---------------: | :------------------------------: |
-| Martín Debenedetti   |  151579   | martindebenedetti |       Desarrollador JS POO       |
-| Leandro Berro        |  155667   |      leanlex      | Coordinador - DevOps / Tester QA |
-| Gian Franco Pasquali |  148159   |      giann98      |  Desarrollador JS Eventos + DOM  |
-| Leandro Berro        |  155667   |      leanlex      |     Desarrollador JS Storage     |
+| Nombre y Apellido    | Matrícula |   Usuario Git   |                Rol                 |
+| :------------------- | :-------: | :-------------: | :--------------------------------: |
+| Martín Debenedetti   |  151579   | martindebenedetti | Desarrollador JS Librerías Externas |
+| Leandro Berro        |  155667   |      leanlex      | Desarrollador JS Asíncrono (Fetch) |
+| Gian Franco Pasquali |  148159   |      giann98      | Coordinador - DevOps |
+| Gian Franco Pasquali |  148159   |      giann98      | Tester QA |
+  
 
 ---
 
@@ -21,212 +22,114 @@
 
 Este proyecto propone el desarrollo de una página web orientada a la visualización y planificación de tareas mediante un esquema tipo **diagrama de Gantt**.
 
-El sistema busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones, responsables y nivel de avance. A partir de las bases construidas en las Actividades Obligatorias 1 y 2, el **Primer Parcial** y la Actividad Obligatoria 3, esta etapa incorpora una nueva evolución del proyecto centrada en:
+El sistema busca representar de forma clara la organización de tareas, sus fechas, duración, relaciones, responsables y nivel de avance. A partir de las sólidas bases funcionales y de arquitectura MVC construidas durante las Actividades Obligatorias (1 a 4) y el Primer Parcial, el **Segundo Parcial** incorpora una nueva evolución del proyecto centrada en:
 
-- la **migración visual y estructural a Bootstrap**;
-- la mejora de la **responsividad** del sitio;
-- la incorporación de **componentes avanzados de Bootstrap**;
-- la incorporación de **componentes HTML avanzados**;
-- la continuidad del trabajo colaborativo mediante GitHub, issues, Pull Requests, changelog y documentación técnica.
+- la **programación asíncrona** para el consumo de datos externos mediante Fetch API y Promises;
+- la mejora de la UI/UX a través de la integración de **librerías externas**;
+- la ampliación de la **suite de testing automatizado** con Jasmine para flujos asíncronos;
+- la ejecución de **auditorías de rendimiento y accesibilidad** utilizando Lighthouse.
 
 ---
 
 ## Objetivos
 
-- Consolidar una base visual y funcional para un planificador de tareas tipo diagrama de Gantt.
-- Mantener coherencia entre diseño, estructura HTML, estilos CSS y futura integración con Bootstrap.
-- Mejorar la experiencia responsive del proyecto en distintos dispositivos.
-- Incorporar componentes visuales y estructurales más avanzados para enriquecer la interfaz.
-- Documentar técnica y metodológicamente el trabajo del equipo mediante specs, testing y changelog.
-- Dejar preparada una base sólida para próximas etapas de desarrollo con JavaScript e interactividad.
+**Objetivos Consolidados (Etapas anteriores):**
+- Base visual y funcional para un planificador de tareas tipo diagrama de Gantt.
+- Mejora de la experiencia responsive utilizando Bootstrap 5.
+- Documentación técnica y metodológica mediante specs, testing y changelog.
+- Arquitectura MVC con manipulación dinámica del DOM, eventos y persistencia (Web Storage).
+
+**Nuevos Objetivos (Segundo Parcial):**
+- Transformar la aplicación estática en una plataforma dinámica capaz de consumir datos asíncronos.
+- Enriquecer la interfaz de usuario con notificaciones visuales modernas y accesibles mediante librerías de terceros.
+- Aplicar funciones de orden superior (`map`, `filter`, `reduce`) para el procesamiento de colecciones de datos.
+- Garantizar la calidad del software mediante pruebas automatizadas de integración y consumo de APIs.
+- Mantener estrictos estándares de rendimiento (Performance $\ge80$) y accesibilidad (Accessibility $\ge90$) auditados con Lighthouse.
+- Consolidar la gestión DevOps mediante flujos de Code Review asistidos por Inteligencia Artificial.
 
 ---
 
 ## Tecnologías utilizadas
 
-- HTML5
-- CSS3
+- HTML5 & CSS3
 - Bootstrap 5
-- Markdown
-- Git y GitHub
-- GitHub Copilot
+- JavaScript (ES6+, Programación Orientada a Objetos)
+- Fetch API & Promises
+- JSONPlaceholder API
+- SweetAlert2 (Librería externa)
+- Web Storage API (`localStorage`, `sessionStorage`)
+- Jasmine (Testing Automatizado)
+- Google Lighthouse (Auditorías de QA)
+- Git y GitHub (GitHub Projects / Kanban)
+- GitHub Copilot Agent Mode (Code Reviews)
+- Markdown & PlantUML
 - Figma
-- Playwright MCP
-- GitHub MCP
-- Claude Code MCP
-- JavaScript
-- Jasmine
-- PlantUML
 
 ---
 
-## Funcionalidades previstas
+## Funcionalidades principales
 
-- Visualización de tareas en formato tabla.
-- Representación gráfica de tareas en una línea de tiempo tipo Gantt.
-- Visualización de duración, fechas de inicio y fin.
-- Visualización de relaciones entre tareas.
-- Visualización del porcentaje de avance.
-- Mejora de la navegación principal mediante componentes reutilizables.
-- Mejora de la experiencia responsive utilizando Bootstrap.
-- Incorporación de componentes avanzados de Bootstrap.
-- Incorporación de componentes HTML avanzados.
-- Posibilidad de ampliar el detalle de cada tarea mediante una ventana modal o vista ampliada.
-- Integración progresiva de lógica JavaScript para simulación funcional del sistema.
-- Base preparada para futura integración con DOM y eventos en próximas entregas.
+- **Creación dinámica de proyectos y tareas:** Gestión completa en el DOM sin recargas de página.
+- **Visualización Gantt:** Representación de tareas en formato tabla con estados y métricas de avance.
+- **Feedback visual moderno:** Alertas, confirmaciones y notificaciones manejadas mediante SweetAlert2.
+- **Consumo asíncrono de datos:** Carga inicial de datos desde un endpoint REST (`/todos`) integrado a los modelos POO.
+- **Persistencia local:** Almacenamiento y recuperación automática del estado a través de un módulo Storage encapsulado.
+- **Filtrado avanzado:** Procesamiento en tiempo real de colecciones de tareas por estado utilizando funciones de orden superior.
 
 ---
 
-## Estructura general prevista de la página
+## Documentación y Evolución Gráfica
 
-La página contempla una organización visual compuesta por:
-
-- barra de navegación superior;
-- panel lateral o área de navegación contextual;
-- encabezado de proyecto con estado y progreso;
-- sector de carga o edición de tareas;
-- área principal destinada a la visualización del cronograma;
-- componentes complementarios para interacción y visualización;
-- pie de página con referencias e información general.
-
----
-
-## Documentación
-
-### Mockup del proyecto en Figma
-
+### Mockups y Diseño UX/UI
 - **Enlace al archivo de Figma:** [Ver mockup en Figma](https://www.figma.com/design/v1QKUD77dcsM0WDRMHapz6/Mockup-UX---Planificador-Gantt?node-id=54-283&t=Ww4homzl6jfJxrQm-0)
+- **Mockup inicial (AO1):** ![Mockup inicial](docs/01-mockup/actividad-obligatoria-1/diseño-inicial.png)
+- **Mockup con estilos (AO2):** ![Mockup con estilos](docs/01-mockup/actividad-obligatoria-2/diseño-con-estilos.png)
+- **Mockup Bootstrap (Primer Parcial):** ![Mockup Bootstrap](docs/01-mockup/disenio-bootstrap.png)
 
-### Mockup inicial (Actividad Obligatoria 1)
+### Diagramas de Arquitectura
+- [Ver documentación de diagramas de actividades (4 Flujos)](docs/05-diagramas/01-diagrama-de-actividades/diagramas-doc.md)
+- [Ver diagrama de clases POO](docs/05-diagramas/02-diagrama-de-clases/diagrama-clases-doc.md)
 
-![Imagen exportada del mockup inicial](docs/01-mockup/actividad-obligatoria-1/diseño-inicial.png)
-
-### Mockup con estilos (Actividad Obligatoria 2)
-
-En esta etapa se incorporaron al diseño:
-
-- paleta de colores definitiva;
-- tipografías del sistema;
-- espaciados y dimensiones de componentes;
-- estados de interacción de los elementos de interfaz.
-
-![Mockup con estilos](docs/01-mockup/actividad-obligatoria-2/diseño-con-estilos.png)
-
-### Mockup actualizado para Bootstrap (Primer Parcial)
-
-Para el Primer Parcial se generó una nueva versión del mockup tomando como base el diseño mejorado de la Actividad Obligatoria 2 e incorporando criterios visuales compatibles con Bootstrap, incluyendo:
-
-- una **navbar** superior;
-- reorganización del layout con lógica de **grilla Bootstrap**;
-- mantenimiento de la identidad visual del proyecto;
-- una estructura visual preparada para integrar componentes avanzados.
-
-![Mockup Bootstrap](docs/01-mockup/disenio-bootstrap.png)
-
-### Diagramas de Actividades — 4 flujos funcionales
-
-[Ver documentación de diagramas de actividades](docs/05-diagramas/01-diagrama-de-actividades/diagramas-doc.md)
-
-Los diagramas cubren los siguientes flujos del sistema:
-
-- **Flujo 1:** Crear Proyecto
-- **Flujo 2:** Agregar Tarea a un Proyecto
-- **Flujo 3:** Calcular Avance del Proyecto
-- **Flujo 4:** Listar y Filtrar Tareas
-
-### Índice de testing y casos de prueba
-
-[Ver documentación de testing](docs/04-testing/testing-doc.md)
+### QA, Testing y Librerías
+- [Ver índice de testing funcional (Jasmine) y auditorías (Lighthouse)](docs/04-testing/testing-doc.md)
+- [Ver documentación e integración de SweetAlert2](docs/07-librerias/libreria-doc.md)
 
 ---
 
 ## Estado del proyecto
 
-El proyecto se encuentra en la etapa de cierre y publicación de la **Actividad Obligatoria N.º 4**, tomando como base consolidada las actividades anteriores y la tercera entrega.
+### ✅ Actividad Obligatoria N.º 4 (Completada)
+Se consolidó la lógica de negocio mediante POO, se integró el almacenamiento local (`localStorage` y `sessionStorage`) y se refactorizó la app hacia una arquitectura de Eventos y manipulación dinámica del DOM, eliminando funciones bloqueantes.
+- **Resultado final de testing:** 88 specs, 0 failures.
+- **Release:** `v1.2-cuarta-entrega` mergeada exitosamente en `master`.
 
-En esta etapa se incorporaron clases de dominio orientadas a objetos, persistencia mediante Web Storage, manejo de Eventos + DOM y testing automatizado con Jasmine.
-
-### Avances alcanzados
-
-- implementación de las clases `Tarea`, `Proyecto` y `GestorProyectos`;
-- incorporación de validaciones dentro de los modelos;
-- implementación de serialización y reconstrucción mediante `toJSON()` y `fromJSON()`;
-- persistencia de proyectos y tareas mediante `localStorage`;
-- persistencia del filtro activo mediante `sessionStorage`;
-- implementación de operaciones reutilizables en `StorageUtil`;
-- refactorización de `js/script.js` como controlador de Eventos + DOM;
-- reemplazo de `prompt()` y `alert()` por formularios y alertas visuales de Bootstrap;
-- validación de formularios en tiempo real;
-- actualización dinámica del selector de proyectos;
-- renderizado de tareas y estados en la tabla;
-- actualización de la barra de avance;
-- filtrado de tareas por estado;
-- revisión técnica de las PR #108, #113 y #116;
-- registro y seguimiento de los Issues #114 y #115;
-- implementación de tests Jasmine para POO, Storage y Eventos + DOM;
-- actualización de `test-runner.html` con un DOM mínimo para testing;
-- incorporación de evidencias visuales de las ejecuciones;
-- documentación técnica de los roles mediante specs;
-- integración progresiva de las ramas técnicas hacia `develop`.
-
-### Resultado final de testing
-
-```text
-88 specs, 0 failures
-```
-
-### Pendiente para la publicación final
-
-- validación final de la rama `release/cuarta-entrega`;
-- apertura y aprobación de la Pull Request hacia `master`;
-- verificación de GitHub Pages sobre la versión integrada;
-- creación del tag `v1.2-cuarta-entrega`;
-- publicación de la GitHub Release;
-- sincronización final de `master` hacia `develop`;
-- limpieza controlada de ramas ya integradas.
+### 🚀 Segundo Parcial (En desarrollo)
+El equipo se encuentra trabajando paralelamente en la integración de consumo de APIs, librerías externas y testing avanzado:
+- Implementación del módulo `apiService.js` para consumo asíncrono desde JSONPlaceholder.
+- Configuración de estados de carga (`loading`, `success`, `error`) en la interfaz.
+- Integración de la librería externa `SweetAlert2` mediante CDN para notificaciones globales.
+- Levantamiento de baseline de rendimiento y accesibilidad con Lighthouse.
+- Extensión de la suite de Jasmine con `api.spec.js` y `library.spec.js`.
+- Gestión activa del flujo de Pull Requests y Code Reviews asistidos por IA a cargo del Coordinador DevOps.
 
 ---
 
 ## Organización del repositorio
 
-- `plan.md`: requerimientos funcionales y contexto general del proyecto.
-- `README.md`: presentación, objetivos, tecnologías y estado del proyecto.
-- `index.html`: estructura principal de la interfaz.
-- `css/styles.css`: variables, tipografías y layout general.
-- `css/components.css`: estilos de componentes visuales.
-- `css/responsive.css`: media queries y ajustes responsivos.
-- `css/bootstrap-overrides.css`: personalizaciones sobre Bootstrap.
-- `docs/01-mockup/`: imágenes y recursos visuales.
-- `docs/03-specs/`: especificaciones técnicas organizadas por actividad y rol.
-- `docs/03-specs/actividad-obligatoria-4/`: specs correspondientes a la Actividad Obligatoria N.º 4.
-- `docs/04-testing/`: documentación y casos de prueba.
-- `docs/05-diagramas/`: diagramas UML y archivos PlantUML.
-- `changelog.md`: registro de contribuciones, PR, fixes y participación.
-- `.github/PULL_REQUEST_TEMPLATE/`: plantillas para Pull Requests.
-- `js/models/Tarea.js`: clase de dominio para las tareas.
-- `js/models/Proyecto.js`: clase de dominio para proyectos y sus tareas.
-- `js/models/GestorProyectos.js`: administración de la colección de proyectos.
-- `js/utils/storage.js`: operaciones de persistencia con Web Storage.
-- `js/script.js`: controlador de Eventos + DOM.
-- `js/test/test-runner.html`: runner de Jasmine con DOM de prueba.
-- `js/test/models.spec.js`: tests de las clases del dominio.
-- `js/test/storage.spec.js`: tests de `localStorage`, `sessionStorage` y `StorageUtil`.
-- `js/test/script.spec.js`: tests de formularios, eventos y manipulación del DOM.
-- `js/test/screenshots/`: evidencias visuales de las ejecuciones de Jasmine.
-- `js/test/testing-doc.md`: documentación técnica del testing.
-
----
-
-## Observaciones de trabajo colaborativo
-
-El desarrollo del proyecto se organiza mediante:
-
-- ramas `feature/` individuales por rol;
-- Pull Requests hacia `develop`;
-- revisión previa antes de cada merge;
-- documentación obligatoria en `changelog.md`;
-- uso de issues para seguimiento de tareas y bugs;
-- coordinación de integración y release por parte del rol Coordinador / DevOps;
-- uso de GitHub Copilot Agent y herramientas MCP como apoyo de desarrollo y testing.
-
----
+- `plan.md`: Requerimientos funcionales y contexto general del proyecto.
+- `README.md`: Presentación, objetivos, tecnologías y estado del proyecto.
+- `changelog.md`: Registro de contribuciones, releases, PRs y participación de los integrantes.
+- `index.html`: Estructura principal de la interfaz.
+- `css/`: Hojas de estilo (`styles.css`, `components.css`, `responsive.css`, `bootstrap-overrides.css`).
+- `docs/01-mockup/`: Imágenes y recursos visuales de la evolución del diseño.
+- `docs/03-specs/`: Especificaciones técnicas organizadas por actividad y rol (AO1 a Segundo Parcial).
+- `docs/04-testing/`: Casos de prueba (Jasmine) y auditorías Lighthouse (`test-case-11`, `12` y `13`).
+- `docs/05-diagramas/`: Diagramas UML y archivos PlantUML.
+- `docs/06-storage/`: Documentación de operaciones de persistencia.
+- `docs/07-librerias/`: Documentación de integración y capturas de SweetAlert2.
+- `.github/PULL_REQUEST_TEMPLATE/`: Plantillas para Pull Requests.
+- `js/models/`: Clases de dominio POO (`Tarea.js`, `Proyecto.js`, `GestorProyectos.js`).
+- `js/utils/`: Utilidades transversales (`storage.js`).
+- `js/api/`: Módulos de consumo asíncrono (`apiService.js`).
+- `js/script.js`: Controlador de Eventos + DOM.
+- `js/test/`: Runner de Jasmine (`test-runner.html`) y suites de prueba (`models.spec.js`, `script.spec.js`, `storage.spec.js`, `api.spec.js`, `library.spec.js`).
