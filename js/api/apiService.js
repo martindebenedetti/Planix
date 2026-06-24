@@ -27,6 +27,17 @@ const ApiService = {
     return true;
   },
 
+  validarTodo(todo) {
+  return Boolean(
+    todo &&
+    typeof todo.id === "number" &&
+    typeof todo.title === "string" &&
+    todo.title.trim().length > 0 &&
+    typeof todo.completed === "boolean" &&
+    typeof todo.userId === "number"
+  );
+},
+
   mapearTodoATarea(todo) {
     return {
       idApi: todo.id,
@@ -38,7 +49,7 @@ const ApiService = {
 
   procesarTodos(todos) {
     const tareasMapeadas = todos
-      .filter(todo => todo && todo.title)
+      .filter(todo => this.validarTodo(todo))
       .map(todo => this.mapearTodoATarea(todo));
 
     const resumen = tareasMapeadas.reduce(

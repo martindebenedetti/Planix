@@ -5,7 +5,7 @@
 - Rol: Desarrollador JS Asíncrono - Fetch & APIs
 - Rama: `feature/dev-async-fetch-api`
 - Issue asociado: [#127](https://github.com/martindebenedetti/Planix/issues)
-- PR asociada: pendiente
+- PR asociada: [#128](https://github.com/martindebenedetti/Planix/pull/128)
 - API seleccionada: JSONPlaceholder
 - Endpoint principal: `https://jsonplaceholder.typicode.com/todos`
 

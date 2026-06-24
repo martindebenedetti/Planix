@@ -298,6 +298,7 @@ function manejarFiltrarTareas(event) {
 }
 
 async function manejarCargarTareasApi() {
+  const btnCargarTareasApi = document.getElementById("btn-cargar-tareas-api");
   const selectProyecto = document.getElementById("select-proyecto");
   const estadoApi = document.getElementById("estado-api");
 
@@ -319,6 +320,9 @@ async function manejarCargarTareasApi() {
   }
 
   try {
+    if (btnCargarTareasApi) {
+      btnCargarTareasApi.disabled = true;
+    }
     if (estadoApi) {
       estadoApi.textContent = "Cargando tareas desde API...";
     }
@@ -353,6 +357,10 @@ async function manejarCargarTareasApi() {
     }
 
     mostrarNotificacionError(error.message);
+  } finally {
+    if (btnCargarTareasApi) {
+      btnCargarTareasApi.disabled = false;
+    }
   }
 }
 

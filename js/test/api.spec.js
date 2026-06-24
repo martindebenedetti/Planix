@@ -96,6 +96,8 @@ describe("ApiService - Fetch & APIs", function () {
         { id: 1, title: "Tarea pendiente", completed: false, userId: 1 },
         { id: 2, title: "Tarea completada", completed: true, userId: 1 },
         { id: 3, title: "", completed: false, userId: 2 },
+        { id: "4", title: "ID inválido", completed: false, userId: 2 },
+        { id: 5, title: "Completed inválido", completed: "false", userId: 2 },
         null
       ];
 
