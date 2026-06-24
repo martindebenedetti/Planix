@@ -178,17 +178,17 @@ function manejarAgregarTarea(event) {
 
     guardarEnStorage();
 
-    mostrarExito("contenedor-alertas", "Tarea agregada exitosamente.");
+    Notificaciones.exito("Tarea guardada correctamente");
 
     inputNombreT.value = "";
     inputResp.value = "";
     inputNombreT.classList.remove("is-valid");
     inputResp.classList.remove("is-valid");
-    
+
     validarFormularioTarea();
     actualizarVistaProyecto(proyecto);
   } catch (error) {
-    mostrarError("contenedor-alertas", error.message);
+    Notificaciones.error("No se pudo guardar la tarea");
   }
 }
 
@@ -386,13 +386,24 @@ async function manejarCargarTareasApi() {
 }
 
 /** RC11: Delegación de eventos para botones dinámicos en la tabla Gantt. */
-function manejarAccionesTabla(event) {
+async function manejarAccionesTabla(event) {
   const elemento = event.target;
-  // Ejemplo: si existiera un botón con la clase 'btn-eliminar-tarea' generado dinámicamente
   if (elemento.classList.contains("btn-eliminar-tarea")) {
     const nombreTarea = elemento.getAttribute("data-tarea");
-    console.log(`Acción delegada: Eliminar tarea ${nombreTarea}`);
-    // Lógica futura de eliminación...
+    const confirmo = await Notificaciones.confirmar(
+      "¿Eliminar tarea?",
+      "Esta acción no se puede deshacer."
+    );
+    if (confirmo) {
+      const selectProyecto = document.getElementById("select-proyecto");
+      if (!selectProyecto || !selectProyecto.value) return;
+      const proyecto = gestor.buscar(selectProyecto.value);
+      if (!proyecto) return;
+      proyecto.eliminarTareaPorNombre(nombreTarea);
+      guardarEnStorage();
+      actualizarVistaProyecto(proyecto);
+      Notificaciones.exito("Tarea eliminada correctamente");
+    }
   }
 }
 
@@ -555,10 +566,21 @@ function renderizarTablaGantt(tareas) {
     tdGantt.className = "text-muted text-center small align-middle";
     tdGantt.textContent = "Renderizado de Gantt pendiente";
 
+    const tdAcciones = document.createElement("td");
+    tdAcciones.className = "text-center align-middle";
+    const btnEliminar = document.createElement("button");
+    btnEliminar.type = "button";
+    btnEliminar.className = "btn btn-danger btn-sm btn-eliminar-tarea";
+    btnEliminar.setAttribute("data-tarea", tarea.nombre);
+    btnEliminar.setAttribute("aria-label", `Eliminar tarea ${tarea.nombre}`);
+    btnEliminar.textContent = "Eliminar";
+    tdAcciones.appendChild(btnEliminar);
+
     tr.appendChild(tdNombre);
     tr.appendChild(tdResponsable);
     tr.appendChild(tdEstado);
     tr.appendChild(tdGantt);
+    tr.appendChild(tdAcciones);
     tbody.appendChild(tr);
   });
 }
