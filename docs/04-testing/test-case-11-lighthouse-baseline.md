@@ -36,8 +36,8 @@
 - Excelente. Cumple con todos los estándares de indexabilidad y etiquetas semánticas.
 
 ## Issues Generadas
-- [#125] **[Performance]** Optimizar y redimensionar `diseño-inicial.png`: La imagen se carga en 1440x2000px pero se renderiza a 32x44px, penalizando el LCP y el ancho de banda.
-- [#126] **[Accessibility]** Corregir ratio de contraste de colores en la interfaz gráfica para cumplir con el estándar WCAG.
+- [#130] **[Performance]** Optimizar y redimensionar `diseño-inicial.png`: La imagen se carga en 1440x2000px pero se renderiza a 32x44px, penalizando el LCP y el ancho de banda.
+- [#131] **[Accessibility]** Corregir ratio de contraste de colores en la interfaz gráfica para cumplir con el estándar WCAG.
 
 ## Conclusiones
 La aplicación actual, refactorizada en la Cuarta Entrega hacia una arquitectura de Eventos y POO, demuestra una Accesibilidad y SEO sobresalientes. Sin embargo, el puntaje de Performance inicial (76) se encuentra por debajo del umbral mínimo exigido (80), penalizado principalmente por la carga de recursos gráficos no redimensionados (`diseño-inicial.png`). Estas métricas servirán como línea base (baseline) para validar que la próxima integración asíncrona (Fetch API) y de librerías externas (SweetAlert2) no degrade la calidad de la experiencia, mientras el equipo de desarrollo soluciona la issue #125 para alcanzar el umbral de aprobación.
