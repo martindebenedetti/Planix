@@ -229,13 +229,24 @@ function manejarFiltrarTareas(event) {
 }
 
 /** RC11: Delegación de eventos para botones dinámicos en la tabla Gantt. */
-function manejarAccionesTabla(event) {
+async function manejarAccionesTabla(event) {
   const elemento = event.target;
-  // Ejemplo: si existiera un botón con la clase 'btn-eliminar-tarea' generado dinámicamente
   if (elemento.classList.contains("btn-eliminar-tarea")) {
     const nombreTarea = elemento.getAttribute("data-tarea");
-    console.log(`Acción delegada: Eliminar tarea ${nombreTarea}`);
-    // Lógica futura de eliminación...
+    const confirmo = await Notificaciones.confirmar(
+      "¿Eliminar tarea?",
+      "Esta acción no se puede deshacer."
+    );
+    if (confirmo) {
+      const selectProyecto = document.getElementById("select-proyecto");
+      if (!selectProyecto || !selectProyecto.value) return;
+      const proyecto = gestor.buscar(selectProyecto.value);
+      if (!proyecto) return;
+      proyecto.tareas = proyecto.tareas.filter(function(t) { return t.nombre !== nombreTarea; });
+      guardarEnStorage();
+      actualizarVistaProyecto(proyecto);
+      Notificaciones.exito("Tarea eliminada correctamente");
+    }
   }
 }
 
