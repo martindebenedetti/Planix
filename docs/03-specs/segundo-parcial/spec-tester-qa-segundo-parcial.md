@@ -39,25 +39,47 @@ Se ejecutarán auditorías en tres momentos clave para trackear la evolución de
 - **Justificación:** La generación de mocks para la función fetch global y el manejo de promesas en tests (async/await) puede ser propensa a errores sintácticos. Copilot agilizará el armado del esqueleto del test (arrange, act, assert), permitiendo al Tester enfocarse en la validación de la lógica de negocio.
 
 ### Criterios de Aceptación — Checklist
-- [ ] api.spec.js completo y funcional.
-- [ ] library.spec.js completo y funcional.
-- [ ] Test Case 11 (Baseline) documentado.
-- [ ] Test Case 12 (Post-fetch) documentado con comparaciones.
-- [ ] Test Case 13 (Post-library) documentado con comparaciones.
-- [ ] Issues de rendimiento/accesibilidad creadas y asignadas.
+- [x] api.spec.js completo y funcional.
+- [x] library.spec.js completo y funcional.
+- [x] Test Case 11 (Baseline) documentado.
+- [x] Test Case 12 (Post-fetch) documentado con comparaciones.
+- [x] Test Case 13 (Post-library) documentado con comparaciones.
+- [x] Issues de rendimiento/accesibilidad creadas y asignadas.
 
 ---
 
 ## ✅ AL CERRAR — Evidencias y Resultados
 
-> *[Esta sección se completará al finalizar las pruebas y revisiones]*
+### Archivos de testing implementados
+
+- `js/test/api.spec.js`
+- `js/test/library.spec.js`
+
+### Archivos de testing modificados
+
+- `js/test/script.spec.js`
+- `js/test/test-runner.html`
+- `js/test/testing-doc.md`
 
 ### Prompts utilizados en Copilot Agent
-*(Pendiente)*
+```text
+Actuá como un Tester QA/JS especializado en Jasmine. Necesito generar una suite de pruebas automatizadas para validar ApiService. Debe cubrir llamadas asíncronas con promesas mockeadas mediante spyOn(window, "fetch"), control de estados de respuestas HTTP erróneas, fallas de conectividad de red y la correcta ejecución lógica de transformaciones de arreglos utilizando filter, map y reduce dentro del método procesarTodos(todos). Proporcionalo en sintaxis ES5/ES6 compatible con navegadores de pruebas.
+```
 
 ### Resumen de Resultados
-- **Tests ejecutados:** *(Pendiente)*
-- **Lighthouse:** *(Pendiente)*
+- **Tests ejecutados:** Se integraron exitosamente las suites `api.spec.js` y `library.spec.js` al archivo unificado `test-runner.html`.
+- **Resultado final Jasmine:** 101 specs ejecutadas exitosamente, 0 failures.
+- **Evolución de Auditorías Lighthouse:**
+  - **Baseline Inicial (TC11):** Performance: 76 | Accesibilidad: 96 | Best Practices: 77 | SEO: 100
+  - **Post-Fetch API (TC12):** Performance: 98 | Accesibilidad: 97 | Best Practices: 77 | SEO: 100
+  - **Post-SweetAlert2 (TC13):** Performance: 98 | Accesibilidad: 97 | Best Practices: 77 | SEO: 100
 
-### Issues Reportadas
-*(Pendiente)*
+![Ejecución Jasmine](/js/test/screenshots/jasmine-segundo-parcial.png)
+
+### Issues Reportadas y Gestionadas
+1. **Issue #130:** [QA/Performance] Optimizar redimensionamiento de imagen `diseño-inicial.png` para mejorar LCP. Asignada a Martín Debenedetti. *Estado: Resuelta/Cerrada*.
+2. **Issue #131:** [QA/Accessibility] Corregir ratio de contraste en elementos de texto vs fondo (`.text-muted`). Asignada a Martín Debenedetti. *Estado: Resuelta/Cerrada*.
+
+### Ajustes manuales realizados sobre los tests
+Se incorporaron null-checks defensivos en `library.spec.js` para asegurar la disponibilidad de la variable global `Swal` antes de ejecutar las aserciones, previniendo falsos negativos por orden de carga de scripts.
+
