@@ -91,6 +91,19 @@ Proyecto.prototype.agregarTarea = function (tarea) {
 };
 
 /**
+ * Elimina la primera tarea cuyo nombre coincida exactamente con el argumento.
+ * @param {string} nombre - Nombre de la tarea a eliminar.
+ * @returns {boolean} true si se eliminó una tarea, false si no se encontró.
+ */
+Proyecto.prototype.eliminarTareaPorNombre = function (nombre) {
+  var longitudAntes = this.tareas.length;
+  this.tareas = this.tareas.filter(function (t) {
+    return t.nombre !== nombre;
+  });
+  return this.tareas.length < longitudAntes;
+};
+
+/**
  * Calcula el avance del proyecto en porcentaje.
  * @returns {number} Porcentaje de tareas completadas entre 0 y 100.
  */
