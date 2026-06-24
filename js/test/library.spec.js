@@ -1,13 +1,13 @@
 describe("Notificaciones - Pruebas de Integración de Librería Externa (SweetAlert2)", function () {
   beforeEach(function () {
     if (typeof Swal === "undefined") {
-      fail("La librería externa SweetAlert2 no está cargada en el entorno de pruebas.");
+      throw new Error("SweetAlert2 no está cargada en el entorno de pruebas.");
     }
   });
 
   describe("Inicialización y Configuración", function () {
     it("debe disparar la configuración adecuada de SweetAlert al invocar una notificación de éxito", function () {
-      spyOn(Swal, "fire").and.callThrough();
+      spyOn(Swal, "fire").and.returnValue(Promise.resolve());
 
       Notificaciones.exito("Operación realizada de forma correcta");
 

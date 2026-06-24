@@ -31,8 +31,12 @@ const gestor = new GestorProyectos();
 // ========================================
 document.addEventListener("DOMContentLoaded", () => {
   cargarDatosDesdeStorage();
-  configurarEventListeners();
-  actualizarUI();
+if (!window.TESTING_MODE) {
+    configurarEventListeners();
+    actualizarUI();
+  } else {
+    console.log("Planix: Modo Testing activado. Event listeners omitidos para aislamiento.");
+  }
 });
 
 function configurarEventListeners() {
