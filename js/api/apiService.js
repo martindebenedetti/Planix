@@ -1,14 +1,18 @@
 const ApiService = {
   baseUrl: "https://jsonplaceholder.typicode.com",
 
-  async obtenerTodos(limite = 10) {
-    const response = await fetch(`${this.baseUrl}/todos?_limit=${limite}`);
+  async fetchData(endpoint) {
+    const response = await fetch(`${this.baseUrl}${endpoint}`);
 
     if (!response.ok) {
       throw new Error(`Error HTTP: ${response.status}`);
     }
 
     return response.json();
+  },
+
+  async obtenerTodos(limite = 10) {
+    return this.fetchData(`/todos?_limit=${limite}`);
   },
 
   async eliminarTodo(id) {
