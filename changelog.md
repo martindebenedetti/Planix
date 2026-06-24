@@ -8,6 +8,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/coord-devops-segundo-parcial] Actualización general de la estructura del proyecto para la entrega del Segundo Parcial. Redacción de README.md con detalles de la v2.0, ejecución de Code Reviews asistidos por IA a los módulos asíncronos y de pruebas, y preparación del entorno para despliegue en GitHub Pages.
+PR: [#133](https://github.com/martindebenedetti/Planix/pull/133) — @giann98 (Coordinador / DevOps) — Issue: [#126](https://github.com/martindebenedetti/Planix/issues/126)
+
 - [feature/tester-qa-js-testing-suite] Implementación de suite de testing avanzada (101 specs) integrando `api.spec.js` y `library.spec.js`. Incorporación de auditorías de rendimiento y accesibilidad (Lighthouse) para monitoreo de métricas de calidad.
 PR: [#132](https://github.com/martindebenedetti/Planix/pull/132) — @giann98 (Tester QA/JS) — Issue: [#125](https://github.com/martindebenedetti/Planix/issues/125)
 
