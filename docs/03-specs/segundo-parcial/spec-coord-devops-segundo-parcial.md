@@ -34,16 +34,6 @@ Una vez entregado el parcial, la recepción y asignación de *Request Changes* (
 - **Justificación:** La IA permite detectar vulnerabilidades en llamadas asíncronas, faltantes de *try/catch*, ineficiencias en el DOM y problemas de cobertura en los tests de Jasmine de forma mucho más ágil y precisa, actuando como un par de ojos extra para asegurar la calidad de integración.
 
 ### Criterios de aceptación — Checklist
-- [ ] Correcciones de Actividad N°4 aplicadas y backport realizado a `develop`.
-- [ ] Mínimo de PRs revisados con IA documentados en este spec.
-- [ ] README.md y changelog.md actualizados.
-- [ ] GitHub Pages configurado y activo apuntando a la rama `release/segundo-parcial`.
-- [ ] LGTM y release `v2.0-segundo-parcial` obtenidos antes de la fecha límite.
-- [ ] Backport final de `release/segundo-parcial` hacia `develop` completado.
-
----
-
-### Criterios de aceptación — Checklist
 - [x] Correcciones de Actividad N°4 aplicadas y backport realizado a `develop`.
 - [x] Mínimo de PRs revisados con IA documentados en este spec.
 - [x] README.md y changelog.md actualizados.
