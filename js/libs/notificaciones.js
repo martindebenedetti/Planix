@@ -30,7 +30,7 @@ const Notificaciones = {
    * @param {string} mensaje - Mensaje a mostrar al usuario
    */
   exito(mensaje) {
-    Swal.fire({
+    return Swal.fire({
       icon: 'success',
       title: mensaje,
       timer: 2000,
@@ -43,7 +43,7 @@ const Notificaciones = {
    * @param {string} mensaje - Mensaje de error a mostrar al usuario
    */
   error(mensaje) {
-    Swal.fire({
+    return Swal.fire({
       icon: 'error',
       title: 'Ocurrió un error',
       text: mensaje
@@ -56,7 +56,7 @@ const Notificaciones = {
    * @param {string} mensaje - Cuerpo del mensaje
    */
   info(titulo, mensaje) {
-    Swal.fire({
+    return Swal.fire({
       icon: 'info',
       title: titulo,
       text: mensaje

@@ -242,7 +242,7 @@ async function manejarAccionesTabla(event) {
       if (!selectProyecto || !selectProyecto.value) return;
       const proyecto = gestor.buscar(selectProyecto.value);
       if (!proyecto) return;
-      proyecto.tareas = proyecto.tareas.filter(function(t) { return t.nombre !== nombreTarea; });
+      proyecto.eliminarTareaPorNombre(nombreTarea);
       guardarEnStorage();
       actualizarVistaProyecto(proyecto);
       Notificaciones.exito("Tarea eliminada correctamente");
