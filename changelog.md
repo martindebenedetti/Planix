@@ -6,6 +6,12 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ## [Unreleased]
 
+### Added
+
+- [feature/dev-async-fetch-api] Implementación de consumo asíncrono de tareas externas mediante JSONPlaceholder, incorporando fetch, manejo de errores HTTP/red, estados de carga en la UI, procesamiento de colecciones con filter, map y reduce, integración con DOM, persistencia mediante Storage y suite Jasmine para ApiService con 97 specs aprobados y 0 failures.
+PR: [#xx](https://github.com/martindebenedetti/Planix/pull/xx) - @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) - Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
+
+
 ---
 
 ## [Release Actividad Obligatoria N° 4] 2026-06-15
