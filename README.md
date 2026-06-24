@@ -12,8 +12,7 @@
 | :------------------- | :-------: | :-------------: | :--------------------------------: |
 | Martín Debenedetti   |  151579   | martindebenedetti | Desarrollador JS Librerías Externas |
 | Leandro Berro        |  155667   |      leanlex      | Desarrollador JS Asíncrono (Fetch) |
-| Gian Franco Pasquali |  148159   |      giann98      | Coordinador - DevOps |
-| Gian Franco Pasquali |  148159   |      giann98      | Tester QA |
+| Gian Franco Pasquali |  148159   |      giann98      | Coordinador - DevOps / Tester QA |
   
 
 ---
@@ -64,6 +63,8 @@ El sistema busca representar de forma clara la organización de tareas, sus fech
 - GitHub Copilot Agent Mode (Code Reviews)
 - Markdown & PlantUML
 - Figma
+- PlayWright MCP
+- GitHub MCP
 
 ---
 
@@ -103,14 +104,23 @@ Se consolidó la lógica de negocio mediante POO, se integró el almacenamiento 
 - **Resultado final de testing:** 88 specs, 0 failures.
 - **Release:** `v1.2-cuarta-entrega` mergeada exitosamente en `master`.
 
-### 🚀 Segundo Parcial (En desarrollo, pendiente evaluación)
-El equipo se encuentra trabajando paralelamente en la integración de consumo de APIs, librerías externas y testing avanzado:
-- Implementación del módulo `apiService.js` para consumo asíncrono desde JSONPlaceholder.
-- Configuración de estados de carga (`loading`, `success`, `error`) en la interfaz.
-- Integración de la librería externa `SweetAlert2` mediante CDN para notificaciones globales.
-- Levantamiento de baseline de rendimiento y accesibilidad con Lighthouse.
-- Extensión de la suite de Jasmine con `api.spec.js` y `library.spec.js`.
-- Gestión activa del flujo de Pull Requests y Code Reviews asistidos por IA a cargo del Coordinador DevOps.
+El proyecto se encuentra en la etapa de cierre y publicación del **Segundo Parcial**, incorporando consumo asíncrono de datos (Fetch API), integración de librerías externas (SweetAlert2) y suite de testing avanzada (Jasmine + Lighthouse).
+
+### Avances Segundo Parcial
+
+- Implementación de consumo asíncrono (Fetch API) desde JSONPlaceholder
+- Integración de SweetAlert2 para notificaciones modales
+- Suite de testing con Jasmine (101 specs, 0 failures)
+- Auditorías de rendimiento y accesibilidad con Lighthouse
+- Optimización de recursos (imágenes, contraste WCAG)
+- Gestión de issues QA con priorización
+
+### Resultado final de testing
+
+```text
+101 specs, 0 failures
+Performance: 98 | Accessibility: 97
+```
 
 ---
 
