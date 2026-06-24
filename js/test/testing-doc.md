@@ -410,3 +410,42 @@ if (document.querySelector("#modalCompartir")) {
 ### Nota sobre `mostrarMenuPrincipal()`
 
 La funcion llama a las funciones de flujo desde su scope interno. Por ese motivo, los tests no espian `Planix.ejecutarCrearProyecto()` ni funciones equivalentes; simulan secuencias completas de `prompt()` y verifican efectos observables: proyectos creados, tareas agregadas, reportes mostrados y alerts de salida.
+
+## Actualización - Iteración 4: Suite Avanzada (24/06/2026)
+
+- **Rama:** `feature/tester-qa-js-testing-suite`
+- **Runner:** `js/test/test-runner.html` (Integrado con `api.spec.js` y `library.spec.js`)
+- **Resultado:** **101 specs, 0 failures**
+
+### Nuevas Suites de Tests (Integración Continua)
+
+#### Suite: ApiService (Asíncrono)
+- Validación de `fetch` mockeado mediante `spyOn`.
+- Manejo de excepciones (errores HTTP 404/500 y errores de red).
+- Procesamiento de datos mediante funciones de orden superior (`map`, `filter`, `reduce`).
+
+#### Suite: Notificaciones (SweetAlert2)
+- Intercepción de modales externos (`Swal.fire`).
+- Validación de configuración de parámetros (íconos, títulos, timers).
+- Manejo de promesas de confirmación (SweetAlert `isConfirmed`).
+
+### Auditorías de Rendimiento (Lighthouse Report)
+Evolución de las métricas clave durante el desarrollo del segundo parcial:
+
+| Métrica | Baseline | Post-Fetch | Post-Librería |
+| :--- | :---: | :---: | :---: |
+| **Performance** | 76 | 98 | 98 |
+| **Accessibility** | 96 | 97 | 97 |
+| **Best Practices** | 77 | 77 | 77 |
+| **SEO** | 100 | 100 | 100 |
+
+### Gestión de Issues (QA Log)
+1. **Issue #130:** [QA/Performance] Optimización de redimensionamiento de imagen `diseño-inicial.png` para mejorar LCP. **Estado: Resuelta/Cerrada.**
+2. **Issue #131:** [QA/Accessibility] Corrección de ratio de contraste en elementos de texto vs fondo (`.text-muted`). **Estado: Resuelta/Cerrada.**
+
+### Ajustes Técnicos en Testing Runner
+- Inyección de CDN `sweetalert2.all.min.js` previa a `notificaciones.js` para evitar errores de referencia en el entorno de pruebas.
+- Incorporación de `null-checks` en `script.spec.js` para asegurar robustez ante cambios en el DOM durante la ejecución de los tests.
+
+**Última Actualización:** 24/06/2026  
+**Tester/QA :** Gian Franco Pasquali  

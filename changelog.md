@@ -8,8 +8,14 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Added
 
+- [feature/tester-qa-js-testing-suite] Implementación de suite de testing avanzada (101 specs) integrando `api.spec.js` y `library.spec.js`. Incorporación de auditorías de rendimiento y accesibilidad (Lighthouse) para monitoreo de métricas de calidad.
+PR: [#132](https://github.com/martindebenedetti/Planix/pull/132) — @giann98 (Tester QA/JS) — Issue: [#125](https://github.com/martindebenedetti/Planix/issues/125)
+
+
+- [feature/dev-libreria-externa-sweetalert2] Creación de `docs/03-specs/segundo-parcial/spec-dev-libreria-externa.md` con plan de integración de SweetAlert2 vía CDN. Integración de `Notificaciones.confirmar()` y `Notificaciones.exito()` en `manejarAccionesTabla()` de `js/script.js` para confirmación previa a eliminación de tareas. Reemplazo de alertas inline por `Notificaciones.exito()` y `Notificaciones.error()` en `manejarAgregarTarea()` al guardar una tarea. PR: [#129](https://github.com/martindebenedetti/Planix/pull/129) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#124](https://github.com/martindebenedetti/Planix/issues/124) — [#130](https://github.com/martindebenedetti/Planix/issues/130) — [#131](https://github.com/martindebenedetti/Planix/issues/131)
+
 - [feature/dev-async-fetch-api] Implementación de consumo asíncrono de tareas externas mediante JSONPlaceholder, incorporando fetch, manejo de errores HTTP/red, estados de carga en la UI, procesamiento de colecciones con filter, map y reduce, integración con DOM, persistencia mediante Storage y suite Jasmine para ApiService con 97 specs aprobados y 0 failures.
-PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) - @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) - Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
+PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) — Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
 
 
 ---
@@ -18,8 +24,6 @@ PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) - @leanlex (Des
 
 ### Added
 
-* [feature/dev-libreria-externa-sweetalert2] Creación de `docs/03-specs/segundo-parcial/spec-dev-libreria-externa.md` con plan de integración de SweetAlert2 vía CDN. Integración de `Notificaciones.confirmar()` y `Notificaciones.exito()` en `manejarAccionesTabla()` de `js/script.js` para confirmación previa a eliminación de tareas. Reemplazo de alertas inline por `Notificaciones.exito()` y `Notificaciones.error()` en `manejarAgregarTarea()` al guardar una tarea.  
-  PR: [#---] — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#124](https://github.com/martindebenedetti/Planix/issues/124)
 
 ---
 

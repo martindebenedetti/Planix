@@ -23,16 +23,13 @@ describe("ApiService - Fetch & APIs", function () {
 
     it("lanza error cuando la respuesta HTTP no es correcta", async function () {
       spyOn(window, "fetch").and.returnValue(Promise.resolve({
-        ok: false,
-        status: 404
+      ok: false,
+      status: 404
       }));
 
-      try {
-        await ApiService.fetchData("/todos/999999");
-        fail("La función debería haber lanzado un error HTTP.");
-      } catch (error) {
-        expect(error.message).toContain("Error HTTP: 404");
-      }
+      await expectAsync(
+     ApiService.fetchData("/todos/999999")
+      ).toBeRejectedWithError(/Error HTTP: 404/);
     });
 
     it("propaga errores de red al fallar fetch", async function () {
@@ -40,12 +37,9 @@ describe("ApiService - Fetch & APIs", function () {
         Promise.reject(new Error("Error de red"))
       );
 
-      try {
-        await ApiService.fetchData("/todos");
-        fail("La función debería haber lanzado un error de red.");
-      } catch (error) {
-        expect(error.message).toBe("Error de red");
-      }
+      await expectAsync(
+        ApiService.fetchData("/todos")
+      ).toBeRejectedWithError("Error de red");
     });
   });
 
@@ -134,13 +128,9 @@ describe("ApiService - Fetch & APIs", function () {
         status: 500
       }));
 
-      try {
-        await ApiService.eliminarTodo(1);
-        fail("La función debería haber lanzado un error.");
-      } catch (error) {
-        expect(error.message).toContain("No se pudo eliminar la tarea");
-        expect(error.message).toContain("500");
-      }
+      await expectAsync(
+        ApiService.eliminarTodo(1)
+      ).toBeRejectedWithError(/No se pudo eliminar la tarea.*500/);
     });
   });
 });

@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>Planix - Jasmine Test Runner</title>
 
-    <!-- Jasmine CSS -->
     <link rel="shortcut icon"
           type="image/png"
           href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine_favicon.png">
@@ -12,7 +11,10 @@
     <link rel="stylesheet"
           href="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine.min.css">
 
-    <!-- Jasmine -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.6.16/dist/sweetalert2.all.min.js"
+        integrity="sha384-<hash>"
+        crossorigin="anonymous"></script>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/jasmine-html.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jasmine/5.10.0/boot0.min.js"></script>
@@ -30,7 +32,6 @@
         window.TESTING_MODE = true;
     </script>
 
-    <!-- DOM mínimo requerido por js/script.js -->
     <div id="test-fixture" style="display: none;">
 
         <form id="form-crear-proyecto">
@@ -75,19 +76,21 @@
 
     </div>
 
-    <!-- Código fuente -->
     <script src="../utils/storage.js"></script>
     <script src="../models/Tarea.js"></script>
     <script src="../models/Proyecto.js"></script>
     <script src="../models/GestorProyectos.js"></script>
+    
     <script src="../api/apiService.js"></script>
+    <script src="../libs/notificaciones.js"></script>
+    
     <script src="../script.js"></script>
 
-    <!-- Tests actualmente compatibles -->
     <script src="./models.spec.js"></script>
     <script src="./storage.spec.js"></script>
     <script src="./script.spec.js"></script>
-    <script src="api.spec.js"></script>
+    <script src="./api.spec.js"></script>
+    <script src="./library.spec.js"></script>
 
 </body>
 </html>
