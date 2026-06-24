@@ -298,9 +298,9 @@ function manejarFiltrarTareas(event) {
 }
 
 async function manejarCargarTareasApi() {
-  const btnCargarTareasApi = document.getElementById("btn-cargar-tareas-api");
   const selectProyecto = document.getElementById("select-proyecto");
   const estadoApi = document.getElementById("estado-api");
+  const btnCargarTareasApi = document.getElementById("btn-cargar-tareas-api");
 
   if (!selectProyecto || !selectProyecto.value) {
     mostrarNotificacionError("Seleccione un proyecto antes de importar tareas.");
@@ -323,6 +323,7 @@ async function manejarCargarTareasApi() {
     if (btnCargarTareasApi) {
       btnCargarTareasApi.disabled = true;
     }
+
     if (estadoApi) {
       estadoApi.textContent = "Cargando tareas desde API...";
     }
@@ -330,14 +331,23 @@ async function manejarCargarTareasApi() {
     const todos = await ApiService.obtenerTodos(10);
     const resultado = ApiService.procesarTodos(todos);
 
-    resultado.tareas.forEach(function (tareaApi) {
-      const tarea = new Tarea(
-        tareaApi.nombre,
-        tareaApi.responsable,
-        tareaApi.estado
-      );
+    let tareasImportadas = 0;
+    let tareasOmitidas = 0;
 
-      proyecto.agregarTarea(tarea);
+    resultado.tareas.forEach(function (tareaApi) {
+      try {
+        const tarea = new Tarea(
+          tareaApi.nombre,
+          tareaApi.responsable,
+          tareaApi.estado
+        );
+
+        proyecto.agregarTarea(tarea);
+        tareasImportadas++;
+      } catch (errorTarea) {
+        tareasOmitidas++;
+        console.warn(`Se omitió la tarea "${tareaApi.nombre}": ${errorTarea.message}`);
+      }
     });
 
     guardarEnStorage();
@@ -345,12 +355,23 @@ async function manejarCargarTareasApi() {
 
     if (estadoApi) {
       estadoApi.textContent =
-        "Tareas importadas: " + resultado.resumen.total +
+        "Tareas importadas: " + tareasImportadas +
+        ". Omitidas: " + tareasOmitidas +
         ". Completadas: " + resultado.resumen.completadas +
         ". Pendientes: " + resultado.resumen.pendientes + ".";
+
+      setTimeout(function () {
+        if (estadoApi) {
+          estadoApi.textContent = "";
+        }
+      }, 5000);
     }
 
-    mostrarNotificacionExito("Tareas cargadas correctamente desde la API.");
+    if (tareasImportadas > 0) {
+      mostrarNotificacionExito("Tareas cargadas correctamente desde la API.");
+    } else {
+      mostrarNotificacionError("No se importaron tareas nuevas. Es posible que ya existan en el proyecto.");
+    }
   } catch (error) {
     if (estadoApi) {
       estadoApi.textContent = "No se pudieron cargar las tareas.";

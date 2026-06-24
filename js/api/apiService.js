@@ -48,6 +48,10 @@ const ApiService = {
   },
 
   procesarTodos(todos) {
+    if (!Array.isArray(todos)) {
+      throw new Error("El formato de datos recibido desde la API no es válido.");
+    }
+
     const tareasMapeadas = todos
       .filter(todo => this.validarTodo(todo))
       .map(todo => this.mapearTodoATarea(todo));
