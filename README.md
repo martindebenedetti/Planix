@@ -103,7 +103,7 @@ Se consolidó la lógica de negocio mediante POO, se integró el almacenamiento 
 - **Resultado final de testing:** 88 specs, 0 failures.
 - **Release:** `v1.2-cuarta-entrega` mergeada exitosamente en `master`.
 
-### 🚀 Segundo Parcial (En desarrollo)
+### 🚀 Segundo Parcial (En desarrollo, pendiente evaluación)
 El equipo se encuentra trabajando paralelamente en la integración de consumo de APIs, librerías externas y testing avanzado:
 - Implementación del módulo `apiService.js` para consumo asíncrono desde JSONPlaceholder.
 - Configuración de estados de carga (`loading`, `success`, `error`) en la interfaz.
