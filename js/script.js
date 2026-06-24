@@ -60,13 +60,19 @@ function configurarEventListeners() {
   // Flujo 3: Calcular Avance (cambio de proyecto seleccionado)
   const selectProyecto = document.getElementById("select-proyecto");
   if (selectProyecto) {
-    selectProyecto.addEventListener("change", manejarCambioProyecto);
+    selectProyecto.addEventListener("change", manejarCalcularAvance);
   }
 
   // Flujo 4: Filtrar Tareas
   const filtroTareas = document.getElementById("filtro-tareas");
   if (filtroTareas) {
     filtroTareas.addEventListener("change", manejarFiltrarTareas);
+  }
+
+  const btnCargarTareasApi = document.getElementById("btn-cargar-tareas-api");
+
+  if (btnCargarTareasApi) {
+    btnCargarTareasApi.addEventListener("click", manejarCargarTareasApi);
   }
 
   // RC11: Delegación de Eventos en la tabla Gantt
@@ -203,6 +209,69 @@ function manejarCambioProyecto(event) {
 }
 
 /** Flujo 4: filtra las tareas del proyecto según el criterio seleccionado. */
+
+function manejarCalcularAvance() {
+  const selectProyecto = document.getElementById("select-proyecto");
+  const textoEstadoProyecto = document.getElementById("texto-estado-proyecto");
+  const barraAvance = document.getElementById("barra-avance");
+  const cuerpoTabla = document.getElementById("cuerpo-tabla");
+
+  if (!selectProyecto || !selectProyecto.value) {
+    if (textoEstadoProyecto) {
+      textoEstadoProyecto.textContent = "Seleccione un proyecto para ver su estado.";
+    }
+
+    if (barraAvance) {
+      barraAvance.style.width = "0%";
+      barraAvance.textContent = "0%";
+      barraAvance.setAttribute("aria-valuenow", "0");
+    }
+
+    if (cuerpoTabla) {
+      cuerpoTabla.innerHTML = "";
+
+      const fila = document.createElement("tr");
+      const celda = document.createElement("td");
+
+      celda.setAttribute("colspan", "13");
+      celda.className = "text-center text-muted py-4";
+      celda.textContent = "Aún no hay tareas para mostrar.";
+
+      fila.appendChild(celda);
+      cuerpoTabla.appendChild(fila);
+    }
+
+    return;
+  }
+
+  const proyecto = gestor.buscar(selectProyecto.value);
+
+  if (!proyecto) {
+    if (textoEstadoProyecto) {
+      textoEstadoProyecto.textContent = "Proyecto no encontrado.";
+    }
+
+    if (cuerpoTabla) {
+      cuerpoTabla.innerHTML = "";
+
+      const fila = document.createElement("tr");
+      const celda = document.createElement("td");
+
+      celda.setAttribute("colspan", "13");
+      celda.className = "text-center text-muted py-4";
+      celda.textContent = "Aún no hay tareas para mostrar.";
+
+      fila.appendChild(celda);
+      cuerpoTabla.appendChild(fila);
+    }
+
+    mostrarError("contenedor-alertas", "Proyecto no encontrado.");
+    return;
+  }
+
+  actualizarVistaProyecto(proyecto);
+}
+
 function manejarFiltrarTareas(event) {
   const criterio = event.target.value;
   const selectProyecto = document.getElementById("select-proyecto");
@@ -225,6 +294,65 @@ function manejarFiltrarTareas(event) {
       const tbody = document.getElementById("cuerpo-tabla");
       if (tbody) tbody.innerHTML = `<tr><td colspan="4" class="text-center text-danger">Error al aplicar filtro.</td></tr>`;
     }
+  }
+}
+
+async function manejarCargarTareasApi() {
+  const selectProyecto = document.getElementById("select-proyecto");
+  const estadoApi = document.getElementById("estado-api");
+
+  if (!selectProyecto || !selectProyecto.value) {
+    mostrarNotificacionError("Seleccione un proyecto antes de importar tareas.");
+    return;
+  }
+
+  if (typeof ApiService === "undefined") {
+    mostrarNotificacionError("El servicio de API no está disponible.");
+    return;
+  }
+
+  const proyecto = gestor.buscar(selectProyecto.value);
+
+  if (!proyecto) {
+    mostrarNotificacionError("Proyecto no encontrado.");
+    return;
+  }
+
+  try {
+    if (estadoApi) {
+      estadoApi.textContent = "Cargando tareas desde API...";
+    }
+
+    const todos = await ApiService.obtenerTodos(10);
+    const resultado = ApiService.procesarTodos(todos);
+
+    resultado.tareas.forEach(function (tareaApi) {
+      const tarea = new Tarea(
+        tareaApi.nombre,
+        tareaApi.responsable,
+        tareaApi.estado
+      );
+
+      proyecto.agregarTarea(tarea);
+    });
+
+    guardarEnStorage();
+    actualizarVistaProyecto(proyecto);
+
+    if (estadoApi) {
+      estadoApi.textContent =
+        "Tareas importadas: " + resultado.resumen.total +
+        ". Completadas: " + resultado.resumen.completadas +
+        ". Pendientes: " + resultado.resumen.pendientes + ".";
+    }
+
+    mostrarNotificacionExito("Tareas cargadas correctamente desde la API.");
+  } catch (error) {
+    if (estadoApi) {
+      estadoApi.textContent = "No se pudieron cargar las tareas.";
+    }
+
+    mostrarNotificacionError(error.message);
   }
 }
 
@@ -438,13 +566,16 @@ function cargarDatosDesdeStorage() {
         const proyecto = GestorProyectos.fromJSON({ proyectos: [jsonObj] }).listar()[0];
         
         // RC9: Try-catch específico para aislar errores de inserción en el gestor
-        if (!gestor.buscar(proyecto.nombre)) {
-          try {
-            gestor.agregar(proyecto);
-          } catch (errorInsercion) {
-            console.error(`Error de lógica al insertar proyecto ${proyecto.nombre}:`, errorInsercion);
-            erroresRecuperacion++;
-          }
+        if (gestor.buscar(proyecto.nombre)) {
+          console.warn(`Proyecto "${proyecto.nombre}" omitido: duplicado en Storage.`);
+          return;
+        }
+
+        try {
+          gestor.agregar(proyecto);
+        } catch (errorInsercion) {
+          console.error(`Error de lógica al insertar proyecto ${proyecto.nombre}:`, errorInsercion);
+          erroresRecuperacion++;
         }
       } catch (errorParseo) {
         erroresRecuperacion++;
@@ -502,6 +633,24 @@ function mostrarMensaje(contenedorId, mensaje, tipoColor) {
 
 function mostrarExito(contenedorId, mensaje) { mostrarMensaje(contenedorId, mensaje, "success"); }
 function mostrarError(contenedorId, mensaje) { mostrarMensaje(contenedorId, mensaje, "danger"); }
+
+function mostrarNotificacionExito(mensaje) {
+  if (typeof Notificaciones !== "undefined" && Notificaciones.exito) {
+    Notificaciones.exito(mensaje);
+    return;
+  }
+
+  mostrarExito("contenedor-alertas", mensaje);
+}
+
+function mostrarNotificacionError(mensaje) {
+  if (typeof Notificaciones !== "undefined" && Notificaciones.error) {
+    Notificaciones.error(mensaje);
+    return;
+  }
+
+  mostrarError("contenedor-alertas", mensaje);
+}
 
 function limpiarFormulario(formId) {
   const form = document.getElementById(formId);
