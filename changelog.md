@@ -8,6 +8,15 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ---
 
+## [Release Segundo Parcial] - 2026-06-24
+
+### Added
+
+* [feature/dev-libreria-externa-sweetalert2] Creación de `docs/03-specs/segundo-parcial/spec-dev-libreria-externa.md` con plan de integración de SweetAlert2 vía CDN. Integración de `Notificaciones.confirmar()` y `Notificaciones.exito()` en `manejarAccionesTabla()` de `js/script.js` para confirmación previa a eliminación de tareas. Reemplazo de alertas inline por `Notificaciones.exito()` y `Notificaciones.error()` en `manejarAgregarTarea()` al guardar una tarea.  
+  PR: [#---] — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#124](https://github.com/martindebenedetti/Planix/issues/124)
+
+---
+
 ## [Release Actividad Obligatoria N° 4] 2026-06-15
 
 ### Added
