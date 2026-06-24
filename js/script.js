@@ -409,10 +409,21 @@ function renderizarTablaGantt(tareas) {
     tdGantt.className = "text-muted text-center small align-middle";
     tdGantt.textContent = "Renderizado de Gantt pendiente";
 
+    const tdAcciones = document.createElement("td");
+    tdAcciones.className = "text-center align-middle";
+    const btnEliminar = document.createElement("button");
+    btnEliminar.type = "button";
+    btnEliminar.className = "btn btn-danger btn-sm btn-eliminar-tarea";
+    btnEliminar.setAttribute("data-tarea", tarea.nombre);
+    btnEliminar.setAttribute("aria-label", `Eliminar tarea ${tarea.nombre}`);
+    btnEliminar.textContent = "Eliminar";
+    tdAcciones.appendChild(btnEliminar);
+
     tr.appendChild(tdNombre);
     tr.appendChild(tdResponsable);
     tr.appendChild(tdEstado);
     tr.appendChild(tdGantt);
+    tr.appendChild(tdAcciones);
     tbody.appendChild(tr);
   });
 }
