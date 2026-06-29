@@ -105,7 +105,7 @@
 
             <div class="col main-content">
                 <section id="info-proyecto" class="container-fluid py-2 px-4 border-bottom mb-4">
-                    <h2 class="fs-6 fw-semibold text-secondary text-uppercase mb-2">Información del Proyecto</h2>
+                    <h2 class="fs-6 fw-semibold text-dark text-uppercase mb-2">Información del Proyecto</h2>
                     
                     <details class="card mb-2" open>
                         <summary class="card-header fw-medium custom-summary">Acerca del Proyecto</summary>
@@ -136,7 +136,7 @@
                 </section>
 
                 <section id="video-tutorial" class="container-fluid py-3 px-4 border-bottom mb-4">
-                    <h2 class="fs-6 fw-semibold text-secondary text-uppercase mb-2">¿Qué es un Diagrama de Gantt?</h2>
+                    <h2 class="fs-6 fw-semibold text-dark text-uppercase mb-2">¿Qué es un Diagrama de Gantt?</h2>
                     <div class="video-container" style="max-width: 640px;">
                         <div class="ratio ratio-16x9">
                             <iframe src="https://www.youtube.com/embed/7dXAFrxBOCY" 
@@ -244,31 +244,60 @@
 
                                 <thead>
                                     <tr>
-                                        <th scope="col" rowspan="2" aria-label="Nombre de la tarea">Nombre Tarea</th>
-                                        <th scope="col" rowspan="2" aria-label="Responsable">Responsable</th>
-                                        <th scope="col" rowspan="2" aria-label="Estado">Estado</th>
+                                        <th scope="col" rowspan="2">Nombre Tarea</th>
+                                        <th scope="col" rowspan="2">Responsable</th>
+                                        <th scope="col" rowspan="2">Estado</th>
                                         
-                                        <th scope="colgroup" colspan="4" aria-label="Mes Marzo 2026">MARZO 2026</th>
-                                        <th scope="colgroup" colspan="4" aria-label="Mes Abril 2026">ABRIL 2026</th>
-                                        <th scope="colgroup" colspan="2" aria-label="Mes Mayo 2026">MAYO 2026</th>
-                                        <th scope="col" rowspan="2" aria-label="Acciones">Acciones</th>
+                                        <th scope="colgroup" colspan="4">MARZO 2026</th>
+                                        <th scope="colgroup" colspan="4">ABRIL 2026</th>
+                                        <th scope="colgroup" colspan="2">MAYO 2026</th>
+                                        
+                                        <th scope="col" rowspan="2">Acciones</th>
                                     </tr>
                                     <tr>
-                                        <th scope="col" aria-label="Semana 9">S9</th>
-                                        <th scope="col" aria-label="Semana 10">S10</th>
-                                        <th scope="col" aria-label="Semana 11">S11</th>
-                                        <th scope="col" aria-label="Semana 12">S12</th>
-                                        <th scope="col" aria-label="Semana 13">S13</th>
-                                        <th scope="col" aria-label="Semana 14">S14</th>
-                                        <th scope="col" aria-label="Semana 15">S15</th>
-                                        <th scope="col" aria-label="Semana 16, semana actual">
+                                        <th scope="col">
+                                            <span aria-hidden="true">S9</span>
+                                            <span class="visually-hidden">Semana 9</span>
+                                        </th>
+                                        <th scope="col">
+                                            <span aria-hidden="true">S10</span>
+                                            <span class="visually-hidden">Semana 10</span>
+                                        </th>
+                                        <th scope="col">
+                                            <span aria-hidden="true">S11</span>
+                                            <span class="visually-hidden">Semana 11</span>
+                                        </th>
+                                        <th scope="col">
+                                            <span aria-hidden="true">S12</span>
+                                            <span class="visually-hidden">Semana 12</span>
+                                        </th>
+                                        <th scope="col">
+                                            <span aria-hidden="true">S13</span>
+                                            <span class="visually-hidden">Semana 13</span>
+                                        </th>
+                                        <th scope="col">
+                                            <span aria-hidden="true">S14</span>
+                                            <span class="visually-hidden">Semana 14</span>
+                                        </th>
+                                        <th scope="col">
+                                            <span aria-hidden="true">S15</span>
+                                            <span class="visually-hidden">Semana 15</span>
+                                        </th>
+                                        <th scope="col">
                                             <div class="gantt-week-header">
-                                                <span class="gantt-week-label">S16</span>
-                                                <span class="badge badge--primary badge--today" aria-label="Hoy">HOY</span>
+                                                <span aria-hidden="true" class="gantt-week-label">S16</span>
+                                                <span class="visually-hidden">Semana 16, semana actual</span>
+                                                <span class="badge badge--primary badge--today" aria-hidden="true">HOY</span>
                                             </div>
                                         </th>
-                                        <th scope="col" aria-label="Semana 17">S17</th>
-                                        <th scope="col" aria-label="Semana 18">S18</th>
+                                        <th scope="col">
+                                            <span aria-hidden="true">S17</span>
+                                            <span class="visually-hidden">Semana 17</span>
+                                        </th>
+                                        <th scope="col">
+                                            <span aria-hidden="true">S18</span>
+                                            <span class="visually-hidden">Semana 18</span>
+                                        </th>
                                     </tr>
                                 </thead>
 
