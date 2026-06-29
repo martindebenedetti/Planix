@@ -3,7 +3,7 @@
 Este archivo se actualiza con cada Pull Request para registrar avances y correcciones.
 
 ---
-
+## [Unreleased]
 
 ---
 
@@ -21,6 +21,11 @@ PR: [#132](https://github.com/martindebenedetti/Planix/pull/132) — @giann98 (T
 
 - [feature/dev-async-fetch-api] Implementación de consumo asíncrono de tareas externas mediante JSONPlaceholder, incorporando fetch, manejo de errores HTTP/red, estados de carga en la UI, procesamiento de colecciones con filter, map y reduce, integración con DOM, persistencia mediante Storage y suite Jasmine para ApiService con 97 specs aprobados y 0 failures.
 PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) — Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
+
+### Fixed
+
+- [fix/RC6-a-RC13-auditoria-y-fixes] Resolución integral de observaciones (RC6-RC13): implementación de casos de prueba asíncronos en Jasmine (error 500 y rechazo de promesas), normalización semántica de la tabla Gantt mediante aria-labels y visually-hidden, optimización de métricas Lighthouse (Mobile Performance y Accessibility 100/100), y refactorización de lógica de visibilidad en script.js eliminando estilos inline.
+  PR: [#134](https://github.com/martindebenedetti/Planix/pull/134) — @giann98 (Tester QA/JS)
 
 ---
 
