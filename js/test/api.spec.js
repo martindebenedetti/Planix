@@ -31,6 +31,19 @@ describe("ApiService - Fetch & APIs", function () {
      ApiService.fetchData("/todos/999999")
       ).toBeRejectedWithError(/Error HTTP: 404/);
     });
+    
+// RC13: Caso de prueba explícito simulando caída del servidor (Error 500)
+    it("debe lanzar una excepción formateada cuando la API responde con un Error 500 del servidor", async function () {
+      spyOn(window, "fetch").and.returnValue(Promise.resolve({
+        ok: false,
+        status: 500,
+        statusText: "Internal Server Error"
+      }));
+
+      await expectAsync(
+        ApiService.fetchData("/todos")
+      ).toBeRejectedWithError(/Error HTTP: 500/);
+    });
 
     it("propaga errores de red al fallar fetch", async function () {
       spyOn(window, "fetch").and.returnValue(
