@@ -226,7 +226,8 @@ function manejarCalcularAvance() {
     }
 
     if (barraAvance) {
-      barraAvance.style.width = "0%";
+     barraAvance.style.width = ""; // Limpiamos cualquier estilo inline previo
+      barraAvance.classList.add("w-0"); // Aplicamos clase de Bootstrap
       barraAvance.textContent = "0%";
       barraAvance.setAttribute("aria-valuenow", "0");
     }
@@ -494,11 +495,11 @@ function gestionarVisibilidadSecciones() {
   const totalProyectos = gestor.listar().length;
 
   if (totalProyectos === 0) {
-    if (seccionTareas) seccionTareas.style.display = "none";
-    if (barraHerramientas) barraHerramientas.style.display = "none";
+    if (seccionTareas) seccionTareas.classList.add("d-none");
+    if (barraHerramientas) barraHerramientas.classList.add("d-none");
   } else {
-    if (seccionTareas) seccionTareas.style.display = "block";
-    if (barraHerramientas) barraHerramientas.style.display = "flex";
+    if (seccionTareas) seccionTareas.classList.remove("d-none");
+    if (barraHerramientas) barraHerramientas.classList.remove("d-none");
   }
 }
 
@@ -595,7 +596,8 @@ function actualizarAvanceDOM(porcentaje, textoEstado) {
   const pRedondeado = Math.round(porcentaje);
 
   if (barra) {
-    barra.style.width = `${pRedondeado}%`;
+    barra.classList.remove("w-0"); // RC12: Quitamos la clase de reseteo si existiera
+    barra.style.width = `${pRedondeado}%`; // Única excepción válida por ser un valor dinámico
     barra.textContent = `${pRedondeado}%`;
     barra.setAttribute("aria-valuenow", pRedondeado);
     barra.className = "progress-bar progress-bar-striped progress-bar-animated";
