@@ -39,3 +39,8 @@
 ## Conclusiones Finales - Integración Completa
 La aplicación ha logrado integrar satisfactoriamente el consumo asíncrono con `fetch` (JSONPlaceholder) y la librería externa (SweetAlert2) bajo el patrón de arquitectura de la cátedra, sin penalizaciones críticas.
 Las implementaciones conjuntas superaron las expectativas de performance, consolidando un proyecto escalable y amigable para el usuario final. El equipo ha superado los umbrales estipulados para la aprobación del examen.
+
+Para escalar la métrica de **Best Practices (77)**, se emiten las siguientes recomendaciones accionables para futuras iteraciones:
+1. **Cookies de Terceros:** Configurar los atributos `SameSite=None` y `Secure` en las cabeceras de respuesta si se integran servicios externos que dejen cookies.
+2. **Políticas de Seguridad de Contenido (CSP):** Implementar un meta tag de CSP en el `index.html` para restringir desde qué dominios se pueden cargar scripts (ej. limitando explícitamente a `cdn.jsdelivr.net`).
+3. **HTTP/2:** Asegurar que el servidor de producción final soporte multiplexación HTTP/2 para acelerar la descarga simultánea del CSS de Bootstrap y el JS de SweetAlert2.

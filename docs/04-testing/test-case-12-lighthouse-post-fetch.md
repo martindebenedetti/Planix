@@ -23,7 +23,7 @@
 
 ![Captura Performance](/docs/04-testing/capturas/tc-12/fetch-performance.png)
 
-*Análisis de impacto:* El puntaje de rendimiento experimentó una mejora significativa, superando ampliamente el umbral exigido. La carga diferida de datos mediante promesas (`apiService.js`) demostró ser altamente eficiente. El hilo principal no sufrió bloqueos durante el mapeo y renderizado de las nuevas tareas (TBT = 0 ms). Sigue pendiente de impacto total en producción la Issue #130 referida a la imagen de cabecera.
+*Análisis de impacto:* El puntaje de rendimiento experimentó una mejora significativa, superando ampliamente el umbral exigido. La carga diferida de datos mediante promesas (`apiService.js`) demostró ser altamente eficiente. El hilo principal no sufrió bloqueos durante el mapeo y renderizado de las nuevas tareas (TBT = 0 ms). Sigue pendiente de impacto total en producción la Issue [#130](https://github.com/martindebenedetti/Planix/issues/130) referida a la imagen de cabecera.
 
 ### Accessibility: 97 ✅ (Baseline: 96)
 - Se mantiene estable con una leve mejora en la evaluación del DOM dinámico. Los nuevos estados inyectados durante la carga de la API (ej. texto de "Cargando...") respetan la semántica visual y no introducen penalizaciones.
