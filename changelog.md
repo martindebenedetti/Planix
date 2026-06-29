@@ -25,7 +25,7 @@ PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (D
 ### Fixed
 
 - [fix/RC6-a-RC13-auditoria-y-fixes] Resolución integral de observaciones (RC6-RC13): implementación de casos de prueba asíncronos en Jasmine (error 500 y rechazo de promesas), normalización semántica de la tabla Gantt mediante aria-labels y visually-hidden, optimización de métricas Lighthouse (Mobile Performance y Accessibility 100/100), y refactorización de lógica de visibilidad en script.js eliminando estilos inline.
-  PR: [#134](https://github.com/martindebenedetti/Planix/pull/134) — @giann98 (Tester QA/JS)
+  PR: [#135](https://github.com/martindebenedetti/Planix/pull/135) — @giann98 (Tester QA/JS)
 
 ---
 
