@@ -4,7 +4,6 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ---
 
-
 ---
 
 ## [Release Segundo Parcial] - 2026-06-24
@@ -12,17 +11,15 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Added
 
 - [feature/coord-devops-segundo-parcial] Actualización general de la estructura del proyecto para la entrega del Segundo Parcial. Redacción de README.md con detalles de la v2.0, ejecución de Code Reviews asistidos por IA a los módulos asíncronos y de pruebas, y preparación del entorno para despliegue en GitHub Pages.
-PR: [#133](https://github.com/martindebenedetti/Planix/pull/133) — @giann98 (Coordinador / DevOps) — Issue: [#126](https://github.com/martindebenedetti/Planix/issues/126)
+  PR: [#133](https://github.com/martindebenedetti/Planix/pull/133) — @giann98 (Coordinador / DevOps) — Issue: [#126](https://github.com/martindebenedetti/Planix/issues/126)
 
 - [feature/tester-qa-js-testing-suite] Implementación de suite de testing avanzada (101 specs) integrando `api.spec.js` y `library.spec.js`. Incorporación de auditorías de rendimiento y accesibilidad (Lighthouse) para monitoreo de métricas de calidad.
-PR: [#132](https://github.com/martindebenedetti/Planix/pull/132) — @giann98 (Tester QA/JS) — Issue: [#125](https://github.com/martindebenedetti/Planix/issues/125)
+  PR: [#132](https://github.com/martindebenedetti/Planix/pull/132) — @giann98 (Tester QA/JS) — Issue: [#125](https://github.com/martindebenedetti/Planix/issues/125)
 
 - [feature/dev-libreria-externa-sweetalert2] Creación de `docs/03-specs/segundo-parcial/spec-dev-libreria-externa.md` con plan de integración de SweetAlert2 vía CDN. Integración de `Notificaciones.confirmar()` y `Notificaciones.exito()` en `manejarAccionesTabla()` de `js/script.js` para confirmación previa a eliminación de tareas. Reemplazo de alertas inline por `Notificaciones.exito()` y `Notificaciones.error()` en `manejarAgregarTarea()` al guardar una tarea. PR: [#129](https://github.com/martindebenedetti/Planix/pull/129) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#124](https://github.com/martindebenedetti/Planix/issues/124) — [#130](https://github.com/martindebenedetti/Planix/issues/130) — [#131](https://github.com/martindebenedetti/Planix/issues/131)
 
 - [feature/dev-async-fetch-api] Implementación de consumo asíncrono de tareas externas mediante JSONPlaceholder, incorporando fetch, manejo de errores HTTP/red, estados de carga en la UI, procesamiento de colecciones con filter, map y reduce, integración con DOM, persistencia mediante Storage y suite Jasmine para ApiService con 97 specs aprobados y 0 failures.
-PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) — Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
-
-
+  PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) — Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
 
 ### Fixed
 
@@ -30,9 +27,7 @@ PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (D
   PR: [#149](https://github.com/martindebenedetti/Planix/pull/149) — @leanlex (Coordinación Fase 2 / Dev Async) — Issue: [#136](https://github.com/martindebenedetti/Planix/issues/136)
 
 - [fix/rc2] Reemplazo de colores hardcodeados `#d33` y `#6c757d` en `js/libs/notificaciones.js` por variables CSS del sistema de diseño del proyecto (`var(--color-danger)` y `var(--color-slate-500)`), alineando los modales de confirmación de SweetAlert2 con el tema visual de Planix.  
-  PR: — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#137](https://github.com/martindebenedetti/Planix/issues/137)
-
-
+  PR:[#151](https://github.com/martindebenedetti/Planix/pull/151) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#137](https://github.com/martindebenedetti/Planix/issues/137)
 
 ---
 
