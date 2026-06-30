@@ -2,13 +2,17 @@ const ApiService = {
   baseUrl: "https://jsonplaceholder.typicode.com",
 
   async fetchData(endpoint) {
-    const response = await fetch(`${this.baseUrl}${endpoint}`);
+    try {
+      const response = await fetch(`${this.baseUrl}${endpoint}`);
 
-    if (!response.ok) {
-      throw new Error(`Error HTTP: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
+
+      return response.json();
+    } catch (error) {
+      throw new Error(`No se pudieron obtener datos de la API: ${error.message}`);
     }
-
-    return response.json();
   },
 
   async obtenerTodos(limite = 10) {
@@ -16,15 +20,19 @@ const ApiService = {
   },
 
   async eliminarTodo(id) {
-    const response = await fetch(`${this.baseUrl}/todos/${id}`, {
-      method: "DELETE"
-    });
+    try {
+      const response = await fetch(`${this.baseUrl}/todos/${id}`, {
+        method: "DELETE"
+      });
 
-    if (!response.ok) {
-      throw new Error(`No se pudo eliminar la tarea. Estado: ${response.status}`);
+      if (!response.ok) {
+        throw new Error(`No se pudo eliminar la tarea. Estado: ${response.status}`);
+      }
+
+      return true;
+    } catch (error) {
+      throw new Error(`Error al eliminar la tarea externa: ${error.message}`);
     }
-
-    return true;
   },
 
   validarTodo(todo) {

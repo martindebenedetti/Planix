@@ -3,7 +3,7 @@
 ## Información General
 
 - **Nombre:** SweetAlert2
-- **Versión:** 11.x
+- **Versión:** 11.14.5
 - **Repositorio:** https://github.com/sweetalert2/sweetalert2
 - **Documentación oficial:** https://sweetalert2.github.io/
 
@@ -30,11 +30,11 @@ Se agregaron los siguientes tags en `index.html`:
 <!-- En el <head> -->
 <link
   rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css"
+  href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css"
 />
 
 <!-- Antes del cierre de </body>, después de Bootstrap y antes de los scripts propios -->
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.all.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
 ```
 
 La librería expone el objeto global `Swal`, disponible en todos los scripts cargados después de ese tag. No se requiere ningún paso de instalación adicional.
@@ -63,9 +63,7 @@ async function manejarAccionesTabla(event) {
       if (!selectProyecto || !selectProyecto.value) return;
       const proyecto = gestor.buscar(selectProyecto.value);
       if (!proyecto) return;
-      proyecto.tareas = proyecto.tareas.filter(function (t) {
-        return t.nombre !== nombreTarea;
-      });
+      proyecto.eliminarTareaPorNombre(nombreTarea);
       guardarEnStorage();
       actualizarVistaProyecto(proyecto);
       Notificaciones.exito("Tarea eliminada correctamente");
@@ -103,7 +101,7 @@ El archivo `js/libs/notificaciones.js` centraliza la configuración de SweetAler
 | ----------- | --------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------- |
 | `confirmar` | `confirmar(titulo, texto) → Promise<boolean>` | Muestra un modal de confirmación con botones "Confirmar / Cancelar". Retorna `true` si el usuario confirmó, `false` si canceló. |
 | `exito`     | `exito(mensaje)`                              | Muestra una notificación de éxito con cierre automático a los 2 segundos.                                                       |
-| `error`     | `error(mensaje)`                              | Muestra una notificación de error con el mensaje recibido como detalle.                                                         |
+| `error`     | `error(titulo, texto?)`                       | Muestra una notificación de error con el título recibido. Acepta un segundo argumento opcional como detalle.                    |
 | `info`      | `info(titulo, mensaje)`                       | Muestra una notificación informativa con título y cuerpo personalizados.                                                        |
 
 ---

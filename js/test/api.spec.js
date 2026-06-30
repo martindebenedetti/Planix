@@ -45,14 +45,16 @@ describe("ApiService - Fetch & APIs", function () {
       ).toBeRejectedWithError(/Error HTTP: 500/);
     });
 
-    it("propaga errores de red al fallar fetch", async function () {
+    it("maneja errores de red al fallar fetch", async function () {
       spyOn(window, "fetch").and.returnValue(
         Promise.reject(new Error("Error de red"))
       );
 
-      await expectAsync(
-        ApiService.fetchData("/todos")
-      ).toBeRejectedWithError("Error de red");
+      await expectAsync(ApiService.fetchData("/todos"))
+        .toBeRejectedWithError(
+          Error,
+          "No se pudieron obtener datos de la API: Error de red"
+        );
     });
   });
 
