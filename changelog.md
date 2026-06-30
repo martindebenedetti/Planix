@@ -31,6 +31,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/rc14-changelog-release] Resolución de RC14: reorganización final de `changelog.md`, manteniendo `## [Unreleased]` preparado para futuras integraciones y registrando las correcciones del Segundo Parcial bajo la sección de release correspondiente.  
+  PR: [#154](https://github.com/martindebenedetti/Planix/pull/154) — @leanlex (Coordinación Fase 2) — Issue: [#148](https://github.com/martindebenedetti/Planix/issues/148)
+
 - [fix/library-spec-error-validacion] Se resolvió un problema en un test dentro de library.spec.js.
  PR: [#153](https://github.com/martindebenedetti/Planix/pull/153) — @giann98 (Tester QA/JS)
 
