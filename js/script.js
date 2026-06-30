@@ -226,7 +226,7 @@ function manejarCalcularAvance() {
     }
 
     if (barraAvance) {
-     barraAvance.style.width = ""; // Limpiamos cualquier estilo inline previo
+      barraAvance.removeAttribute("style");; // Limpiamos cualquier estilo inline previo
       barraAvance.classList.add("w-0"); // Aplicamos clase de Bootstrap
       barraAvance.textContent = "0%";
       barraAvance.setAttribute("aria-valuenow", "0");
