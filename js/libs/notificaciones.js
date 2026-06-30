@@ -19,8 +19,8 @@ const Notificaciones = {
       showCancelButton: true,
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#6c757d'
+      confirmButtonColor: 'var(--color-danger)',
+      cancelButtonColor: 'var(--color-slate-500)'
     });
     return result.isConfirmed;
   },
