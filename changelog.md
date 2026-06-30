@@ -29,6 +29,9 @@ PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (D
 - [fix/rc1-api-service-errors] Corrección del manejo interno de errores en `ApiService`: se agregaron bloques `try-catch` en `fetchData()` y `eliminarTodo()` para capturar errores de red, DNS, conexión o respuestas HTTP inválidas, relanzando mensajes controlados para la interfaz.  
   PR: [#149](https://github.com/martindebenedetti/Planix/pull/149) — @leanlex (Coordinación Fase 2 / Dev Async) — Issue: [#136](https://github.com/martindebenedetti/Planix/issues/136)
 
+- [fix/rc2] Reemplazo de colores hardcodeados `#d33` y `#6c757d` en `js/libs/notificaciones.js` por variables CSS del sistema de diseño del proyecto (`var(--color-danger)` y `var(--color-slate-500)`), alineando los modales de confirmación de SweetAlert2 con el tema visual de Planix.  
+  PR: — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#137](https://github.com/martindebenedetti/Planix/issues/137)
+
 
 
 ---
