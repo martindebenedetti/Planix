@@ -29,6 +29,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [fix/rc2] Reemplazo de colores hardcodeados `#d33` y `#6c757d` en `js/libs/notificaciones.js` por variables CSS del sistema de diseño del proyecto (`var(--color-danger)` y `var(--color-slate-500)`), alineando los modales de confirmación de SweetAlert2 con el tema visual de Planix.  
   PR:[#151](https://github.com/martindebenedetti/Planix/pull/151) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#137](https://github.com/martindebenedetti/Planix/issues/137)
 
+- [fix/rc3-rc4-rc5] RC3: `Notificaciones.error()` reemplaza título hardcodeado "Ocurrió un error" por parámetro `titulo`, manteniendo consistencia con `exito()` e `info()`. RC4: versión de SweetAlert2 fijada a `11.14.5` en `index.html` y `libreria-doc.md`. RC5: Caso de Uso 1 en `libreria-doc.md` actualizado para reflejar el uso real de `proyecto.eliminarTareaPorNombre(nombreTarea)`.  
+  PR: [#152](https://github.com/martindebenedetti/Planix/pull/152) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#138](https://github.com/martindebenedetti/Planix/issues/138) — [#139](https://github.com/martindebenedetti/Planix/issues/139) — [#140](https://github.com/martindebenedetti/Planix/issues/140)
+
 ---
 
 ## [Release Actividad Obligatoria N° 4] 2026-06-15
