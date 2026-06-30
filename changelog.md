@@ -3,6 +3,7 @@
 Este archivo se actualiza con cada Pull Request para registrar avances y correcciones.
 
 ---
+## [Unreleased]
 
 ---
 
@@ -23,6 +24,9 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ### Fixed
 
+- [fix/RC6-a-RC13-auditoria-y-fixes] Resolución integral de observaciones (RC6-RC13): implementación de casos de prueba asíncronos en Jasmine (error 500 y rechazo de promesas), normalización semántica de la tabla Gantt mediante aria-labels y visually-hidden, optimización de métricas Lighthouse (Mobile Performance y Accessibility 100/100), y refactorización de lógica de visibilidad en script.js Se reemplazaron estilos inline evitables por clases utilitarias de Bootstrap, manteniendo únicamente la mutación de ancho porcentual necesaria para la barra de progreso dinámica.
+  PR: [#134](https://github.com/martindebenedetti/Planix/pull/134) — @giann98 (Tester QA/JS) — Issue: [#141](https://github.com/martindebenedetti/Planix/issues/141) — Issue: [#142](https://github.com/martindebenedetti/Planix/issues/142) — Issue: [#143](https://github.com/martindebenedetti/Planix/issues/143) — Issue: [#144](https://github.com/martindebenedetti/Planix/issues/144) — Issue: [#145](https://github.com/martindebenedetti/Planix/issues/145) — Issue: [#146](https://github.com/martindebenedetti/Planix/issues/146) — Issue: [#147](https://github.com/martindebenedetti/Planix/issues/147)
+
 - [fix/rc1-api-service-errors] Corrección del manejo interno de errores en `ApiService`: se agregaron bloques `try-catch` en `fetchData()` y `eliminarTodo()` para capturar errores de red, DNS, conexión o respuestas HTTP inválidas, relanzando mensajes controlados para la interfaz.  
   PR: [#149](https://github.com/martindebenedetti/Planix/pull/149) — @leanlex (Coordinación Fase 2 / Dev Async) — Issue: [#136](https://github.com/martindebenedetti/Planix/issues/136)
 
@@ -32,7 +36,7 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 - [fix/rc3-rc4-rc5] RC3: `Notificaciones.error()` reemplaza título hardcodeado "Ocurrió un error" por parámetro `titulo`, manteniendo consistencia con `exito()` e `info()`. RC4: versión de SweetAlert2 fijada a `11.14.5` en `index.html` y `libreria-doc.md`. RC5: Caso de Uso 1 en `libreria-doc.md` actualizado para reflejar el uso real de `proyecto.eliminarTareaPorNombre(nombreTarea)`.  
   PR: [#152](https://github.com/martindebenedetti/Planix/pull/152) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#138](https://github.com/martindebenedetti/Planix/issues/138) — [#139](https://github.com/martindebenedetti/Planix/issues/139) — [#140](https://github.com/martindebenedetti/Planix/issues/140)
 
----
+--- 
 
 ## [Release Actividad Obligatoria N° 4] 2026-06-15
 

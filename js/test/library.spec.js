@@ -53,5 +53,14 @@ describe("Notificaciones - Pruebas de Integración de Librería Externa (SweetAl
 
       expect(respuestaUsuario).toBe(false);
     });
+
+    //RC6: Test de manejo de error si la librería falla internamente
+    it("debe propagar errores si SweetAlert2 rechaza la promesa internamente", async function () {
+      spyOn(Swal, "fire").and.returnValue(Promise.reject(new Error("Fallo interno del modal")));
+
+      await expectAsync(
+        Notificaciones.confirmar("¿Eliminar?", "Acción irreversible")
+      ).toBeRejectedWithError("Fallo interno del modal");
+    });
   });
 });
