@@ -22,6 +22,15 @@ PR: [#132](https://github.com/martindebenedetti/Planix/pull/132) — @giann98 (T
 - [feature/dev-async-fetch-api] Implementación de consumo asíncrono de tareas externas mediante JSONPlaceholder, incorporando fetch, manejo de errores HTTP/red, estados de carga en la UI, procesamiento de colecciones con filter, map y reduce, integración con DOM, persistencia mediante Storage y suite Jasmine para ApiService con 97 specs aprobados y 0 failures.
 PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) — Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
 
+
+
+### Fixed
+
+- [fix/rc1-api-service-errors] Corrección del manejo interno de errores en `ApiService`: se agregaron bloques `try-catch` en `fetchData()` y `eliminarTodo()` para capturar errores de red, DNS, conexión o respuestas HTTP inválidas, relanzando mensajes controlados para la interfaz.  
+  PR: [#149](https://github.com/martindebenedetti/Planix/pull/149) — @leanlex (Coordinación Fase 2 / Dev Async) — Issue: [#136](https://github.com/martindebenedetti/Planix/issues/136)
+
+
+
 ---
 
 ## [Release Actividad Obligatoria N° 4] 2026-06-15
