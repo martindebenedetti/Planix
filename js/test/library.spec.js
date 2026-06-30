@@ -22,7 +22,7 @@ describe("Notificaciones - Pruebas de Integración de Librería Externa (SweetAl
     it("debe configurar adecuadamente la estructura del modal ante eventos de error", function () {
       spyOn(Swal, "fire");
 
-      Notificaciones.error("Fallo de validación de campos");
+      Notificaciones.error("Ocurrió un error", "Fallo de validación de campos");
 
       expect(Swal.fire).toHaveBeenCalledWith(jasmine.objectContaining({
         icon: "error",
