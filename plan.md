@@ -2,7 +2,7 @@
 
 ## Contexto del Proyecto
 
-Se desarrollará una página web básica que sirva de base para un planificador de tareas estilo diagrama de Gantt. Esta primera entrega está enfocada en establecer la estructura HTML inicial, documentar el proyecto y preparar el terreno para futuras etapas de diseño, estilos e interactividad.
+Se desarrollará una página web básica que sirva de base para un planificador de tareas estilo diagrama de Gantt. Esta primera entrega está enfocada en establecer la estructura HTML inicial, documentar el proyecto y preparar el terreno para futuras etapas de diseño, estilos e interactividad. A medida que avanza el cuatrimestre, el proyecto evolucionará hacia una aplicación web dinámica con arquitectura MVC, persistencia local y consumo de datos asíncronos.
 
 ## Objetivos del Proyecto
 
@@ -55,161 +55,74 @@ El código HTML, CSS y JavaScript debe mantenerse organizado y documentado para 
 
 ---
 
-## Evolución del diseño – Actividad Obligatoria 2
+## Evolución del diseño – Actividad Obligatoria 2 y Primer Parcial
 
 En esta etapa del proyecto se incorpora una actualización del mockup inicial
-para definir los lineamientos visuales del sistema.
+para definir los lineamientos visuales del sistema y su adaptación a Bootstrap 5.
 
 El diseño actualizado incluye:
-
-- definición de una **paleta de colores** para la interfaz (colores primarios,
-  secundarios y neutros);
-- definición de **tipografías** y jerarquías visuales (títulos, texto, etiquetas);
-- especificación de **espaciados y dimensiones de componentes** (padding,
-  margin, border-radius);
-- definición de **estados de interacción** para los elementos de la interfaz
-  (hover, focus y disabled).
-
-El mockup actualizado se encuentra en:
-
-`docs/01-mockup/actividad-obligatoria-2/diseño-con-estilos.png`
-
-Este diseño servirá como referencia para la próxima etapa de desarrollo
-frontend, donde se implementará la estructura HTML, los estilos CSS y la interactividad con JavaScript.
-
-## Criterios de Aceptación
-
-- ✅ El repositorio contiene `plan.md` con los requerimientos funcionales, objetivos y criterios de aceptación.
-- ✅ Existe un `README.md` con descripción y estructura del proyecto.
-- ✅ `docs/03-specs/` incluye los archivos clave de spec de cada rol y de cada etapa de entrega.
-- ✅ `docs/02-prompts/` contiene al menos 5 archivos `prompts-*.md` con prompts reales y su aporte.
-- ✅ La página principal (`index.html`) incluye:
-  - Header, main y footer semánticos.
-  - Formulario básico, lista y tabla relacionados con la planificación.
-  - Comentarios indicando futuras implementaciones de CSS y JS.
-- ✅ El contenido técnico está redactado en español y sigue el formato Markdown.
-
-# Tercera Entrega — Programación Web con JavaScript
-
-## Objetivo General
-
-Implementar la lógica de negocio principal del proyecto utilizando JavaScript, incorporando algoritmos, estructuras de control, funciones, arrays, objetos y testing automatizado, manteniendo coherencia con el mockup, la documentación previa y la arquitectura definida en el Primer Parcial.
+- definición de una **paleta de colores** para la interfaz;
+- definición de **tipografías** y jerarquías visuales;
+- especificación de **espaciados y dimensiones de componentes**;
+- definición de **estados de interacción** (hover, focus y disabled);
+- integración de la **grilla y componentes de Bootstrap 5** (Navbar, Modales, Cards).
 
 ---
 
-## Objetivos Específicos
+## Tercera Entrega — Programación Web con JavaScript (Completada)
 
-- Implementar 4 flujos funcionales principales del sistema.
-- Incorporar lógica de validación mediante estructuras condicionales.
-- Utilizar ciclos para procesamiento de colecciones de datos.
-- Implementar funciones reutilizables y modulares.
-- Modelar datos mediante arrays y objetos.
-- Incorporar testing automatizado con Jasmine.
-- Generar diagramas de actividades utilizando PlantUML.
-- Mantener trazabilidad Git/GitHub mediante branch model y Pull Requests.
+### Objetivo General
+Implementar la lógica de negocio principal del proyecto utilizando JavaScript, incorporando algoritmos, estructuras de control, funciones, arrays, objetos y testing automatizado. Se establecieron los 4 flujos funcionales core (Crear Proyecto, Agregar Tarea, Calcular Avance, Filtrar Tareas) bajo un entorno de ejecución procedimental validado por Jasmine.
 
 ---
 
-## Arquitectura de la Entrega
+## Cuarta Entrega — Arquitectura y Persistencia (Completada)
 
-La tercera entrega se organiza en los siguientes módulos:
+### Objetivo General
+Refactorizar la aplicación hacia una arquitectura basada en responsabilidades claras, eliminando los flujos bloqueantes y garantizando la persistencia de datos del usuario en el navegador.
 
-| Módulo | Responsable | Objetivo |
-|---|---|---|
-| JavaScript Core | Dev JavaScript | Implementación de lógica y flujos |
-| Diagramas UML | Arquitecto de Diagramas | Modelado de flujos de actividades |
-| Testing Jasmine | Tester / QA | Validación automatizada |
-| Coordinación DevOps | Coordinador | Integración, reviews y releases |
-
----
-
-## Flujos Funcionales Planificados
-
-Los flujos principales del sistema son:
-
-1. Creación de proyecto
-2. Agregación de tareas a proyecto
-3. Cálculo de avance del proyecto
-4. Listado y filtrado de tareas
+### Decisiones de Arquitectura
+1.  **Lógica de Dominio (POO):** Encapsulamiento de la lógica de negocio en clases constructoras ES5 (`Tarea`, `Proyecto`, `GestorProyectos`).
+2.  **Capa de Presentación (Controlador Puro):** Transformación de `js/script.js` en un orquestador exclusivo de eventos (`addEventListener`) y manipulación dinámica del DOM, eliminando `prompt()` y `alert()`.
+3.  **Capa de Persistencia:** Módulo `StorageUtil` para guardar el estado general en `localStorage` y preferencias de sesión en `sessionStorage`.
 
 ---
 
-## Estado actual de la tercera entrega
+## Segundo Parcial — Aplicación Dinámica y Auditorías de Calidad (Actual)
 
-- Se implementaron los 4 flujos funcionales principales en `js/script.js`.
-- Se generó `js/test/script.spec.js` y `js/test/test-runner.html` para pruebas automatizadas.
-- Se ejecutaron las suites Jasmine con Playwright MCP y se documentaron los resultados.
-- La coordinación de PRs y code reviews asistidos por Copilot Agent está documentada en `docs/03-specs/actividad-obligatoria-3/`.
+### Objetivo General
+Evolucionar el proyecto mediante la integración de programación asíncrona, bibliotecas de terceros para la mejora de UI/UX, y un estricto control de calidad del software mediante pruebas funcionales y auditorías de rendimiento.
 
----
+### Especificaciones de Integración
+| Módulo | Responsable | Tecnología / Herramienta |
+| :--- | :--- | :--- |
+| Consumo Asíncrono | Dev JS Asíncrono | Fetch API / JSONPlaceholder (`/todos`) |
+| UI/UX Extendida | Dev JS Librerías | SweetAlert2 (Notificaciones no bloqueantes) |
+| QA & Performance | Tester QA/JS | Jasmine (Tests Asíncronos) / Google Lighthouse |
+| Coordinación & CI/CD | DevOps | Copilot Agent Mode / GitHub Actions (Pages) |
 
-## Estrategia de Branching
+### Requisitos Funcionales Adicionales (Segundo Parcial)
+1.  **Carga inicial asíncrona:** La aplicación debe nutrirse de datos provenientes de una API REST utilizando promesas, gestionando correctamente los estados de carga (`loading`, `success`, `error`).
+2.  **Transformación de datos:** Aplicación de funciones de orden superior (`map`, `filter`, `reduce`) para el mapeo de los datos remotos a las clases del dominio local.
+3.  **Feedback enriquecido:** Utilización de SweetAlert2 para la confirmación de acciones destructivas o notificaciones de éxito/error.
 
-El repositorio mantendrá el siguiente esquema de ramas:
-
-- `master`
-- `develop`
-- `release/tercera-entrega`
-
-Ramas feature previstas:
-
-- `feature/dev-javascript-logica-negocio`
-- `feature/tester-javascript-jasmine`
-- `feature/arq-diagramas-actividades`
-- `feature/coord-devops-tercera-entrega`
-
----
-
-## Herramientas Utilizadas
-
-| Herramienta | Uso |
-|---|---|
-| GitHub Copilot Agent | Generación asistida de código y testing |
-| Playwright MCP | Ejecución automatizada en browser |
-| Jasmine | Testing automatizado |
-| PlantUML | Diagramas de actividades |
-| Bootstrap 5 | Base responsive del frontend |
-| GitHub Projects | Gestión Kanban de tareas |
+### Estrategia de Calidad y Auditoría
+La evolución del sistema será medida y auditada obligatoriamente en tres etapas utilizando **Google Lighthouse**:
+- **Test Case 11:** Baseline Inicial (Previo al consumo de API).
+- **Test Case 12:** Post-Integración de Fetch (Medición de impacto de red).
+- **Test Case 13:** Post-Integración de Librería (Medición de impacto en LCP y TBT).
+*Umbrales mínimos requeridos: Performance $\ge80$, Accessibility $\ge90$.*
 
 ---
 
-## Estrategia de Testing
+## Estrategia de Branching y Versionado
 
-La validación del sistema incluirá:
+El repositorio mantiene el esquema Git Flow adaptado:
+- `master` (Código en producción, protegido)
+- `develop` (Base de integración, protegida)
+- `release/segundo-parcial` (Rama de preparación de entrega y *Request Changes*)
+- `feature/*` (Desarrollo por rol)
+- `fix/*` (Correcciones durante *Code Review*)
+- `backport/*` (Sincronización `master` $\rightarrow$ `develop`)
 
-- Happy paths
-- Casos borde
-- Validaciones de errores
-- Testing de arrays y objetos
-- Verificación de algoritmos
-
-Los tests serán ejecutados mediante Jasmine en navegador real utilizando Playwright MCP.
-
----
-
-## Integración Continua y Coordinación
-
-La integración de cambios seguirá el siguiente flujo:
-
-1. Desarrollo en ramas feature
-2. Pull Request hacia `develop`
-3. Code Review asistido por IA
-4. Correcciones y aprobación
-5. Merge controlado
-6. Release final hacia `master`
-
----
-
-## Versionado
-
-La entrega finalizará con:
-
-- Tag:
-  `v1.1-tercera-entrega`
-
-- Release GitHub documentada con:
-  - changelog
-  - enlaces relevantes
-  - evidencias de testing
-  - documentación técnica
-
+**Tag de Cierre Previsto:** `v2.0-segundo-parcial`
