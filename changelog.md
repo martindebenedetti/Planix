@@ -4,6 +4,13 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 
 ---
 
+## [Unreleased]
+
+### Added
+
+### Changed
+
+### Fixed
 
 ---
 
@@ -12,17 +19,37 @@ Este archivo se actualiza con cada Pull Request para registrar avances y correcc
 ### Added
 
 - [feature/coord-devops-segundo-parcial] Actualización general de la estructura del proyecto para la entrega del Segundo Parcial. Redacción de README.md con detalles de la v2.0, ejecución de Code Reviews asistidos por IA a los módulos asíncronos y de pruebas, y preparación del entorno para despliegue en GitHub Pages.
-PR: [#133](https://github.com/martindebenedetti/Planix/pull/133) — @giann98 (Coordinador / DevOps) — Issue: [#126](https://github.com/martindebenedetti/Planix/issues/126)
+  PR: [#133](https://github.com/martindebenedetti/Planix/pull/133) — @giann98 (Coordinador / DevOps) — Issue: [#126](https://github.com/martindebenedetti/Planix/issues/126)
 
 - [feature/tester-qa-js-testing-suite] Implementación de suite de testing avanzada (101 specs) integrando `api.spec.js` y `library.spec.js`. Incorporación de auditorías de rendimiento y accesibilidad (Lighthouse) para monitoreo de métricas de calidad.
-PR: [#132](https://github.com/martindebenedetti/Planix/pull/132) — @giann98 (Tester QA/JS) — Issue: [#125](https://github.com/martindebenedetti/Planix/issues/125)
+  PR: [#132](https://github.com/martindebenedetti/Planix/pull/132) — @giann98 (Tester QA/JS) — Issue: [#125](https://github.com/martindebenedetti/Planix/issues/125)
 
 - [feature/dev-libreria-externa-sweetalert2] Creación de `docs/03-specs/segundo-parcial/spec-dev-libreria-externa.md` con plan de integración de SweetAlert2 vía CDN. Integración de `Notificaciones.confirmar()` y `Notificaciones.exito()` en `manejarAccionesTabla()` de `js/script.js` para confirmación previa a eliminación de tareas. Reemplazo de alertas inline por `Notificaciones.exito()` y `Notificaciones.error()` en `manejarAgregarTarea()` al guardar una tarea. PR: [#129](https://github.com/martindebenedetti/Planix/pull/129) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#124](https://github.com/martindebenedetti/Planix/issues/124) — [#130](https://github.com/martindebenedetti/Planix/issues/130) — [#131](https://github.com/martindebenedetti/Planix/issues/131)
 
 - [feature/dev-async-fetch-api] Implementación de consumo asíncrono de tareas externas mediante JSONPlaceholder, incorporando fetch, manejo de errores HTTP/red, estados de carga en la UI, procesamiento de colecciones con filter, map y reduce, integración con DOM, persistencia mediante Storage y suite Jasmine para ApiService con 97 specs aprobados y 0 failures.
-PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) — Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
+  PR: [#128](https://github.com/martindebenedetti/Planix/pull/128) — @leanlex (Desarrollador JS Asíncrono - Fetch & APIs) — Issue: [#127](https://github.com/martindebenedetti/Planix/issues/127)
 
----
+### Fixed
+
+- [fix/rc14-changelog-release] Resolución de RC14: reorganización final de `changelog.md`, manteniendo `## [Unreleased]` preparado para futuras integraciones y registrando las correcciones del Segundo Parcial bajo la sección de release correspondiente.  
+  PR: [#154](https://github.com/martindebenedetti/Planix/pull/154) — @leanlex (Coordinación Fase 2) — Issue: [#148](https://github.com/martindebenedetti/Planix/issues/148)
+
+- [fix/library-spec-error-validacion] Se resolvió un problema en un test dentro de library.spec.js.
+ PR: [#153](https://github.com/martindebenedetti/Planix/pull/153) — @giann98 (Tester QA/JS)
+
+- [fix/RC6-a-RC13-auditoria-y-fixes] Resolución integral de observaciones (RC6-RC13): implementación de casos de prueba asíncronos en Jasmine (error 500 y rechazo de promesas), normalización semántica de la tabla Gantt mediante aria-labels y visually-hidden, optimización de métricas Lighthouse (Mobile Performance y Accessibility 100/100), y refactorización de lógica de visibilidad en script.js Se reemplazaron estilos inline evitables por clases utilitarias de Bootstrap, manteniendo únicamente la mutación de ancho porcentual necesaria para la barra de progreso dinámica.
+  PR: [#135](https://github.com/martindebenedetti/Planix/pull/135) — @giann98 (Tester QA/JS) — Issue: [#141](https://github.com/martindebenedetti/Planix/issues/141) — Issue: [#142](https://github.com/martindebenedetti/Planix/issues/142) — Issue: [#143](https://github.com/martindebenedetti/Planix/issues/143) — Issue: [#144](https://github.com/martindebenedetti/Planix/issues/144) — Issue: [#145](https://github.com/martindebenedetti/Planix/issues/145) — Issue: [#146](https://github.com/martindebenedetti/Planix/issues/146) — Issue: [#147](https://github.com/martindebenedetti/Planix/issues/147)
+
+- [fix/rc1-api-service-errors] Corrección del manejo interno de errores en `ApiService`: se agregaron bloques `try-catch` en `fetchData()` y `eliminarTodo()` para capturar errores de red, DNS, conexión o respuestas HTTP inválidas, relanzando mensajes controlados para la interfaz.  
+  PR: [#149](https://github.com/martindebenedetti/Planix/pull/149) — @leanlex (Coordinación Fase 2 / Dev Async) — Issue: [#136](https://github.com/martindebenedetti/Planix/issues/136)
+
+- [fix/rc2] Reemplazo de colores hardcodeados `#d33` y `#6c757d` en `js/libs/notificaciones.js` por variables CSS del sistema de diseño del proyecto (`var(--color-danger)` y `var(--color-slate-500)`), alineando los modales de confirmación de SweetAlert2 con el tema visual de Planix.  
+  PR: [#151](https://github.com/martindebenedetti/Planix/pull/151) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#137](https://github.com/martindebenedetti/Planix/issues/137)
+
+- [fix/rc3-rc4-rc5] RC3: `Notificaciones.error()` reemplaza título hardcodeado "Ocurrió un error" por parámetro `titulo`, manteniendo consistencia con `exito()` e `info()`. RC4: versión de SweetAlert2 fijada a `11.14.5` en `index.html` y `libreria-doc.md`. RC5: Caso de Uso 1 en `libreria-doc.md` actualizado para reflejar el uso real de `proyecto.eliminarTareaPorNombre(nombreTarea)`.  
+  PR: [#152](https://github.com/martindebenedetti/Planix/pull/152) — @martindebenedetti (Desarrollador JS librerías externas) — Issue: [#138](https://github.com/martindebenedetti/Planix/issues/138) — [#139](https://github.com/martindebenedetti/Planix/issues/139) — [#140](https://github.com/martindebenedetti/Planix/issues/140)
+
+--- 
 
 ## [Release Actividad Obligatoria N° 4] 2026-06-15
 

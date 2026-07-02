@@ -19,8 +19,8 @@ const Notificaciones = {
       showCancelButton: true,
       confirmButtonText: 'Confirmar',
       cancelButtonText: 'Cancelar',
-      confirmButtonColor: '#d33',
-      cancelButtonColor: '#6c757d'
+      confirmButtonColor: 'var(--color-danger)',
+      cancelButtonColor: 'var(--color-slate-500)'
     });
     return result.isConfirmed;
   },
@@ -40,13 +40,14 @@ const Notificaciones = {
 
   /**
    * Muestra una notificación de error
-   * @param {string} mensaje - Mensaje de error a mostrar al usuario
+   * @param {string} titulo - Título del error a mostrar al usuario
+   * @param {string} [texto] - Detalle opcional del error
    */
-  error(mensaje) {
+  error(titulo, texto) {
     return Swal.fire({
       icon: 'error',
-      title: 'Ocurrió un error',
-      text: mensaje
+      title: titulo,
+      text: texto
     });
   },
 

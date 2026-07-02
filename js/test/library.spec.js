@@ -22,7 +22,7 @@ describe("Notificaciones - Pruebas de Integración de Librería Externa (SweetAl
     it("debe configurar adecuadamente la estructura del modal ante eventos de error", function () {
       spyOn(Swal, "fire");
 
-      Notificaciones.error("Fallo de validación de campos");
+      Notificaciones.error("Ocurrió un error", "Fallo de validación de campos");
 
       expect(Swal.fire).toHaveBeenCalledWith(jasmine.objectContaining({
         icon: "error",
@@ -52,6 +52,15 @@ describe("Notificaciones - Pruebas de Integración de Librería Externa (SweetAl
       const respuestaUsuario = await Notificaciones.confirmar("¿Eliminar?", "Esta acción es irreversible");
 
       expect(respuestaUsuario).toBe(false);
+    });
+
+    //RC6: Test de manejo de error si la librería falla internamente
+    it("debe propagar errores si SweetAlert2 rechaza la promesa internamente", async function () {
+      spyOn(Swal, "fire").and.returnValue(Promise.reject(new Error("Fallo interno del modal")));
+
+      await expectAsync(
+        Notificaciones.confirmar("¿Eliminar?", "Acción irreversible")
+      ).toBeRejectedWithError("Fallo interno del modal");
     });
   });
 });
